@@ -1,12 +1,17 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
+gem 'haml'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'twitter-bootstrap-rails'
+gem 'less-rails-bootstrap'
+gem 'therubyracer'
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem "factory_girl_rails", "~> 3.0"
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,12 +25,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :tests do
+group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
   gem 'shoulda-context'
   gem 'shoulda-matchers'
+  gem 'guard'
+  gem 'growl'
+  gem 'spork'
+  gem 'guard-pow'
+  gem 'guard-rspec'
+  gem 'guard-spork'
 end
 
 gem 'jquery-rails'

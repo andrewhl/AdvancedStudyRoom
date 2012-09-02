@@ -1,0 +1,5 @@
+- flash.each do |type, message|
+  .alert{:class => "#{twitterized_type(type)}"}
+    %button{:class => "close", :data => {:dismiss => "alert"}}
+      x
+    = message

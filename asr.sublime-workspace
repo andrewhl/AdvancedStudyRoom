@@ -12,18 +12,34 @@
 	"buffers":
 	[
 		{
-			"file": "README.rdoc",
+			"file": "spec/controllers/pages_controller_spec.rb",
 			"settings":
 			{
-				"buffer_size": 38,
+				"buffer_size": 321,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Gemfile",
+			"file": "spec/models/session_spec.rb",
 			"settings":
 			{
-				"buffer_size": 946,
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "spec/models/user_spec.rb",
+			"settings":
+			{
+				"buffer_size": 350,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "spec/controllers/sessions_controller_spec.rb",
+			"settings":
+			{
+				"buffer_size": 489,
 				"line_ending": "Unix"
 			}
 		}
@@ -31,9 +47,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 47.0,
+		"height": 147.0,
 		"selected_items":
 		[
+			[
+				"rspec",
+				"Set Syntax: RSpec"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -55,7 +75,7 @@
 				"File: Delete"
 			]
 		],
-		"width": 509.0
+		"width": 602.0
 	},
 	"console":
 	{
@@ -72,6 +92,32 @@
 	},
 	"file_history":
 	[
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/controllers/users_controller.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/spec/models/user_spec.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/views/users/new.html.erb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/config/routes.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/spec/controllers/users_controller_spec.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/models/user.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/Gemfile",
+		"/Users/andrew/Projects/AdvancedStudyRoom/db/migrate/20120617024952_create_users.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/controllers/sessions_controller.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/controllers/application_controller.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/views/sessions/new.html.erb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/spec/controllers/sessions_controller_spec.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/views/layouts/application.html.erb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/helpers/application_helper.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/controllers/pages_controller.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/views/pages/about.html.erb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/spec/views/users/new.html.erb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/views/shared/_flash_messages.html.erb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/spec/controllers/pages_controller_spec.rb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/assets/stylesheets/application.css",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/assets/javascripts/application.js",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/assets/stylesheets/bootstrap_and_overrides.css.less",
+		"/Users/andrew/Projects/AdvancedStudyRoom/README.rdoc",
+		"/Users/andrew/Projects/AdvancedStudyRoom/Guardfile",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/views/layouts/_header.html.erb",
+		"/Users/andrew/Projects/AdvancedStudyRoom/app/views/pages/home.html.erb",
 		"/Users/andrew/Projects/Rails/asr/app/controllers/brackets_controller.rb",
 		"/Users/andrew/Projects/Rails/asr/spec/factories.rb",
 		"/Users/andrew/Projects/Rails/asr/db/schema.rb",
@@ -141,23 +187,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "README.rdoc",
+					"file": "spec/controllers/pages_controller_spec.rb",
 					"settings":
 					{
-						"buffer_size": 38,
+						"buffer_size": 321,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								38,
-								38
+								321,
+								321
 							]
 						],
 						"settings":
@@ -245,7 +291,7 @@
 								"Python Django": "python"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"syntax": "Packages/RSpec/RSpec.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -257,18 +303,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "Gemfile",
+					"file": "spec/models/session_spec.rb",
 					"settings":
 					{
-						"buffer_size": 946,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								636,
-								636
+								0,
+								0
 							]
 						],
 						"settings":
@@ -356,7 +402,229 @@
 								"Python Django": "python"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage"
+							"syntax": "Packages/RSpec/RSpec.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "spec/models/user_spec.rb",
+					"settings":
+					{
+						"buffer_size": 350,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"text-indent": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 0.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"Python Django": "python"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/RSpec/RSpec.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "spec/controllers/sessions_controller_spec.rb",
+					"settings":
+					{
+						"buffer_size": 489,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"text-indent": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 0.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"Python Django": "python"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/RSpec/RSpec.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -409,8 +677,60 @@
 		"selected_items":
 		[
 			[
+				"application_helper.rb",
+				"app/helpers/application_helper.rb"
+			],
+			[
+				"sessions",
+				"app/views/sessions/new.html.erb"
+			],
+			[
+				"new",
+				"app/views/users/new.html.erb"
+			],
+			[
+				"application",
+				"app/controllers/application_controller.rb"
+			],
+			[
+				"session",
+				"app/controllers/sessions_controller.rb"
+			],
+			[
+				"user.rb",
+				"app/models/user.rb"
+			],
+			[
+				"user",
+				"app/controllers/users_controller.rb"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
 				"gemfile",
 				"Gemfile"
+			],
+			[
+				"spec",
+				"spec/controllers/users_controller_spec.rb"
+			],
+			[
+				"routes.rb",
+				"config/routes.rb"
+			],
+			[
+				"pages",
+				"app/controllers/pages_controller.rb"
+			],
+			[
+				"appl",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"guardfile",
+				"Guardfile"
 			],
 			[
 				"users_",
