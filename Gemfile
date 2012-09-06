@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'haml'
+gem 'cucumber-rails', :require => false
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -37,6 +38,7 @@ group :test do
   gem 'guard-pow'
   gem 'guard-rspec'
   gem 'guard-spork'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'

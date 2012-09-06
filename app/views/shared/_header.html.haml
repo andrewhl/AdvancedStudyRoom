@@ -4,7 +4,7 @@
       - if current_user
         Logged in as
         = current_user.email
-        = link_to "Log Out", logout_path
+        = link_to "Log Out", logout_path, id: "logout"
       - else
         = link_to "Sign Up", signup_path
         or
