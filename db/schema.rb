@@ -11,31 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120721205104) do
+ActiveRecord::Schema.define(:version => 20120906150830) do
 
-  create_table "bracket_rules", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "achievements", :force => true do |t|
+    t.string   "achievement_name"
+    t.string   "earned_image_url"
+    t.string   "pending_image_url"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
-  create_table "brackets", :force => true do |t|
+  create_table "awards", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "achievement_id"
+    t.datetime "date_awarded"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "awards", ["achievement_id"], :name => "index_awards_on_achievement_id"
+  add_index "awards", ["user_id"], :name => "index_awards_on_user_id"
+
+  create_table "division_players", :force => true do |t|
     t.integer  "division_id"
-    t.integer  "min_players"
-    t.integer  "max_players"
-    t.integer  "division_pos"
-    t.float    "min_points_required"
-    t.integer  "min_position_required"
-    t.integer  "min_games_required"
-    t.integer  "min_wins_required"
-    t.integer  "max_losses_required"
-    t.boolean  "immunity_boolean"
-    t.integer  "demotion_buffer"
-    t.integer  "promotion_buffer"
-    t.string   "name"
-    t.string   "suffix"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.integer  "kgs_handle_id"
+    t.float    "points"
+    t.integer  "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
+
+  add_index "division_players", ["division_id"], :name => "index_division_players_on_division_id"
+  add_index "division_players", ["kgs_handle_id"], :name => "index_division_players_on_kgs_handle_id"
 
   create_table "division_rules", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -43,91 +50,146 @@ ActiveRecord::Schema.define(:version => 20120721205104) do
   end
 
   create_table "divisions", :force => true do |t|
-    t.string  "division_name"
-    t.string  "bracket_suffix"
-    t.integer "bracket_players_min"
-    t.integer "bracket_players_max"
-    t.integer "bracket_number"
-    t.integer "division_players_min"
-    t.integer "division_players_max"
-    t.float   "min_points_required"
-    t.integer "min_position_required"
-    t.integer "min_games_required"
-    t.integer "min_wins_required"
-    t.integer "max_losses_required"
-    t.boolean "immunity_boolean"
-    t.integer "demotion_buffer"
-    t.integer "promotion_buffer"
-    t.integer "rules_id"
-    t.integer "division_hierarchy"
+    t.integer  "tier_id"
+    t.datetime "month"
+    t.integer  "division_index"
+    t.integer  "minimum_players"
+    t.integer  "maximum_players"
+    t.integer  "current_players"
+    t.integer  "safe_position"
+    t.integer  "promoted_players"
+    t.integer  "demoted_players"
   end
 
+  add_index "divisions", ["division_index"], :name => "index_divisions_on_division_index"
+  add_index "divisions", ["tier_id"], :name => "index_divisions_on_tier_id"
+
+  create_table "event_types", :force => true do |t|
+    t.string   "name"
+    t.boolean  "allowed_rengo"
+    t.boolean  "allowed_teaching"
+    t.boolean  "allowed_review"
+    t.boolean  "allowed_free"
+    t.boolean  "allowed_rated"
+    t.boolean  "allowed_simul"
+    t.boolean  "allowed_demonstration"
+    t.string   "tag_text"
+    t.float    "main_time_min"
+    t.float    "main_time_max"
+    t.boolean  "overtime_required"
+    t.boolean  "jovertime_allowed"
+    t.boolean  "covertime_allowed"
+    t.integer  "jot_min_periods"
+    t.integer  "jot_max_periods"
+    t.float    "jot_min_period_length"
+    t.float    "jot_max_period_length"
+    t.integer  "cot_min_stones"
+    t.integer  "cot_max_stones"
+    t.float    "handicap_default"
+    t.integer  "ruleset_default"
+    t.integer  "games_per_player"
+    t.integer  "games_per_opponent"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "event_type_id"
+    t.string   "name"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "event_type_name"
+    t.boolean  "allowed_rengo"
+    t.boolean  "allowed_teaching"
+    t.boolean  "allowed_review"
+    t.boolean  "allowed_free"
+    t.boolean  "allowed_rated"
+    t.boolean  "allowed_simul"
+    t.boolean  "allowed_demonstration"
+    t.string   "tag_text"
+    t.float    "main_time_min"
+    t.float    "main_time_max"
+    t.boolean  "overtime_required"
+    t.boolean  "jovertime_allowed"
+    t.boolean  "covertime_allowed"
+    t.integer  "jot_min_periods"
+    t.integer  "jot_max_periods"
+    t.float    "jot_min_period_length"
+    t.float    "jot_max_period_length"
+    t.integer  "cot_min_stones"
+    t.integer  "cot_max_stones"
+    t.float    "handicap_default"
+    t.integer  "ruleset_default"
+    t.integer  "games_per_player"
+    t.integer  "games_per_opponent"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "events", ["event_type_id"], :name => "index_events_on_event_type_id"
+
+  create_table "kgs_handles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "kgs_handle"
+    t.integer  "league_tier"
+    t.integer  "league_active"
+    t.integer  "kgs_rank"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "kgs_handles", ["user_id"], :name => "index_kgs_handles_on_user_id"
+
   create_table "matches", :force => true do |t|
-    t.string   "url"
-    t.string   "white_player_name"
-    t.integer  "white_player_rank"
-    t.string   "black_player_name"
-    t.integer  "black_player_rank"
-    t.boolean  "result_boolean"
-    t.float    "score"
-    t.integer  "board_size"
-    t.integer  "handi"
-    t.integer  "unixtime"
+    t.integer  "black_player"
+    t.integer  "white_player"
+    t.datetime "datetime_completed"
     t.string   "game_type"
     t.float    "komi"
     t.string   "result"
-    t.integer  "main_time"
-    t.string   "invalid_reason"
-    t.string   "ruleset"
-    t.integer  "overtime_periods"
-    t.integer  "overtime_seconds"
-    t.string   "time_system"
-    t.string   "black_player_name_2"
-    t.string   "white_player_name_2"
-    t.integer  "black_player_rank_2"
-    t.integer  "white_player_rank_2"
-    t.boolean  "valid_game"
-    t.integer  "user_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.float    "main_time_control"
+    t.string   "overtime_type"
+    t.integer  "ot_stones_periods"
+    t.float    "ot_time_control"
+    t.string   "url"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
-  create_table "rules", :force => true do |t|
-    t.boolean  "rengo"
-    t.boolean  "teaching"
-    t.boolean  "review"
-    t.boolean  "free"
-    t.boolean  "rated"
-    t.boolean  "demonstration"
-    t.boolean  "unfinished"
-    t.integer  "tag_pos"
-    t.string   "tag_phrase"
-    t.boolean  "tag_boolean"
-    t.boolean  "ot_boolean"
-    t.integer  "byo_yomi_periods"
-    t.integer  "byo_yomi_seconds"
-    t.string   "ruleset"
-    t.boolean  "ruleset_boolean"
-    t.float    "komi"
-    t.boolean  "komi_boolean"
-    t.string   "handicap"
-    t.boolean  "handicap_boolean"
-    t.integer  "max_games"
+  add_index "matches", ["black_player"], :name => "index_matches_on_black_player"
+  add_index "matches", ["white_player"], :name => "index_matches_on_white_player"
+
+  create_table "tier_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "default_promotions"
+    t.integer  "default_demotions"
+    t.integer  "tier_hierarchy_position"
+    t.integer  "default_divisions"
+    t.integer  "max_games_per_player"
+    t.integer  "max_games_per_opponent"
     t.float    "points_per_win"
     t.float    "points_per_loss"
-    t.integer  "main_time"
-    t.boolean  "main_time_boolean"
-    t.string   "month"
-    t.integer  "canadian_stones"
-    t.integer  "canadian_time"
-    t.integer  "number_of_divisions"
-    t.string   "time_system"
-    t.boolean  "division_boolean"
-    t.string   "board_size"
-    t.boolean  "board_size_boolean"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
+
+  create_table "tiers", :force => true do |t|
+    t.integer  "tier_type_id"
+    t.integer  "promotions"
+    t.integer  "demotions"
+    t.integer  "tier_hierarchy_position"
+    t.integer  "divisions"
+    t.integer  "max_games_per_player"
+    t.integer  "max_games_per_opponent"
+    t.float    "points_per_win"
+    t.float    "points_per_loss"
+    t.integer  "event_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "tiers", ["event_id"], :name => "index_tiers_on_event_id"
+  add_index "tiers", ["tier_type_id"], :name => "index_tiers_on_tier_type_id"
 
   create_table "tournaments", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -136,11 +198,23 @@ ActiveRecord::Schema.define(:version => 20120721205104) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
+    t.string   "username"
+    t.integer  "access_level"
+    t.boolean  "password_reset_flag"
+    t.datetime "last_signed_in"
+    t.datetime "last_scraped"
+    t.float    "points"
+    t.float    "month_points"
+    t.float    "lifetime_points"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.boolean  "admin"
+    t.integer  "rank"
+    t.integer  "kgs_rank"
+    t.integer  "kaya_rank"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
 end

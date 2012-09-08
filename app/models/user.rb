@@ -4,4 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name
 
   validates_uniqueness_of :email
+
+  has_many :kgs_handles
+  has_many :awards
 end

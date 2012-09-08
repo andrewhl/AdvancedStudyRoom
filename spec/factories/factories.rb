@@ -15,11 +15,12 @@ FactoryGirl.define do
     "Person #{n}"
   end
 
-  factory :admin_user do
+  factory :admin, :class => User do
     first_name "Admin"
     email "admin@admin.com"
     password "foobar"
     password_confirmation "foobar"
-    admin_boolean true
+    admin true
   end
+
 end

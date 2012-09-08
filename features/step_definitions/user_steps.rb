@@ -1,54 +1,34 @@
-Given /^I fill out the signup form$/ do
-  visit signup_path
-  fill_in "Email", :with => "good@example.com"
-  fill_in "Password", :with => "foobar"
-  fill_in "Password confirmation", :with => "foobar"
-  click_button "Sign Up"
+Given /^I am (?:a|an) (.+)$/ do |user_type|
+  if user_type == "admin"
+    @admin_user = FactoryGirl.create(:admin)
+    @admin_user.should be_valid
+  else
+    @user = FactoryGirl.create(:user)
+    @user.should be_valid
+  end
 end
 
-Then /^my user account should be created$/ do
-  step "I fill out the signup form"
-  expect { FactoryGirl.create(:user) }.to change(User, :count).by(1)
-  # expect { step "I fill out the signup form" }.to change(User, :count).by(1)
-end
-
-Then /^I should be logged in$/ do
-  step "I fill out the signup form"
-  visit root_path
-  page.should have_content("Logged in as")
-end
-
-Given /^I visit the home page before signing up$/ do
-  visit root_path
-end
-
-Then /^I should not be logged in$/ do
-  step "I visit the home page before signing up"
-  page.should_not have_content("Logged in as")
-end
-
-Given /^I am signed in$/ do
+Then /^I login as (?:a|an) (.+)$/ do |user_type|
   visit root_path
   click_link "Log In"
-  fill_in "Email", :with => "good@example.com"
-  fill_in "Password", :with => "foobar"
+  if user_type == "admin"
+    fill_in "Email", with: "admin@admin.com"
+    fill_in "Password", with: "foobar"
+  else
+    fill_in "Email", with: "johndoe@example.com"
+    fill_in "Password", with: "foobar"
+  end
   click_button "Log In"
-  visit root_path
-  page.should have_content("Logged in as")
+  page.should have_content("Logged in")
 end
 
-When /^I sign out$/ do
-  step "I am signed in"
+Then /^I should be able to logout$/ do
+  step "I login as an admin"
   visit root_path
   click_link "Log Out"
+  page.should have_content("Log In")
 end
 
-Then /^I should be taken to the home page$/ do
-  step "I should be logged in"
-  step 'I sign out'
-  page.should have_content(flash[:notice])
-end
-
-Then /^I should be logged out$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^I can visit my home page$/ do
+  visit user_path(@user)
 end

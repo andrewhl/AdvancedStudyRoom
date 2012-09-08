@@ -18,4 +18,13 @@ describe User do
     end
   end
 
+  describe "admin users" do
+    let(:admin) { FactoryGirl.create(:admin) }
+    subject { admin }
+
+    it { should be_valid }
+
+
+  end
+
 end
