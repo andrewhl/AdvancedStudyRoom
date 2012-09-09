@@ -1,0 +1,15 @@
+=form_for @handler do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :
+
+<%= form_for @person do |f| %>
+  <%= f.label :first_name %>:
+  <%= f.text_field :first_name %><br />
+
+  <%= f.label :last_name %>:
+  <%= f.text_field :last_name %><br />
+
+  <%= f.submit %>
+<% end %>

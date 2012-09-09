@@ -1,11 +1,15 @@
 # == Schema Information
 #
-# Table name: division_players
+# Table name: server_handles
 #
 #  id            :integer          not null, primary key
-#  division_id   :integer
-#  kgs_handle_id :integer
-#  points        :float
+#  user_id       :integer
+#  server_id     :integer
+#  league_id     :integer
+#  handle        :string(255)
+#  league_tier   :integer
+#  league_active :integer
+#  rank          :integer
 #  status        :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -13,7 +17,7 @@
 
 require 'test_helper'
 
-class DivisionPlayerTest < ActiveSupport::TestCase
+class ServerandleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

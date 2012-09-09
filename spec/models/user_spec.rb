@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer          not null, primary key
+#  email               :string(255)
+#  username            :string(255)
+#  access_level        :integer
+#  password_reset_flag :boolean
+#  last_signed_in      :datetime
+#  last_scraped        :datetime
+#  points              :float
+#  month_points        :float
+#  lifetime_points     :float
+#  first_name          :string(255)
+#  last_name           :string(255)
+#  password_digest     :string(255)
+#  admin               :boolean
+#  rank                :integer
+#  kgs_rank            :integer
+#  kaya_rank           :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
 require 'spec_helper'
 
 describe User do
@@ -19,8 +44,7 @@ describe User do
   end
 
   describe "admin users" do
-    let(:admin) { FactoryGirl.create(:admin) }
-    subject { admin }
+    subject(:admin) { FactoryGirl.create(:admin) }
 
     it { should be_valid }
 

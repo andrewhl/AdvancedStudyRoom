@@ -29,10 +29,12 @@ class CreateEvents < ActiveRecord::Migration
       t.integer  :ruleset_default
       t.integer  :games_per_player
       t.integer  :games_per_opponent
+      t.integer  :league_id
 
       t.timestamps
     end
 
     add_index :events, :event_type_id
+    add_index :events, :league_id
   end
 end

@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'haml'
 gem 'cucumber-rails', :require => false
+gem 'nokogiri'
+gem 'mechanize'
+gem 'epitools'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -27,6 +30,7 @@ group :assets do
 end
 
 group :test do
+  gem 'rb-fsevent', '~> 0.9.1'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
@@ -39,6 +43,14 @@ group :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'database_cleaner'
+end
+
+group :test, :development do
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
+  gem 'annotate', ">=2.5.0"
 end
 
 gem 'jquery-rails'

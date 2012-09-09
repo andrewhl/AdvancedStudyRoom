@@ -9,6 +9,7 @@ Given /^I am (?:a|an) (.+)$/ do |user_type|
 end
 
 Then /^I login as (?:a|an) (.+)$/ do |user_type|
+  # binding.pry
   visit root_path
   click_link "Log In"
   if user_type == "admin"
@@ -19,6 +20,7 @@ Then /^I login as (?:a|an) (.+)$/ do |user_type|
     fill_in "Password", with: "foobar"
   end
   click_button "Log In"
+  # visit root_path
   page.should have_content("Logged in")
 end
 
@@ -31,4 +33,12 @@ end
 
 Then /^I can visit my home page$/ do
   visit user_path(@user)
+end
+
+When /^I visit the league registration page$/ do
+  visit registration_path
+end
+
+Then /^I can signup for the league$/ do
+  pending # express the regexp above with the code you wish you had
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120906150830) do
+ActiveRecord::Schema.define(:version => 20120909210541) do
 
   create_table "achievements", :force => true do |t|
     t.string   "achievement_name"
@@ -122,27 +122,24 @@ ActiveRecord::Schema.define(:version => 20120906150830) do
     t.integer  "ruleset_default"
     t.integer  "games_per_player"
     t.integer  "games_per_opponent"
+    t.integer  "league_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
   add_index "events", ["event_type_id"], :name => "index_events_on_event_type_id"
+  add_index "events", ["league_id"], :name => "index_events_on_league_id"
 
-  create_table "kgs_handles", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "kgs_handle"
-    t.integer  "league_tier"
-    t.integer  "league_active"
-    t.integer  "kgs_rank"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "leagues", :force => true do |t|
+    t.string   "name"
+    t.integer  "server_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "kgs_handles", ["user_id"], :name => "index_kgs_handles_on_user_id"
+  add_index "leagues", ["server_id"], :name => "index_leagues_on_server_id"
 
   create_table "matches", :force => true do |t|
-    t.integer  "black_player"
-    t.integer  "white_player"
     t.datetime "datetime_completed"
     t.string   "game_type"
     t.float    "komi"
@@ -152,12 +149,38 @@ ActiveRecord::Schema.define(:version => 20120906150830) do
     t.integer  "ot_stones_periods"
     t.float    "ot_time_control"
     t.string   "url"
+    t.integer  "black_player_id"
+    t.integer  "white_player_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
-  add_index "matches", ["black_player"], :name => "index_matches_on_black_player"
-  add_index "matches", ["white_player"], :name => "index_matches_on_white_player"
+  add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
+  add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
+
+  create_table "server_handles", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "server_id"
+    t.integer  "league_id"
+    t.string   "handle"
+    t.integer  "league_tier"
+    t.integer  "league_active"
+    t.integer  "rank"
+    t.integer  "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "server_handles", ["league_id"], :name => "index_server_handles_on_league_id"
+  add_index "server_handles", ["server_id"], :name => "index_server_handles_on_server_id"
+  add_index "server_handles", ["user_id"], :name => "index_server_handles_on_user_id"
+
+  create_table "servers", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "tier_types", :force => true do |t|
     t.string   "name"
