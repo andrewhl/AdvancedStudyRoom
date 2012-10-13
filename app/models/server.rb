@@ -13,6 +13,6 @@ class Server < ActiveRecord::Base
   attr_accessible :name, :url
 
   has_many :leagues
-  has_many :server_handles
+  has_many :accounts
 
 end

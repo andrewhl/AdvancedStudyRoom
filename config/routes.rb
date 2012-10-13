@@ -5,12 +5,13 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'test', to: 'pages#test'
 
-  resources :pages, :users, :sessions, :server_handles
+  resources :pages, :users, :sessions, :accounts
 
   match '/about', :to => 'pages#about'
-  match '/registration', :to => 'server_handles#new'
+  match '/registration', :to => 'accounts#new'
 
   root :to => "pages#home"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

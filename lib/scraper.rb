@@ -60,6 +60,7 @@ class Scraper
   end
 
   def get_users(users)
+    binding.pry
     Hash[users.map { |user| [user, get_user(user)] }]
   end
 

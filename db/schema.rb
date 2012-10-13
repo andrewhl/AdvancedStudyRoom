@@ -13,6 +13,23 @@
 
 ActiveRecord::Schema.define(:version => 20120909210541) do
 
+  create_table "accounts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "server_id"
+    t.integer  "league_id"
+    t.string   "handle"
+    t.integer  "league_tier"
+    t.integer  "league_active"
+    t.integer  "rank"
+    t.integer  "status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "accounts", ["league_id"], :name => "index_accounts_on_league_id"
+  add_index "accounts", ["server_id"], :name => "index_accounts_on_server_id"
+  add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
+
   create_table "achievements", :force => true do |t|
     t.string   "achievement_name"
     t.string   "earned_image_url"
@@ -157,23 +174,6 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
 
   add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
   add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
-
-  create_table "server_handles", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "server_id"
-    t.integer  "league_id"
-    t.string   "handle"
-    t.integer  "league_tier"
-    t.integer  "league_active"
-    t.integer  "rank"
-    t.integer  "status"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "server_handles", ["league_id"], :name => "index_server_handles_on_league_id"
-  add_index "server_handles", ["server_id"], :name => "index_server_handles_on_server_id"
-  add_index "server_handles", ["user_id"], :name => "index_server_handles_on_user_id"
 
   create_table "servers", :force => true do |t|
     t.string   "name"

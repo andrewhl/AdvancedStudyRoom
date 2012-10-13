@@ -1,0 +1,15 @@
+= form_for @handle do |f|
+  .div
+    = f.label :handle
+    = f.text_field :handle
+
+  .div
+    = f.label :rank
+    = f.number_field :rank
+
+  .div
+    = f.label :server_id
+    = f.select :server_id, ["KGS", "Kaya"]
+
+  .div
+    = f.submit "Create Account"

@@ -13,6 +13,6 @@ class League < ActiveRecord::Base
   attr_accessible :name, :server_id
 
   has_many :events
-  has_many :server_handles
+  has_many :accounts
   belongs_to :server
 end

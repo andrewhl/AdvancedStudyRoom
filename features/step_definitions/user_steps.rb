@@ -42,3 +42,19 @@ end
 Then /^I can signup for the league$/ do
   pending # express the regexp above with the code you wish you had
 end
+
+When /^I visit the new account page$/ do
+  visit new_account_path
+end
+
+Then /^I create an account$/ do
+  fill_in "Handle", with: "kabradarf"
+  fill_in "Rank", with: 3
+  select 'KGS', from: "Server"
+  binding.pry
+  click_button "Create Account"
+end
+
+Then /^I signup for the league$/ do
+  pending # express the regexp above with the code you wish you had
+end
