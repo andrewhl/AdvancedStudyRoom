@@ -7,6 +7,11 @@ FactoryGirl.define do
     password_confirmation "foobar"
   end
 
+  factory :test_account do
+    handle "kabradarf"
+    user
+  end
+
   sequence :email do |n|
     "person-#{n}@example.com"
   end

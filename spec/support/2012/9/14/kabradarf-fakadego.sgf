@@ -1,0 +1,252 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[Japanese]SZ[19]KM[6.50]TM[2400]OT[5x30 byo-yomi]
+PW[kabradarf]PB[fakadego]WR[2d]DT[2012-09-14]PC[The KGS Go Server at http://www.gokgs.com/]RE[W+Resign]
+;B[pp]BL[2396.755]C[kabradarf [2d\]: merci
+kabradarf [2d\]: bonne partie
+]
+;W[qd]WL[2387.732]C[fakadego [?\]: bonne partis
+]
+;B[dq]BL[2388.878]
+;W[dd]WL[2385.007]
+;B[jp]BL[2383.304]
+;W[cn]WL[2365.253]
+;B[qn]BL[2375.136]
+;W[oc]WL[2353.486]
+;B[qj]BL[2371.325]
+;W[pq]WL[2334.513]C[fakadego [?\]: ca c'est pas bon
+]
+;B[oq]BL[2363.512]
+;W[qp]WL[2330.091]
+;B[qq]BL[2358.54]
+;W[pr]WL[2326.405]
+;B[qr]BL[2350.738]
+;W[op]WL[2313.679]
+;B[po]BL[2348.248]C[fakadego [?\]: joue des coup mechant
+]
+;W[or]WL[2262.98]C[fakadego [?\]: que ca devien dificcle
+]
+;B[nq]BL[2333.68]
+;W[nr]WL[2260.091]
+;B[mq]BL[2328.838]
+;W[mr]WL[2250.759]
+;B[lq]BL[2317.801]
+;W[rp]WL[2249.493]
+;B[rq]BL[2311.043]
+;W[sr]WL[2243.931]
+;B[ro]BL[2304.505]
+;W[sq]WL[2240.669]
+(;B[qo]BL[2294.624]
+;W[sp]WL[2237.955]
+;B[so]BL[2293.113]
+;W[qs]WL[2235.484]
+;B[lr]BL[2281.072]
+;W[oj]WL[2213.784]C[fakadego [?\]: on joura pares mon pere veux fair quelle chosse sur lordi
+fakadego [?\]: ok
+fakadego [?\]: ?
+kabradarf [2d\]: ok
+kabradarf [2d\]: a tout a l heure
+fakadego [?\]: a tout heur
+kabradarf [2d\]: allé
+]
+;B[pl]BL[2272.657]
+;W[pi]WL[2172.788]
+;B[ml]BL[2266.778]
+;W[qi]WL[2167.671]
+;B[ri]BL[2264.335]
+;W[rh]WL[2163.661]
+;B[si]BL[2261.261]
+;W[li]WL[2140.377]
+;B[ck]BL[2252.654]
+;W[cq]WL[2136.653]
+;B[dr]BL[2245.937]
+;W[dp]WL[2110.241]
+;B[ep]BL[2243.323]
+;W[do]WL[2105.831]
+;B[ch]BL[2233.643]
+;W[cf]WL[2099.153]
+;B[ei]BL[2225.217]C[fakadego [?\]: alle je vais prograisse de plus en plus
+]
+;W[gp]WL[2067.168]C[fakadego [?\]: la tu ma casse la route
+]
+;B[fo]BL[2198.151]
+;W[ip]WL[2042.815]
+;B[io]BL[2189.827]
+;W[ho]WL[2039.023]
+;B[hn]BL[2173.106]
+;W[in]WL[2031.131]
+;B[jo]BL[2170.21]
+;W[gn]WL[2028.849]
+;B[hm]BL[2168.65]
+;W[go]WL[2027.806]
+;B[em]BL[2160.803]
+;W[fn]WL[2024.656]
+;B[en]BL[2159.296]
+;W[eo]WL[2021.532]
+;B[fp]BL[2157.066]
+;W[gq]WL[2020.573]
+;B[eq]BL[2154.663]
+;W[cr]WL[2016.74]
+;B[gr]BL[2150.927]
+;W[fr]WL[2012.668]
+;B[hr]BL[2146.486]
+;W[fq]WL[2007.621]
+;B[fs]BL[2138.859]
+;W[es]WL[2003.143]
+;B[iq]BL[2133.878]
+;W[fl]WL[1990.895]C[fakadego [?\]: je fais une gros betisse
+]
+;B[bm]BL[2122.148]C[kabradarf [2d\]: oui
+kabradarf [2d\]: tu veux revenir quelque part?
+fakadego [?\]: non a la fin
+]
+;W[el]WL[1966.324]
+;B[dm]BL[2115.579]
+;W[cm]WL[1962.456]
+;B[cl]BL[2114.167]
+;W[dl]WL[1960.127]
+;B[bn]BL[2112.662]
+;W[bo]WL[1956.534]
+;B[rg]BL[2106.11]
+;W[qh]WL[1950.905]
+;B[sh]BL[2099.763]
+;W[qf]WL[1944.947]
+;B[rf]BL[2096.368]
+;W[re]WL[1941.115]
+;B[gc]BL[2082.427]
+;W[ic]WL[1931.302]
+;B[ec]BL[2077.793]
+;W[dc]WL[1928.948]
+;B[ge]BL[2074.569]
+;W[ie]WL[1925.902]
+;B[gg]BL[2071.918]
+;W[jg]WL[1921.588]
+;B[kh]BL[2062.23]
+;W[ji]WL[1907.972]
+;B[mi]BL[2060.844]
+;W[mh]WL[1903.27]
+;B[ni]BL[2057.193]
+;W[nh]WL[1900.946]
+;B[oh]BL[2052.381]
+;W[oi]WL[1898.092]
+;B[mj]BL[2050.338]
+;W[lj]WL[1895.415]
+;B[mk]BL[2047.294]
+;W[lh]WL[1881.296]
+;B[og]BL[2045.964]
+;W[qg]WL[1877.787]
+(;B[rj]BL[2040.8]
+;W[jh]WL[1857.156]
+;B[bc]BL[2030.184]
+;W[cb]WL[1844.214]C[fakadego [?\]: pas mal
+fakadego [?\]: ?
+]
+;B[be]BL[2011.011]C[kabradarf [2d\]: b17 tu veux dire?
+fakadego [?\]: non tout la partis
+kabradarf [2d\]: c est une tentative mais je ne crois pas ca marche
+kabradarf [2d\]: essayons
+fakadego [?\]: ok
+kabradarf [2d\]: tu m as donné beaucoup de pierres
+kabradarf [2d\]: tu s fait des erreurs dans les coins
+]
+;W[bf]WL[1792.218]C[fakadego [?\]: oui
+fakadego [?\]: je sais
+]
+;B[ce]BL[1994.218]
+;W[de]WL[1789.829]
+;B[df]BL[1992.919]
+;W[dg]WL[1786.246]
+;B[ef]BL[1989.788]
+;W[cg]WL[1784.839]
+;B[bb]BL[1976.257]
+;W[ba]WL[1767.847]
+;B[dh]BL[1949.652]
+;W[eg]WL[1759.546]
+;B[fg]BL[1946.489]
+;W[bh]WL[1756.605]
+;B[bi]BL[1943.783]
+;W[ae]WL[1749.089]
+;B[ad]BL[1939.415]
+;W[af]WL[1746.968]
+;B[ah]BL[1935.27]
+;W[bd]WL[1741.773]
+;B[cd]BL[1931.521]
+;W[cc]WL[1739.613]C[fakadego [?\]: bien joue
+kabradarf [2d\]: merci
+fakadego [?\]: je suis mal barre
+]
+;B[ok]BL[1888.637]C[kabradarf [2d\]: oui la c est foutu
+]
+;W[kl]WL[1730.415]C[fakadego [?\]: mais c'est praiise que ca
+]
+;B[eh]BL[1867.009]
+;W[lm]WL[1717.231]
+;B[mn]BL[1850.479]C[kabradarf [2d\]: c est mieux mais il faut que tu joues avec des gens moins fort aussi
+fakadego [?\]: oui
+kabradarf [2d\]: pour qu il y ai une petite emulation
+fakadego [?\]: je sais mais
+]
+;W[mm]WL[1687.346]C[fakadego [?\]: je prefaire joue contre des plus fort
+]
+;B[nm]BL[1837.867]C[kabradarf [2d\]: il faut les deux sinon ca decourage
+]
+;W[ln]WL[1674.011]C[fakadego [?\]: decourage ca veux dire quoi?
+]
+;B[mo]BL[1826.117]C[kabradarf [2d\]: ca veut dire que si tu perds tout le temps parce que tu joues plus fort tu finis par perdre le gout de jouer
+fakadego [?\]: ok
+]
+;W[jm]WL[1628.608]
+;B[hk]BL[1804.5]
+;W[gj]WL[1624.131]
+;B[hj]BL[1802.345]
+;W[hi]WL[1622.079]
+;B[lk]BL[1793.083]
+;W[kk]WL[1619.638]
+;B[lo]BL[1788.81]
+;W[gi]WL[1611.518]
+;B[ed]BL[1779.079]
+;W[ee]WL[1607.001]
+;B[fe]BL[1775.402]
+;W[an]WL[1598.805]
+;B[bl]BL[1771.692]
+;W[ff]WL[1596.071]
+(;B[fh]BL[1768.825]
+;W[hb]WL[1567.103]
+;B[gb]BL[1758.664]
+;W[eb]WL[1561.215]
+;B[fb]BL[1756.712]
+;W[gf]WL[1553.664]
+;B[hf]BL[1751.757]
+;W[ef]WL[1552.309]
+;B[he]BL[1745.67]
+;W[hg]WL[1550.066]
+;B[if]BL[1737.704]
+;W[je]WL[1545.841]
+;B[ig]BL[1735.688]
+;W[hh]WL[1544.325]
+;B[ih]BL[1734.146]
+;W[ii]WL[1542.787]
+;B[jf]BL[1731.112]
+;W[kf]WL[1539.087]
+;B[ke]BL[1728.227]
+;W[kc]WL[1529.971]
+;B[jd]BL[1719.879]
+;W[id]WL[1526.753]C[fakadego [?\]: je perdu
+kabradarf [2d\]: oui 
+kabradarf [2d\]: merci pour la partie
+]
+;B[hc]BL[1677.365]C[kabradarf [2d\]: on la regarde?
+fakadego [?\]: atent continu un peux
+kabradarf [2d\]: ok
+]
+;W[jb]WL[1497.616]C[fakadego [?\]: oui perdu
+]
+;B[]BL[1677.363]
+;W[]WL[1497.614])
+(;B[ef]BL[1769.146]))
+(;B[sg]BL[2032.327]))
+(;B[sp]BL[2286.861]
+;W[so]WL[2236.6]
+;B[qo]BL[2279.215]
+;W[sp]WL[2234.761]
+;B[sn]BL[2274.371]
+;W[qs]WL[2232.606]))

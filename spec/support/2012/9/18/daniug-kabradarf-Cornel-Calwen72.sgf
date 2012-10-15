@@ -1,0 +1,286 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[Japanese]SZ[19]KM[6.50]TM[1500]OT[5x30 byo-yomi]
+PW[daniug,kabradarf]PB[Cornel,Calwen72]WR[2d]BR[7d]DT[2012-09-18]PC[The KGS Go Server at http://www.gokgs.com/]C[kabradarf [2d\]: hi
+Calwen72 [-\]: Hi, have a nice game
+Cornel [7d\]: have a nice game
+]RE[W+Resign]
+;B[pd]BL[1490.719]C[daniug [2d\]: have fun
+]
+;W[dc]WL[1493.636]C[kabradarf [2d\]: have fun
+]
+;B[dq]BL[1476.914]
+;W[qp]WL[1484.024]
+;B[ce]BL[1465.513]
+;W[ch]WL[1474.063]
+;B[op]BL[1384.855]C[polemus: whoa.
+]
+;W[pn]WL[1395.402]
+;B[ed]BL[1369.229]
+;W[ec]WL[1382.519]
+;B[fd]BL[1335.804]
+;W[fc]WL[1373.523]
+;B[gd]BL[1324.872]
+;W[hc]WL[1365.65]
+;B[ck]BL[1272.996]
+;W[fh]WL[1175.259]
+;B[ie]BL[1253.642]
+;W[jc]WL[1123.797]
+;B[hh]BL[1191.897]
+;W[ek]WL[957.223]
+;B[cn]BL[1166.648]
+;W[hk]WL[914.996]
+;B[qq]BL[1125.371]
+;W[rq]WL[907.733]
+;B[pq]BL[1124.064]C[godango [4k\]: what do you think the odds are of 2d+2d vs. 7d+ ~3k?
+godango [4k\]: I say blacks will win :p
+]
+;W[ro]WL[868.008]
+;B[lq]BL[1122.06]C[guest556: i'd say w has an advantage
+]
+;W[qf]WL[847.988]
+;B[nc]BL[1101.264]
+;W[rd]WL[827.9]
+;B[qc]BL[1097.658]
+;W[qi]WL[818.534]
+;B[pj]BL[1080.239]C[polemus: left w group is still quite weak
+]
+;W[pi]WL[792.923]C[Shadowman [2d\]: my gut tells me white should have the advantage
+Shadowman [2d\]: but I've seen rengo games like this turn out differently :-)
+despot [2k\]: it looks fairly even to me
+]
+;B[oj]BL[1009.591]
+;W[mi]WL[739.589]
+;B[oi]BL[996.284]
+;W[oh]WL[734.925]
+;B[nh]BL[968.927]
+;W[ni]WL[730.778]C[polemus: oh man
+]
+;B[qj]BL[957.136]
+;W[ri]WL[725.407]C[lekien [4k\]: p13?
+]
+;B[og]BL[842.064]
+;W[ph]WL[719.602]
+;B[ql]BL[835.513]
+;W[nn]WL[674.444]
+;B[qn]BL[736.566]C[largehc [-\]: I wonder how strong clawen is
+]
+;W[pp]WL[590.101]
+;B[oo]BL[725.395]
+;W[on]WL[527.599]C[Aikwan [8k\]: i'm wondering how strong calwen is 
+]
+;B[mk]BL[692.716]C[polemus: finally n9!
+polemus: we are going to see some bloody splitting now
+Intuit [15k\]: 2 or 3k from his record
+]
+;W[qm]WL[459.451]C[Shadowman [2d\]: uf
+]
+;B[rm]BL[683.432]C[Shadowman [2d\]: this feels so submissive
+]
+;W[pm]WL[444.569]
+;B[rn]BL[643.911]
+;W[po]WL[426.185]
+;B[oq]BL[630.136]
+;W[nk]WL[401.392]C[LaaMaiLee [2d\]: o3 feels like better shape than p3, even with m3 so close
+]
+;B[nj]BL[612.475]
+;W[mj]WL[394.4]
+;B[nl]BL[609.852]C[TomoyaKun [3d\]: p3 connection that important? :|
+]
+;W[pl]WL[371.152]C[Junesun [8k\]: has anyone tried strip rengo?
+Intuit [15k\]: it was yes, else w simply lives
+polemus: apparently they disagree with you LaaMaiLee
+]
+;B[ok]BL[581.453]
+;W[qk]WL[362.997]
+;B[rj]BL[576.222]C[tvlasov [2k\]: 3k - lol
+TomoyaKun [3d\]: this is painfullish <.<
+Intuit [15k\]: s10 was the 3k right? O.o
+]
+;W[kj]WL[340.366]C[TomoyaKun [3d\]: D: this is strangeish
+Intuit [15k\]: b in a bit of trouble now
+godango [4k\]: s8??
+Intuit [15k\]: m7 perhaps
+]
+;B[rl]BL[531.369]C[TomoyaKun [3d\]: w aiming at killing g16? o.O
+]
+;W[mp]WL[300.052]
+;B[mq]BL[524.492]C[polemus: well at this rate splitting is averted
+]
+;W[pk]WL[296.419]
+;B[rk]BL[518.292]C[Intuit [15k\]: ol
+]
+;W[lm]WL[290.281]C[TomoyaKun [3d\]: :P
+godango [4k\]: uh ooh
+Intuit [15k\]: ok so maybe not 3k even
+wither [3k\]: w team should just use ko threats on cornels turn and kill calwen in between
+TomoyaKun [3d\]: good decision
+]
+;B[kk]BL[503.085]C[TomoyaKun [3d\]: n4 to let calwen answer q9
+godango [4k\]: lol @ wither
+]
+;W[jj]WL[267.195]C[polemus: what if a ko starts
+wither [3k\]: dont let it :\\
+despot [2k\]: n4 looks good regardless
+polemus: you can't just not let a ko start
+despot [2k\]: m8 to make escape and local life miai?
+Intuit [15k\]: poor cornel
+TomoyaKun [3d\]: n4 removes l3 possibility
+godango [4k\]: n6 juicy?
+polemus: kos are like the spanish inquisition
+godango [4k\]: m8?
+TomoyaKun [3d\]: so not really sure it's good regardless
+]
+;B[jl]BL[458.543]C[Intuit [15k\]: well w still needs life too, so perhaps not so bad as it is sabaki
+polemus: anything but n8 here ?
+wither [3k\]: kabuki
+despot [2k\]: this is not sabaki
+]
+;W[im]WL[204.761]C[Intuit [15k\]: not yet
+wither [3k\]: this is not sabaki. this is sparta
+despot [2k\]: what do you mean not yet? it's not sabaki
+]
+;B[jm]BL[438.324]C[polemus: it is sabaki in progress
+despot [2k\]: rofl
+Intuit [15k\]: then what does one call living shape in progress?
+despot [2k\]: it's as heavy as it gets
+TomoyaKun [3d\]: l3
+despot [2k\]: call it that if you want, sabaki involves playing light moves
+]
+;W[jn]WL[149.626]C[polemus: this is light, just less light than usual
+despot [2k\]: ...
+Intuit [15k\]: haha
+polemus: this is more like sabaka
+domie [1k\]: why are you talking about sabaki here ?
+Intuit [15k\]: so pseudo-sabaki then?
+]
+;B[il]BL[347.754]C[Intuit [15k\]: because I misunderstood the term
+despot [2k\]: that's a good reason :)
+despot [2k\]: and no it's not pseudo or any kind of sabaki..
+domie [1k\]: indeed this position has nothing to do with sabaki 
+]
+;W[km]WL[95.167]C[guest556: domi what dogs? :)
+MOEN [4k\]: why doesnt b play n7
+]
+;B[lj]BL[328.616]C[LaaMaiLee [2d\]: moen, why would he?
+]
+;W[li]WL[89.659]C[Intuit [15k\]: idk n4 does give resilient shape, which is one feature of sabaki
+MOEN [4k\]: before
+]
+;B[lk]BL[309.376]C[wither [3k\]: hey thats something cornel can do. make moves that force calwen to respond
+Intuit [15k\]: also it can be discarded, so is light, which is also a feaute of sabaki
+polemus: this is "bring your sabaki to work day"
+MOEN [4k\]: where there is no l7
+]
+;W[hm]WL[63.016]C[godango [4k\]: uh ou
+godango [4k\]: oh
+polemus: l11 ?
+Intuit [15k\]: l11 ?
+wither [3k\]: if not l11 then why M10
+Intuit [15k\]: l11 j10 combo looks promising
+]
+;B[ki]BL[257.588]C[polemus: oh my god !
+godango [4k\]: lol
+godango [4k\]: overreaction??
+Intuit [15k\]: h8 can also help here
+polemus: o13 ?
+Intuit [15k\]: m12 maybe
+]
+;W[ng]WL[30]OW[5]C[godango [4k\]: is calwen a student of cornel? they have played rengo together several times
+polemus: o13 n12 m12 n13 m13 n14 k12 ?
+despot [2k\]: l12?
+Intuit [15k\]: j10 i think could work here
+godango [4k\]: i don't think j10 works quite yet
+polemus: it is hard to imagine the sequences that a 2dan/ 73dankyu will play
+guest556: yes j10 is legal under japanese rules
+godango [4k\]: why under japanese rule?
+despot [2k\]: yeah j10 seems to work
+yarik94 [4k\]: l12
+guest556: godango click options->rules
+]
+;B[kh]BL[172.929]C[godango [4k\]: but it's "legal" under all rules...?
+Intuit [15k\]: hmm
+polemus: what about a ruleset that explicitly forbade it ?
+]
+;W[lg]WL[30]OW[5]C[Intuit [15k\]: this is better way round it would seem
+yarik94 [4k\]: after black j10
+]
+;B[ij]BL[155.95]C[godango [4k\]: yay
+polemus: ahhh !!
+guest556: godango some rules are odd, like you have to play only touching stones etc
+wither [3k\]: the power of sakabi!
+]
+;W[ji]WL[30]OW[5]C[wither [3k\]: errr.
+Intuit [15k\]: lol
+godango [4k\]: lol huh? i have never heard of this.
+guest556: or have to avoid touching stones for the first 50 moves etc
+polemus: sabacon
+]
+;B[jh]BL[135.727]C[polemus: this looks like driving tesuji
+despot [2k\]: pretty awful answer
+godango [4k\]: hmm which rules say that? first i've heard of it
+LaaMaiLee [2d\]: I like the ones where you get new move if you make 5 in a row
+Intuit [15k\]: lmao
+godango [4k\]: lol right
+guest556: i don't know check out senseis :)
+polemus: j11 ??
+]
+;W[ik]WL[30]OW[3]C[godango [4k\]: i did hear about the rules where you are allows to put a piece on top of your opponents but only if you stand on your head and do a gregorian chant...
+]
+;B[jk]BL[125.343]C[despot [2k\]: j11
+daniug [2d\]: all in:)
+]
+;W[ii]WL[30]OW[3]C[Intuit [15k\]: h8 will come into play still
+polemus: oh my god i can't bear to watch this
+despot [2k\]: well either way b is fine
+guest556: then rabbit watch it, polemus
+]
+;B[hl]BL[96.625]C[polemus: both sides have few territory
+Intuit [15k\]: cut cut cut ..next
+Cornel [7d\]: ;)
+Cornel [7d\]: all out 
+Intuit [15k\]: lol
+]
+;W[ih]WL[30]OW[1]C[godango [4k\]: still painful for b
+Intuit [15k\]: j13?
+Darknvo [2k\]: not really
+]
+;B[hj]BL[58.638]C[Darknvo [2k\]: white has a lot of cuts
+polemus: alive
+]
+;W[hi]WL[30]OW[1]C[despot [2k\]: owned
+]
+;B[gk]BL[39.961]
+;W[hg]WL[30]OW[1]C[Intuit [15k\]: j6 start?
+]
+;B[cc]BL[11.219]C[polemus: l13
+Intuit [15k\]: hmm
+]
+;W[dd]WL[154.339]
+;B[de]BL[0.364]C[Intuit [15k\]: of course this first . doh
+daniug [2d\]: thx
+]
+;W[cd]WL[134.05]
+;B[bd]BL[30]OB[5]C[polemus: cut everywhere !
+godango [4k\]: how is this good for  b??
+Darknvo [2k\]: g17 cut
+Intuit [15k\]: life is good
+Darknvo [2k\]: he can get some eyeshape  in sente if white plays b17
+Intuit [15k\]: and needed
+kabradarf [2d\]: i am gonna play iron man tournament
+kabradarf [2d\]: in few minutes
+Cornel [7d\]: ah ok
+]
+;W[bc]WL[83.923]C[daniug [2d\]: we shall probably resign soon:P
+Cornel [7d\]: we can stop the game when you have to go
+MOEN [4k\]: f14 , then b14?
+Intuit [15k\]: b13 ?
+]
+;B[gc]BL[30]OB[4]C[Cornel [7d\]: thx for the game
+Calwen72 [-\]: thanks for the game
+daniug [2d\]: thx....b would live up there  and w resign
+Cornel [7d\]: yeah
+daniug [2d\]: thx
+Calwen72 [-\]: with both left we make closed review
+polemus: g18 ?
+Cornel [7d\]: oki
+])

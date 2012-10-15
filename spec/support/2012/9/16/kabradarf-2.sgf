@@ -1,0 +1,385 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[AGA]SZ[19]KM[7.50]TM[2700]OT[5x30 byo-yomi]
+PW[kabradarf]PB[xanaa]WR[2d]BR[7k]DT[2012-09-16]PC[The KGS Go Server at http://www.gokgs.com/]C[kabradarf [2d\]: hi
+xanaa [7k\]: hi
+kabradarf [2d\]: have a nice game
+xanaa [7k\]: good game
+]RE[W+Resign]
+;B[dd]BL[2678.806]
+;W[pc]WL[2690.349]
+;B[cp]BL[2670.216]
+;W[pq]WL[2687.058]
+;B[po]BL[2661.251]
+;W[pl]WL[2654.47]
+;B[qq]BL[2568.342]
+;W[qr]WL[2649.863]
+;B[qp]BL[2563.268]
+;W[or]WL[2647.815]
+;B[qm]BL[2559.935]
+;W[ql]WL[2646.026]
+;B[rm]BL[2556.538]
+;W[no]WL[2636.419]
+;B[kq]BL[2549.227]
+;W[fc]WL[2584.197]
+;B[hc]BL[2486.182]
+;W[fe]WL[2576.46]
+;B[cf]BL[2476.488]
+;W[id]WL[2570.975]
+;B[ic]BL[2473.625]
+;W[jd]WL[2569.156]
+;B[hd]BL[2470.42]
+;W[he]WL[2567.392]
+;B[jc]BL[2467.084]
+;W[kd]WL[2565.25]
+;B[lc]BL[2465.727]
+;W[ld]WL[2562.955]
+;B[mc]BL[2458.752]
+;W[md]WL[2561.205]
+;B[qg]BL[2452.176]
+;W[qe]WL[2546.23]
+(;B[rj]BL[2449.273]C[kabradarf [2d\]: ca c est dangereux
+kabradarf [2d\]: parceque r3
+kabradarf [2d\]: est fragil
+kabradarf [2d\]: tu me pousses arajouter un coup qui affaiblit les deux
+kabradarf [2d\]: c est ce coup la
+kabradarf [2d\]: tu me forces a rajouter un coup qui t aggresses des deux coté
+kabradarf [2d\]: merci
+xanaa [7k\]: Merci pour les explications
+kabradarf [2d\]: a+ bon courage pour la suite
+xanaa [7k\]: merci pour les explications
+xanaa [7k\]: merci toi aussi
+]
+;W[rl]WL[2543.541]
+;B[pj]BL[2445.613]
+;W[pm]WL[2511.107]
+;B[qn]BL[2414.75]
+;W[ro]WL[2485.777]C[kabradarf [2d\]: ici
+]
+(;B[rp]BL[2393.902]C[kabradarf [2d\]: par contre
+kabradarf [2d\]: avec le petit espace
+kabradarf [2d\]: que tu te fais
+kabradarf [2d\]: la faute est la
+kabradarf [2d\]: quand tu as du mal a sortir
+kabradarf [2d\]: il va y avoir des semeai possible
+kabradarf [2d\]: donc
+kabradarf [2d\]: besoin de temps et de liberté
+]
+;W[rr]WL[2481.849]
+;B[on]BL[2389.75]
+;W[mm]WL[2227.991]
+(;B[sl]BL[2341.768]
+;W[sk]WL[2225.67]
+(;B[rk]BL[2330.904]
+;W[sm]WL[2223.647]
+;B[sn]BL[2326.34]
+;W[sl]WL[2221.083]
+;B[so]BL[2321.788]
+;W[nl]WL[2214.374]
+;B[np]BL[2308.598]
+;W[op]WL[2204.726]
+;B[nq]BL[2306.048]
+;W[oo]WL[2199.471]
+;B[nr]BL[2303.617]
+;W[iq]WL[2161.299]
+;B[ko]BL[2287.829]
+;W[fq]WL[2138.793]
+;B[eq]BL[2282.949]
+;W[fp]WL[2131.139]
+;B[ci]BL[2276.398]
+;W[og]WL[2101.382]C[kabradarf [2d\]: la c est deja foutu
+]
+;B[rf]BL[2270.414]
+;W[re]WL[2097.209]
+;B[ph]BL[2267.573]
+;W[rh]WL[2092.548]
+;B[sj]BL[2265.859]
+;W[rg]WL[2089.785]
+;B[nj]BL[2259.762]
+;W[lj]WL[2065.889]
+;B[mk]BL[2257.074]
+;W[kl]WL[2063.415]
+;B[ll]BL[2253.583]
+;W[lm]WL[2061.199]
+;B[km]BL[2250.772]
+;W[jl]WL[2049.272]
+;B[kn]BL[2241.145]
+;W[mo]WL[2043.742]
+;B[pn]BL[2238.225]
+;W[nm]WL[2021.456]
+;B[ol]BL[2220.307]
+;W[om]WL[2011.96]
+;B[ok]BL[2218.517]
+;W[mh]WL[2002.212]
+;B[pp]BL[2208.311]
+;W[oq]WL[1997.843]
+;B[mp]BL[2203.101]
+;W[oi]WL[1960.798]
+;B[ei]BL[2183.617]
+;W[dq]WL[1952.452]
+;B[cq]BL[2179.39]
+;W[er]WL[1950.145]
+;B[dm]BL[2178.107]
+;W[cr]WL[1947.148]
+;B[dp]BL[2174.591]
+;W[ep]WL[1945.416]
+;B[br]BL[2173.042]
+;W[bs]WL[1942.304]
+;B[aq]BL[2168.563]
+;W[fg]WL[1903.157]
+;B[gi]BL[2161.142]
+;W[hh]WL[1889.662]
+;B[hj]BL[2156.198]
+;W[ii]WL[1884.193]
+;B[fd]BL[2153.185]
+;W[gd]WL[1873.31]
+;B[ed]BL[2149.336]
+;W[gc]WL[1872.346]
+;B[kc]BL[2145.926]
+;W[nc]WL[1860.075]
+;B[mb]BL[2141.823]
+;W[nb]WL[1852.116]
+;B[na]BL[2138.857]
+;W[oa]WL[1845.689]
+;B[ma]BL[2137.644]
+;W[ob]WL[1844.043]C[kabradarf [2d\]: ici
+kabradarf [2d\]: je suis pas sur que tu aies a rajouter un coup
+]
+(;B[gb]BL[2135.827]
+;W[fb]WL[1842.003]
+;B[ga]BL[2133.844]
+;W[fa]WL[1839.734]
+;B[ib]BL[2131.728]
+;W[cc]WL[1833.675]
+;B[dc]BL[2127.062]
+;W[db]WL[1829.078]
+;B[eb]BL[2113.157]
+;W[da]WL[1815.144]
+;B[bc]BL[2099.217]
+;W[cd]WL[1791.13]
+;B[de]BL[2090.329]
+;W[bd]WL[1788.301]
+;B[ec]BL[2087.239]
+;W[ea]WL[1766.129]
+;B[bf]BL[2081.805]
+;W[jr]WL[1751.44]
+;B[gm]BL[2076.327]
+;W[jp]WL[1746.326]
+;B[kp]BL[2073.081]
+;W[in]WL[1743.789]C[kabradarf [2d\]: ca tu veux dire?
+]
+(;B[jq]BL[2069.57]
+;W[ir]WL[1736.219]
+;B[io]BL[2038.77]
+;W[ip]WL[1730.474]
+;B[im]BL[2025.698]
+;W[jm]WL[1728.14]
+;B[jn]BL[2018.339]
+;W[hn]WL[1726.103]
+;B[ho]BL[2016.695]
+;W[gn]WL[1721.274]
+;B[il]BL[2006.606]
+;W[jj]WL[1710.203]
+;B[fn]BL[1989.58]
+;W[go]WL[1706.357]
+;B[eo]BL[1985.062]
+;W[lr]WL[1696.538]C[kabradarf [2d\]: thanks
+xanaa [7k\]: merci pour la partie
+kabradarf [2d\]: u wanna review?
+kabradarf [2d\]: tu veux la regarder?
+xanaa [7k\]: Je veux bien
+])
+(;B[lq]C[xanaa [7k\]: ici tu as fait le coup que je voulais jouer
+]
+;W[lo]C[xanaa [7k\]: Je voualis essayer de connecter les 2 groupes
+]
+;B[kr]
+;W[mr])
+(;B[lo]C[xanaa [7k\]: et attaquer un pzu en bas
+]
+;W[lr]
+(;B[kr]
+;W[ks]
+;B[lq])
+(;B[os]
+;W[ps]
+;B[ns]
+;W[kr]C[kabradarf [2d\]: nan
+kabradarf [2d\]: la c est mort
+kabradarf [2d\]: donc
+kabradarf [2d\]: ce qui t as vraiment mis dans les soucis
+])))
+(;B[db]
+(;W[hb]
+;B[ib]
+;W[gb]
+;B[ka])
+(;W[gb]
+;B[hb]
+;W[ha]
+;B[ia]
+(;W[ja]
+;B[jb]
+;W[ib]
+;B[ka])
+(;W[ga]
+;B[jb]))))
+(;B[sm]
+;W[rk]
+;B[nl]C[kabradarf [2d\]: peut etre ici
+kabradarf [2d\]: tu peux jouer ca
+]
+(;W[nm]C[xanaa [7k\]: J'ai mal vu, je voulais fair un ko sur le coté
+]
+;B[om]
+;W[ol]
+;B[nk]
+;W[pn]
+;B[oo]
+;W[pp]
+;B[qo]C[kabradarf [2d\]: la je perds le semeai 
+kabradarf [2d\]: donc
+kabradarf [2d\]: je peux pas accepter la coupe
+])
+(;W[ok]
+(;B[nj]
+;W[oj]
+;B[oi]
+;W[nk]
+;B[mk]
+;W[mj])
+(;B[ni]
+;W[nk]
+;B[ml]
+;W[mj]
+;B[lm]
+;W[mi]TR[rj][rk][sk][sl]C[kabradarf [2d\]: cet echange t as affaibli
+kabradarf [2d\]: donc
+kabradarf [2d\]: je jouerai comme ca
+]))))
+(;B[nl]C[kabradarf [2d\]: oui
+kabradarf [2d\]: mais
+kabradarf [2d\]: j aurais pas jouer n7
+kabradarf [2d\]: j aurais jouer de plus loin
+]
+;W[nm]
+;B[om]C[xanaa [7k\]: J'aurais fais un plus grand espace et bien lu le semeai, j'aurais gagner de l'influence en plus
+]
+;W[ol]
+;B[nk]
+;W[sm]
+;B[sn]
+;W[sl]
+;B[rn]
+;W[pn]
+;B[oo]
+;W[op]
+;B[ok]
+;W[pp]
+(;B[pk]
+;W[qo]
+;B[so]
+;W[qo]
+;B[ro]
+;W[nn]
+;B[qo]
+;W[rq])
+(;B[qo]
+;W[rq]
+;B[pk]
+;W[nn]
+;B[qk]
+;W[sp]C[kabradarf [2d\]: tu le perds
+kabradarf [2d\]: donc
+])))
+(;B[rr]
+;W[rs]
+;B[sr]C[kabradarf [2d\]: il faut regarder par la
+kabradarf [2d\]: il faut augmenter ton espace
+]
+(;W[qo]
+;B[rp]
+;W[pn]
+;B[so]
+;W[pp]
+;B[rn]
+;W[qo]
+;B[sm])
+(;W[rp]
+;B[rq]
+;W[sp]
+(;B[sm]
+;W[sl]C[kabradarf [2d\]: la
+kabradarf [2d\]: la forme a l interieur est morte
+kabradarf [2d\]: mais
+kabradarf [2d\]: tres longue a tuer
+kabradarf [2d\]: ca sera un rabitty six probablement
+kabradarf [2d\]: donc si tu trouves une coupes dehors pour un semeai
+kabradarf [2d\]: ca sera dur pour moi
+xanaa [7k\]: J'ai essayer de tuer blanc autour pour sortir, mais je savais que ce serait dur
+]
+;B[on]C[kabradarf [2d\]: tu avais une coupe
+]
+;W[mm]
+;B[nl]
+;W[nm]
+;B[om]
+;W[ol]
+;B[nk]C[kabradarf [2d\]: et la
+kabradarf [2d\]: vu la forme interieure
+xanaa [7k\]: Je l'avais pas vue celle là
+kabradarf [2d\]: tu gagnerais le semeai
+]
+;W[sn]
+;B[rn]
+;W[so]
+;B[pp]
+;W[pn])
+(;B[on]
+(;W[nl]
+;B[nn]
+;W[mo]
+;B[mm]
+;W[nj]C[kabradarf [2d\]: j aurais jouer sur les deux groupes
+kabradarf [2d\]: mais
+xanaa [7k\]: Au début je pensais que tu aurais jouer o7
+])
+(;W[nm]
+;B[nn]
+;W[mn]
+;B[om]
+;W[ol]
+;B[nl]
+;W[mm]C[kabradarf [2d\]: ben
+kabradarf [2d\]: mes formes autour
+kabradarf [2d\]: sont pas tres robustes
+]
+;B[nk]
+;W[mo])))))
+(;B[rl]C[kabradarf [2d\]: ici
+kabradarf [2d\]: tu devrais pousser
+kabradarf [2d\]: pour chercher la fragilité chez blanc
+kabradarf [2d\]: et traité r13 legerement
+xanaa [7k\]: J'ai trop penser à faire tout de suite du territoire
+kabradarf [2d\]: bah la tu rentres dans une zone a forte influence blanche
+kabradarf [2d\]: donc
+kabradarf [2d\]: si tu vies
+kabradarf [2d\]: tu feras petit
+]
+(;W[rk]
+;B[rj]C[xanaa [7k\]: ok
+])
+(;W[qj]
+;B[qi]
+;W[rk]
+;B[re]
+;W[rf]
+;B[qf]
+;W[rd]
+;B[pe]
+;W[qd]
+(;B[rh])
+(;B[rg]
+;W[se]
+;B[oh]C[kabradarf [2d\]: tu voies des choses ou tu vas chercher des petites faiblesses
+kabradarf [2d\]: pour faire des formes d oeil
+]))))

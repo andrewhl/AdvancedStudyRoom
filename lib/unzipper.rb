@@ -21,8 +21,3 @@ class Unzipper
   end
 
 end
-
-test = Unzipper.new("kabradarf-2012-9.zip")
-puts test.file
-
-test.unzip("/test")

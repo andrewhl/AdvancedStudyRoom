@@ -1,0 +1,562 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[Japanese]SZ[19]KM[6.50]TM[1800]OT[5x30 byo-yomi]
+PW[fakadego]PB[kabradarf]DT[2012-09-07]PC[The KGS Go Server at http://www.gokgs.com/]C[kabradarf [-\]: bonne partie
+]RE[B+83.50]
+;B[pp]BL[1787.135]C[fakadego [?\]: bonne patis
+]
+;W[pd]WL[1773.299]
+;B[dc]BL[1784.584]
+;W[dq]WL[1765.036]
+;B[do]BL[1780.621]
+;W[fp]WL[1752.616]
+;B[cq]BL[1775.697]
+;W[dr]WL[1746.884]C[fakadego [?\]: comme d'habitude
+]
+;B[cp]BL[1768.456]C[fakadego [?\]: je perd
+]
+;W[ip]WL[1739.003]C[kabradarf [-\]: oui ca c est normal je joue depuis plus longtemps
+kabradarf [-\]: mais
+fakadego [?\]: je sais
+kabradarf [-\]: c est deja mieux qu au debut
+]
+;B[ck]BL[1763.143]
+;W[lq]WL[1733.372]
+;B[qn]BL[1757.178]C[fakadego [?\]: le blance
+kabradarf [-\]: il faut aller jouez dans les zones ou on a pas encore partagé
+kabradarf [-\]: donc le bord du haut
+fakadego [?\]: parexemple
+kabradarf [-\]: an bas
+fakadego [?\]: ok
+kabradarf [-\]: on est tout les deux vivant et stable
+fakadego [?\]: ok
+fakadego [?\]: ok
+kabradarf [-\]: parmi les trois
+]
+(;W[oq]WL[1729.319]C[kabradarf [-\]: ca
+kabradarf [-\]: c est comme tout a l heure
+fakadego [?\]: il faut joue ou?
+]
+;B[pq]BL[1755.222]C[kabradarf [-\]: tu t approches
+kabradarf [-\]: et 
+kabradarf [-\]: tout de suite
+kabradarf [-\]: noir est solide et  tattaque
+fakadego [?\]: c'est bien ou c'est mauvais?
+kabradarf [-\]: c est pas bien
+]
+;W[or]WL[1726.295]
+;B[qk]BL[1748.692]
+(;W[qf]WL[1716.626]C[kabradarf [-\]: ce coup
+kabradarf [-\]: n est pas mauvais
+kabradarf [-\]: mais
+kabradarf [-\]: il se dirige
+kabradarf [-\]: vers un endroit
+kabradarf [-\]: ou
+kabradarf [-\]: noir est deja present
+kabradarf [-\]: et solide
+kabradarf [-\]: donc
+kabradarf [-\]: rapidement
+kabradarf [-\]: tu ne pourras plus grandir
+kabradarf [-\]: alors que
+]
+;B[de]BL[1736.986]TR[ck]SQ[dc][de]C[kabradarf [-\]: ici
+kabradarf [-\]: je protege des points
+kabradarf [-\]: je renforce cette zone
+kabradarf [-\]: si tu viens au milieu
+kabradarf [-\]: ici disons
+fakadego [?\]: attent je revien
+fakadego [?\]: vitte fait
+fakadego [?\]: je suis la
+kabradarf [-\]: donc
+kabradarf [-\]: la tu pourras envahir en c13 par exemple
+kabradarf [-\]: mais
+kabradarf [-\]: tu devras courrir
+kabradarf [-\]: donc
+kabradarf [-\]: cette zone
+kabradarf [-\]: est devnue sous influence noire
+kabradarf [-\]: et ces deux pierres
+kabradarf [-\]: forme
+kabradarf [-\]: une sorte de mur
+kabradarf [-\]: dans cette direction
+kabradarf [-\]: il y a un peu d influence
+kabradarf [-\]: donc
+kabradarf [-\]: tu peux approcher
+kabradarf [-\]: mais si tu viens trop pret
+fakadego [?\]: ou?
+kabradarf [-\]: je te pincerais
+]
+(;W[qi]WL[1696.569]C[kabradarf [-\]: ca
+kabradarf [-\]: encore
+kabradarf [-\]: ca prend des points
+kabradarf [-\]: mais
+kabradarf [-\]: ca n a pas de projet
+kabradarf [-\]: ca s arrete la
+]
+;B[kc]BL[1712.47]C[kabradarf [-\]: la c est gros
+fakadego [?\]: ok
+kabradarf [-\]: pour tous les deux
+]
+;W[mc]WL[1652.64]TR[na][nb][pe][qe][qg][qh]C[fakadego [?\]: c'est difficille?
+kabradarf [-\]: ici
+kabradarf [-\]: si on compte
+kabradarf [-\]: on va dire 24 points
+fakadego [?\]: ok
+kabradarf [-\]: et si je perds mes pierres
+]
+(;B[hd]BL[1702.089]TR[ae][be][ce][aj][bj][cj]C[fakadego [?\]: tu vien de joue
+kabradarf [-\]: ?
+fakadego [?\]: tout heur tu as joue R 17
+kabradarf [-\]: oui c ets possible
+kabradarf [-\]: mais comme c est ko
+fakadego [?\]: ok
+kabradarf [-\]: ce n est pas si gros
+kabradarf [-\]: si j arrive a vivre
+kabradarf [-\]: toute cette zone
+kabradarf [-\]: et en plus
+kabradarf [-\]: ca peut encore grossir
+]
+(;W[qc]WL[1641.404]
+;B[dh]BL[1693.59]C[fakadego [?\]: là tu s'exemple?
+fakadego [?\]: faccille
+kabradarf [-\]: alors que cette zone
+kabradarf [-\]: la noir
+kabradarf [-\]: a encore des coups pour grandir
+kabradarf [-\]: si tu ne l empeche pas
+]
+(;W[mf]WL[1621.204]C[kabradarf [-\]: tu veux dire quoi?
+]
+;B[pr]BL[1678.79]C[kabradarf [-\]: que je n attaque pas?
+fakadego [?\]: tu joue s'faicclle pour moi 
+kabradarf [-\]: je joue pas aggressif
+kabradarf [-\]: prceque le deuxieme element
+kabradarf [-\]: au go
+fakadego [?\]: la je vais joue agraisive
+kabradarf [-\]: c est la strategie
+kabradarf [-\]: comment tu construits
+]
+;W[op]WL[1556.263]C[kabradarf [-\]: allé
+]
+;B[os]BL[1669.789]
+;W[ns]WL[1554.615]
+;B[ps]BL[1667.648]
+;W[nr]WL[1551.25]
+;B[ke]BL[1661.536]
+;W[jj]WL[1547.112]
+;B[fn]BL[1648.312]
+;W[hn]WL[1543.144]
+;B[on]BL[1639.354]
+;W[nn]WL[1534.117]C[kabradarf [-\]: ca c est bien
+kabradarf [-\]: tu essaies de construire au centre
+kabradarf [-\]: y a du potentiel
+]
+;B[nm]BL[1636.592]
+;W[om]WL[1525.493]C[kabradarf [-\]: ca c est combattif
+kabradarf [-\]: mais
+kabradarf [-\]: j y crois pas trop
+]
+;B[ol]BL[1628.427]
+(;W[mn]WL[1515.177]
+;B[mm]BL[1624.24]
+;W[lm]WL[1510.181]
+;B[oo]BL[1612.872]
+;W[no]WL[1508.562]
+;B[ln]BL[1588.24]
+;W[np]WL[1496.632]
+;B[jm]BL[1534.897]
+;W[km]WL[1483.297]
+;B[jn]BL[1473.346]
+;W[pm]WL[1471.269]
+;B[nk]BL[1460.512]
+;W[kn]WL[1469.063]
+;B[il]BL[1449.258]
+;W[jo]WL[1458.6]
+;B[gm]BL[1443.479]C[fakadego [?\]: je joue lent
+kabradarf [-\]: non c est bon 
+kabradarf [-\]: c est bien
+kabradarf [-\]: ca veux dire tu reflechis
+]
+;W[jl]WL[1390.551]
+;B[jk]BL[1416.631]
+;W[kk]WL[1379.965]
+;B[kl]BL[1413.868]
+;W[ll]WL[1371.494]
+;B[kj]BL[1407.148]
+;W[lk]WL[1364.102]
+;B[ji]BL[1403.251]
+;W[ij]WL[1360.238]
+;B[ii]BL[1384.757]
+;W[hj]WL[1344.186]
+;B[kh]BL[1355.788]
+;W[hl]WL[1341.584]
+;B[hm]BL[1350.877]
+;W[jl]WL[1323.581]
+;B[ik]BL[1348.194]
+;W[gn]WL[1305.621]
+;B[fm]BL[1344.276]
+;W[fo]WL[1303.824]
+;B[en]BL[1340.915]
+;W[ep]WL[1299.369]
+;B[lb]BL[1329.311]
+;W[mb]WL[1295.38]
+;B[ma]BL[1326.107]
+;W[na]WL[1294.105]
+;B[la]BL[1323.892]
+;W[nb]WL[1290.484]
+;B[rj]BL[1317.08]
+;W[ri]WL[1287.744]
+;B[si]BL[1315.312]
+;W[sh]WL[1285.255]
+;B[sj]BL[1313.466]
+;W[rh]WL[1284.318]
+;B[cr]BL[1308.838]
+;W[cs]WL[1281.871]
+;B[bs]BL[1306.08]
+;W[ds]WL[1280.876]
+;B[br]BL[1304.962]
+;W[in]WL[1277.072]
+;B[im]BL[1302.881]
+;W[nh]WL[1270.049]
+;B[lf]BL[1270.691]
+;W[me]WL[1252.642]
+;B[oi]BL[1261.888]
+;W[oh]WL[1249.796]
+;B[pi]BL[1258.668]
+;W[ph]WL[1247.718]
+;B[qj]BL[1256.709]
+;W[li]WL[1233.461]
+;B[ki]BL[1247.145]
+;W[lh]WL[1230.495]
+;B[lg]BL[1243.513]
+;W[mg]WL[1229.086]
+;B[dp]BL[1234.055]
+;W[eq]WL[1225.151]
+;B[lj]BL[1220.985]
+;W[mj]WL[1218.691]
+;B[mk]BL[1215.288]
+;W[nj]WL[1214.331]
+;B[oj]BL[1213.356]
+;W[ni]WL[1212.95]
+;B[ml]BL[1209.229]
+;W[pk]WL[1201.931]
+;B[pl]BL[1205.178]
+;W[cc]WL[1185.412]
+;B[cd]BL[1201.39]
+;W[cb]WL[1180.789]
+;B[db]BL[1198.477]
+;W[bd]WL[1177.942]
+;B[be]BL[1196.391]
+;W[ac]WL[1165.34]
+;B[bb]BL[1194.199]C[fakadego [?\]: je suis mort
+]
+;W[lc]WL[1146.727]
+;B[jb]BL[1190.866]
+;W[ld]WL[1143.869]
+;B[kd]BL[1188.501]
+(;W[lo]WL[1142.379]
+;B[kl]BL[1175.97]
+;W[kb]WL[1138.183]
+;B[ka]BL[1172.739]
+;W[jl]WL[1136.9]
+;B[mh]BL[1167.791]
+;W[mi]WL[1129.558]
+;B[kl]BL[1166.78]
+;W[pj]WL[1115.608]
+;B[ok]BL[1162.992]
+;W[jl]WL[1114.603]
+;B[hp]BL[1143.81]
+;W[hq]WL[1102.416]
+;B[kl]BL[1140.947]
+;W[cf]WL[1094.327]
+;B[ce]BL[1135.619]
+;W[jl]WL[1092.541]
+;B[go]BL[1123.131]
+;W[io]WL[1079.35]
+;B[kl]BL[1120.464]
+;W[ja]WL[1074.182]
+;B[ia]BL[1117.551]
+;W[jl]WL[1073.278]
+;B[ko]BL[1116.294]
+;W[kp]WL[1059.222]
+;B[kl]BL[1112.944]
+;W[po]WL[1042.257]
+;B[pn]BL[1108.89]
+;W[jl]WL[1036.957]
+;B[gq]BL[1105.123]
+;W[gp]WL[1015.42]
+;B[kl]BL[1100.641]
+;W[qo]WL[1007.771]
+;B[ro]BL[1084.706]
+;W[jl]WL[1005.553]
+;B[eo]BL[1079.498]
+;W[kl]WL[1002.407]
+;B[le]BL[1077.573]
+;W[]WL[1002.405]
+;B[]BL[1077.572]TW[oa][pa][qa][ra][sa][ob][pb][qb][rb][sb][nc][oc][pc][rc][sc][md][nd][od][qd][rd][sd][ne][oe][pe][qe][re][se][nf][of][pf][rf][sf][ng][og][pg][qg][rg][sg][mh][qh][ln][go][ho][ko][mo][hp][jp][lp][mp][fq][gq][iq][jq][kq][mq][nq][er][fr][gr][hr][ir][jr][kr][lr][mr][es][fs][gs][hs][is][js][ks][ls][ms]TB[aa][ba][ca][da][ea][fa][ga][ha][ja][ab][cb][eb][fb][gb][hb][ib][kb][ac][bc][cc][ec][fc][gc][hc][ic][jc][ad][bd][dd][ed][fd][gd][id][jd][ae][ee][fe][ge][he][ie][je][af][bf][cf][df][ef][ff][gf][hf][if][jf][kf][ag][bg][cg][dg][eg][fg][gg][hg][ig][jg][kg][ah][bh][ch][eh][fh][gh][hh][ih][jh][ai][bi][ci][di][ei][fi][gi][hi][aj][bj][cj][dj][ej][fj][gj][hj][ij][jj][pj][ak][bk][dk][ek][fk][gk][hk][pk][rk][sk][al][bl][cl][dl][el][fl][gl][hl][nl][ql][rl][sl][am][bm][cm][dm][em][om][pm][qm][rm][sm][an][bn][cn][dn][rn][sn][ao][bo][co][po][qo][so][ap][bp][qp][rp][sp][aq][bq][qq][rq][sq][ar][qr][rr][sr][as][qs][rs][ss]C[fakadego [?\]: merci
+kabradarf [-\]: merci
+kabradarf [-\]: bon
+kabradarf [-\]: on a pas joué violent
+kabradarf [-\]: mais
+kabradarf [-\]: pour d autres raisons
+kabradarf [-\]: tu as perdu
+fakadego [?\]: oui
+kabradarf [-\]: donc on va essayer de voir
+kabradarf [-\]: pourquoi
+])
+(;W[kl]WL[1127.359]))
+(;W[pm]
+;B[pn]
+;W[mm]
+;B[nl]
+;W[no]
+;B[ml]
+(;W[ll])
+(;W[lm]C[kabradarf [-\]: mais bon
+kabradarf [-\]: c est deja cuit
+kabradarf [-\]: la seule chance
+kabradarf [-\]: c est de reussir une invasion
+kabradarf [-\]: c est peut etre possible
+fakadego [?\]: invasion??
+kabradarf [-\]: mais c est tresdur
+fakadego [?\]: ok
+]
+;C[kabradarf [-\]: donc
+kabradarf [-\]: voila en gros les raisons pour lesquelles
+kabradarf [-\]: tu as perdu
+fakadego [?\]: ok merci
+kabradarf [-\]: des coups joué trop petits
+kabradarf [-\]: il faut prospecté
+kabradarf [-\]: large
+kabradarf [-\]: et voir apres
+fakadego [?\]: propecté???
+kabradarf [-\]: il faut au moins faire de la presence
+kabradarf [-\]: sur les bords
+kabradarf [-\]: sans savoir ce que tu y voudras
+kabradarf [-\]: mais
+kabradarf [-\]: etre la
+kabradarf [-\]: partager
+kabradarf [-\]: prospecté ca veut dire envoyer des eclaireurs
+fakadego [?\]: ok
+fakadego [?\]: merci
+kabradarf [-\]: bon
+kabradarf [-\]: on arrete?
+fakadego [?\]: oui mecis quand même
+fakadego [?\]: ^^
+kabradarf [-\]: merci
+kabradarf [-\]: ca va deja mieux
+fakadego [?\]: tu
+kabradarf [-\]: ton jeu s est un peu ameliorer
+fakadego [?\]: trouve que je fait de prograisse?
+kabradarf [-\]: un peu oui
+kabradarf [-\]: deja tactiquement
+fakadego [?\]: ok^^
+kabradarf [-\]: tu fais moins de grosse betise
+fakadego [?\]: tactiquement??
+kabradarf [-\]: localement dans les combats
+fakadego [?\]: ok
+kabradarf [-\]: bonne soirée
+fakadego [?\]: toi auusi on joura demain
+kabradarf [-\]: ok
+])))
+(;C[kabradarf [-\]: donc c est tres gros
+kabradarf [-\]: en comparaison de ca
+kabradarf [-\]: ko
+kabradarf [-\]: en attendant d y voir plus clair considere que c est moite moite
+kabradarf [-\]: tu en tireras quelquechose autre part
+]))
+(;W[cg]
+;B[ce]
+;W[cj]
+;B[dk]
+;W[bk]
+;B[bl]
+;W[bi]
+;B[ak]
+;W[eg]C[kabradarf [-\]: c est du tres gros
+kabradarf [-\]: le fait que tu arrives juste a rentrer
+fakadego [?\]: tu veux dire c'est dur?
+kabradarf [-\]: c est tres gros
+kabradarf [-\]: je veux dire que la difference de point
+kabradarf [-\]: est enorme
+fakadego [?\]: ok
+kabradarf [-\]: si tu y joue
+kabradarf [-\]: ou pas
+]))
+(;B[qc]
+;W[pc]
+;B[qd]
+;W[qe]C[fakadego [?\]: de vivre?
+]
+;B[pb]
+;W[ob]
+(;B[rb]
+;W[rd]C[fakadego [?\]: ok
+]
+;B[rc]
+;W[re]
+;B[qa]TR[nc][nd][ne][oe][qg][qh]C[kabradarf [-\]: il te reste
+kabradarf [-\]: ca de point
+fakadego [?\]: ca m'enbête
+kabradarf [-\]: on va dire 10 points
+])
+(;B[qb]
+;W[rd]
+;B[rc]TR[ma][mb][pb][qb][nc][qc][rc][qd][qg][qh]C[kabradarf [-\]: 33 points
+kabradarf [-\]: donc si je rentre
+kabradarf [-\]: 1 chance sur deux
+kabradarf [-\]: 33 points
+fakadego [?\]: ok
+kabradarf [-\]: pour toi
+kabradarf [-\]: 1 cjhance sur deux
+kabradarf [-\]: 10 points
+kabradarf [-\]: moyenne
+kabradarf [-\]: 43/2
+kabradarf [-\]: 21
+kabradarf [-\]: au lieu de 24
+kabradarf [-\]: c est assez petit
+kabradarf [-\]: bon en vrai
+kabradarf [-\]: ca vaut plus
+kabradarf [-\]: a cause de la faiblesse
+kabradarf [-\]: qui reste
+kabradarf [-\]: mais
+kabradarf [-\]: c est moins gros
+kabradarf [-\]: que ce que ca a l air
+])))
+(;W[hc]C[kabradarf [-\]: ici
+kabradarf [-\]: c est trop pret
+fakadego [?\]: tros pres c'est pas bon?
+]
+;B[jc]C[kabradarf [-\]: e pincerais
+])
+(;W[ic]C[kabradarf [-\]: ici
+kabradarf [-\]: c est deja moins clair
+]
+(;B[kc]
+;W[mc]
+;B[ld]
+;W[fc]C[kabradarf [-\]: parceque tu as cette extension
+kabradarf [-\]: qui te donne une base de vie
+])
+(;B[jc]
+(;W[jb]
+;B[kb]
+;W[kc]
+;B[jd]
+;W[lb]
+;B[ib]
+;W[ka]
+;B[hc])
+(;W[id]
+;B[ib]
+;W[hb]
+;B[mc]
+;W[oc]
+;B[kb]
+(;W[gc])
+(;W[ia]
+;B[jb])))
+(;B[mc]
+;W[kc]
+;B[pb]
+;W[pc]C[fakadego [?\]: ok
+]
+;B[ob]
+;W[qb]
+;B[rb]
+;W[qa]
+;B[gc]C[kabradarf [-\]: c est dea moins clair
+kabradarf [-\]: *deja
+fakadego [?\]: dea??
+]))
+(;W[jc]C[kabradarf [-\]: ca ca doit aller
+]
+;B[hc]
+;W[mc]
+(;B[qc]
+;W[pc]
+(;B[qd]
+;W[qe]
+;B[pb]
+;W[ob]
+;B[rb]
+(;W[rd]
+;B[rc]
+;W[re]
+;B[qa])
+(;W[pa]
+;B[qa]C[kabradarf [-\]: ko
+fakadego [?\]: ok
+]))
+(;B[rd]C[fakadego [?\]: noir est vivant?
+]
+;W[re]
+;B[pb]
+;W[ob]
+;B[rb]
+;W[pa]
+(;B[qb]
+;W[sc]
+;B[sd])
+(;B[qd]
+;W[qe]
+;B[qb]
+;W[sc]
+;B[sd]
+;W[qa]
+;B[ra]
+;W[sb]
+;B[oa]
+;W[pa])
+(;B[qa]C[kabradarf [-\]: ko encore
+])))
+(;B[pc])
+(;B[dh]C[kabradarf [-\]: bon ici noir est en avnce en terme de moyo
+fakadego [?\]: si tu joue r17
+kabradarf [-\]: a cause des erreurs d avant
+kabradarf [-\]: mais
+kabradarf [-\]: ca va
+kabradarf [-\]: c est rattrappable
+kabradarf [-\]: r17
+kabradarf [-\]: c est ko
+fakadego [?\]: oui
+])))
+(;W[nc]C[kabradarf [-\]: la
+kabradarf [-\]: tu pourras avancer
+kabradarf [-\]: et tu empeche noir d y aller
+kabradarf [-\]: c est un gros point pour les deux
+]))
+(;W[nc]C[kabradarf [-\]: ca
+kabradarf [-\]: ca protege le coin
+kabradarf [-\]: et ca fait des points
+fakadego [?\]: ok
+kabradarf [-\]: generalement
+kabradarf [-\]: c est un gros coup
+])
+(;W[jc]TR[dc][jc][pd]C[kabradarf [-\]: ca
+kabradarf [-\]: ca essaye
+kabradarf [-\]: de faire une zone plus vaste
+kabradarf [-\]: et en meme temps
+kabradarf [-\]: de s approcher de cette pierre
+fakadego [?\]: vaste ca veux dire quoi?
+kabradarf [-\]: pour aller l attaquer
+kabradarf [-\]: ca fait pas de point
+kabradarf [-\]: c est juste
+kabradarf [-\]: un eclaireur
+kabradarf [-\]: c est souple
+kabradarf [-\]: soit pour l attaque 
+kabradarf [-\]: soit pour le territoire
+kabradarf [-\]: je prefer celui ci
+fakadego [?\]: k17
+kabradarf [-\]: mais c est mon style
+fakadego [?\]: tu prefere?
+kabradarf [-\]: chacun le sien
+kabradarf [-\]: oui
+kabradarf [-\]: e prefer celui la
+fakadego [?\]: ok
+])
+(;W[de]TR[dc][ck][do]C[kabradarf [-\]: et ca
+kabradarf [-\]: ca conteste
+kabradarf [-\]: cette liaison
+kabradarf [-\]: ca refuse ce territoire
+kabradarf [-\]: et ca attaque le coin
+kabradarf [-\]: mais 
+kabradarf [-\]: c est moins bon je pense
+]))

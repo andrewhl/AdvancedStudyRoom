@@ -1,0 +1,33 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[Japanese]SZ[19]KM[6.50]TM[60]OT[5x10 byo-yomi]
+PW[lot]PB[kabradarf]WR[2d]BR[2d]DT[2012-09-02]PC[The KGS Go Server at http://www.gokgs.com/]C[lot [2d\]: hi
+kabradarf [2d\]: gg
+]RE[B+Resign]
+;B[qp]BL[55.064]C[lot [2d\]: hi
+]
+;W[qd]WL[57.122]
+;B[dc]BL[53.142]
+;W[dp]WL[55.107]
+;B[od]BL[51.364]
+;W[oe]WL[52.219]
+;B[ne]BL[48.667]
+;W[of]WL[49.771]
+;B[pd]BL[45.85]
+;W[qe]WL[48.042]
+;B[qc]BL[38.653]
+;W[rc]WL[46.365]
+;B[rb]BL[26.821]
+;W[qb]WL[39.292]
+;B[pc]BL[24.618]
+;W[ra]WL[38.373]
+;B[sb]BL[19.524]
+;W[sc]WL[36.304]
+;B[pe]BL[17.776]
+;W[pf]WL[30.432]
+;B[qf]BL[8.09]
+;W[sa]WL[24.46]
+;B[rf]BL[2.305]
+;W[mb]WL[20.964]
+;B[rd]BL[10]OB[5]C[lot [2d\]: thx
+kabradarf [2d\]: ty
+])
