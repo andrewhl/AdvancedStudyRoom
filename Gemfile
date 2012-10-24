@@ -6,6 +6,7 @@ gem 'cucumber-rails', :require => false
 gem 'nokogiri'
 gem 'mechanize'
 gem 'epitools'
+gem 'SgfParser'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

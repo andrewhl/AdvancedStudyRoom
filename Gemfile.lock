@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    SgfParser (2.0.0)
     actionmailer (3.2.3)
       actionpack (= 3.2.3)
       mail (~> 2.4.4)
@@ -217,6 +218,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  SgfParser
   annotate (>= 2.5.0)
   bcrypt-ruby (~> 3.0.0)
   capybara
