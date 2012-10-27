@@ -13,7 +13,7 @@ describe Validator do
   end
 
   describe "validate individual games" do
-    let(:sgf_file) { "support/2012/9/1/DrGoPlayer-kabradarf.sgf" }
+    let(:sgf_file) { "DrGoPlayer-kabradarf.sgf" }
 
     it "should receive an sgf file" do
       archive.validate_game(sgf_file).should be_an_instance_of(String)
@@ -21,6 +21,11 @@ describe Validator do
 
     it "should open the sgf file" do
       pending
+    end
+
+    it "should return true if it has a valid tag" do
+      # binding.pry
+      archive.validate_game(sgf_file).should be_true
     end
 
 

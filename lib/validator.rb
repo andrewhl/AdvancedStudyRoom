@@ -1,32 +1,44 @@
-require 'net/http'
-require 'pry'
-require 'open-uri'
-require 'zip/zip'
-require 'sgf'
+['net/http', 'pry', 'open-uri', 'zip/zip', 'sgf', 'fileutils', 'epitools'].each { |x| require x }
 
 class Validator
 
-  def initialize(filepath)
+  def initialize filepath
     @filepath = filepath
   end
 
-  def open_games(file)
-    Zip::ZipFile.open(@filepath) do |zip_file|
-
-      zip_file.each do |f|
-        # validate_game(f)
-
-      end
-    end
+  class Game < TypedStruct["ruleset"]
 
   end
 
   def validate_games
-    # loop through games folder and open each sgf file for validation
+
+    Zip::ZipFile.open(@filepath) do |zip_file|
+      zip_file.each do |f|
+        # binding.pry
+        f_path = File.join("temp", File.basename(f.to_s))
+        FileUtils.mkdir_p(File.dirname(f_path))
+        zip_file.extract(f, f_path) unless File.exists?(f_path)
+        validate_game(f_path.to_s)
+        collect_game_data(f_path.to_s)
+
+        FileUtils.remove_entry(f_path)
+      end
+    end
   end
 
-  def validate_game(file)
+  def collect_game_data file
+    parser = SGF::Parser.new
+    tree = parser.parse(file)
+    game = tree.games.first
+
+
+    asr_game = Game.new("test")
     binding.pry
+  end
+
+
+  def validate_game file
+    # binding.pry
     parser = SGF::Parser.new
     tree = parser.parse(file)
     game = tree.games.first
@@ -34,7 +46,7 @@ class Validator
     has_valid_tag(game)
   end
 
-  def has_valid_tag(game)
+  def has_valid_tag game
     tag_phrase = /asr league/i
 
     # Check that the first node has the tag
@@ -48,11 +60,15 @@ class Validator
         valid_tag = true if !node.C.scan(tag_phrase).empty?
       end
       i += 1
-      return if i == 30
+      return valid_tag if i > node_limit
     end
+
   end
 
+
+
 end
+
 
 class Stuff
   def initialize(handle)
@@ -64,7 +80,7 @@ class Stuff
   end
 end
 
-test = Validator.new("temp/kabradarf-2012-10.zip")
+test = Validator.new("kabradarf-2012-10.zip")
 test.validate_games
 # test.validate_game("temp/DrGoPlayer-kabradarf.sgf")
 
