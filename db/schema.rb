@@ -160,7 +160,8 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
     t.datetime "datetime_completed"
     t.string   "game_type"
     t.float    "komi"
-    t.string   "result"
+    t.string   "winner"
+    t.string   "win_info"
     t.float    "main_time_control"
     t.string   "overtime_type"
     t.integer  "ot_stones_periods"
@@ -168,6 +169,9 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
     t.string   "url"
     t.integer  "black_player_id"
     t.integer  "white_player_id"
+    t.string   "black_player_name"
+    t.string   "white_player_name"
+    t.integer  "handicap"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
