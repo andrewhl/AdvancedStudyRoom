@@ -11,39 +11,7 @@
   .container-fluid
     .row-fluid
       .span2
-        .well.sidebar-nav
-          %ul.nav.nav-list
-            - if current_user
-              %li{:class => ((params[:action] == 'new') and (params[:controller] == 'accounts')) ? 'active' : ''}
-                = link_to "Register Accounts", new_account_path
-            %li
-              %a Tournaments
-            %li
-              %a Leagues
-            %li
-              %a Points
-            %li
-              %a My Profile
-            %li.nav-header Sidebar
-            %li
-              %a Link
-            %li
-              %a Link
-            %li
-              %a Link
-            %li
-              %a Link
-            %li
-              %a Link
-            %li
-              %a Link
-            %li.nav-header Sidebar
-            %li
-              %a Link
-            %li
-              %a Link
-            %li
-              %a Link
+        = render :partial => "shared/navigation_sidebar"
       .span10
         .hero-unit
           %h1

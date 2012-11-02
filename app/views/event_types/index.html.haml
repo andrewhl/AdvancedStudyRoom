@@ -1,0 +1,37 @@
+%h1 Rulesets
+
+%table.table.table-condensed.table-bordered.table-hover
+  %tr
+    %th Name
+    %th OT Required?
+    %th Jp OT?
+    %th Ca OT?
+    %th JOT Min Periods
+    %th JOT Max Periods
+    %th JOT Min Length
+    %th JOT Max Length
+    %th COT Min Stones
+    %th COT Max Stones
+    %th Handi Default
+    %th Ruleset Default
+    %th Games per player
+    %th Games per opponent
+    %th Delete
+
+  - @event_types.each do |event_type|
+    %tr
+      %td= event_type.name
+      %td= event_type.overtime_required
+      %td= event_type.jovertime_allowed
+      %td= event_type.covertime_allowed
+      %td= event_type.jot_min_periods
+      %td= event_type.jot_max_periods
+      %td= event_type.jot_min_period_length
+      %td= event_type.jot_max_period_length
+      %td= event_type.cot_min_stones
+      %td= event_type.cot_max_stones
+      %td= event_type.handicap_default
+      %td= event_type.ruleset_default
+      %td= event_type.games_per_player
+      %td= event_type.games_per_opponent
+      %td= link_to "Delete", event_type_path(event_type), :method => :delete

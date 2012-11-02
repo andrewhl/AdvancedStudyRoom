@@ -1,0 +1,33 @@
+.well.sidebar-nav
+  %ul.nav.nav-list
+    - if current_user
+      %li{:class => ((params[:action] == 'new') and (params[:controller] == 'accounts')) ? 'active' : ''}
+        = link_to "Register Accounts", new_account_path
+    %li
+      %a Tournaments
+    %li
+      %a Leagues
+    %li
+      %a Points
+    %li
+      %a My Profile
+    %li.nav-header Admin Pages
+    %li
+      = link_to "Define Rulesets", new_event_type_path
+    %li
+      = link_to "Manage Rulesets", event_types_path
+    %li
+      %a Link
+    %li
+      %a Link
+    %li
+      %a Link
+    %li
+      %a Link
+    %li.nav-header Static Pages
+    %li
+      %a Link
+    %li
+      %a Link
+    %li
+      %a Link

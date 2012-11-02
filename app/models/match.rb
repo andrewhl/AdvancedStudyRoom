@@ -15,8 +15,8 @@
 #  url                :string(255)
 #  black_player_id    :integer
 #  white_player_id    :integer
-#  black_player       :string(255)
-#  white_player       :string(255)
+#  black_player_name  :string(255)
+#  white_player_name  :string(255)
 #  handicap           :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

@@ -10,11 +10,12 @@ class Validator
         FileUtils.mkdir_p(File.dirname(f_path))
         zip_file.extract(f, f_path) unless File.exists?(f_path)
 
+        game = convert_sgf_to_game(f_path.to_s)
+
         event = EventType.new
-        event.validate_game(f_path.to_s)
-        # validate_game(f_path.to_s)
-        # collect_game_data(f_path.to_s)
-        convert_sgf_to_game(f_path.to_s)
+        if event.validate_game(game)
+          game.save
+        end
 
         FileUtils.remove_entry(f_path)
       end
@@ -77,8 +78,7 @@ class Validator
         "handicap" => ginfo["HA"]
       }
 
-      match = Match.new(game_hash)
-      match.save
+      return match = Match.new(game_hash)
     end
 
   end
@@ -101,15 +101,6 @@ class Validator
       return valid_tag if i > node_limit
     end
 
-  end
-
-  def collect_game_data file
-    parser = SGF::Parser.new
-    tree = parser.parse(file)
-    game = tree.games.first
-
-
-    asr_game = Match.new
   end
 
 end

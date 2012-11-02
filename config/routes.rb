@@ -5,7 +5,7 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'test', to: 'pages#test'
 
-  resources :pages, :users, :sessions, :accounts
+  resources :pages, :users, :sessions, :accounts, :event_types
 
   match '/about', :to => 'pages#about'
   match '/registration', :to => 'accounts#new'
