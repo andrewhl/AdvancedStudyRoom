@@ -6,6 +6,7 @@ gem 'nokogiri'
 gem 'mechanize'
 gem 'epitools'
 gem 'SgfParser'
+gem 'rubyzip', :require => 'zip/zip'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -63,7 +64,6 @@ group :production do
   gem 'pry-nav'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
-  gem 'rubyzip', :require => 'zip/zip'
 end
 
 gem 'jquery-rails'

@@ -267,6 +267,7 @@ DEPENDENCIES
   rails (= 3.2.3)
   rb-fsevent (~> 0.9.1)
   rspec-rails
+  rubyzip
   sass-rails (~> 3.2.3)
   shoulda
   shoulda-context
