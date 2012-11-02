@@ -11,7 +11,6 @@ gem 'SgfParser'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'less-rails-bootstrap'
 gem 'therubyracer'
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -47,11 +46,16 @@ group :test do
 end
 
 group :test, :development do
+  gem 'sqlite3'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
   gem 'annotate', ">=2.5.0"
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
