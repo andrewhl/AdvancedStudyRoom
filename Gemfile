@@ -59,6 +59,10 @@ end
 group :production do
   gem 'thin'
   gem 'pg'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
 gem 'jquery-rails'
