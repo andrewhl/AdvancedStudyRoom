@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'haml'
-gem 'cucumber-rails', :require => false
 gem 'nokogiri'
 gem 'mechanize'
 gem 'epitools'
@@ -14,7 +13,7 @@ gem 'SgfParser'
 gem 'less-rails-bootstrap'
 gem 'therubyracer'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem "factory_girl_rails", "~> 3.0"
+
 
 
 # Gems used only for assets and not required
@@ -52,9 +51,13 @@ group :test, :development do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
   gem 'annotate', ">=2.5.0"
+  gem "factory_girl_rails", "~> 3.0"
+  gem 'cucumber-rails', :require => false
+
 end
 
 group :production do
+  gem 'thin'
   gem 'pg'
 end
 
