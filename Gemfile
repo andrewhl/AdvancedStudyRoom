@@ -63,7 +63,7 @@ group :production do
   gem 'pry-nav'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
-  gem 'rubyzip'
+  gem 'rubyzip', :require => 'zip/zip'
 end
 
 gem 'jquery-rails'
