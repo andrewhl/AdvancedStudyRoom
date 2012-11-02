@@ -13,7 +13,7 @@ gem 'SgfParser'
 gem 'less-rails-bootstrap'
 gem 'therubyracer'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'pg'
+
 
 
 # Gems used only for assets and not required
@@ -45,7 +45,7 @@ group :test do
 end
 
 group :test, :development do
-  # gem 'sqlite3'
+  gem 'sqlite3'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rescue'
@@ -58,7 +58,7 @@ end
 
 group :production do
   gem 'thin'
-
+  gem 'pg'
 end
 
 gem 'jquery-rails'
