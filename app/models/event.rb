@@ -36,8 +36,9 @@
 #  updated_at            :datetime         not null
 #
 
+
 class Event < ActiveRecord::Base
-  attr_accessible :end_time, :name, :start_time, :type
+  attr_accessible :end_time, :name, :start_time, :type, :tag_text, :main_time_max, :main_time_min, :overtime_required, :jovertime_allowed, :covertime_allowed, :jot_min_periods, :jot_max_periods, :jot_min_period_length, :jot_max_period_length, :cot_min_stones, :cot_max_stones, :handicap_default, :ruleset_default, :games_per_player, :games_per_opponent, :event_type_id
 
   belongs_to :event_type
   belongs_to :league

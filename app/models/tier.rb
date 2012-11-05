@@ -22,4 +22,5 @@ class Tier < ActiveRecord::Base
 
   has_many :divisions
   belongs_to :tier_type
+  belongs_to :event
 end

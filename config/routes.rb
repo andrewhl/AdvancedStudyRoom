@@ -1,11 +1,19 @@
 AdvancedStudyRoom::Application.routes.draw do
 
+  get "event/new"
+
+  get "event/index"
+
+  get "event/create"
+
+  get "event/destroy"
+
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'test', to: 'pages#test'
 
-  resources :pages, :users, :sessions, :accounts, :event_types
+  resources :pages, :users, :sessions, :accounts, :event_types, :events
 
   match '/about', :to => 'pages#about'
   match '/registration', :to => 'accounts#new'
