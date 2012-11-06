@@ -42,4 +42,22 @@ class Event < ActiveRecord::Base
 
   belongs_to :event_type
   belongs_to :league
+
+  def validate_game game
+
+    # binding.pry
+    # game is a Match object
+
+    valid_game = false
+    if false
+      return true
+    else
+      return false
+    end
+
+    # binding.pry
+
+
+
+  end
 end
