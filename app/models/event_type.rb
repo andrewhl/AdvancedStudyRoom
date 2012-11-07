@@ -23,6 +23,8 @@
 #  jot_max_period_length :float
 #  cot_min_stones        :integer
 #  cot_max_stones        :integer
+#  cot_max_time          :float
+#  cot_min_time          :float
 #  handicap_default      :float
 #  ruleset_default       :integer
 #  games_per_player      :integer

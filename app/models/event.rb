@@ -27,6 +27,8 @@
 #  jot_max_period_length :float
 #  cot_min_stones        :integer
 #  cot_max_stones        :integer
+#  cot_max_time          :float
+#  cot_min_time          :float
 #  handicap_default      :float
 #  ruleset_default       :integer
 #  games_per_player      :integer
@@ -48,13 +50,42 @@ class Event < ActiveRecord::Base
     # binding.pry
     # game is a Match object
 
-    valid_game = false
-    if false
-      return true
-    else
-      return false
+    # Check komi
+    unless game.komi == self.handicap_default
+      return false, "Invalid komi"
     end
 
+    # Check main time setting
+    unless (game.main_time_control <= self.main_time_max) or (game.main_time_control >= self.main_time_min)
+      return false, "Invalid main time setting"
+    end
+
+    # Check Japanese overtime settings
+    if game.overtime_type == "byo_yomi"
+      unless (game.ot_time_control >= self.jot_min_periods) or (game.ot_time_control <= self.jot_max_periods)
+        return false, "Invalid Japanese main time setting"
+      end
+
+      unless (game.ot_stones_periods >= self.jot_min_period_length) or (game.ot_stones_periods <= self.jot_max_period_length)
+        return false, "Invalid Japanese overtime setting"
+      end
+    end
+
+    # Check Canadian overtime settings
+    if game.overtime_type == "Canadian"
+      unless (game.ot_time_control >= self.cot_min_time) or (game.ot_time_control <= self.cot_max_time)
+        return false, "Invalid Canadian main time setting"
+      end
+
+      unless (game.ot_stones_periods >= self.cot_min_stones) or (game.ot_stones_periods <= self.cot_max_stones)
+        return false, "Invalid Canadian overtime setting"
+      end
+    end
+
+
+
+
+    return true
     # binding.pry
 
 

@@ -11,15 +11,15 @@ class Validator
         zip_file.extract(f, f_path) unless File.exists?(f_path)
 
         game = convert_sgf_to_game(f_path.to_s)
-        binding.pry
 
         unless game.nil?
+          # binding.pry
+
+          event = Event.new
           if event.validate_game(game)
             game.save
           end
         end
-
-        event = Event.new
 
 
         FileUtils.remove_entry(f_path)
@@ -67,6 +67,8 @@ class Validator
       winner = result[0]
       win_info = result[1]
       puts "valid game"
+
+      binding.pry
 
       game_hash = Hash.new
       game_hash = {

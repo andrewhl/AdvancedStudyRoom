@@ -14,5 +14,6 @@ class League < ActiveRecord::Base
 
   has_many :events
   has_many :accounts
+  has_many :tiers
   belongs_to :server
 end

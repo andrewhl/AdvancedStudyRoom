@@ -8,14 +8,17 @@ class CreateTiers < ActiveRecord::Migration
       t.integer :divisions
       t.integer :max_games_per_player
       t.integer :max_games_per_opponent
-      t.float :points_per_win
-      t.float :points_per_loss
+      t.float   :points_per_win
+      t.float   :points_per_loss
       t.integer :event_id
+      t.integer :league_id
+      t.string  :name
 
       t.timestamps
     end
 
     add_index :tiers, :tier_type_id
     add_index :tiers, :event_id
+    add_index :tiers, :league_id
   end
 end

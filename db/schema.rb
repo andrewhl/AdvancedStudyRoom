@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
     t.float    "jot_max_period_length"
     t.integer  "cot_min_stones"
     t.integer  "cot_max_stones"
+    t.float    "cot_max_time"
+    t.float    "cot_min_time"
     t.float    "handicap_default"
     t.integer  "ruleset_default"
     t.integer  "games_per_player"
@@ -135,6 +137,8 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
     t.float    "jot_max_period_length"
     t.integer  "cot_min_stones"
     t.integer  "cot_max_stones"
+    t.float    "cot_max_time"
+    t.float    "cot_min_time"
     t.float    "handicap_default"
     t.integer  "ruleset_default"
     t.integer  "games_per_player"
@@ -211,11 +215,14 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
     t.float    "points_per_win"
     t.float    "points_per_loss"
     t.integer  "event_id"
+    t.integer  "league_id"
+    t.string   "name"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
 
   add_index "tiers", ["event_id"], :name => "index_tiers_on_event_id"
+  add_index "tiers", ["league_id"], :name => "index_tiers_on_league_id"
   add_index "tiers", ["tier_type_id"], :name => "index_tiers_on_tier_type_id"
 
   create_table "tournaments", :force => true do |t|

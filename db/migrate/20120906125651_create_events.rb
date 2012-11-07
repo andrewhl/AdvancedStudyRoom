@@ -25,6 +25,8 @@ class CreateEvents < ActiveRecord::Migration
       t.float    :jot_max_period_length
       t.integer  :cot_min_stones
       t.integer  :cot_max_stones
+      t.float    :cot_max_time
+      t.float    :cot_min_time
       t.float    :handicap_default
       t.integer  :ruleset_default
       t.integer  :games_per_player

@@ -1,0 +1,26 @@
+%h1= @league.name
+
+- if @league.tiers.empty?
+  %h2 This league has no tiers. Please create one.
+- else
+
+  %table.table.table-condensed.table-bordered.table-hover
+    %tr
+      %th Name
+      %th Delete
+
+    - @league.tiers.each do |tier|
+      %tr
+        %td
+          = tier.name
+        %td= link_to "Delete", tier_path(tier), :method => :delete
+
+= form_for [@league, @tier], :html => {:class => "form-horizontal"} do |f|
+
+  .control-group
+    %label.control-label
+      Name
+    .controls
+      = f.text_field :name
+      = f.submit :submit
+
