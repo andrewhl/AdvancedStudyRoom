@@ -18,6 +18,10 @@ AdvancedStudyRoom::Application.routes.draw do
   resources :leagues do
     resources :tiers
   end
+  resources :tiers do
+    resources :divisions
+  end
+
 
   match '/about', :to => 'pages#about'
   match '/registration', :to => 'accounts#new'

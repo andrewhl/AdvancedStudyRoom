@@ -10,10 +10,12 @@
 #
 
 class League < ActiveRecord::Base
-  attr_accessible :name, :server_id
+  attr_accessible :name, :server_id, :tiers_attributes
 
   has_many :events
   has_many :accounts
-  has_many :tiers
+  has_many :tiers, dependent: :destroy
   belongs_to :server
+
+  accepts_nested_attributes_for :tiers, allow_destroy: true
 end

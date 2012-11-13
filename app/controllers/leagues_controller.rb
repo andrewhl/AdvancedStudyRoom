@@ -5,8 +5,11 @@ class LeaguesController < ApplicationController
   end
 
   def create
+
+    # if params[:tier] make a tier, if params[:league] make a league, etc...
+    # render show page
+
     @league = League.create(params[:league])
-    # binding.pry
     redirect_to :new_league, :notice => "Your league has been successfully created."
   end
 
@@ -22,8 +25,9 @@ class LeaguesController < ApplicationController
 
   def show
     @league = League.find(params[:id])
-    # @tier = @league.tiers.build
     @tier = Tier.new
     @tiers = @league.tiers
+    @division = Division.new
+    @divisions = @tier.divisions
   end
 end

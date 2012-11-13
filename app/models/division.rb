@@ -15,7 +15,7 @@
 #
 
 class Division < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :month, :division_index, :minimum_players, :maximum_players, :current_players, :safe_position, :promoted_players, :demoted_players
 
   has_many :division_players
   belongs_to :tier

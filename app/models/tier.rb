@@ -20,8 +20,14 @@
 class Tier < ActiveRecord::Base
   attr_accessible :name, :demotions, :divisions, :event_id, :max_games_per_opponent, :max_games_per_player, :points_per_loss, :points_per_win, :promotions, :tier_hierarchy_position, :tier_type_id
 
-  has_many :divisions
+  scope :ranked, order("tier_hierarchy_position ASC")
+
+  validates_presence_of :name, :on => :create, :message => "can't be blank"
+
+
+  has_many :divisions, :dependent => :destroy
   belongs_to :league
   belongs_to :tier_type
   belongs_to :event
 end
+

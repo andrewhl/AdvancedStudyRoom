@@ -4,23 +4,70 @@
   %h2 This league has no tiers. Please create one.
 - else
 
+  %h3 Tiers
   %table.table.table-condensed.table-bordered.table-hover
     %tr
       %th Name
+      %th Position
       %th Delete
 
-    - @league.tiers.each do |tier|
+    - @league.tiers.ranked.each do |tier|
       %tr
         %td
           = tier.name
-        %td= link_to "Delete", tier_path(tier), :method => :delete
+        %td
+          = tier.tier_hierarchy_position
+        %td= link_to "Delete", league_tier_path(@league, tier), :method => :delete
 
+%h4 Create Tiers
 = form_for [@league, @tier], :html => {:class => "form-horizontal"} do |f|
-
+  - if @tier.errors.any?
+    .error_messages
+      %h2
+        = pluralize(@product.errors.count, "error")
+        prohibited this product from being saved:
+      %ul
+        - @tier.errors.full_messages.each do |msg|
+          %li= msg
   .control-group
     %label.control-label
       Name
     .controls
       = f.text_field :name
+    %label.control-label
+      Tier Hierarchy Position
+    .controls
+      = f.number_field :tier_hierarchy_position
       = f.submit :submit
+
+
+
+%h3 Divisions by Tier
+- @league.tiers.ranked.each do |tier|
+  %table.table.table-condensed.table-bordered.table-hover
+    %tr
+      %th
+        Tier
+        = tier.name
+        Divisions
+    - if tier.divisions.empty?
+      %tr
+        %td This tier has no divisions. Please create them.
+    - else
+      - tier.divisions.each do |division|
+        %tr
+          %td
+            = tier.name + " " + division.division_index.to_s
+    %tr
+      %td
+        %h4 Create Divisions
+        = form_for [tier, @division], :html => {:class => "form-horizontal"} do |f|
+
+          .control-group
+            %label.control-label
+              Division Numeral (e.g., Beta 1)
+          .controls
+            = f.number_field :division_index
+            = f.submit :submit
+
 

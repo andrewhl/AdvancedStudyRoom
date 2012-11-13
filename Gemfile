@@ -4,7 +4,6 @@ gem 'rails', '3.2.3'
 gem 'haml'
 gem 'nokogiri'
 gem 'mechanize'
-gem 'epitools'
 gem 'SgfParser'
 gem 'rubyzip', :require => 'zip/zip'
 

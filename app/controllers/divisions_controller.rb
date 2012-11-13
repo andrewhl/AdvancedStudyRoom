@@ -4,9 +4,11 @@ class DivisionsController < ApplicationController
   end
 
   def create
-    @division = Division.create(params[:division])
+    @tier = Tier.find(params[:tier_id])
+    @league = League.find(@tier.league.id)
+    @division = @tier.divisions.create(params[:division])
     # binding.pry
-    redirect_to :new_division, :notice => "Your division has been successfully created."
+    redirect_to league_path(@league.id), :notice => "Your division has been successfully created."
   end
 
   def destroy
