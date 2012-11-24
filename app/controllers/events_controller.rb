@@ -2,7 +2,8 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @event_types = EventType.all
+    @rulesets = Ruleset.canon
+    @servers = Server.all
   end
 
   def create
@@ -19,5 +20,13 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    @tier = Tier.new
+    @tiers = @event.tiers
+    @division = Division.new
+    @divisions = @tier.divisions
   end
 end

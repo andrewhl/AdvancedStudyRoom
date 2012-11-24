@@ -1,0 +1,11 @@
+%h1 Manage Tags
+
+%table.table.table-condensed.table-bordered.table-hover
+  %tr
+    %th Phrase
+    %th Delete
+
+  - @tags.each do |tag|
+    %tr
+      %td= tag.phrase
+      %td= link_to "Delete", tag_path(tag), :method => :delete

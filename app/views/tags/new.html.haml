@@ -1,0 +1,15 @@
+%h1 Tags
+
+= form_for @tag, :html => {:class => "form-horizontal"} do |f|
+  .control-group
+    %label.control-label
+      Tag Phrase
+    .controls
+      = f.text_field :phrase
+    %label.control-label
+      Event
+    .controls
+      = f.select(:event_id, options_from_collection_for_select(@events, :id, :name))
+
+  .actions
+    = f.submit "Submit"

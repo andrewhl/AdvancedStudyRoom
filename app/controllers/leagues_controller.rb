@@ -2,6 +2,7 @@ class LeaguesController < ApplicationController
   def new
     @league = League.new
     @servers = Server.all
+    @rulesets = Ruleset.all
   end
 
   def create

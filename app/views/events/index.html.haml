@@ -1,8 +1,9 @@
-%h1 League Events
+%h1 Events (e.g., League)
 
 %table.table.table-condensed.table-bordered.table-hover
   %tr
     %th Name
+    %th Server
     %th Ruleset
     %th OT Required?
     %th Jp OT?
@@ -22,7 +23,8 @@
   - @events.each do |event|
     %tr
       %td= event.name
-      %td= event.event_type ? event.event_type.name : "No ruleset"
+      %td= event.server.name
+      %td= event.ruleset ? event.ruleset.name : "No ruleset"
       %td= event.overtime_required
       %td= event.jovertime_allowed
       %td= event.covertime_allowed

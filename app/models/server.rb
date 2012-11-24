@@ -13,6 +13,7 @@ class Server < ActiveRecord::Base
   attr_accessible :name, :url
 
   has_many :leagues
+  has_many :events
   has_many :accounts
 
 end

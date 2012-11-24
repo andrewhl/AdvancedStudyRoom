@@ -14,6 +14,12 @@
     .controls
       = f.text_field :name
 
+  .control-group
+    %label.control-label
+      Ruleset
+    .controls
+      = f.select(:ruleset_id, options_from_collection_for_select(@rulesets, :id, :name))
+
   .actions
     = f.submit "Submit"
 

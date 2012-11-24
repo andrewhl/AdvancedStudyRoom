@@ -3,11 +3,11 @@
 # Table name: events
 #
 #  id                    :integer          not null, primary key
-#  event_type_id         :integer
+#  ruleset_id            :integer
 #  name                  :string(255)
 #  start_time            :datetime
 #  end_time              :datetime
-#  event_type_name       :string(255)
+#  ruleset_name          :string(255)
 #  allowed_rengo         :boolean
 #  allowed_teaching      :boolean
 #  allowed_review        :boolean
@@ -34,16 +34,47 @@
 #  games_per_player      :integer
 #  games_per_opponent    :integer
 #  league_id             :integer
+#  server_id             :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #
 
 
 class Event < ActiveRecord::Base
-  attr_accessible :end_time, :name, :start_time, :type, :tag_text, :main_time_max, :main_time_min, :overtime_required, :jovertime_allowed, :covertime_allowed, :jot_min_periods, :jot_max_periods, :jot_min_period_length, :jot_max_period_length, :cot_min_stones, :cot_max_stones, :handicap_default, :ruleset_default, :games_per_player, :games_per_opponent, :event_type_id
+  attr_accessible :end_time,
+                  :name,
+                  :start_time,
+                  :type,
+                  :tag_text,
+                  :main_time_max,
+                  :main_time_min,
+                  :overtime_required,
+                  :jovertime_allowed,
+                  :covertime_allowed,
+                  :jot_min_periods,
+                  :jot_max_periods,
+                  :jot_min_period_length,
+                  :jot_max_period_length,
+                  :cot_min_stones,
+                  :cot_max_stones,
+                  :handicap_default,
+                  :ruleset_default,
+                  :games_per_player,
+                  :games_per_opponent,
+                  :event_type_id,
+                  :tiers_attributes,
+                  :server_id,
+                  :ruleset_id
 
-  belongs_to :event_type
-  belongs_to :league
+  belongs_to :ruleset
+  belongs_to :server
+  has_one :event_ruleset, :dependent => :destroy
+  has_many :accounts
+  has_many :tiers, dependent: :destroy
+  has_many :tags
+  has_many :tiers
+
+  accepts_nested_attributes_for :tiers, allow_destroy: true
 
   def validate_game game
 

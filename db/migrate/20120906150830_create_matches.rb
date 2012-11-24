@@ -16,6 +16,7 @@ class CreateMatches < ActiveRecord::Migration
       t.string   :black_player_name
       t.string   :white_player_name
       t.integer  :handicap
+      t.string   :game_digest
 
       t.timestamps
     end

@@ -13,6 +13,8 @@
 #  points_per_win          :float
 #  points_per_loss         :float
 #  event_id                :integer
+#  league_id               :integer
+#  name                    :string(255)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #
@@ -26,6 +28,7 @@ class Tier < ActiveRecord::Base
 
 
   has_many :divisions, :dependent => :destroy
+  has_one :tier_ruleset, :dependent => :destroy
   belongs_to :league
   belongs_to :tier_type
   belongs_to :event

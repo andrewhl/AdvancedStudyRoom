@@ -1,11 +1,7 @@
-class CreateEvents < ActiveRecord::Migration
+class CreateRulesets < ActiveRecord::Migration
   def change
-    create_table :events do |t|
-      t.integer  :ruleset_id
+    create_table :rulesets do |t|
       t.string   :name
-      t.datetime :start_time
-      t.datetime :end_time
-      t.string   :ruleset_name
       t.boolean  :allowed_rengo
       t.boolean  :allowed_teaching
       t.boolean  :allowed_review
@@ -31,14 +27,18 @@ class CreateEvents < ActiveRecord::Migration
       t.integer  :ruleset_default
       t.integer  :games_per_player
       t.integer  :games_per_opponent
-      t.integer  :league_id
-      t.integer  :server_id
+      t.boolean  :canonical
+      t.string   :type
+      t.integer  :division_id
+      t.integer  :tier_id
+      t.integer  :event_id
 
       t.timestamps
     end
 
-    add_index :events, :ruleset_id
-    add_index :events, :league_id
-    add_index :events, :server_id
+    add_index :rulesets, :division_id
+    add_index :rulesets, :tier_id
+    add_index :rulesets, :event_id
+
   end
 end

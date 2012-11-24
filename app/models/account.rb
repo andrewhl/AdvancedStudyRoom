@@ -18,7 +18,7 @@
 class Account < ActiveRecord::Base
   attr_accessible :server_id, :handle, :rank, :league_active, :league_tier, :user_id
 
-  has_one :division_player
+  has_many :division_players
   belongs_to :server
   belongs_to :user
   belongs_to :league

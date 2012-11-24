@@ -1,7 +1,7 @@
-%h1= @league.name
+%h1= @event.name
 
-- if @league.tiers.empty?
-  %h2 This league has no tiers. Please create one.
+- if @event.tiers.empty?
+  %h2 This event has no tiers. Please create one.
 - else
 
   %h3 Tiers
@@ -11,21 +11,21 @@
       %th Position
       %th Delete
 
-    - @league.tiers.ranked.each do |tier|
+    - @event.tiers.ranked.each do |tier|
       %tr
         %td
           = tier.name
         %td
           = tier.tier_hierarchy_position
-        %td= link_to "Delete", league_tier_path(@league, tier), :method => :delete
+        %td= link_to "Delete", event_tier_path(@event, tier), :method => :delete
 
 %h4 Create Tiers
-= form_for [@league, @tier], :html => {:class => "form-horizontal"} do |f|
+= form_for [@event, @tier], :html => {:class => "form-horizontal"} do |f|
   - if @tier.errors.any?
     .error_messages
       %h2
-        = pluralize(@product.errors.count, "error")
-        prohibited this product from being saved:
+        = pluralize(@tier.errors.count, "error")
+        prohibited this tier from being saved:
       %ul
         - @tier.errors.full_messages.each do |msg|
           %li= msg
@@ -43,7 +43,7 @@
 
 
 %h3 Divisions by Tier
-- @league.tiers.ranked.each do |tier|
+- @event.tiers.ranked.each do |tier|
   %table.table.table-condensed.table-bordered.table-hover
     %tr
       %th

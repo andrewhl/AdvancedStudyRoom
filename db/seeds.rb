@@ -11,3 +11,4 @@ if User.find_by_email("admin@test.com").nil?
 end
 Server.find_or_create_by_name("KGS")
 Server.find_or_create_by_name("Kaya")
+Tag.find_or_create_by_phrase("ASR League")

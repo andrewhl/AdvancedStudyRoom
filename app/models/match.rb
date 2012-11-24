@@ -18,14 +18,19 @@
 #  black_player_name  :string(255)
 #  white_player_name  :string(255)
 #  handicap           :integer
+#  game_digest        :string(255)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
 
 class Match < ActiveRecord::Base
-  attr_accessible :datetime_completed, :game_type, :komi, :main_time_control, :ot_stones_periods, :ot_time_control, :overtime_type, :result, :url, :winner, :win_info, :black_player, :white_player, :handicap, :black_player_name, :white_player_name
+  attr_accessible :datetime_completed, :game_type, :komi, :main_time_control, :ot_stones_periods, :ot_time_control, :overtime_type, :result, :url, :winner, :win_info, :black_player, :white_player, :handicap, :black_player_name, :white_player_name, :game_digest
+
+  validates_uniqueness_of :game_digest, :on => :create, :message => "must be unique"
 
   belongs_to :black_player, :class_name => 'DivisionPlayer'
   belongs_to :white_player, :class_name => 'DivisionPlayer'
+
+  has_many :comments, :dependent => :destroy
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120909210541) do
+ActiveRecord::Schema.define(:version => 20121122195148) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -49,17 +49,27 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
   add_index "awards", ["achievement_id"], :name => "index_awards_on_achievement_id"
   add_index "awards", ["user_id"], :name => "index_awards_on_user_id"
 
-  create_table "division_players", :force => true do |t|
-    t.integer  "division_id"
-    t.integer  "kgs_handle_id"
-    t.float    "points"
-    t.integer  "status"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "comments", :force => true do |t|
+    t.integer  "match_id"
+    t.integer  "node"
+    t.string   "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
+  add_index "comments", ["match_id"], :name => "index_comments_on_match_id"
+
+  create_table "division_players", :force => true do |t|
+    t.integer  "division_id"
+    t.integer  "account_id"
+    t.float    "points"
+    t.integer  "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "division_players", ["account_id"], :name => "index_division_players_on_account_id"
   add_index "division_players", ["division_id"], :name => "index_division_players_on_division_id"
-  add_index "division_players", ["kgs_handle_id"], :name => "index_division_players_on_kgs_handle_id"
 
   create_table "division_rules", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -81,43 +91,12 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
   add_index "divisions", ["division_index"], :name => "index_divisions_on_division_index"
   add_index "divisions", ["tier_id"], :name => "index_divisions_on_tier_id"
 
-  create_table "event_types", :force => true do |t|
-    t.string   "name"
-    t.boolean  "allowed_rengo"
-    t.boolean  "allowed_teaching"
-    t.boolean  "allowed_review"
-    t.boolean  "allowed_free"
-    t.boolean  "allowed_rated"
-    t.boolean  "allowed_simul"
-    t.boolean  "allowed_demonstration"
-    t.string   "tag_text"
-    t.float    "main_time_min"
-    t.float    "main_time_max"
-    t.boolean  "overtime_required"
-    t.boolean  "jovertime_allowed"
-    t.boolean  "covertime_allowed"
-    t.integer  "jot_min_periods"
-    t.integer  "jot_max_periods"
-    t.float    "jot_min_period_length"
-    t.float    "jot_max_period_length"
-    t.integer  "cot_min_stones"
-    t.integer  "cot_max_stones"
-    t.float    "cot_max_time"
-    t.float    "cot_min_time"
-    t.float    "handicap_default"
-    t.integer  "ruleset_default"
-    t.integer  "games_per_player"
-    t.integer  "games_per_opponent"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-  end
-
   create_table "events", :force => true do |t|
-    t.integer  "event_type_id"
+    t.integer  "ruleset_id"
     t.string   "name"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.string   "event_type_name"
+    t.string   "ruleset_name"
     t.boolean  "allowed_rengo"
     t.boolean  "allowed_teaching"
     t.boolean  "allowed_review"
@@ -144,12 +123,14 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
     t.integer  "games_per_player"
     t.integer  "games_per_opponent"
     t.integer  "league_id"
+    t.integer  "server_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
-  add_index "events", ["event_type_id"], :name => "index_events_on_event_type_id"
   add_index "events", ["league_id"], :name => "index_events_on_league_id"
+  add_index "events", ["ruleset_id"], :name => "index_events_on_ruleset_id"
+  add_index "events", ["server_id"], :name => "index_events_on_server_id"
 
   create_table "leagues", :force => true do |t|
     t.string   "name"
@@ -176,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
     t.string   "black_player_name"
     t.string   "white_player_name"
     t.integer  "handicap"
+    t.string   "game_digest"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
@@ -183,12 +165,61 @@ ActiveRecord::Schema.define(:version => 20120909210541) do
   add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
   add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
 
+  create_table "rulesets", :force => true do |t|
+    t.string   "name"
+    t.boolean  "allowed_rengo"
+    t.boolean  "allowed_teaching"
+    t.boolean  "allowed_review"
+    t.boolean  "allowed_free"
+    t.boolean  "allowed_rated"
+    t.boolean  "allowed_simul"
+    t.boolean  "allowed_demonstration"
+    t.string   "tag_text"
+    t.float    "main_time_min"
+    t.float    "main_time_max"
+    t.boolean  "overtime_required"
+    t.boolean  "jovertime_allowed"
+    t.boolean  "covertime_allowed"
+    t.integer  "jot_min_periods"
+    t.integer  "jot_max_periods"
+    t.float    "jot_min_period_length"
+    t.float    "jot_max_period_length"
+    t.integer  "cot_min_stones"
+    t.integer  "cot_max_stones"
+    t.float    "cot_max_time"
+    t.float    "cot_min_time"
+    t.float    "handicap_default"
+    t.integer  "ruleset_default"
+    t.integer  "games_per_player"
+    t.integer  "games_per_opponent"
+    t.boolean  "canonical"
+    t.string   "type"
+    t.integer  "division_id"
+    t.integer  "tier_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "rulesets", ["division_id"], :name => "index_rulesets_on_division_id"
+  add_index "rulesets", ["tier_id"], :name => "index_rulesets_on_tier_id"
+
   create_table "servers", :force => true do |t|
     t.string   "name"
     t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "tags", :force => true do |t|
+    t.string   "phrase"
+    t.integer  "league_id"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["event_id"], :name => "index_tags_on_event_id"
+  add_index "tags", ["league_id"], :name => "index_tags_on_league_id"
 
   create_table "tier_types", :force => true do |t|
     t.string   "name"
