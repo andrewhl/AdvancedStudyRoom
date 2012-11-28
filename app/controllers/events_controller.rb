@@ -4,11 +4,15 @@ class EventsController < ApplicationController
     @event = Event.new
     @rulesets = Ruleset.canon
     @servers = Server.all
+    @event_ruleset = @event.build_event_ruleset
   end
 
   def create
-    @event = Event.create(params[:event])
-    # binding.pry
+    event_params = params[:event].dup
+    event_params.delete("event_ruleset")
+    @event = Event.create(event_params)
+    @event_ruleset = @event.build_event_ruleset(params[:event][:event_ruleset])
+    @event_ruleset.save
     redirect_to :new_event, :notice => "Your event has been successfully created."
   end
 

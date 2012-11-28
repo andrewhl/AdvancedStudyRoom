@@ -30,6 +30,10 @@
 #  games_per_player      :integer
 #  games_per_opponent    :integer
 #  canonical             :boolean
+#  type                  :string(255)
+#  division_id           :integer
+#  tier_id               :integer
+#  event_id              :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #
@@ -71,6 +75,7 @@ class Ruleset < ActiveRecord::Base
   has_many :events
 
   scope :canon, where(:canonical => true)
+  scope :event_rulesets, where(:type => "EventRuleset")
 
   def validate_game game
 

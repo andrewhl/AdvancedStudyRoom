@@ -1,12 +1,12 @@
 class TiersController < ApplicationController
-  before_filter :league_id, :only => [:create, :destroy]
+  before_filter :event_id, :only => [:create, :destroy]
 
   def new
     @tier = Tier.new
   end
 
   def create
-    @tier = @league.tiers.create(params[:tier])
+    @tier = @event.tiers.create(params[:tier])
 
     if @tier.errors.any?
       notice_msg = "The tier was not created. There were errors."
@@ -14,14 +14,14 @@ class TiersController < ApplicationController
       notice_msg = "The tier has been successfully created."
     end
 
-    redirect_to league_path(@league.id), :notice => notice_msg
+    redirect_to event_path(@event.id), :notice => notice_msg
   end
 
   def destroy
     tier = Tier.find(params[:id])
     tier.destroy
 
-    redirect_to league_path(@league.id), :notice => "The tier has been deleted."
+    redirect_to event_path(@event.id), :notice => "The tier has been deleted."
   end
 
   def index
@@ -30,8 +30,8 @@ class TiersController < ApplicationController
 
   private
 
-    def league_id
-      @league = League.find(params[:league_id])
+    def event_id
+      @event = Event.find(params[:event_id])
     end
 
 end

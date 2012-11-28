@@ -1,0 +1,72 @@
+.control-group
+  %label.control-label
+    Name
+  .controls
+    = b.text_field :name
+
+.control-group
+
+  %label.control-label
+    Main Time Min
+  .controls
+    = b.number_field(:main_time_min)
+  %label.control-label
+    Main Time Max
+  .controls
+    = b.number_field(:main_time_max)
+
+.control-group
+  .controls
+    %label.checkbox
+      Overtime Required
+      = b.check_box :overtime_required
+    %label.checkbox
+      J Overtime Allowed
+      = b.check_box :jovertime_allowed
+    %label.checkbox
+      C Overtime Allowed
+      = b.check_box :covertime_allowed
+
+.control-group
+  %label.control-label
+    J OT Min Periods
+  .controls
+    = b.number_field(:jot_min_periods)
+  %label.control-label
+    J OT Max Periods
+  .controls
+    = b.number_field(:jot_max_periods)
+
+.control-group
+  %label.control-label
+    J OT Min Period Length
+  .controls
+    = b.number_field(:jot_min_period_length)
+  %label.control-label
+    J OT Max Period Length
+  .controls
+    = b.number_field(:jot_max_period_length)
+
+.control-group
+  %label.control-label
+    C OT Min Stones
+  .controls
+    = b.number_field(:cot_min_stones)
+  %label.control-label
+    C OT Max Stones
+  .controls
+    = b.number_field(:cot_max_stones)
+
+.control-group
+  %label.control-label
+    Handicap Default
+  .controls
+    = b.number_field(:handicap_default)
+  %label.control-label
+    Games Per Player
+  .controls
+    = b.number_field(:games_per_player)
+  %label.control-label
+    Games Per Opponent
+  .controls
+    = b.number_field(:games_per_opponent)

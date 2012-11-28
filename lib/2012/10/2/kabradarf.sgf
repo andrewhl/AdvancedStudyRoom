@@ -1,0 +1,326 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[Japanese]SZ[19]KM[6.50]TM[2100]OT[5x30 byo-yomi]
+PW[kabradarf]PB[Vierbaum]WR[2d]DT[2012-10-02]PC[The KGS Go Server at http://www.gokgs.com/]C[kabradarf [2d\]: hi
+kabradarf [2d\]: asr league
+Vierbaum [-\]: hi
+Vierbaum [-\]: have a nice game
+kabradarf [2d\]: have a nice game
+]RE[W+Resign]
+;B[pd]BL[2081.768]
+;W[qp]WL[2097.863]
+;B[dp]BL[2079.119]
+;W[dc]WL[2082.284]
+;B[op]BL[2076.575]
+;W[pn]WL[2072.712]
+;B[qq]BL[2067.194]
+;W[rq]WL[2069.599]
+;B[pq]BL[2065.301]
+;W[ro]WL[2068.653]
+;B[kq]BL[2060.269]
+;W[qf]WL[2065.008]
+;B[nc]BL[2035.53]
+;W[cn]WL[2054.092]
+;B[fp]BL[2009.192]
+;W[ci]WL[2047.023]
+;B[qg]BL[1983.205]C[kabradarf [2d\]: i think this move is not very good
+Vierbaum [-\]: ok :( ^^
+kabradarf [2d\]: but i think i didnt played the best
+kabradarf [2d\]: cuz
+kabradarf [2d\]: its efficient
+kabradarf [2d\]: whan
+]
+(;W[rg]WL[1884.256]
+;B[rf]BL[1959.501]
+;W[qh]WL[1732.411]
+;B[pg]BL[1925.572]C[Vierbaum [-\]: ok
+]
+;W[re]WL[1725.166]
+;B[rh]BL[1911.445]
+;W[sf]WL[1722.993]
+;B[qi]BL[1909.837]
+(;W[pf]WL[1604.004]C[FreshTooth [2d\]: s16 s17
+kabradarf [2d\]: just separate not bad
+kabradarf [2d\]: it gives free moves outside
+Vierbaum [-\]: yes
+]
+;B[ph]BL[1899.753]
+;W[qc]WL[1600.391]
+;B[of]BL[1807.787]
+;W[oe]WL[1597.759]
+;B[ne]BL[1702.32]
+;W[nf]WL[1564.531]
+;B[og]BL[1698.103]
+;W[pe]WL[1544.978]
+;B[me]BL[1652.295]
+;W[jc]WL[1502.165]
+;B[de]BL[1522.982]C[kabradarf [2d\]: free moves or attack
+]
+;W[fd]WL[1352.53]
+;B[cc]BL[1519.049]
+;W[cb]WL[1347.768]
+;B[cd]BL[1516.858]
+;W[bb]WL[1344.808]
+;B[cg]BL[1501.998]
+;W[ei]WL[1329.064]
+;B[fe]BL[1430.101]
+;W[gd]WL[1325.341]
+;B[fg]BL[1412.05]
+;W[nh]WL[1286.688]C[Vierbaum [-\]: were all moves on top left correct?
+kabradarf [2d\]: here
+kabradarf [2d\]: i would have
+]
+(;B[ng]BL[1363.132]
+;W[mf]WL[1283.005]
+;B[lf]BL[1310.967]
+;W[mg]WL[1278.72]
+;B[mh]BL[1305.964]
+;W[lg]WL[1276.544]
+;B[lh]BL[1301.173]
+;W[kg]WL[1274.047]C[kabradarf [2d\]: here
+kabradarf [2d\]: its like
+kabradarf [2d\]: the two problem remain
+]
+;B[ke]BL[1265.3]
+;W[je]WL[1244.097]
+;B[jf]BL[1239.747]
+;W[kf]WL[1225.376]
+;B[le]BL[1237.627]
+;W[jg]WL[1124.58]
+;B[jd]BL[1212.464]
+;W[if]WL[1119.486]
+;B[id]BL[1207.571]
+;W[ic]WL[1112.525]
+;B[hd]BL[1152.596]
+;W[hc]WL[1110.227]
+;B[he]BL[1116.911]
+;W[ni]WL[1098.805]
+;B[lj]BL[1064.628]
+;W[mj]WL[1087.457]C[kabradarf [2d\]: here
+kabradarf [2d\]: shape is
+]
+(;B[kj]BL[1030.371]
+;W[ii]WL[929.287]
+;B[lm]BL[971.663]
+;W[kc]WL[809.182]
+;B[kd]BL[953.769]
+;W[hg]WL[793.653]
+;B[ge]BL[905.374]
+;W[li]WL[783.96]
+;B[en]BL[800.111]
+;W[qk]WL[755.414]
+;B[pj]BL[788.282]
+;W[pk]WL[731.157]
+;B[rj]BL[781.441]
+;W[oj]WL[696.402]
+(;B[cm]BL[748.321]C[kabradarf [2d\]: u dont gain a lot with that move
+]
+;W[bm]WL[655.773]
+;B[cl]BL[707.667]
+;W[dn]WL[635.305]
+;B[em]BL[695.011]
+;W[bl]WL[616.583]
+;B[bo]BL[666.942]
+;W[bn]WL[586.717]
+;B[cp]BL[626.103]
+;W[qj]WL[455.473]
+(;B[rk]BL[573.639]C[Vierbaum [-\]: but that black moyo is large
+kabradarf [2d\]: here
+kabradarf [2d\]: its the losing move
+Vierbaum [-\]: would you invade it later?
+kabradarf [2d\]: just play the ko
+kabradarf [2d\]: is still ok
+Vierbaum [-\]: ok
+]
+;W[pi]WL[448.103]
+;B[rm]BL[553.592]
+;W[sh]WL[433.947]
+;B[si]BL[545.685]
+;W[sg]WL[427.508]
+(;B[pm]BL[338.695]
+;W[ql]WL[417.184]
+;B[qm]BL[120.555]
+;W[on]WL[272.986]
+;B[om]BL[75.56]
+;W[nm]WL[267.449]
+;B[nn]BL[37.945]
+;W[nl]WL[254.934]
+;B[qn]BL[30]OB[5]
+;W[po]WL[250.719]
+;B[qo]BL[30]OB[5]C[kabradarf [2d\]: u want more time?
+]
+;W[pp]WL[239.844]C[kabradarf [2d\]: after
+kabradarf [2d\]: the game
+kabradarf [2d\]: is dead dead
+Vierbaum [-\]: :)
+kabradarf [2d\]: so thanks and good luck
+Vierbaum [-\]: thanks for review
+Vierbaum [-\]: cya
+kabradarf [2d\]: bye
+]
+;B[rp]BL[30]OB[5]
+;W[sp]WL[234.28]
+;B[oo]BL[30]OB[5]
+;W[rp]WL[232.403]
+;B[oq]BL[30]OB[4]
+;W[rl]WL[221.399]
+;B[sl]BL[30]OB[3]C[Vierbaum [-\]: sure
+]
+;W[sk]WL[165.378]C[Vierbaum [-\]: thank you
+]
+;B[sj]BL[226.05]
+;W[qr]WL[453.914]
+;B[pr]BL[220.752]
+;W[rr]WL[431.014]
+;B[sr]BL[211.818]
+;W[qs]WL[398.028]
+;B[ss]BL[201.587]
+;W[mn]WL[346.848]
+;B[no]BL[192.547]
+;W[mm]WL[332.525]
+;B[ps]BL[182.712]
+;W[ol]WL[303.987]C[Vierbaum [-\]: thanks for the game
+kabradarf [2d\]: thanks
+kabradarf [2d\]: review?
+Vierbaum [-\]: yes
+])
+(;B[ql]C[kabradarf [2d\]: that way is better
+]
+(;W[pl]C[Vierbaum [-\]: dead anyways
+]
+;B[qn]
+;W[po]
+;B[sl])
+(;W[sl]
+;B[sk]
+;W[sm]
+;B[rn]
+;W[sn]
+;B[rl]
+;W[so]
+;B[po]C[Vierbaum [-\]: ok there might be aji
+kabradarf [2d\]: yeah
+Vierbaum [-\]: nice
+kabradarf [2d\]: i think semeai ok for me
+])))
+(;B[pi]C[Vierbaum [-\]: misread
+]
+;W[sh]
+;B[si]
+;W[rk]
+;B[sg]C[kabradarf [2d\]: cuz
+kabradarf [2d\]: the ko
+kabradarf [2d\]: is hard for me too
+kabradarf [2d\]: so
+kabradarf [2d\]: i think
+kabradarf [2d\]: i ll would have invade
+kabradarf [2d\]: and use the ko
+kabradarf [2d\]: during that moment
+]
+;W[hs]
+;B[rf]
+;W[gs]
+;B[se]
+;W[ob]C[Vierbaum [-\]: yea that was my thought
+]))
+(;B[cp]C[Vierbaum [-\]: yea
+kabradarf [2d\]: this is bigger
+Vierbaum [-\]: ok
+]))
+(;B[ji]C[Vierbaum [-\]: ok
+kabradarf [2d\]: that way i think
+]
+(;W[hh]
+;B[hf])
+(;W[hg]
+;B[ge]
+(;W[hs]
+;B[gi])
+(;W[hi]
+(;B[lk]
+;W[nl]
+;B[ql]C[kabradarf [2d\]: but
+kabradarf [2d\]: it looks still hard
+])
+(;B[en]
+;W[qk])))))
+(;B[mf]
+;W[ng]
+;B[ql]C[Vierbaum [-\]: ok
+kabradarf [2d\]: play that way
+kabradarf [2d\]: with black
+Vierbaum [-\]: w weaker than b now
+kabradarf [2d\]: no really
+kabradarf [2d\]: cuz
+]
+;W[oi]
+(;B[pi]
+;W[kg]C[kabradarf [2d\]: black have to live
+])
+(;B[jf]
+;W[pi]
+;B[rj]
+;W[rm]
+;B[rl]
+;W[ol]
+;B[si]
+;W[cq]C[kabradarf [2d\]: or white securit and he already enclose a lot
+kabradarf [2d\]: j14
+kabradarf [2d\]: cuttable
+kabradarf [2d\]: its ok
+kabradarf [2d\]: not won
+kabradarf [2d\]: but ok
+])))
+(;W[hq]
+;B[ph]
+;W[fr]
+;B[rd]C[Vierbaum [-\]: expected that
+]
+(;W[qd]
+;B[qc]
+;W[qe]
+;B[rc]
+;W[pe]
+;B[od]C[Vierbaum [-\]: but w in trouble
+]
+;W[of]C[Vierbaum [-\]: ok
+]
+;B[ng]
+;W[nf]
+;B[mf]
+;W[me]
+;B[ne]
+;W[mg]
+;B[lf]
+;W[og]
+;B[nh]
+;W[oh]
+;B[oi])
+(;W[rc]
+;B[qd]
+;W[sd]
+;B[qb]
+;W[qc]
+;B[pc]
+;W[rb]
+;B[sc]
+;W[sb]
+;B[pb]
+;W[ra]
+;B[qe]C[FreshTooth [2d\]: ah
+FreshTooth [2d\]: lol
+Vierbaum [-\]: lol
+FreshTooth [2d\]: um
+])))
+(;C[kabradarf [2d\]: this stone is put
+kabradarf [2d\]: and
+Vierbaum [-\]: what is the difference?
+kabradarf [2d\]: that white has something to lose there
+kabradarf [2d\]: now
+kabradarf [2d\]: letting the corner
+kabradarf [2d\]: for white
+kabradarf [2d\]: and take outside ponnuki is ok
+kabradarf [2d\]: so
+kabradarf [2d\]: black
+kabradarf [2d\]: must go for outside
+kabradarf [2d\]: no choice
+]))

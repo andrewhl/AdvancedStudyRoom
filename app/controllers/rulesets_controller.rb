@@ -19,5 +19,6 @@ class RulesetsController < ApplicationController
   def index
     @ruleset = Ruleset.all
     @canon = Ruleset.canon
+    @event_rulesets = Ruleset.event_rulesets
   end
 end

@@ -3,6 +3,7 @@
 %table.table.table-condensed.table-bordered.table-hover
   %tr
     %th Name
+    %th Type
     %th Server
     %th Ruleset
     %th OT Required?
@@ -22,20 +23,22 @@
 
   - @events.each do |event|
     %tr
-      %td= event.name
+      %td
+        = link_to event.name, event_path(event)
+      %td= event.event_type
       %td= event.server.name
       %td= event.ruleset ? event.ruleset.name : "No ruleset"
-      %td= event.overtime_required
-      %td= event.jovertime_allowed
-      %td= event.covertime_allowed
-      %td= event.jot_min_periods
-      %td= event.jot_max_periods
-      %td= event.jot_min_period_length
-      %td= event.jot_max_period_length
-      %td= event.cot_min_stones
-      %td= event.cot_max_stones
-      %td= event.handicap_default
-      %td= event.ruleset_default
-      %td= event.games_per_player
-      %td= event.games_per_opponent
+      %td= event.ruleset.overtime_required
+      %td= event.ruleset.jovertime_allowed
+      %td= event.ruleset.covertime_allowed
+      %td= event.ruleset.jot_min_periods
+      %td= event.ruleset.jot_max_periods
+      %td= event.ruleset.jot_min_period_length
+      %td= event.ruleset.jot_max_period_length
+      %td= event.ruleset.cot_min_stones
+      %td= event.ruleset.cot_max_stones
+      %td= event.ruleset.handicap_default
+      %td= event.ruleset.ruleset_default
+      %td= event.ruleset.games_per_player
+      %td= event.ruleset.games_per_opponent
       %td= link_to "Delete", event_path(event), :method => :delete
