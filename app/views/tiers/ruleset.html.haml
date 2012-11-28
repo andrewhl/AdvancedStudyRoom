@@ -1,0 +1,16 @@
+%h1 Rulesets
+
+
+
+= form_for @ruleset, :url => {:action => :create_ruleset}, :html => {:class => "form-horizontal"} do |f|
+  .control-group
+    %label.control-label
+      Name
+    .controls
+      = f.text_field :name
+      = f.hidden_field(:canonical, :value => true)
+
+  .actions
+    = f.submit "Submit"
+
+= render "shared/ruleset_legend"

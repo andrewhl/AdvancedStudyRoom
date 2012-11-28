@@ -11,8 +11,7 @@ class EventsController < ApplicationController
     event_params = params[:event].dup
     event_params.delete("event_ruleset")
     @event = Event.create(event_params)
-    @event_ruleset = @event.build_event_ruleset(params[:event][:event_ruleset])
-    @event_ruleset.save
+    @event_ruleset = @event.create_event_ruleset(params[:event][:event_ruleset])
     redirect_to :new_event, :notice => "Your event has been successfully created."
   end
 
@@ -33,4 +32,9 @@ class EventsController < ApplicationController
     @division = Division.new
     @divisions = @tier.divisions
   end
+
+  def leagues
+    @leagues = Event.leagues
+  end
+
 end

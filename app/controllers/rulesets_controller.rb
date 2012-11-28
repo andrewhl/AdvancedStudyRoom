@@ -20,5 +20,7 @@ class RulesetsController < ApplicationController
     @ruleset = Ruleset.all
     @canon = Ruleset.canon
     @event_rulesets = Ruleset.event_rulesets
+    @tier_rulesets = Ruleset.tier_rulesets
+    @division_rulesets = Ruleset.division_rulesets
   end
 end

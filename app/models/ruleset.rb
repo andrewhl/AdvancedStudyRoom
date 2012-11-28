@@ -76,6 +76,8 @@ class Ruleset < ActiveRecord::Base
 
   scope :canon, where(:canonical => true)
   scope :event_rulesets, where(:type => "EventRuleset")
+  scope :tier_rulesets, where(:type => "TierRuleset")
+  scope :division_rulesets, where(:type => "DivisionRuleset")
 
   def validate_game game
 

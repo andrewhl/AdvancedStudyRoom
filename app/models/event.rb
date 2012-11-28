@@ -41,6 +41,9 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :tiers, allow_destroy: true
   accepts_nested_attributes_for :event_ruleset, allow_destroy: true
 
+  scope :leagues, where(:event_type => "League")
+  scope :tournaments, where(:event_type => "Tournament")
+
   def validate_game game
 
     # binding.pry

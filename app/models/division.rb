@@ -15,9 +15,25 @@
 #
 
 class Division < ActiveRecord::Base
-  attr_accessible :month, :division_index, :minimum_players, :maximum_players, :current_players, :safe_position, :promoted_players, :demoted_players
+  attr_accessible :month,
+                  :division_index,
+                  :minimum_players,
+                  :maximum_players,
+                  :current_players,
+                  :safe_position,
+                  :promoted_players,
+                  :demoted_players,
+                  :division_ruleset,
+                  :division_ruleset_attributes
 
   has_many :division_players
   has_one :division_ruleset, :dependent => :destroy
   belongs_to :tier
+
+  accepts_nested_attributes_for :division_ruleset, allow_destroy: true
+
+  def ruleset?
+    !division_ruleset.nil?
+  end
+
 end

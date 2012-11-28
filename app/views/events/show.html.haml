@@ -9,6 +9,8 @@
     %tr
       %th Name
       %th Position
+      %th Ruleset
+      %th Edit
       %th Delete
 
     - @event.tiers.ranked.each do |tier|
@@ -17,7 +19,15 @@
           = tier.name
         %td
           = tier.tier_hierarchy_position
-        %td= link_to "Delete", event_tier_path(@event, tier), :method => :delete
+        %td
+          - if !tier.ruleset?
+            Edit Override Ruleset
+          - else
+            Edit Override Ruleset
+        %td
+          = link_to "Edit", edit_tier_path(tier)
+        %td
+          = link_to "Delete", event_tier_path(@event, tier), :method => :delete
 
 %h4 Create Tiers
 = form_for [@event, @tier], :html => {:class => "form-horizontal"} do |f|
@@ -38,28 +48,44 @@
       Tier Hierarchy Position
     .controls
       = f.number_field :tier_hierarchy_position
-      = f.submit :submit
 
+  .accordion#accordion1
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{:data => {:toggle => "collapse", :parent => "#accordion1"}, :href => "#collapseOne"}
+          Create Override Ruleset (Optional)
+      .accordion-body.collapse#collapseOne
+        .accordion-inner
+          = f.fields_for(@tier.build_tier_ruleset) do |b|
+
+            = render "ruleset_fields", :b => b
+
+  = f.submit :submit
 
 
 %h3 Divisions by Tier
 - @event.tiers.ranked.each do |tier|
-  %table.table.table-condensed.table-bordered.table-hover
+  %table.table.table-condensed.table-bordered
     %tr
       %th
         Tier
         = tier.name
         Divisions
+      %th
+        Edit
     - if tier.divisions.empty?
       %tr
-        %td This tier has no divisions. Please create them.
+        %td{:colspan => 2}
+          This tier has no divisions. Please create them.
     - else
       - tier.divisions.each do |division|
         %tr
           %td
             = tier.name + " " + division.division_index.to_s
+          %td
+            = link_to "Edit", edit_division_path(division)
     %tr
-      %td
+      %td{:colspan => 2}
         %h4 Create Divisions
         = form_for [tier, @division], :html => {:class => "form-horizontal"} do |f|
 
@@ -68,6 +94,17 @@
               Division Numeral (e.g., 1)
             .controls
               = f.number_field :division_index
-              = f.submit :submit
+
+          .accordion{:id => "accordion#{tier.id}"}
+            .accordion-group
+              .accordion-heading
+                %a.accordion-toggle{:data => {:toggle => "collapse", :parent => "#accordion#{tier.id}"}, :href => "#collapse#{tier.id}"}
+                  Create Override Ruleset (Optional)
+              .accordion-body.collapse{:id => "collapse#{tier.id}"}
+                .accordion-inner
+                  = f.fields_for(@division.build_division_ruleset) do |b|
+
+                    = render "ruleset_fields", :b => b
+          = f.submit :submit
 
 

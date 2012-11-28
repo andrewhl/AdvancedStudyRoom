@@ -4,9 +4,9 @@
       %li{:class => ((params[:action] == 'new') and (params[:controller] == 'accounts')) ? 'active' : ''}
         = link_to "Register Accounts", new_account_path
     %li
-      %a Tournaments
+      = link_to "Tournaments", tournaments_path
     %li
-      %a Leagues
+      = link_to "Leagues", leagues_path
     %li
       %a Points
     %li

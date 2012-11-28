@@ -3,6 +3,8 @@
     Name
   .controls
     = b.text_field :name
+    %a.btn{:rel => "popover", :data => {:title => "Name", :placement => "bottom", :content => "Name of ruleset"}}
+      %i.icon-info-sign
 
 .control-group
 
@@ -10,19 +12,39 @@
     Main Time Min
   .controls
     = b.number_field(:main_time_min)
+    %a.btn{:rel => "popover", :data => {:title => "Main Time Min", :placement => "bottom", :content => "This is the minimum amount of main game time, in seconds permitted (before byo-yomi). So ten minutes is 60 x 10 = 600."}}
+      %i.icon-info-sign
   %label.control-label
     Main Time Max
   .controls
     = b.number_field(:main_time_max)
+    %a.btn{:rel => "popover", :data => {:title => "Main Time Min", :placement => "bottom", :content => "This is the maximum amount of main game time, in seconds."}}
+      %i.icon-info-sign
 
 .control-group
+
+  %label.control-label
+    %a.btn{:rel => "popover", :data => {:title => "Overtime Required", :placement => "bottom", :content => "False if absolute time games are permitted, true if they are not."}}
+      %i.icon-info-sign
   .controls
     %label.checkbox
       Overtime Required
       = b.check_box :overtime_required
+
+.control-group
+  %label.control-label
+    %a.btn{:rel => "popover", :data => {:title => "J Overtime Allowed", :placement => "bottom", :content => "Games using Japanese overtime settings (byo-yomi) will be permitted."}}
+      %i.icon-info-sign
+  .controls
     %label.checkbox
       J Overtime Allowed
       = b.check_box :jovertime_allowed
+
+.control-group
+  %label.control-label
+    %a.btn{:rel => "popover", :data => {:title => "C Overtime Allowed", :placement => "bottom", :content => "Games using Canadian overtime settings (e.g., 3 minutes overtime period with 25 stones to be played) will be permitted."}}
+      %i.icon-info-sign
+  .controls
     %label.checkbox
       C Overtime Allowed
       = b.check_box :covertime_allowed
@@ -32,41 +54,59 @@
     J OT Min Periods
   .controls
     = b.number_field(:jot_min_periods)
+    %a.btn{:rel => "popover", :data => {:title => "J OT Min Periods", :placement => "right", :content => "The minimum number of Japanese overtime periods allowed. For example, 1 period with n number of stones. It does not control the stones per period."}}
+      %i.icon-info-sign
   %label.control-label
     J OT Max Periods
   .controls
     = b.number_field(:jot_max_periods)
+    %a.btn{:rel => "popover", :data => {:title => "J OT Min Periods", :placement => "right", :content => "The maximum number of Japanese overtime periods allowed."}}
+      %i.icon-info-sign
 
 .control-group
   %label.control-label
     J OT Min Period Length
   .controls
     = b.number_field(:jot_min_period_length)
+    %a.btn{:rel => "popover", :data => {:title => "J OT Min Period Length", :placement => "right", :content => "This is the Japanese overtime minimum period length, in seconds. In other words, this is the number of seconds a player has to make a move, or lose a period."}}
+      %i.icon-info-sign
   %label.control-label
     J OT Max Period Length
   .controls
     = b.number_field(:jot_max_period_length)
+    %a.btn{:rel => "popover", :data => {:title => "J OT Max Period Length", :placement => "right", :content => "This is the maximum Japanese overtime period length, in seconds."}}
+      %i.icon-info-sign
 
 .control-group
   %label.control-label
     C OT Min Stones
   .controls
     = b.number_field(:cot_min_stones)
+    %a.btn{:rel => "popover", :data => {:title => "C OT Min Stones", :placement => "right", :content => "This controls the Canadian overtime minimum number of stones per overtime period. Canadian overtime is seconds/stones: so this controls the number of stones that must be played in n seconds."}}
+      %i.icon-info-sign
   %label.control-label
     C OT Max Stones
   .controls
     = b.number_field(:cot_max_stones)
+    %a.btn{:rel => "popover", :data => {:title => "C OT Max Stones", :placement => "right", :content => "This controls Canadian overtime maximum number of stones that must be played in the overtime period."}}
+      %i.icon-info-sign
 
 .control-group
   %label.control-label
     Handicap Default
   .controls
     = b.number_field(:handicap_default)
+    %a.btn{:rel => "popover", :data => {:title => "Handicap Default", :placement => "top", :content => "This sets a default handicap requirement for the league. 0 is recommended."}}
+      %i.icon-info-sign
   %label.control-label
     Games Per Player
   .controls
     = b.number_field(:games_per_player)
+    %a.btn{:rel => "popover", :data => {:title => "Games Per Player", :placement => "top", :content => "This is the number of games a player must play in order to advance."}}
+      %i.icon-info-sign
   %label.control-label
     Games Per Opponent
   .controls
     = b.number_field(:games_per_opponent)
+    %a.btn{:rel => "popover", :data => {:title => "Games Per Opponent", :placement => "top", :content => "This is the number of games a player is permitted to play per month against a single opponent."}}
+      %i.icon-info-sign

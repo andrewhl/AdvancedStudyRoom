@@ -3,9 +3,11 @@
 %table.table.table-condensed.table-bordered.table-hover
   %tr
     %th Phrase
+    %th Edit
     %th Delete
 
   - @tags.each do |tag|
     %tr
       %td= tag.phrase
+      %td= link_to "Edit", edit_tag_path(tag)
       %td= link_to "Delete", tag_path(tag), :method => :delete
