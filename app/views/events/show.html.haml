@@ -23,7 +23,7 @@
           - if !tier.ruleset?
             Edit Override Ruleset
           - else
-            Edit Override Ruleset
+            = link_to "Edit Override Ruleset", edit_tier_tier_ruleset_path(tier.tier_ruleset.id)
         %td
           = link_to "Edit", edit_tier_path(tier)
         %td

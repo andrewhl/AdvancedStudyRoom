@@ -46,6 +46,10 @@ class Tier < ActiveRecord::Base
 
   accepts_nested_attributes_for :tier_ruleset, allow_destroy: true
 
+  def ruleset
+    tier_ruleset
+  end
+
   def ruleset?
     !tier_ruleset.nil?
   end

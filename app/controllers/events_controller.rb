@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  add_breadcrumb "New Event", "/events/new", only: [:new, :create]
+
   def new
     @event = Event.new
     @rulesets = Ruleset.canon

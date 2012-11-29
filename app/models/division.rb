@@ -32,6 +32,10 @@ class Division < ActiveRecord::Base
 
   accepts_nested_attributes_for :division_ruleset, allow_destroy: true
 
+  def ruleset
+    division_ruleset
+  end
+
   def ruleset?
     !division_ruleset.nil?
   end
