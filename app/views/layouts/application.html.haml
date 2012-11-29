@@ -16,7 +16,6 @@
         .hero-unit
           %h1
             = yield(:title)
-        = render_breadcrumbs
         = render :partial => "shared/flash_messages", :locals => {:flash => flash}
         .row-fluid
           = yield
