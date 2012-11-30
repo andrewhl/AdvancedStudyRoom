@@ -3,5 +3,6 @@
   = @tier_ruleset.tier.name
   Tier Ruleset
 
-= form_for @tier_ruleset do |f|
+= form_for @tier_ruleset, :html => {:class => "form-horizontal"}, :action => "tier_rulesets#update" do |f|
   = render "events/ruleset_fields", :b => f
+  = f.submit "Update"

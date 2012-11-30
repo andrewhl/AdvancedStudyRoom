@@ -1,0 +1,13 @@
+%h1= @user.email
+
+%h2 My accounts:
+%table.table.table-condensed.table-hover.table-bordered
+  %tr
+    %th Account Handle
+    %th Server
+    %th Registered Event
+  - @accounts.each do |account|
+    %tr
+      %td= account.handle
+      %td= account.server.name
+      %td= account.event ? account.event : "None"

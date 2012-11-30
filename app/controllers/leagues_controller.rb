@@ -11,13 +11,13 @@ class LeaguesController < ApplicationController
     # render show page
 
     @league = League.create(params[:league])
-    redirect_to :new_league, :notice => "Your league has been successfully created."
+    redirect_to :new_league, :flash => {:success => "Your league has been successfully created."}
   end
 
   def destroy
     league = League.find(params[:id])
     league.destroy
-    redirect_to :leagues, :notice => "The league has been deleted."
+    redirect_to :leagues, :flash => {:success => "The league has been deleted."}
   end
 
   def index

@@ -9,12 +9,12 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.create(params[:tag])
     # binding.pry
-    redirect_to :new_tag, :notice => "Your tag has been successfully created."
+    redirect_to :new_tag, :flash => {:success => "Your tag has been successfully created."}
   end
 
   def destroy
     @tag.destroy
-    redirect_to :tag, :notice => "The tag has been deleted."
+    redirect_to :tag, :flash => {:success => "The tag has been deleted."}
   end
 
   def index
@@ -26,7 +26,7 @@ class TagsController < ApplicationController
 
   def update
     @tag.update_attributes(params[:tag])
-    redirect_to :tags, :notice => "The tag '#{@tag.phrase}' has been updated."
+    redirect_to :tags, :flash => {:success => "The tag '#{@tag.phrase}' has been updated."}
   end
 
   private

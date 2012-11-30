@@ -1,0 +1,16 @@
+%ul.breadcrumb
+  %li
+    = link_to "Home", :root
+    %span.divider= "/"
+  %li
+    = link_to "Events", events_path
+    %span.divider= "/"
+  %li
+    = link_to "#{@division.tier.event.name}", @division.tier.event
+    %span.divider= "/"
+  %li.active
+    = @division.tier.name + " " + @division.division_index.to_s
+
+%h1 Edit Division
+
+= render "form"

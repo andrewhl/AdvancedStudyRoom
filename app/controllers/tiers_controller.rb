@@ -28,7 +28,7 @@ class TiersController < ApplicationController
   def destroy
     @tier.destroy
 
-    redirect_to event_path(@event.id), :notice => "The tier has been deleted."
+    redirect_to event_path(@event.id), :flash => {:success => "The tier has been deleted."}
   end
 
   def index
@@ -40,7 +40,7 @@ class TiersController < ApplicationController
 
   def update
     @tier.update_attributes(params[:tier])
-    redirect_to @tier.event, :notice => "The tier has been updated."
+    redirect_to @tier.event, :flash => {:success => "The tier has been updated."}
   end
 
   def ruleset
@@ -51,7 +51,7 @@ class TiersController < ApplicationController
   def create_ruleset
     @tier = Tier.find(params[:tier_id])
     @ruleset = @tier.build_tier_ruleset(params[:tier_ruleset])
-    redirect_to @tier.event, :notice => "Your override ruleset has been created."
+    redirect_to @tier.event, :flash => {:success => "Your override ruleset has been created."}
   end
 
   private

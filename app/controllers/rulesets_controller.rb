@@ -7,13 +7,13 @@ class RulesetsController < ApplicationController
   def create
     @ruleset = Ruleset.create(params[:ruleset])
     # binding.pry
-    redirect_to :new_ruleset, :notice => "Your ruleset has been successfully created."
+    redirect_to :new_ruleset, :flash => {:success => "Your ruleset has been successfully created."}
   end
 
   def destroy
     ruleset = Ruleset.find(params[:id])
     ruleset.destroy
-    redirect_to :ruleset, :notice => "The ruleset has been deleted."
+    redirect_to rulesets_path, :flash => {:success => "The ruleset has been deleted."}
   end
 
   def index
