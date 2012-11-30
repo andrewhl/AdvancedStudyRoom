@@ -1,3 +1,14 @@
+%ul.breadcrumb
+  %li
+    = link_to "Home", :root
+    %span.divider= "/"
+  %li
+    = link_to "Events", events_path
+    %span.divider= "/"
+  %li.active
+    = @event.name
+
+
 %h1= @event.name
 
 - if @event.tiers.empty?
@@ -10,8 +21,8 @@
       %th Name
       %th Position
       %th Ruleset
-      %th Edit
-      %th Delete
+      %th Tier Settings
+      %th Delete Tier
 
     - @event.tiers.ranked.each do |tier|
       %tr
@@ -23,7 +34,7 @@
           - if !tier.ruleset?
             Edit Override Ruleset
           - else
-            = link_to "Edit Override Ruleset", edit_tier_tier_ruleset_path(tier.tier_ruleset.id)
+            = link_to "Edit Override Ruleset", edit_tier_ruleset_path(tier.ruleset)
         %td
           = link_to "Edit", edit_tier_path(tier)
         %td
@@ -73,9 +84,11 @@
         Divisions
       %th
         Edit
+      %th
+        Delete
     - if tier.divisions.empty?
       %tr
-        %td{:colspan => 2}
+        %td{:colspan => 3}
           This tier has no divisions. Please create them.
     - else
       - tier.divisions.each do |division|
@@ -84,16 +97,14 @@
             = tier.name + " " + division.division_index.to_s
           %td
             = link_to "Edit", edit_division_path(division)
+          %td
+            = link_to "Delete", division_path(division), :method => :delete
     %tr
-      %td{:colspan => 2}
-        %h4 Create Divisions
+      %td{:colspan => 3}
+        %h4 Create Division
         = form_for [tier, @division], :html => {:class => "form-horizontal"} do |f|
 
-          .control-group
-            %label.control-label
-              Division Numeral (e.g., 1)
-            .controls
-              = f.number_field :division_index
+          = render "division_fields", :f => f
 
           .accordion{:id => "accordion#{tier.id}"}
             .accordion-group

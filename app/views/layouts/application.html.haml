@@ -13,9 +13,8 @@
       .span2
         = render :partial => "shared/navigation_sidebar"
       .span10
-        .hero-unit
-          %h1
-            = yield(:title)
+        %h1
+          = yield(:title)
         = render :partial => "shared/flash_messages", :locals => {:flash => flash}
         .row-fluid
           = yield

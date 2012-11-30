@@ -1,16 +1,21 @@
 .well.sidebar-nav
   %ul.nav.nav-list
+    %li
+      = nav_link 'Home', root_path
     - if current_user
+      %li.nav-header Your Pages
       %li{:class => ((params[:action] == 'new') and (params[:controller] == 'accounts')) ? 'active' : ''}
         = link_to "Register Accounts", new_account_path
+      %li
+        = link_to "My Profile", user_path(current_user)
+    %li.nav-header Other Pages
+
     %li
       = link_to "Tournaments", tournaments_path
     %li
       = link_to "Leagues", leagues_path
     %li
-      %a Points
-    %li
-      %a My Profile
+      %a Leader Board
     %li.nav-header Admin Pages
     %li
       = link_to "Define Rulesets", new_ruleset_path
@@ -24,10 +29,3 @@
       = link_to "Create Tags", new_tag_path
     %li
       = link_to "Manage Tags", tags_path
-    %li.nav-header Static Pages
-    %li
-      %a Link
-    %li
-      %a Link
-    %li
-      %a Link

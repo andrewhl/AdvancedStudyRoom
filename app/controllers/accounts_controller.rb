@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
     }
     current_user.accounts.create handle_params
 
-    redirect_to root_path, :notice => "Success"
+    redirect_to root_path, :flash => {:success => "Success"}
   end
 
   def destroy

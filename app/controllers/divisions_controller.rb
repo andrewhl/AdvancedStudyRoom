@@ -13,17 +13,31 @@ class DivisionsController < ApplicationController
     @division_ruleset = @division.create_division_ruleset(params[:division][:division_ruleset])
 
     # binding.pry
-    redirect_to event_path(@event.id), :notice => "Your division has been successfully created."
+    redirect_to event_path(@event.id), :flash => {:success => "Your division has been successfully created."}
   end
 
   def destroy
+    # binding.pry
     division = Division.find(params[:id])
+    event = division.tier.event
     division.destroy
-    redirect_to :divisions, :notice => "The division has been deleted."
+    redirect_to event, :flash => {:success => "The division has been deleted."}
   end
 
   def index
     @divisions = Division.all
   end
+
+  def edit
+    @division = Division.find(params[:id])
+  end
+
+  def update
+    @division = Division.find(params[:id])
+    @division.update_attributes(params[:division])
+    @event = @division.tier.event
+    redirect_to @event, :flash => {:success => "Division updated."}
+  end
+
 
 end

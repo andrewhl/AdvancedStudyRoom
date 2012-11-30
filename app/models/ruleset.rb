@@ -79,6 +79,15 @@ class Ruleset < ActiveRecord::Base
   scope :tier_rulesets, where(:type => "TierRuleset")
   scope :division_rulesets, where(:type => "DivisionRuleset")
 
+  def destroy
+    events = self.events
+    events.each do |event|
+      event.ruleset_id = nil
+      event.save
+    end
+    super
+  end
+
   def validate_game game
 
     # game is a Match object

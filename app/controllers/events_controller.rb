@@ -1,7 +1,5 @@
 class EventsController < ApplicationController
 
-  add_breadcrumb "New Event", "/events/new", only: [:new, :create]
-
   def new
     @event = Event.new
     @rulesets = Ruleset.canon
@@ -14,13 +12,13 @@ class EventsController < ApplicationController
     event_params.delete("event_ruleset")
     @event = Event.create(event_params)
     @event_ruleset = @event.create_event_ruleset(params[:event][:event_ruleset])
-    redirect_to :new_event, :notice => "Your event has been successfully created."
+    redirect_to :new_event, :flash => {:success => "Your event has been successfully created."}
   end
 
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    redirect_to :events, :notice => "The event has been deleted."
+    redirect_to :events, :flash => {:success => "The event has been deleted."}
   end
 
   def index
