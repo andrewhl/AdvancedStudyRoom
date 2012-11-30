@@ -3,5 +3,6 @@
 - if @leagues.empty?
   %p Sorry, there are currently no leagues.
 - else
+  - binding.pry
   - @leagues.each do |league|
     %h2= league.name

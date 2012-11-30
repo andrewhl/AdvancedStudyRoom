@@ -13,9 +13,16 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'test', to: 'pages#test'
 
-  resources :pages, :users, :sessions, :accounts, :event_types, :events, :divisions
+  resources :pages,
+            :users,
+            :sessions,
+            :accounts,
+            :event_types,
+            :events,
+            :divisions,
+            :rulesets
 
-  resources :leagues do
+  resources :events do
     resources :tiers
   end
   resources :tiers do
