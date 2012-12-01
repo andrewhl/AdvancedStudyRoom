@@ -8,8 +8,11 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.create(params[:tag])
-    binding.pry
-    redirect_to :new_tag, :flash => {:success => "Your tag has been successfully created."}
+    if @tag.errors
+      render 'new'
+    else
+      redirect_to :new_tag, :flash => {:success => "Your tag has been successfully created."}
+    end
   end
 
   def destroy
@@ -35,3 +38,4 @@ class TagsController < ApplicationController
       @tag = Tag.find(params[:id])
     end
 end
+
