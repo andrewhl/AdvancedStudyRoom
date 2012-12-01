@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122195148) do
+ActiveRecord::Schema.define(:version => 20121201214419) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -91,6 +91,37 @@ ActiveRecord::Schema.define(:version => 20121122195148) do
   add_index "divisions", ["division_index"], :name => "index_divisions_on_division_index"
   add_index "divisions", ["tier_id"], :name => "index_divisions_on_tier_id"
 
+  create_table "event_types", :force => true do |t|
+    t.string   "name"
+    t.boolean  "allowed_rengo"
+    t.boolean  "allowed_teaching"
+    t.boolean  "allowed_review"
+    t.boolean  "allowed_free"
+    t.boolean  "allowed_rated"
+    t.boolean  "allowed_simul"
+    t.boolean  "allowed_demonstration"
+    t.string   "tag_text"
+    t.float    "main_time_min"
+    t.float    "main_time_max"
+    t.boolean  "overtime_required"
+    t.boolean  "jovertime_allowed"
+    t.boolean  "covertime_allowed"
+    t.integer  "jot_min_periods"
+    t.integer  "jot_max_periods"
+    t.float    "jot_min_period_length"
+    t.float    "jot_max_period_length"
+    t.integer  "cot_min_stones"
+    t.integer  "cot_max_stones"
+    t.float    "cot_max_time"
+    t.float    "cot_min_time"
+    t.float    "handicap_default"
+    t.integer  "ruleset_default"
+    t.integer  "games_per_player"
+    t.integer  "games_per_opponent"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.integer  "ruleset_id"
     t.string   "name"
@@ -165,6 +196,20 @@ ActiveRecord::Schema.define(:version => 20121122195148) do
   add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
   add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
 
+  create_table "points", :force => true do |t|
+    t.integer  "count"
+    t.integer  "account_id"
+    t.integer  "event_id"
+    t.string   "event_desc"
+    t.string   "event_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "points", ["account_id"], :name => "index_points_on_account_id"
+  add_index "points", ["event_id"], :name => "index_points_on_event_id"
+  add_index "points", ["event_type"], :name => "index_points_on_event_type"
+
   create_table "rulesets", :force => true do |t|
     t.string   "name"
     t.boolean  "allowed_rengo"
@@ -196,11 +241,13 @@ ActiveRecord::Schema.define(:version => 20121122195148) do
     t.string   "type"
     t.integer  "division_id"
     t.integer  "tier_id"
+    t.integer  "event_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
   add_index "rulesets", ["division_id"], :name => "index_rulesets_on_division_id"
+  add_index "rulesets", ["event_id"], :name => "index_rulesets_on_event_id"
   add_index "rulesets", ["tier_id"], :name => "index_rulesets_on_tier_id"
 
   create_table "servers", :force => true do |t|

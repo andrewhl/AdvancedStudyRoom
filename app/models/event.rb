@@ -37,6 +37,7 @@ class Event < ActiveRecord::Base
   has_many :tiers, dependent: :destroy
   has_many :tags
   has_many :tiers
+  has_many :points
 
   accepts_nested_attributes_for :tiers, allow_destroy: true
   accepts_nested_attributes_for :event_ruleset, allow_destroy: true

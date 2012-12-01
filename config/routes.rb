@@ -12,21 +12,26 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'test', to: 'pages#test'
+  get 'leagues', to: 'events#leagues'
+  get 'tournaments', to: 'events#tournaments'
 
   resources :pages,
             :users,
             :sessions,
             :accounts,
-            :event_types,
+            :rulesets,
             :events,
             :divisions,
-            :rulesets
+            :tags,
+            :tier_rulesets
 
   resources :events do
     resources :tiers
   end
   resources :tiers do
     resources :divisions
+    get 'ruleset', to: 'tiers#ruleset'
+    get 'create_ruleset', to: 'tiers#create_ruleset'
   end
 
 

@@ -12,7 +12,10 @@
 #
 
 class DivisionPlayer < ActiveRecord::Base
-  attr_accessible :division_id, :account_id, :points, :status
+  attr_accessible :division_id,
+                  :account_id,
+                  :points,
+                  :status
 
   belongs_to :division
   belongs_to :account

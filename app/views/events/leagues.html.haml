@@ -3,6 +3,11 @@
 - if @leagues.empty?
   %p Sorry, there are currently no leagues.
 - else
-  - binding.pry
-  - @leagues.each do |league|
-    %h2= league.name
+  %table.table.table-condensed.table-bordered.table-hover
+    %tr
+      %th Name
+      %th Participants
+    - @leagues.each do |league|
+      %tr
+        %td= league.name
+        %td= league.accounts

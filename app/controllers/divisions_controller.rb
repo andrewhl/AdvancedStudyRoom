@@ -39,5 +39,4 @@ class DivisionsController < ApplicationController
     redirect_to @event, :flash => {:success => "Division updated."}
   end
 
-
 end
