@@ -10,11 +10,10 @@
 #  updated_at :datetime         not null
 #
 
-class Tag < ActiveRecord::Base
-  attr_accessible :phrase, :league_id, :event_id
+require 'test_helper'
 
-  belongs_to :league
-  belongs_to :event
-
-  validates_uniqueness_of :phrase
+class TagTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

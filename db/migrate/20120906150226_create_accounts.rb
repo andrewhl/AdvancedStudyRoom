@@ -3,7 +3,7 @@ class CreateAccounts < ActiveRecord::Migration
     create_table :accounts do |t|
       t.integer  :user_id
       t.integer  :server_id
-      t.integer  :league_id
+      t.integer  :event_id
       t.string   :handle
       t.integer  :league_tier
       t.integer  :league_active
@@ -15,6 +15,6 @@ class CreateAccounts < ActiveRecord::Migration
 
     add_index :accounts, :user_id
     add_index :accounts, :server_id
-    add_index :accounts, :league_id
+    add_index :accounts, :event_id
   end
 end

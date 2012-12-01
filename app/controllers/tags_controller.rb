@@ -8,7 +8,7 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.create(params[:tag])
-    # binding.pry
+    binding.pry
     redirect_to :new_tag, :flash => {:success => "Your tag has been successfully created."}
   end
 
