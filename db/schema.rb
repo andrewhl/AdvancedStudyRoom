@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20121201214419) do
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "server_id"
-    t.integer  "league_id"
+    t.integer  "event_id"
     t.string   "handle"
     t.integer  "league_tier"
     t.integer  "league_active"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20121201214419) do
     t.datetime "updated_at",    :null => false
   end
 
-  add_index "accounts", ["league_id"], :name => "index_accounts_on_league_id"
+  add_index "accounts", ["event_id"], :name => "index_accounts_on_event_id"
   add_index "accounts", ["server_id"], :name => "index_accounts_on_server_id"
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
 
@@ -90,37 +90,6 @@ ActiveRecord::Schema.define(:version => 20121201214419) do
 
   add_index "divisions", ["division_index"], :name => "index_divisions_on_division_index"
   add_index "divisions", ["tier_id"], :name => "index_divisions_on_tier_id"
-
-  create_table "event_types", :force => true do |t|
-    t.string   "name"
-    t.boolean  "allowed_rengo"
-    t.boolean  "allowed_teaching"
-    t.boolean  "allowed_review"
-    t.boolean  "allowed_free"
-    t.boolean  "allowed_rated"
-    t.boolean  "allowed_simul"
-    t.boolean  "allowed_demonstration"
-    t.string   "tag_text"
-    t.float    "main_time_min"
-    t.float    "main_time_max"
-    t.boolean  "overtime_required"
-    t.boolean  "jovertime_allowed"
-    t.boolean  "covertime_allowed"
-    t.integer  "jot_min_periods"
-    t.integer  "jot_max_periods"
-    t.float    "jot_min_period_length"
-    t.float    "jot_max_period_length"
-    t.integer  "cot_min_stones"
-    t.integer  "cot_max_stones"
-    t.float    "cot_max_time"
-    t.float    "cot_min_time"
-    t.float    "handicap_default"
-    t.integer  "ruleset_default"
-    t.integer  "games_per_player"
-    t.integer  "games_per_opponent"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-  end
 
   create_table "events", :force => true do |t|
     t.integer  "ruleset_id"
@@ -196,7 +165,6 @@ ActiveRecord::Schema.define(:version => 20121201214419) do
     t.boolean  "allowed_rated"
     t.boolean  "allowed_simul"
     t.boolean  "allowed_demonstration"
-    t.string   "tag_text"
     t.float    "main_time_min"
     t.float    "main_time_max"
     t.boolean  "overtime_required"

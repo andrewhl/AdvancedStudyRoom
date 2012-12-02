@@ -9,7 +9,6 @@ class CreateRulesets < ActiveRecord::Migration
       t.boolean  :allowed_rated
       t.boolean  :allowed_simul
       t.boolean  :allowed_demonstration
-      t.string   :tag_text
       t.float    :main_time_min
       t.float    :main_time_max
       t.boolean  :overtime_required

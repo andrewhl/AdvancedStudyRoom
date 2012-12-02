@@ -8,8 +8,11 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.create(params[:tag])
-    if @tag.errors
-      render 'new'
+    @events = Event.all
+    @event = Event.find(params[:tag][:event_id])
+
+    if @tag.errors.any?
+      render 'new', :flash => {:error => "Your tag has not been created."}
     else
       redirect_to :new_tag, :flash => {:success => "Your tag has been successfully created."}
     end

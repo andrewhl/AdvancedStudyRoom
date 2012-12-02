@@ -50,6 +50,8 @@ class Ruleset < ActiveRecord::Base
                   :allowed_teaching,
                   :cot_max_stones,
                   :cot_min_stones,
+                  :cot_max_time,
+                  :cot_min_time,
                   :covertime_allowed,
                   :games_per_opponent,
                   :games_per_player,
