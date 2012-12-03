@@ -11,6 +11,7 @@ class EventsController < ApplicationController
     event_params = params[:event].dup
     event_params.delete("event_ruleset")
     @event = Event.create(event_params)
+
     @event_ruleset = @event.create_event_ruleset(params[:event][:event_ruleset])
     redirect_to :new_event, :flash => {:success => "Your event has been successfully created."}
   end
@@ -26,6 +27,14 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
+    @tier = Tier.new
+    @tiers = @event.tiers
+    @division = Division.new
+    @divisions = @tier.divisions
+  end
+
+  def manage
     @event = Event.find(params[:id])
     @tier = Tier.new
     @tiers = @event.tiers

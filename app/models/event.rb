@@ -50,12 +50,12 @@ class Event < ActiveRecord::Base
   scope :leagues, where(:event_type => "League")
   scope :tournaments, where(:event_type => "Tournament")
 
-  def ruleset
-    event_ruleset
+  def ruleset?
+    !ruleset.nil? or !event_ruleset.nil?
   end
 
-  def ruleset?
-    !event_ruleset.nil?
+  def player_count
+    tiers.map { |tier| tier.player_count }.inject(&:+)
   end
 
   def validate_game game

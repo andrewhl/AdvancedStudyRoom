@@ -14,13 +14,13 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'test', to: 'pages#test'
   get 'leagues', to: 'events#leagues'
   get 'tournaments', to: 'events#tournaments'
+  get '/events/manage/:id(.:format)', to: 'events#manage', as: 'event_manage'
 
   resources :pages,
             :users,
             :sessions,
             :accounts,
             :rulesets,
-            :events,
             :divisions,
             :tags,
             :tier_rulesets

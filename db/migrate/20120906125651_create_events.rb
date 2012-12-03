@@ -10,6 +10,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer  :ruleset_default
       t.integer  :league_id
       t.integer  :server_id
+      t.boolean  :locked
 
       t.timestamps
     end

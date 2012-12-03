@@ -11,7 +11,6 @@
 #  allowed_rated         :boolean
 #  allowed_simul         :boolean
 #  allowed_demonstration :boolean
-#  tag_text              :string(255)
 #  main_time_min         :float
 #  main_time_max         :float
 #  overtime_required     :boolean

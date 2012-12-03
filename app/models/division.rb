@@ -26,7 +26,7 @@ class Division < ActiveRecord::Base
                   :division_ruleset,
                   :division_ruleset_attributes
 
-  has_many :division_players
+  has_many :accounts
   has_one :division_ruleset, :dependent => :destroy
   belongs_to :tier
 

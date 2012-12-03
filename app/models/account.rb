@@ -31,6 +31,7 @@ class Account < ActiveRecord::Base
   belongs_to :server
   belongs_to :user
   belongs_to :league
+  belongs_to :division
 
   def event_points *event_id
     if event_id

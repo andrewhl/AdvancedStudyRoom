@@ -9,6 +9,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer  :league_active
       t.integer  :rank
       t.integer  :status
+      t.integer  :division_id
 
       t.timestamps
     end
@@ -16,5 +17,6 @@ class CreateAccounts < ActiveRecord::Migration
     add_index :accounts, :user_id
     add_index :accounts, :server_id
     add_index :accounts, :event_id
+    add_index :accounts, :division_id
   end
 end

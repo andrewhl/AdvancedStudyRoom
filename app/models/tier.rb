@@ -53,5 +53,9 @@ class Tier < ActiveRecord::Base
   def ruleset?
     !tier_ruleset.nil?
   end
+
+  def player_count
+    divisions.map { |div| div.accounts.count }.inject(&:+)
+  end
 end
 

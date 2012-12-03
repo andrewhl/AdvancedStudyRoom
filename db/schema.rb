@@ -22,10 +22,12 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.integer  "league_active"
     t.integer  "rank"
     t.integer  "status"
+    t.integer  "division_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
+  add_index "accounts", ["division_id"], :name => "index_accounts_on_division_id"
   add_index "accounts", ["event_id"], :name => "index_accounts_on_event_id"
   add_index "accounts", ["server_id"], :name => "index_accounts_on_server_id"
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
@@ -101,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.integer  "ruleset_default"
     t.integer  "league_id"
     t.integer  "server_id"
+    t.boolean  "locked"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
