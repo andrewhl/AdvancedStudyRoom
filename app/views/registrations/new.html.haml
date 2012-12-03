@@ -1,0 +1,5 @@
+%h2 New Registration
+
+= form_for [@event, @registration] do |f|
+  = f.select(:account_id, options_from_collection_for_select(current_user.accounts, :id, :handle))
+  = f.submit

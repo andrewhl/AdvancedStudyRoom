@@ -5,9 +5,21 @@
 - else
   %table.table.table-condensed.table-bordered.table-hover
     %tr
+      %th Join
       %th Name
       %th Participants
     - @leagues.each do |league|
       %tr
+        %td
+          - if !current_user.joined_event?(league.id)
+            = form_for [league, @registration] do |f|
+              = f.fields_for :registration do |b|
+                = b.select(:account_id, options_from_collection_for_select(current_user.accounts, :id, :handle))
+              = f.submit "Join", :class => "btn"
+          - else
+            %a.btn
+              Quit
+              = "(#{})"
+
         %td= league.name
-        %td= league.accounts.count
+        %td= league.registrations.count

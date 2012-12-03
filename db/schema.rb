@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201214419) do
+ActiveRecord::Schema.define(:version => 20121202075334) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -109,15 +109,6 @@ ActiveRecord::Schema.define(:version => 20121201214419) do
   add_index "events", ["ruleset_id"], :name => "index_events_on_ruleset_id"
   add_index "events", ["server_id"], :name => "index_events_on_server_id"
 
-  create_table "leagues", :force => true do |t|
-    t.string   "name"
-    t.integer  "server_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "leagues", ["server_id"], :name => "index_leagues_on_server_id"
-
   create_table "matches", :force => true do |t|
     t.datetime "datetime_completed"
     t.string   "game_type"
@@ -155,6 +146,13 @@ ActiveRecord::Schema.define(:version => 20121201214419) do
   add_index "points", ["account_id"], :name => "index_points_on_account_id"
   add_index "points", ["event_id"], :name => "index_points_on_event_id"
   add_index "points", ["event_type"], :name => "index_points_on_event_type"
+
+  create_table "registrations", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "event_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "rulesets", :force => true do |t|
     t.string   "name"

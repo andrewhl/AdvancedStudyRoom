@@ -34,4 +34,11 @@ class User < ActiveRecord::Base
 
   has_many :accounts
   has_many :awards
+
+  def joined_event? event_id
+    accounts.any? do |account|
+      account.registrations.any? { |reg| reg.event && reg.event.id == event_id }
+    end
+  end
+
 end

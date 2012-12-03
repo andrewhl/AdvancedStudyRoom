@@ -35,6 +35,12 @@ class EventsController < ApplicationController
 
   def leagues
     @leagues = Event.leagues
+    @registration = Registration.new
   end
+
+  def registrations
+    binding.pry
+  end
+
 
 end

@@ -5,9 +5,25 @@
   %tr
     %th Account Handle
     %th Server
-    %th Registered Event
+    %th Number of Events
+
   - @accounts.each do |account|
     %tr
       %td= account.handle
       %td= account.server.name
-      %td= account.event ? account.event : "None"
+      %td= account.registrations.count
+
+%h2 My events:
+%table.table.table-condensed.table-hover.table-bordered
+  %tr
+    %th Event
+    %th Account Handle
+    %th Server
+
+  - @accounts.each do |account|
+    - account.registrations.each do |registration|
+      %tr
+        %td= registration.event.name
+        %td= account.handle
+        %td= account.server.name
+

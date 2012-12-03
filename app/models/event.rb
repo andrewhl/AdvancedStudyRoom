@@ -28,19 +28,24 @@ class Event < ActiveRecord::Base
                   :server_id,
                   :ruleset_id,
                   :event_ruleset_attributes,
-                  :event_ruleset
+                  :event_ruleset,
+                  :account_attributes,
+                  :registrations_attributes
 
   belongs_to :ruleset
   belongs_to :server
   has_one :event_ruleset, :dependent => :destroy
-  has_many :accounts
+  has_many :registrations, :dependent => :destroy
+  has_many :accounts, :through => :registrations
   has_many :tiers, dependent: :destroy
   has_many :tags
   has_many :tiers
   has_many :points
 
   accepts_nested_attributes_for :tiers, allow_destroy: true
+  accepts_nested_attributes_for :accounts
   accepts_nested_attributes_for :event_ruleset, allow_destroy: true
+  accepts_nested_attributes_for :registrations, allow_destroy: true
 
   scope :leagues, where(:event_type => "League")
   scope :tournaments, where(:event_type => "Tournament")

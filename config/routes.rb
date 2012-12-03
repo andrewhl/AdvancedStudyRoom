@@ -27,11 +27,11 @@ AdvancedStudyRoom::Application.routes.draw do
 
   resources :events do
     resources :tiers
+    resources :registrations
   end
   resources :tiers do
     resources :divisions
     get 'ruleset', to: 'tiers#ruleset'
-    get 'create_ruleset', to: 'tiers#create_ruleset'
   end
 
 

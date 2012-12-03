@@ -26,10 +26,11 @@ class Account < ActiveRecord::Base
 
   has_many :division_players
   has_many :points
+  has_many :registrations, :dependent => :destroy
+  has_many :events, :through => :registrations
   belongs_to :server
   belongs_to :user
   belongs_to :league
-  belongs_to :event
 
   def event_points *event_id
     if event_id
@@ -46,4 +47,5 @@ class Account < ActiveRecord::Base
   def tournament_points
     self.points.tournament_points
   end
+
 end
