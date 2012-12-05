@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202075334) do
+ActiveRecord::Schema.define(:version => 20121205050229) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.integer  "safe_position"
     t.integer  "promoted_players"
     t.integer  "demoted_players"
+    t.string   "name"
   end
 
   add_index "divisions", ["division_index"], :name => "index_divisions_on_division_index"
@@ -153,9 +154,15 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
   create_table "registrations", :force => true do |t|
     t.integer  "account_id"
     t.integer  "event_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "division_id"
+    t.string   "handle"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  add_index "registrations", ["account_id"], :name => "index_registrations_on_account_id"
+  add_index "registrations", ["division_id"], :name => "index_registrations_on_division_id"
+  add_index "registrations", ["event_id"], :name => "index_registrations_on_event_id"
 
   create_table "rulesets", :force => true do |t|
     t.string   "name"

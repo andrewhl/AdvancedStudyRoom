@@ -22,13 +22,13 @@ class TiersController < ApplicationController
       notice_msg = "The tier has been successfully created."
     end
 
-    redirect_to event_path(@event.id), :notice => notice_msg
+    redirect_to manage_event_path(@event.id), :notice => notice_msg
   end
 
   def destroy
     @tier.destroy
 
-    redirect_to event_path(@event.id), :flash => {:success => "The tier has been deleted."}
+    redirect_to manage_event_path(@event.id), :flash => {:success => "The tier has been deleted."}
   end
 
   def index

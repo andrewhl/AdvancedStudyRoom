@@ -28,7 +28,6 @@
   - if division.registrations.nil?
     %p This division is empty.
   - else
-    %h4= division.name
     = select_tag("registration_id", options_from_collection_for_select(division.registrations, "id", :handle), :multiple => true)
   // display a dropdown list containing the names of each division
 

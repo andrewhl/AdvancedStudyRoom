@@ -9,11 +9,14 @@ class DivisionsController < ApplicationController
 
     @tier = Tier.find(params[:tier_id])
     @event = Event.find(@tier.event.id)
-    @division = @tier.divisions.create(division_params)
+    @division = @tier.divisions.build(division_params)
+    @division.name = "#{@tier.name} #{@division.division_index}"
+    @division.save
+
     @division_ruleset = @division.create_division_ruleset(params[:division][:division_ruleset])
 
     # binding.pry
-    redirect_to event_path(@event.id), :flash => {:success => "Your division has been successfully created."}
+    redirect_to manage_event_path(@event.id), :flash => {:success => "Your division has been successfully created."}
   end
 
   def destroy

@@ -55,7 +55,7 @@ class Event < ActiveRecord::Base
   end
 
   def player_count
-    tiers.map { |tier| tier.player_count }.inject(&:+)
+    tiers.map { |tier| tier.player_count.nil? ? 0 : tier.player_count }.inject(&:+)
   end
 
   def validate_game game

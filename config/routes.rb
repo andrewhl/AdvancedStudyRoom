@@ -14,7 +14,7 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'test', to: 'pages#test'
   get 'leagues', to: 'events#leagues'
   get 'tournaments', to: 'events#tournaments'
-  get '/events/manage/:id(.:format)', to: 'events#manage', as: 'event_manage'
+  # get '/events/manage/:id(.:format)', to: 'events#manage', as: 'event_manage'
 
   resources :pages,
             :users,
@@ -27,7 +27,10 @@ AdvancedStudyRoom::Application.routes.draw do
 
   resources :events do
     resources :tiers
-    resources :registrations
+    resources :registrations do
+      put 'update', on: :collection
+    end
+    get :manage, on: :member
   end
   resources :tiers do
     resources :divisions

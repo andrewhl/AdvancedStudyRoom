@@ -55,7 +55,7 @@ class Tier < ActiveRecord::Base
   end
 
   def player_count
-    divisions.map { |div| div.accounts.count }.inject(&:+)
+    divisions.map { |div| div.registrations.nil? ? 0 : div.registrations.count }.inject(&:+)
   end
 end
 

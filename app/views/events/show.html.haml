@@ -15,7 +15,7 @@
 - if @event.tiers.empty?
   %p
     This event has no tiers.
-    = link_to "Please create one.", event_manage_path(@event)
+    = link_to "Please create one.", manage_event_path(@event)
 - else
 
   %h3 Tiers
@@ -67,7 +67,7 @@
       %tr
         %td{:colspan => 3}
           This tier has no divisions.
-          = link_to "Please create them.", event_manage_path(@event)
+          = link_to "Please create them.", manage_event_path(@event)
     - else
       - tier.divisions.each do |division|
         %tr

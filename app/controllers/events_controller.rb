@@ -17,9 +17,12 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    event = Event.find(params[:id])
-    event.destroy
-    redirect_to :events, :flash => {:success => "The event has been deleted."}
+    @event = Event.find(params[:id])
+    @event.destroy
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def index

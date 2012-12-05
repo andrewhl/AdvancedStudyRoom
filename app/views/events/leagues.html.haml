@@ -20,7 +20,8 @@
                 = b.select(:account_id, options_from_collection_for_select(current_user.accounts.where("server_id = ?", league.server.id), :id, :handle))
               = f.submit "Join", :class => "btn"
           - else
-            - account = league.accounts.where(:user_id == current_user.id).first
+            - account = league.accounts.select { |a| a.user_id == current_user.id }.first
+
             - registration = account.registrations.where(:event_id == league.id).first
 
             = link_to "Quit League (#{account.handle})", event_registration_path(league, registration), :method => :delete, :class => "btn"
