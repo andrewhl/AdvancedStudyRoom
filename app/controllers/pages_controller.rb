@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   def test
 
   end
+
+  def results
+
+  end
 end

@@ -12,6 +12,7 @@
 #  ruleset_default :integer
 #  league_id       :integer
 #  server_id       :integer
+#  locked          :boolean
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

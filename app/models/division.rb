@@ -12,6 +12,7 @@
 #  safe_position    :integer
 #  promoted_players :integer
 #  demoted_players  :integer
+#  name             :string(255)
 #
 
 class Division < ActiveRecord::Base

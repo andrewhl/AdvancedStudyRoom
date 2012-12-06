@@ -11,6 +11,7 @@
 #  league_active :integer
 #  rank          :integer
 #  status        :integer
+#  division_id   :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

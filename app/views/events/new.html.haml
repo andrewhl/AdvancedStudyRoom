@@ -26,11 +26,16 @@
     .controls
       = f.select(:event_type, ["League", "Tournament"])
 
-  %h3 Create override ruleset (optional)
-  = f.fields_for(@event.event_ruleset) do |b|
-    = render "ruleset_fields", :b => b
+  .accordion#accordion1
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{:data => {:toggle => "collapse", :parent => "#accordion1"}, :href => "#collapseOne"}
+          Create Override Ruleset (Optional)
+      .accordion-body.collapse#collapseOne
+        .accordion-inner
+          = f.fields_for(@event.event_ruleset) do |b|
+
+            = render "ruleset_fields", :b => b
 
   .actions
     = f.submit "Submit"
-
-= render "shared/ruleset_legend"

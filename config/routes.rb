@@ -15,6 +15,7 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'leagues', to: 'events#leagues'
   get 'tournaments', to: 'events#tournaments'
   # get '/events/manage/:id(.:format)', to: 'events#manage', as: 'event_manage'
+  match 'results', to: 'pages#results'
 
   resources :pages,
             :users,

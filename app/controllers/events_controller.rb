@@ -51,8 +51,8 @@ class EventsController < ApplicationController
   end
 
   def registrations
-    binding.pry
   end
+
 
 
 end

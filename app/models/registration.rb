@@ -2,11 +2,13 @@
 #
 # Table name: registrations
 #
-#  id         :integer          not null, primary key
-#  account_id :integer
-#  event_id   :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  account_id  :integer
+#  event_id    :integer
+#  division_id :integer
+#  handle      :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class Registration < ActiveRecord::Base
