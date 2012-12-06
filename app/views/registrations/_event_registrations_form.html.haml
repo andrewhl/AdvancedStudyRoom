@@ -1,0 +1,19 @@
+= form_tag(event_registrations_path, :method => "put")
+- if @unassigned_players.nil?
+  %p There are currently no unassigned players.
+- else
+  %h4 Unassigned Players / Waiting List
+  = select_tag("registration_id", options_from_collection_for_select(@unassigned_players, "id", :handle), :multiple => true)
+
+- @divisions.each do |division|
+
+  - if division.registrations.nil?
+    %p This division is empty.
+  - else
+    %h4= division.name
+    = select_tag("registration_id", options_from_collection_for_select(division.registrations, "id", :handle), :multiple => true)
+  // display a dropdown list containing the names of each division
+
+.division_select
+  = select_tag("division_id", options_from_collection_for_select(@divisions, "id", "name"))
+  = submit_tag "submit"

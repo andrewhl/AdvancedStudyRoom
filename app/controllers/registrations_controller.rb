@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  before_filter :find_event, :only => [:new, :create, :update, :destroy, :index]
+  before_filter :find_event, :only => [:new, :create, :update, :destroy, :index, :remove]
 
   def new
     @registration = Registration.new
@@ -31,16 +31,32 @@ class RegistrationsController < ApplicationController
   end
 
   def update
-    @registrations = Registration.find(params[:registration_id])
-    div_id = params[:division_id]
-    @registrations.each do |reg|
-      reg.division_id = div_id
-      reg.save
+    @registrations = @event.registrations
+    @divisions = @event.tiers.collect { |t| t.divisions }.flatten
+    @unassigned_players = @registrations.select { |e| e.division.nil? }
+    if params[:registration_id].nil?
+      flash[:error] = "You did not select a player."
+      render "index"
+      flash.discard
+    else
+      @registrations = Registration.find(params[:registration_id])
+      div_id = params[:division_id]
+      @registrations.each do |reg|
+        reg.division_id = div_id
+        reg.save
+      end
+      redirect_to :event_registrations
     end
-    redirect_to :event_registrations
     # @divisions = @event.tiers.collect { |t| t.divisions }
   end
 
+  def remove
+    @registration = Registration.find(params[:id])
+    @registration.division_id = nil
+    @registration.save
+
+    redirect_to :event_registrations
+  end
 
 
   def find_event

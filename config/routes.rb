@@ -29,6 +29,9 @@ AdvancedStudyRoom::Application.routes.draw do
     resources :tiers
     resources :registrations do
       put 'update', on: :collection
+      member do
+        put :remove
+      end
     end
     get :manage, on: :member
   end
