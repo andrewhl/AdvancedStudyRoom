@@ -3,7 +3,7 @@
     Ruleset Name
   .controls
     = b.text_field :name
-    %a.btn{:rel => "popover", :data => {:title => "Ruleset Name", :placement => "bottom", :content => "Name of ruleset"}}
+    %a.btn{:rel => "popover", :data => {:title => "Ruleset Name", :placement => "bottom", :trigger => "hover", :content => "Name of ruleset"}}
       %i.icon-question-sign
 
 .control-group
@@ -12,19 +12,19 @@
     Main Time Min
   .controls
     = b.number_field(:main_time_min)
-    %a.btn{:rel => "popover", :data => {:title => "Main Time Min", :placement => "bottom", :content => "This is the minimum amount of main game time, in seconds permitted (before byo-yomi). So ten minutes is 60 x 10 = 600."}}
+    %a.btn{:rel => "popover", :data => {:title => "Main Time Min", :placement => "bottom", :trigger => "hover", :content => "This is the minimum amount of main game time, in seconds permitted (before byo-yomi). So ten minutes is 60 x 10 = 600."}}
       %i.icon-question-sign
   %label.control-label
     Main Time Max
   .controls
     = b.number_field(:main_time_max)
-    %a.btn{:rel => "popover", :data => {:title => "Main Time Min", :placement => "bottom", :content => "This is the maximum amount of main game time, in seconds."}}
+    %a.btn{:rel => "popover", :data => {:title => "Main Time Min", :placement => "bottom", :trigger => "hover", :content => "This is the maximum amount of main game time, in seconds."}}
       %i.icon-question-sign
 
 .control-group
 
   %label.control-label
-    %a.btn{:rel => "popover", :data => {:title => "Overtime Required", :placement => "bottom", :content => "False if absolute time games are permitted, true if they are not."}}
+    %a.btn{:rel => "popover", :data => {:title => "Overtime Required", :placement => "bottom", :trigger => "hover", :content => "False if absolute time games are permitted, true if they are not."}}
       %i.icon-question-sign
   .controls
     %label.checkbox
@@ -33,7 +33,7 @@
 
 .control-group
   %label.control-label
-    %a.btn{:rel => "popover", :data => {:title => "J Overtime Allowed", :placement => "bottom", :content => "Games using Japanese overtime settings (byo-yomi) will be permitted."}}
+    %a.btn{:rel => "popover", :data => {:title => "J Overtime Allowed", :placement => "bottom", :trigger => "hover", :content => "Games using Japanese overtime settings (byo-yomi) will be permitted."}}
       %i.icon-question-sign
   .controls
     %label.checkbox
@@ -42,7 +42,7 @@
 
 .control-group
   %label.control-label
-    %a.btn{:rel => "popover", :data => {:title => "C Overtime Allowed", :placement => "bottom", :content => "Games using Canadian overtime settings (e.g., 3 minutes overtime period with 25 stones to be played) will be permitted."}}
+    %a.btn{:rel => "popover", :data => {:title => "C Overtime Allowed", :placement => "bottom", :trigger => "hover", :content => "Games using Canadian overtime settings (e.g., 3 minutes overtime period with 25 stones to be played) will be permitted."}}
       %i.icon-question-sign
   .controls
     %label.checkbox
@@ -54,13 +54,13 @@
     J OT Min Periods
   .controls
     = b.number_field(:jot_min_periods)
-    %a.btn{:rel => "popover", :data => {:title => "J OT Min Periods", :placement => "right", :content => "The minimum number of Japanese overtime periods allowed. For example, 1 period with n number of stones. It does not control the stones per period."}}
+    %a.btn{:rel => "popover", :data => {:title => "J OT Min Periods", :placement => "right", :trigger => "hover", :content => "The minimum number of Japanese overtime periods allowed. For example, 1 period with n number of stones. It does not control the stones per period."}}
       %i.icon-question-sign
   %label.control-label
     J OT Max Periods
   .controls
     = b.number_field(:jot_max_periods)
-    %a.btn{:rel => "popover", :data => {:title => "J OT Min Periods", :placement => "right", :content => "The maximum number of Japanese overtime periods allowed."}}
+    %a.btn{:rel => "popover", :data => {:title => "J OT Min Periods", :placement => "right", :trigger => "hover", :content => "The maximum number of Japanese overtime periods allowed."}}
       %i.icon-question-sign
 
 .control-group
@@ -68,13 +68,13 @@
     J OT Min Length
   .controls
     = b.number_field(:jot_min_period_length)
-    %a.btn{:rel => "popover", :data => {:title => "J OT Min Period Length", :placement => "right", :content => "This is the Japanese overtime minimum period length, in seconds. In other words, this is the number of seconds a player has to make a move, or lose a period."}}
+    %a.btn{:rel => "popover", :data => {:title => "J OT Min Period Length", :placement => "right", :trigger => "hover", :content => "This is the Japanese overtime minimum period length, in seconds. In other words, this is the number of seconds a player has to make a move, or lose a period."}}
       %i.icon-question-sign
   %label.control-label
     J OT Max Length
   .controls
     = b.number_field(:jot_max_period_length)
-    %a.btn{:rel => "popover", :data => {:title => "J OT Max Period Length", :placement => "right", :content => "This is the maximum Japanese overtime period length, in seconds."}}
+    %a.btn{:rel => "popover", :data => {:title => "J OT Max Period Length", :placement => "right", :trigger => "hover", :content => "This is the maximum Japanese overtime period length, in seconds."}}
       %i.icon-question-sign
 
 .control-group
@@ -82,13 +82,13 @@
     C OT Min Stones
   .controls
     = b.number_field(:cot_min_stones)
-    %a.btn{:rel => "popover", :data => {:title => "C OT Min Stones", :placement => "right", :content => "This controls the Canadian overtime minimum number of stones per overtime period. Canadian overtime is seconds/stones: so this controls the number of stones that must be played in n seconds."}}
+    %a.btn{:rel => "popover", :data => {:title => "C OT Min Stones", :placement => "right", :trigger => "hover", :content => "This controls the Canadian overtime minimum number of stones per overtime period. Canadian overtime is seconds/stones: so this controls the number of stones that must be played in n seconds."}}
       %i.icon-question-sign
   %label.control-label
     C OT Max Stones
   .controls
     = b.number_field(:cot_max_stones)
-    %a.btn{:rel => "popover", :data => {:title => "C OT Max Stones", :placement => "right", :content => "This controls Canadian overtime maximum number of stones that must be played in the overtime period."}}
+    %a.btn{:rel => "popover", :data => {:title => "C OT Max Stones", :placement => "right", :trigger => "hover", :content => "This controls Canadian overtime maximum number of stones that must be played in the overtime period."}}
       %i.icon-question-sign
 
 .control-group
@@ -96,17 +96,17 @@
     Handicap Default
   .controls
     = b.number_field(:handicap_default)
-    %a.btn{:rel => "popover", :data => {:title => "Handicap Default", :placement => "top", :content => "This sets a default handicap requirement for the league. 0 is recommended."}}
+    %a.btn{:rel => "popover", :data => {:title => "Handicap Default", :placement => "top", :trigger => "hover", :content => "This sets a default handicap requirement for the league. 0 is recommended."}}
       %i.icon-question-sign
   %label.control-label
     Games Per Player
   .controls
     = b.number_field(:games_per_player)
-    %a.btn{:rel => "popover", :data => {:title => "Games Per Player", :placement => "top", :content => "This is the number of games a player must play in order to advance."}}
+    %a.btn{:rel => "popover", :data => {:title => "Games Per Player", :placement => "top", :trigger => "hover", :content => "This is the number of games a player must play in order to advance."}}
       %i.icon-question-sign
   %label.control-label
     Games Per Opponent
   .controls
     = b.number_field(:games_per_opponent)
-    %a.btn{:rel => "popover", :data => {:title => "Games Per Opponent", :placement => "top", :content => "This is the number of games a player is permitted to play per month against a single opponent."}}
+    %a.btn{:rel => "popover", :data => {:title => "Games Per Opponent", :placement => "top", :trigger => "hover", :content => "This is the number of games a player is permitted to play per month against a single opponent."}}
       %i.icon-question-sign
