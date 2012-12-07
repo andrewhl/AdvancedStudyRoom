@@ -12,19 +12,23 @@
     - @leagues.each do |league|
       %tr
         %td
-          - if current_user.accounts.empty?
-            = link_to "Create an account", new_account_path
-          - elsif !current_user.joined_event?(league.id)
-            = form_for [league, @registration] do |f|
-              = f.fields_for :registration do |b|
-                = b.select(:account_id, options_from_collection_for_select(current_user.accounts.where("server_id = ?", league.server.id), :id, :handle))
-              = f.submit "Join", :class => "btn"
+          - if current_user
+            - if current_user.accounts.empty?
+              = link_to "Create an account", new_account_path
+            - elsif !current_user.joined_event?(league.id)
+              = form_for [league, @registration] do |f|
+                = f.fields_for :registration do |b|
+                  = b.select(:account_id, options_from_collection_for_select(current_user.accounts.where("server_id = ?", league.server.id), :id, :handle))
+                = f.submit "Join", :class => "btn"
+            - elsif current_user
+              - account = league.accounts.select { |a| a.user_id == current_user.id }.first
+
+              - registration = account.registrations.where(:event_id == league.id).first
+
+              = link_to "Quit League (#{account.handle})", event_registration_path(league, registration), :method => :delete, :class => "btn"
           - else
-            - account = league.accounts.select { |a| a.user_id == current_user.id }.first
+            = link_to "Create a user account", new_user_path
 
-            - registration = account.registrations.where(:event_id == league.id).first
-
-            = link_to "Quit League (#{account.handle})", event_registration_path(league, registration), :method => :delete, :class => "btn"
 
         %td= league.name
         %td= league.registrations.count
