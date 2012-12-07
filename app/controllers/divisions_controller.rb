@@ -15,7 +15,7 @@ class DivisionsController < ApplicationController
 
     @division_ruleset = @division.create_division_ruleset(params[:division][:division_ruleset])
 
-    # binding.pry
+    binding.pry
     redirect_to manage_event_path(@event.id), :flash => {:success => "Your division has been successfully created."}
   end
 

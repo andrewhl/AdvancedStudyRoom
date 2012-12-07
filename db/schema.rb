@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205050229) do
+ActiveRecord::Schema.define(:version => 20121207165201) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20121205050229) do
 
   add_index "accounts", ["division_id"], :name => "index_accounts_on_division_id"
   add_index "accounts", ["event_id"], :name => "index_accounts_on_event_id"
+  add_index "accounts", ["handle"], :name => "index_accounts_on_handle"
   add_index "accounts", ["server_id"], :name => "index_accounts_on_server_id"
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
 
@@ -89,6 +90,8 @@ ActiveRecord::Schema.define(:version => 20121205050229) do
     t.integer  "promoted_players"
     t.integer  "demoted_players"
     t.string   "name"
+    t.string   "custom_name"
+    t.boolean  "use_custom_name"
   end
 
   add_index "divisions", ["division_index"], :name => "index_divisions_on_division_index"
@@ -250,10 +253,14 @@ ActiveRecord::Schema.define(:version => 20121205050229) do
     t.string   "name"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.string   "parent"
+    t.string   "child"
   end
 
+  add_index "tiers", ["child"], :name => "index_tiers_on_child"
   add_index "tiers", ["event_id"], :name => "index_tiers_on_event_id"
   add_index "tiers", ["league_id"], :name => "index_tiers_on_league_id"
+  add_index "tiers", ["parent"], :name => "index_tiers_on_parent"
   add_index "tiers", ["tier_type_id"], :name => "index_tiers_on_tier_type_id"
 
   create_table "tournaments", :force => true do |t|

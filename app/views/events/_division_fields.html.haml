@@ -1,8 +1,28 @@
 .control-group
   %label.control-label
+    Custom Name (optional)
+  .controls
+    = f.text_field :custom_name
+
+.control-group
+  %label.control-label
+    Use Custom Name?
+  .controls
+    %label.checkbox
+      = f.check_box :use_custom_name
+
+.control-group
+  %label.control-label
     Division Numeral (e.g., 1)
   .controls
     = f.number_field :division_index
+
+.control-group
+  %label.control-label
+    Safe Position
+  .controls
+    = f.number_field :safe_position
+
 
 .control-group
   %label.control-label
@@ -21,18 +41,6 @@
     Current Players
   .controls
     = f.number_field :current_players
-
-.control-group
-  %label.control-label
-    Safe Position
-  .controls
-    = f.number_field :safe_position
-
-.control-group
-  %label.control-label
-    Promoted Players
-  .controls
-    = f.number_field :promoted_players
 
 .control-group
   %label.control-label
