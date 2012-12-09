@@ -31,6 +31,7 @@ class Division < ActiveRecord::Base
 
   validate :less_than_max_players
   validate :greater_than_min_players
+  validates_presence_of :minimum_players, :maximum_players
 
   has_many :accounts
   has_many :registrations
@@ -50,10 +51,14 @@ class Division < ActiveRecord::Base
   private
 
     def less_than_max_players
-      errors.add(:minimum_players, "should be less than or equal to maximum number of players") unless minimum_players <= maximum_players
+      unless minimum_players.nil?
+        errors.add(:minimum_players, "should be less than or equal to maximum number of players") unless minimum_players <= maximum_players
+      end
     end
 
     def greater_than_min_players
-      errors.add(:maximum_players, "should be greater than or equal to minimum number of players") unless maximum_players >= minimum_players
+      unless maximum_players.nil?
+        errors.add(:maximum_players, "should be greater than or equal to minimum number of players") unless maximum_players >= minimum_players
+      end
     end
 end
