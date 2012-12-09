@@ -41,6 +41,7 @@
 %table.table.table-condensed.table-bordered.table-hover
   %tr
     %th Name
+    %th Event
     %th OT Required?
     %th Jp OT?
     %th Ca OT?
@@ -58,6 +59,7 @@
   - @event_rulesets.each do |ruleset|
     %tr
       %td= ruleset.name
+      %td= ruleset.event.name
       %td= ruleset.overtime_required
       %td= ruleset.jovertime_allowed
       %td= ruleset.covertime_allowed
@@ -77,6 +79,7 @@
 %table.table.table-condensed.table-bordered.table-hover
   %tr
     %th Name
+    %th Event
     %th OT Required?
     %th Jp OT?
     %th Ca OT?
@@ -94,6 +97,7 @@
   - @tier_rulesets.each do |ruleset|
     %tr
       %td= ruleset.name
+      %td= ruleset.event.name
       %td= ruleset.overtime_required
       %td= ruleset.jovertime_allowed
       %td= ruleset.covertime_allowed
@@ -113,6 +117,7 @@
 %table.table.table-condensed.table-bordered.table-hover
   %tr
     %th Name
+    %th Event
     %th OT Required?
     %th Jp OT?
     %th Ca OT?
@@ -130,6 +135,7 @@
   - @division_rulesets.each do |ruleset|
     %tr
       %td= ruleset.name
+      %td= ruleset.division.event.name
       %td= ruleset.overtime_required
       %td= ruleset.jovertime_allowed
       %td= ruleset.covertime_allowed

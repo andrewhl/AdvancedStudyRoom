@@ -1,0 +1,42 @@
+.row-fluid
+  .span6
+    .control-group
+      %label.control-label
+        Name
+      .controls
+        = f.text_field :name
+      %label.control-label
+        Tier Hierarchy Position
+      .controls
+        = f.number_field :tier_hierarchy_position
+
+    .control-group
+      %label.control-label
+        Max Games per Player
+      .controls
+        = f.text_field :max_games_per_player
+      %label.control-label
+        Max Games per Opponent
+      .controls
+        = f.number_field :max_games_per_opponent
+
+  .span6
+    .control-group
+      %label.control-label
+        Number of Promotions
+      .controls
+        = f.number_field :promotions
+      %label.control-label
+        Number of Demotions
+      .controls
+        = f.number_field :demotions
+
+    .control-group
+      %label.control-label
+        Points per Win
+      .controls
+        = f.number_field :points_per_win, :step => "any"
+      %label.control-label
+        Points per Loss
+      .controls
+        = f.number_field :points_per_loss, :step => "any"

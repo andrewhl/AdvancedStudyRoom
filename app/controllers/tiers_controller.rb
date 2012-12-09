@@ -10,19 +10,19 @@ class TiersController < ApplicationController
     tier_params = params[:tier].dup
     tier_params.delete("tier_ruleset")
     @tier = @event.tiers.build(tier_params)
-    @tier.save
-
-    if params[:tier][:tier_ruleset]
-      @tier_ruleset = @tier.create_tier_ruleset(params[:tier][:tier_ruleset])
-    end
-
-    if @tier.errors.any?
-      notice_msg = "The tier was not created. There were errors."
+    if @tier.save
+      if params[:tier][:tier_ruleset]
+        @tier_ruleset = @tier.build_tier_ruleset(params[:tier][:tier_ruleset])
+        @tier_ruleset.event_id = @event.id
+        @tier_ruleset.save
+      end
+      redirect_to manage_event_path(@event.id), :flash => { :success => "The tier was successfully created." }
     else
-      notice_msg = "The tier has been successfully created."
+      respond_to do |format|
+        format.html { redirect_to manage_event_path(@event.id), :flash => { :error => @tier.errors }}
+      end
     end
 
-    redirect_to manage_event_path(@event.id), :notice => notice_msg
   end
 
   def destroy

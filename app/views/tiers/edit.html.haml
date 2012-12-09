@@ -1,15 +1,7 @@
 %h1 Edit Tier
 
 = form_for @tier, :html => {:class => "form-horizontal"} do |f|
-  .control-group
-    %label.control-label
-      Name
-    .controls
-      = f.text_field :name
-    %label.control-label
-      Position
-    .controls
-      = f.number_field :tier_hierarchy_position
+  = render "events/tier_fields", :f => f
 
   .control-group
     .controls

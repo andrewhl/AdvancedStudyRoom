@@ -43,57 +43,8 @@
 
 %h4 Create Tiers
 = form_for [@event, @tier], :html => {:class => "form-horizontal"} do |f|
-  - if @tier.errors.any?
-    .error_messages
-      %h2
-        = pluralize(@tier.errors.count, "error")
-        prohibited this tier from being saved:
-      %ul
-        - @tier.errors.full_messages.each do |msg|
-          %li= msg
 
-  .row-fluid
-    .span6
-      .control-group
-        %label.control-label
-          Name
-        .controls
-          = f.text_field :name
-        %label.control-label
-          Tier Hierarchy Position
-        .controls
-          = f.number_field :tier_hierarchy_position
-
-      .control-group
-        %label.control-label
-          Max Games per Player
-        .controls
-          = f.text_field :max_games_per_player
-        %label.control-label
-          Max Games per Opponent
-        .controls
-          = f.number_field :max_games_per_opponent
-
-    .span6
-      .control-group
-        %label.control-label
-          Number of Promotions
-        .controls
-          = f.number_field :promotions
-        %label.control-label
-          Number of Demotions
-        .controls
-          = f.number_field :demotions
-
-      .control-group
-        %label.control-label
-          Points per Win
-        .controls
-          = f.number_field :points_per_win, :step => "any"
-        %label.control-label
-          Points per Loss
-        .controls
-          = f.number_field :points_per_loss, :step => "any"
+  = render "tier_fields", :f => f
 
 
   .accordion#accordion1
@@ -131,26 +82,27 @@
       - tier.divisions.each do |division|
         %tr
           %td
-            = tier.name + " " + division.division_index.to_s
+            = division.name
           %td
             = link_to "Edit", edit_division_path(division)
           %td
             = link_to "Delete", division_path(division), :method => :delete
-    %tr
-      %td{:colspan => 3}
-        %h4 Create Division
-        = form_for [tier, @division], :html => {:class => "form-horizontal"} do |f|
 
-          = render "division_fields", :f => f
+  %table.table.table-condensed.table-bordered
+    %td{:colspan => 3}
+      %h4= tier.divisions.any? ? "Add Division" : "Create Division"
+      = form_for [tier, @division], :html => {:class => "form-horizontal"} do |f|
 
-          .accordion{:id => "accordion#{tier.id}"}
-            .accordion-group
-              .accordion-heading
-                %a.accordion-toggle{:data => {:toggle => "collapse", :parent => "#accordion#{tier.id}"}, :href => "#collapse#{tier.id}"}
-                  Create Override Ruleset (Optional)
-              .accordion-body.collapse{:id => "collapse#{tier.id}"}
-                .accordion-inner
-                  = f.fields_for(@division.build_division_ruleset) do |b|
+        = render "division_fields", :f => f
 
-                    = render "ruleset_fields", :b => b
-          = f.submit :submit
+        .accordion{:id => "accordion#{tier.id}"}
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle{:data => {:toggle => "collapse", :parent => "#accordion#{tier.id}"}, :href => "#collapse#{tier.id}"}
+                Create Override Ruleset (Optional)
+            .accordion-body.collapse{:id => "collapse#{tier.id}"}
+              .accordion-inner
+                = f.fields_for(@division.build_division_ruleset) do |b|
+
+                  = render "ruleset_fields", :b => b
+        = f.submit :submit

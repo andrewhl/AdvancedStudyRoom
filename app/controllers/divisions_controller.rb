@@ -13,10 +13,10 @@ class DivisionsController < ApplicationController
     @division.name = "#{@tier.name} #{@division.division_index}"
 
     if @division.save
-      @division_ruleset = @division.create_division_ruleset(params[:division][:division_ruleset])
+      @division_ruleset = @division.build_division_ruleset(params[:division][:division_ruleset])
+      @division_ruleset.update_attributes(:event_id => @event.id, :tier_id => @tier.id)
       redirect_to manage_event_path(@event.id), :flash => {:success => "Your division has been successfully created."}
     else
-      flash[:error] = @division.errors
       respond_to do |format|
         format.html { redirect_to manage_event_path(@event.id), :flash => { :error => @division.errors }}
       end

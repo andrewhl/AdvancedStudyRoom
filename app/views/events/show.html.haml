@@ -12,6 +12,18 @@
 
 %h1= @event.name
 
+%h3 Tag phrases
+
+- if @event.tags.empty?
+  %p
+    No tag phrases defined.
+    = link_to "Please set one.", :new_tag
+- else
+  %ul
+    - @event.tags.each do |tag|
+      %li= tag.phrase
+
+
 - if @event.tiers.empty?
   %p
     This event has no tiers.
@@ -45,9 +57,6 @@
           = link_to "Edit", edit_tier_path(tier)
         %td
           = link_to "Delete", event_tier_path(@event, tier), :method => :delete
-
-
-
 
 %h3 Divisions by Tier
 - @event.tiers.ranked.each do |tier|

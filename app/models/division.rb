@@ -40,6 +40,14 @@ class Division < ActiveRecord::Base
 
   accepts_nested_attributes_for :division_ruleset, allow_destroy: true
 
+  def name
+    if use_custom_name
+      custom_name
+    else
+      tier.name + " " + division_index.to_s
+    end
+  end
+
   def ruleset
     division_ruleset
   end

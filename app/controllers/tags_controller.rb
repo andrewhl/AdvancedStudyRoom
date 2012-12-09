@@ -20,7 +20,7 @@ class TagsController < ApplicationController
 
   def destroy
     @tag.destroy
-    redirect_to :tag, :flash => {:success => "The tag has been deleted."}
+    redirect_to :tags, :flash => {:success => "The tag has been deleted."}
   end
 
   def index
