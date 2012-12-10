@@ -36,8 +36,6 @@ class User < ActiveRecord::Base
   has_many :accounts, dependent: :destroy
   has_many :awards
 
-  validates_associated :accounts
-
   accepts_nested_attributes_for :accounts, allow_destroy: true
 
   def joined_event? event_id

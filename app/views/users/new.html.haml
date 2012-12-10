@@ -3,16 +3,18 @@
 %h3 Step 1: Make an ASR Login
 %p Note: This account is just for logging in to the ASR website.
 
-= form_for @user do |f|
+= form_for @user, :validate => true do |f|
   - if @user.errors.any?
     .error_messages
       %h2 Form is invalid
       %ul
         - @user.errors.full_messages.each do |message|
           %li= message
-  .div
-    = f.label :username
-    = f.text_field :username
+  .control-group
+    = f.label :username, :class => "control-label"
+    .controls
+      = f.text_field :username
+      %span.help-inline
   .div
     = f.label :email
     = f.text_field :email
@@ -29,7 +31,7 @@
     To get started, specify an account you have on KGS or Kaya.
     %strong You'll be able to add more accounts later.
 
-    = fields_for @handle do |b|
+    = fields_for @account do |b|
       .div
         = b.label :handle
         = b.text_field :handle

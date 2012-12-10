@@ -6,6 +6,7 @@ gem 'nokogiri'
 gem 'mechanize'
 gem 'SgfParser'
 gem 'rubyzip', :require => 'zip/zip'
+gem 'client_side_validations'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

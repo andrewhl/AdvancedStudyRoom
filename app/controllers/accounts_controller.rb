@@ -1,9 +1,11 @@
 class AccountsController < ApplicationController
-
   before_filter :authorize, :only => [:new]
+
+  add_breadcrumb "Accounts", only: [:new]
 
   def new
     @handle = Account.new
+
   end
 
   def create

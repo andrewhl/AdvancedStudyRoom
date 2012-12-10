@@ -1,4 +1,4 @@
-= form_for @handle do |f|
+= form_for @handle, :validate => true do |f|
   .div
     = f.label :handle
     = f.text_field :handle
@@ -12,4 +12,4 @@
     = f.select :server_id, ["KGS", "Kaya"]
 
   .div
-    = f.submit "Create Account"
+    = f.submit "Create Account", class: "btn"

@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
-    @handle = Account.new
+    @account = Account.new
   end
 
   def index
+    redirect_to :root
   end
 
   def create
@@ -19,16 +19,33 @@ class UsersController < ApplicationController
       server_id: server.id
     }
 
-    if (@user.save if @user.accounts.create(handle_params))
+    if handle_params[:handle].empty?
+      @user.errors[:base] << "Handle cannot be blank."
+    elsif handle_params[:rank].empty?
+      @user.errors[:base] << "Rank cannot be blank."
+    end
+
+    if not handle_params[:handle].empty?
+      if Account.find_by_handle(handle_params[:handle])
+        @user.errors[:base] << "That handle has already been taken."
+      end
+    end
+
+    unless @user.errors.any?
+      @user.save
+      @account = @user.accounts.create(handle_params)
+      session[:user_id] = @user.id
       redirect_to root_url, :flash => {:info => "Thank you for signing up!"}
     else
-      render "new"
+      @account = Account.new
+      render "new", :account => @account
     end
   end
 
   def show
     @user = User.find(params[:id])
     @accounts = @user.accounts
+    add_breadcrumb "#{@user.username.to_s}", "users/:id"
   end
 
 end
