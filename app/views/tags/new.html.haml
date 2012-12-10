@@ -27,4 +27,4 @@
         = f.select(:event_id, options_from_collection_for_select(@events, :id, :name))
 
     .actions
-      = f.submit "Submit"
+      = f.submit "Create Tag", class: "btn"

@@ -24,7 +24,8 @@ AdvancedStudyRoom::Application.routes.draw do
             :rulesets,
             :divisions,
             :tags,
-            :tier_rulesets
+            :tier_rulesets,
+            :division_rulesets
 
   resources :events do
     resources :tiers

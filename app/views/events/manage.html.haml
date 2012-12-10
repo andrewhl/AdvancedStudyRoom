@@ -1,15 +1,3 @@
-%ul.breadcrumb
-  %li
-    = link_to "Home", :root
-    %span.divider= "/"
-  %li
-    = link_to "Events", events_path
-    %span.divider= "/"
-  %li.active
-    = @event.name
-    Management
-
-
 %h1= @event.name
 
 - if @event.tiers.empty?
@@ -42,67 +30,12 @@
           = link_to "Delete", event_tier_path(@event, tier), :method => :delete
 
 %h4 Create Tiers
-= form_for [@event, @tier], :html => {:class => "form-horizontal"} do |f|
 
-  = render "tier_fields", :f => f
+= render "tier_form", :locals => {:event => @event, :tier => @tier}
 
+%hr
 
-  .accordion#accordion1
-    .accordion-group
-      .accordion-heading
-        %a.accordion-toggle{:data => {:toggle => "collapse", :parent => "#accordion1"}, :href => "#collapseOne"}
-          Create Override Ruleset (Optional)
-      .accordion-body.collapse#collapseOne
-        .accordion-inner
-          = f.fields_for(@tier.build_tier_ruleset) do |b|
+%h3 Divisions (by Tier)
 
-            = render "ruleset_fields", :b => b
+= render "divisions", :event => @event
 
-  = f.submit :submit
-
-
-%h3 Divisions by Tier
-
-- @event.tiers.ranked.each do |tier|
-  %table.table.table-condensed.table-bordered
-    %tr
-      %th
-        Tier
-        = tier.name
-        Divisions
-      %th
-        Edit
-      %th
-        Delete
-    - if tier.divisions.empty?
-      %tr
-        %td{:colspan => 3}
-          This tier has no divisions. Please create them.
-    - else
-      - tier.divisions.each do |division|
-        %tr
-          %td
-            = division.name
-          %td
-            = link_to "Edit", edit_division_path(division)
-          %td
-            = link_to "Delete", division_path(division), :method => :delete
-
-  %table.table.table-condensed.table-bordered
-    %td{:colspan => 3}
-      %h4= tier.divisions.any? ? "Add Division" : "Create Division"
-      = form_for [tier, @division], :html => {:class => "form-horizontal"} do |f|
-
-        = render "division_fields", :f => f
-
-        .accordion{:id => "accordion#{tier.id}"}
-          .accordion-group
-            .accordion-heading
-              %a.accordion-toggle{:data => {:toggle => "collapse", :parent => "#accordion#{tier.id}"}, :href => "#collapse#{tier.id}"}
-                Create Override Ruleset (Optional)
-            .accordion-body.collapse{:id => "collapse#{tier.id}"}
-              .accordion-inner
-                = f.fields_for(@division.build_division_ruleset) do |b|
-
-                  = render "ruleset_fields", :b => b
-        = f.submit :submit

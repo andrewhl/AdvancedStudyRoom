@@ -34,6 +34,9 @@ class Account < ActiveRecord::Base
   belongs_to :league
   belongs_to :division
 
+  validates_presence_of :handle, :rank
+  validates_uniqueness_of :handle
+
   def event_points *event_id
     if event_id
       self.points.where(:event_id => event_id)

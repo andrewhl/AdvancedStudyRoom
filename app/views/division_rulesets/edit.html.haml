@@ -1,0 +1,8 @@
+%h1
+  Edit
+  = @division_ruleset.division.name
+  Division Ruleset
+
+= form_for @division_ruleset, :html => {:class => "form-horizontal"}, :action => "division_rulesets#update" do |f|
+  = render "events/ruleset_fields", :b => f
+  = f.submit "Update"

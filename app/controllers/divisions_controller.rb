@@ -1,4 +1,6 @@
 class DivisionsController < ApplicationController
+  add_breadcrumb "Events", "/events"
+
   def new
     @division = Division.new
   end
@@ -38,13 +40,17 @@ class DivisionsController < ApplicationController
 
   def edit
     @division = Division.find(params[:id])
+    add_breadcrumb "#{@division.tier.event.name}", "/events/#{@division.tier.event.id}"
+    add_breadcrumb "#{@division.name}", "/events"
   end
 
   def update
     @division = Division.find(params[:id])
     @division.update_attributes(params[:division])
     @event = @division.tier.event
+
     redirect_to @event, :flash => {:success => "Division updated."}
+
   end
 
 end

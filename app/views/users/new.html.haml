@@ -1,4 +1,7 @@
-%h1 Sign Up
+%h2 Sign Up
+
+%h3 Step 1: Make an ASR Login
+%p Note: This account is just for logging in to the ASR website.
 
 = form_for @user do |f|
   - if @user.errors.any?
@@ -7,18 +10,36 @@
       %ul
         - @user.errors.full_messages.each do |message|
           %li= message
-
-  .field
+  .div
+    = f.label :username
+    = f.text_field :username
+  .div
     = f.label :email
-    %br
     = f.text_field :email
-  .field
+  .div
     = f.label :password
-    %br
     = f.password_field :password
-  .field
+  .div
     = f.label :password_confirmation
-    %br
     = f.password_field :password_confirmation
+
+  %hr
+  %h3 Step 2: Tell us a KGS or Kaya account.
+  %p
+    To get started, specify an account you have on KGS or Kaya.
+    %strong You'll be able to add more accounts later.
+
+    = fields_for @handle do |b|
+      .div
+        = b.label :handle
+        = b.text_field :handle
+
+      .div
+        = b.label :rank
+        = b.number_field :rank
+
+      .div
+        = b.label :server_id
+        = b.select :server_id, ["KGS", "Kaya"]
   .actions
-    = f.submit "Sign Up"
+    = f.submit "Sign Up", class: "btn"

@@ -1,4 +1,10 @@
 class EventsController < ApplicationController
+  add_breadcrumb "Events", "/events", except: [:tournaments, :leagues]
+  add_breadcrumb "Tournaments", "/tournaments", only: [:tournaments]
+  add_breadcrumb "Leagues", "/leagues", only: [:leagues]
+  add_breadcrumb "New Event", "/events/new", only: [:new, :create]
+  add_breadcrumb "Manage Event", "/events/:id/manage", only: [:manage]
+  add_breadcrumb "Event Overview", "/events/:id", only: [:show]
 
   def new
     @event = Event.new

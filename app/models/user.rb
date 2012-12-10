@@ -26,14 +26,19 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :accounts_attributes, :username
 
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates_presence_of :email, :username
+  validates_uniqueness_of :email, :username
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
+
 
   has_many :accounts, dependent: :destroy
   has_many :awards
+
+  validates_associated :accounts
+
+  accepts_nested_attributes_for :accounts, allow_destroy: true
 
   def joined_event? event_id
     accounts.any? do |account|

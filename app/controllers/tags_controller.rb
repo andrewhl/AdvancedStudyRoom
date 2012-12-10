@@ -1,6 +1,10 @@
 class TagsController < ApplicationController
   before_filter :find_tag, :only => [:destroy, :update, :edit]
 
+  add_breadcrumb "Manage Tags", "/index", only: [:index]
+  add_breadcrumb "Edit Tag", "/edit", only: [:edit]
+  add_breadcrumb "Create Tag", "/new", only: [:new]
+
   def new
     @tag = Tag.new
     @events = Event.all

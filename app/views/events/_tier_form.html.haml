@@ -1,0 +1,17 @@
+= form_for [@event, @tier], :html => {:class => "form-horizontal"} do |f|
+
+  = render "tier_fields", :f => f
+
+
+  .accordion#accordion1
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{:data => {:toggle => "collapse", :parent => "#accordion1"}, :href => "#collapseOne"}
+          Create Override Ruleset (Optional)
+      .accordion-body.collapse#collapseOne
+        .accordion-inner
+          = f.fields_for(@tier.build_tier_ruleset) do |b|
+
+            = render "ruleset_fields", :b => b
+
+  = f.submit @event.tiers.empty? ? "Create Tier" : "Add Tier", :class => "btn"

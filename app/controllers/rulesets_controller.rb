@@ -1,4 +1,8 @@
 class RulesetsController < ApplicationController
+
+  add_breadcrumb "New Ruleset", "/rulesets/new", only: [:new]
+  add_breadcrumb "View Rulesets", "/rulesets/index", only: [:index]
+
   def new
     @ruleset = Ruleset.new
     @tags = Tag.all

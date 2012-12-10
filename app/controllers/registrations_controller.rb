@@ -28,6 +28,9 @@ class RegistrationsController < ApplicationController
 
     # @event_users = @event.accounts
     @unassigned_players = @registrations.select { |e| e.division.nil? }
+    add_breadcrumb "Events", :events
+    add_breadcrumb "#{@event.name}", @event
+    add_breadcrumb "Assign Players", "/index"
   end
 
   def update
@@ -47,6 +50,7 @@ class RegistrationsController < ApplicationController
       end
       redirect_to :event_registrations
     end
+
     # @divisions = @event.tiers.collect { |t| t.divisions }
   end
 

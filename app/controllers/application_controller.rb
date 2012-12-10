@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  add_breadcrumb "Home", "/", :except => [:home]
   private
 
     def current_user
