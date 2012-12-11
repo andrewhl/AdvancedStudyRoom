@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
+  before_filter :find_event, only: [:show, :manage, :destroy, :results]
+
   add_breadcrumb "Events", "/events", except: [:tournaments, :leagues]
   add_breadcrumb "Tournaments", "/tournaments", only: [:tournaments]
   add_breadcrumb "Leagues", "/leagues", only: [:leagues]
   add_breadcrumb "New Event", "/events/new", only: [:new, :create]
   add_breadcrumb "Manage Event", "/events/:id/manage", only: [:manage]
   add_breadcrumb "Event Overview", "/events/:id", only: [:show]
+  add_breadcrumb "Results", only: [:results]
+
 
   def new
     @event = Event.new
@@ -23,7 +27,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
 
     respond_to do |format|
@@ -36,7 +39,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
     @tier = Tier.new
     @tiers = @event.tiers
     @division = Division.new
@@ -44,7 +46,6 @@ class EventsController < ApplicationController
   end
 
   def manage
-    @event = Event.find(params[:id])
     @tier = Tier.new
     @tiers = @event.tiers
     @division = Division.new
@@ -59,6 +60,20 @@ class EventsController < ApplicationController
   def registrations
   end
 
+  def results
+    @tiers = @event.tiers
 
+    params[:division] ||= @tiers.first.divisions.first.name
+
+    # Default values for the page sorting.
+    params[:sort] ||= "points"
+    params[:direction] ||= "desc"
+  end
+
+  private
+
+    def find_event
+      @event = Event.find(params[:id])
+    end
 
 end

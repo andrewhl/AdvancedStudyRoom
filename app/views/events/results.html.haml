@@ -1,0 +1,29 @@
+%h3
+  Results for
+  = @event.name
+
+.quick-links
+  %h4 Quick Links
+  %ul
+    - @tiers.each do |tier|
+      - tier.divisions.each do |division|
+        %li= link_to "#{division.name}", { :division => division.name }
+
+- css_id = params[:division].downcase.gsub(/\s+/, "")
+
+- @tiers.each do |tier|
+  - tier.divisions.each do |division|
+    %h4= division.name
+    %table.table.table-condensed.table-bordered.table-hover
+      %tr
+        %th Player
+        - division.registrations.each do |col_player|
+          %th= col_player.handle
+      - division.registrations.each do |row_player|
+        %tr
+          %td= row_player.handle
+          - division.registrations.each do |col_player|
+            - if col_player == row_player
+              %td X
+            - else
+              %td

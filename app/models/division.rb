@@ -13,6 +13,8 @@
 #  promoted_players :integer
 #  demoted_players  :integer
 #  name             :string(255)
+#  custom_name      :string(255)
+#  use_custom_name  :boolean
 #
 
 class Division < ActiveRecord::Base

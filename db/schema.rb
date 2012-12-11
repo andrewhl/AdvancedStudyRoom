@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207165201) do
+ActiveRecord::Schema.define(:version => 20121211222906) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -146,13 +146,18 @@ ActiveRecord::Schema.define(:version => 20121207165201) do
     t.integer  "event_id"
     t.string   "event_desc"
     t.string   "event_type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "game_hash"
+    t.integer  "registration_id"
+    t.boolean  "enabled"
+    t.integer  "match_id"
   end
 
   add_index "points", ["account_id"], :name => "index_points_on_account_id"
   add_index "points", ["event_id"], :name => "index_points_on_event_id"
   add_index "points", ["event_type"], :name => "index_points_on_event_type"
+  add_index "points", ["game_hash"], :name => "index_points_on_game_hash"
 
   create_table "registrations", :force => true do |t|
     t.integer  "account_id"

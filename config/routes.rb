@@ -36,6 +36,7 @@ AdvancedStudyRoom::Application.routes.draw do
       end
     end
     get :manage, on: :member
+    get :results, on: :member
   end
   resources :tiers do
     resources :divisions

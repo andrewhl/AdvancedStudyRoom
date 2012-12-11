@@ -17,6 +17,8 @@
 #  name                    :string(255)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
+#  parent                  :string(255)
+#  child                   :string(255)
 #
 
 class Tier < ActiveRecord::Base

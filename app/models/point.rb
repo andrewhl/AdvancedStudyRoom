@@ -17,10 +17,14 @@ class Point < ActiveRecord::Base
                   :count,
                   :event_desc,
                   :event_type,
-                  :event_id
+                  :event_id,
+                  :registration_id,
+                  :match_id
 
+  belongs_to :registration
   belongs_to :account
   belongs_to :event
+  belongs_to :match
 
   scope :league_points, where(:event_type => "League")
   scope :tournament_points, where(:event_type => "Tournament")

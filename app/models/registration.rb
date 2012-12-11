@@ -17,4 +17,5 @@ class Registration < ActiveRecord::Base
   belongs_to :event
   belongs_to :account
   belongs_to :division
+  has_many :points
 end

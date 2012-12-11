@@ -28,9 +28,10 @@ class Match < ActiveRecord::Base
 
   validates_uniqueness_of :game_digest, :on => :create, :message => "must be unique"
 
-  belongs_to :black_player, :class_name => 'DivisionPlayer'
-  belongs_to :white_player, :class_name => 'DivisionPlayer'
+  belongs_to :black_player, :class_name => 'Registration'
+  belongs_to :white_player, :class_name => 'Registration'
 
   has_many :comments, :dependent => :destroy
+  has_many :points
 
 end
