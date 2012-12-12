@@ -1,81 +1,78 @@
 %h3 Canonical Rulesets
 
-/ %table.table.table-condensed.table-bordered.table-hover
-/   %tr
-/     %th Name
-/     %th OT Required?
-/     %th Jp OT?
-/     %th Ca OT?
-/     %th JOT Min Periods
-/     %th JOT Max Periods
-/     %th JOT Min Length
-/     %th JOT Max Length
-/     %th COT Min Stones
-/     %th COT Max Stones
-/     %th Handi Default
-/     %th Ruleset Default
-/     %th Games per player
-/     %th Games per opponent
-/     %th Delete
+%table.table.table-condensed.table-bordered.table-hover
+  %tr
+    %th Name
+    %th OT Required?
+    %th Jp OT?
+    %th Ca OT?
+    %th JOT Min Periods
+    %th JOT Max Periods
+    %th JOT Min Length
+    %th JOT Max Length
+    %th COT Min Stones
+    %th COT Max Stones
+    %th Handi Default
+    %th Ruleset Default
+    %th Games per player
+    %th Games per opponent
+    %th Delete
 
-/   - @canon.each do |ruleset|
-/     %tr
-/       %td= ruleset.name
-/       %td= ruleset.overtime_required
-/       %td= ruleset.jovertime_allowed
-/       %td= ruleset.covertime_allowed
-/       %td= ruleset.jot_min_periods
-/       %td= ruleset.jot_max_periods
-/       %td= ruleset.jot_min_period_length
-/       %td= ruleset.jot_max_period_length
-/       %td= ruleset.cot_min_stones
-/       %td= ruleset.cot_max_stones
-/       %td= ruleset.handicap_default
-/       %td= ruleset.ruleset_default
-/       %td= ruleset.games_per_player
-/       %td= ruleset.games_per_opponent
-/       %td= link_to "Delete", ruleset_path(ruleset), :method => :delete
+  - @canon.each do |ruleset|
+    %tr
+      %td= ruleset.name
+      %td= ruleset.overtime_required
+      %td= ruleset.jovertime_allowed
+      %td= ruleset.covertime_allowed
+      %td= ruleset.jot_min_periods
+      %td= ruleset.jot_max_periods
+      %td= ruleset.jot_min_period_length
+      %td= ruleset.jot_max_period_length
+      %td= ruleset.cot_min_stones
+      %td= ruleset.cot_max_stones
+      %td= ruleset.handicap_default
+      %td= ruleset.ruleset_default
+      %td= ruleset.games_per_player
+      %td= ruleset.games_per_opponent
+      %td= link_to "Delete", ruleset_path(ruleset), :method => :delete
 
 - [@event_rulesets, @tier_rulesets, @division_rulesets].each do |collection|
-  - if collection.empty?
-    %p No rulesets.
-  - else
-    %h3
-      = collection.first.type.scan(/^Event|Tier|Division/).pop
-      Rulesets
+  %h3
+    = collection.first.type.scan(/^Event|Tier|Division/).pop
+    Rulesets
 
-    %table.table.table-condensed.table-bordered.table-hover
+  %table.table.table-condensed.table-bordered.table-hover
+    %tr
+      %th Name
+      %th Event
+      %th OT Required?
+      %th Jp OT?
+      %th Ca OT?
+      %th JOT Min Periods
+      %th JOT Max Periods
+      %th JOT Min Length
+      %th JOT Max Length
+      %th COT Min Stones
+      %th COT Max Stones
+      %th Handi Default
+      %th Ruleset Default
+      %th Games per player
+      %th Games per opponent
+
+    - collection.each do |ruleset|
       %tr
-        %th Name
-        %th Event
-        %th OT Required?
-        %th Jp OT?
-        %th Ca OT?
-        %th JOT Min Periods
-        %th JOT Max Periods
-        %th JOT Min Length
-        %th JOT Max Length
-        %th COT Min Stones
-        %th COT Max Stones
-        %th Handi Default
-        %th Ruleset Default
-        %th Games per player
-        %th Games per opponent
-
-      - collection.each do |ruleset|
-        %tr
-          %td= ruleset.name
-          %td= ruleset.event.name
-          %td= ruleset.overtime_required
-          %td= ruleset.jovertime_allowed
-          %td= ruleset.covertime_allowed
-          %td= ruleset.jot_min_periods
-          %td= ruleset.jot_max_periods
-          %td= ruleset.jot_min_period_length
-          %td= ruleset.jot_max_period_length
-          %td= ruleset.cot_min_stones
-          %td= ruleset.cot_max_stones
-          %td= ruleset.handicap_default
-          %td= ruleset.ruleset_default
-          %td= ruleset.games_per_player
-          %td= ruleset.games_per_opponent
+        %td= ruleset.name
+        %td= ruleset.event.name
+        %td= ruleset.overtime_required
+        %td= ruleset.jovertime_allowed
+        %td= ruleset.covertime_allowed
+        %td= ruleset.jot_min_periods
+        %td= ruleset.jot_max_periods
+        %td= ruleset.jot_min_period_length
+        %td= ruleset.jot_max_period_length
+        %td= ruleset.cot_min_stones
+        %td= ruleset.cot_max_stones
+        %td= ruleset.handicap_default
+        %td= ruleset.ruleset_default
+        %td= ruleset.games_per_player
+        %td= ruleset.games_per_opponent
