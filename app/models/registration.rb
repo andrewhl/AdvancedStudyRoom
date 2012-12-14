@@ -18,4 +18,9 @@ class Registration < ActiveRecord::Base
   belongs_to :account
   belongs_to :division
   has_many :points
+
+  def games
+    binding.pry
+  end
+
 end

@@ -12,19 +12,17 @@ class Validator
 
         game = convert_sgf_to_game(f_path.to_s, username)
 
+        # TO DO:
+        # comments = get_comments(game) # returns an array of comments
+        # validate_game(comments) # loops through array of comments and validates the game
+
         unless game.nil?
           game.save
         end
 
-        # extract_match_comments(f_path.to_s, game.id)
-
-        # unless game.nil?
-        #   # binding.pry
-
-        #   event = Event.new
-        #   if event.validate_game(game)
-        #     game.save
-        #   end
+        # SAVE COMMENTS:
+        # comments.each do |comment|
+        #   game.comments.create(comment)
         # end
 
 
@@ -44,16 +42,23 @@ class Validator
 
     # binding.pry
     return nil if not (has_valid_tag(game)[0])
-    binding.pry
 
     # date_time = game.date
     ruleset = game.rules
     board_size = ginfo["SZ"]
     # komi = game.komi.to_f
-    black_player = game.black_player
-    white_player = game.white_player
+    black_player_name = game.black_player
+    white_player_name = game.white_player
 
-    # Add later: black_player_id = Account.where("handle=? and server_id=?", black_player, 1)
+    # Find the registration that matches the black and white player names.
+
+    black_player = Registration.find_by_handle(black_player_name)
+    white_player = Registration.find_by_handle(white_player_name)
+
+    # Grab the id of the registration or make the id nil.
+
+    black_player_id ||= black_player.id unless black_player.nil?
+    white_player_id ||= white_player.id unless white_player.nil?
 
     # handicap = ginfo["HA"]
     result = ginfo["RE"].split("+")
@@ -98,7 +103,9 @@ class Validator
       "black_player_name" => black_player,
       "white_player_name" => white_player,
       "handicap" => ginfo["HA"],
-      "game_digest" => digest
+      "game_digest" => digest,
+      "black_player_id" => black_player_id,
+      "white_player_id" => white_player_id
     }
 
     return match = Match.new(game_hash)
@@ -112,7 +119,7 @@ class Validator
     game = tree.games.first
 
     game.each do |node|
-      binding.pry
+      # binding.pry
       unless node.properties["C"].nil?
         valid_tag = true if !node.C.scan(tag_phrase).empty?
       end
@@ -139,6 +146,8 @@ class Validator
       # end
 
       # Tag.where("phrase like ?", q)
+
+      # TODO: HAVE A SEPARATE METHOD THAT EXTRACTS THE COMMENTS AND RETURNS THEM IN AN ARRAY
 
       regex = /\s([a-zA-Z0-9\s\?\!\-\_\+\=\@\$\'\"\,]+)/
 

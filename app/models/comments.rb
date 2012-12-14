@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class Comments < ActiveRecord::Base
+class Comment < ActiveRecord::Base
   attr_accessible :comment, :match_id, :node
 
   belongs_to :match
