@@ -13,6 +13,8 @@ class CreateTiers < ActiveRecord::Migration
       t.integer :event_id
       t.integer :league_id
       t.string  :name
+      t.integer :parent_id
+      t.integer :child_id
 
       t.timestamps
     end
@@ -20,5 +22,7 @@ class CreateTiers < ActiveRecord::Migration
     add_index :tiers, :tier_type_id
     add_index :tiers, :event_id
     add_index :tiers, :league_id
+    add_index :tiers, :parent_id
+    add_index :tiers, :child_id
   end
 end

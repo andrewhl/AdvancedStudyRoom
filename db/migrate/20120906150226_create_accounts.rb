@@ -18,5 +18,7 @@ class CreateAccounts < ActiveRecord::Migration
     add_index :accounts, :server_id
     add_index :accounts, :event_id
     add_index :accounts, :division_id
+    add_index :accounts, :handle
   end
 end
+

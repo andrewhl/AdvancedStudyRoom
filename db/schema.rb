@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211222906) do
+ActiveRecord::Schema.define(:version => 20121202075334) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -146,18 +146,19 @@ ActiveRecord::Schema.define(:version => 20121211222906) do
     t.integer  "event_id"
     t.string   "event_desc"
     t.string   "event_type"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
     t.string   "game_hash"
     t.integer  "registration_id"
     t.boolean  "enabled"
     t.integer  "match_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "points", ["account_id"], :name => "index_points_on_account_id"
   add_index "points", ["event_id"], :name => "index_points_on_event_id"
   add_index "points", ["event_type"], :name => "index_points_on_event_type"
   add_index "points", ["game_hash"], :name => "index_points_on_game_hash"
+  add_index "points", ["match_id"], :name => "index_points_on_match_id"
 
   create_table "registrations", :force => true do |t|
     t.integer  "account_id"
@@ -256,16 +257,16 @@ ActiveRecord::Schema.define(:version => 20121211222906) do
     t.integer  "event_id"
     t.integer  "league_id"
     t.string   "name"
+    t.integer  "parent_id"
+    t.integer  "child_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
-    t.string   "parent"
-    t.string   "child"
   end
 
-  add_index "tiers", ["child"], :name => "index_tiers_on_child"
+  add_index "tiers", ["child_id"], :name => "index_tiers_on_child_id"
   add_index "tiers", ["event_id"], :name => "index_tiers_on_event_id"
   add_index "tiers", ["league_id"], :name => "index_tiers_on_league_id"
-  add_index "tiers", ["parent"], :name => "index_tiers_on_parent"
+  add_index "tiers", ["parent_id"], :name => "index_tiers_on_parent_id"
   add_index "tiers", ["tier_type_id"], :name => "index_tiers_on_tier_type_id"
 
   create_table "tournaments", :force => true do |t|

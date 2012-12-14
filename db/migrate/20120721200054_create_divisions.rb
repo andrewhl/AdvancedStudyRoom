@@ -10,6 +10,9 @@ class CreateDivisions < ActiveRecord::Migration
       t.integer  :safe_position
       t.integer  :promoted_players
       t.integer  :demoted_players
+      t.string   :name
+      t.string   :custom_name
+      t.boolean  :use_custom_name
     end
 
     add_index :divisions, :division_index
