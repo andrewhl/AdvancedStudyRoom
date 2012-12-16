@@ -15,10 +15,10 @@
 #  event_id                :integer
 #  league_id               :integer
 #  name                    :string(255)
+#  parent_id               :integer
+#  child_id                :integer
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
-#  parent                  :string(255)
-#  child                   :string(255)
 #
 
 class Tier < ActiveRecord::Base

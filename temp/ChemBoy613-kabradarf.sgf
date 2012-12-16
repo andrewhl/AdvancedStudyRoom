@@ -1,0 +1,304 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[Japanese]SZ[19]KM[6.50]TM[2700]OT[10x30 byo-yomi]
+PW[ChemBoy613]PB[kabradarf]DT[2012-10-03]PC[The KGS Go Server at http://www.gokgs.com/]C[ChemBoy613 [-\]: hi
+kabradarf [-\]: hi
+kabradarf [-\]: have a nice game
+kabradarf [-\]: asr league
+]RE[B+Resign]
+;B[qp]BL[2682.2]
+;W[dq]WL[2692.178]
+;B[cd]BL[2669.602]
+;W[pc]WL[2682.375]
+;B[pe]BL[2653.284]
+;W[oq]WL[2673.096]
+;B[po]BL[2625.996]
+;W[jp]WL[2658.276]C[murrmurr [6d?\]: so many interesting points 
+murrmurr [6d?\]: i may have watched too many korean games but n3 is tingling me
+]
+;B[mc]BL[2182.359]
+;W[qe]WL[2560.423]
+;B[qf]BL[2168.013]
+;W[qd]WL[2553.111]
+;B[pf]BL[2161.904]
+;W[od]WL[2550.835]C[murrmurr [6d?\]: n15 or o15...
+]
+;B[me]BL[1986.793]
+;W[fc]WL[2546.069]
+;B[hc]BL[1973.398]
+;W[cc]WL[2493.881]
+;B[dc]BL[1967.102]C[murrmurr [6d?\]: i predict black to be pretty comfy here
+]
+;W[dd]WL[2491.039]
+;B[cb]BL[1964.101]
+;W[bc]WL[2489.898]
+;B[ed]BL[1961.912]
+;W[de]WL[2488.035]
+;B[ec]BL[1959.747]
+;W[bb]WL[2486.558]
+;B[ef]BL[1941.595]
+;W[ee]WL[2471.264]
+;B[fe]BL[1938.775]
+;W[ce]WL[2462.166]
+;B[fd]BL[1930.537]C[murrmurr [6d?\]: o5
+murrmurr [6d?\]: or deeper invasion
+]
+;W[ql]WL[2328.192]
+;B[qj]BL[1924.543]
+;W[ol]WL[2325.432]C[murrmurr [6d?\]: okey, i like white again
+murrmurr [6d?\]: well, hard to say actually
+eisenberg [7k\]: o5?
+murrmurr [6d?\]: o4 is natural, but white should probably ignore it and play s10/n8 
+murrmurr [6d?\]: if black o3 after that, m3 is still senteish
+murrmurr [6d?\]: and then can turn to c5
+eisenberg [7k\]: ic
+murrmurr [6d?\]: there's o2 , n2, q2 aji left in the position anyway
+eisenberg [7k\]: so d5 for B first ?
+murrmurr [6d?\]: nah, black thickness goes to waste if he cant attack properly
+murrmurr [6d?\]: so white is ahead here
+murrmurr [6d?\]: could try n8 directly
+murrmurr [6d?\]: but tough
+eisenberg [7k\]: q7 Q8 P10 ?
+murrmurr [6d?\]: q7 q8 p10 n8 
+murrmurr [6d?\]: white will be running ahead
+eisenberg [7k\]: okey
+murrmurr [6d?\]: p3 would remain unpressured
+]
+;B[nm]BL[1322.379]C[murrmurr [6d?\]: alrity
+murrmurr [6d?\]: atleast complicates a little
+]
+;W[pj]WL[2257.923]C[murrmurr [6d?\]: r11 o10/ n10 or so..
+murrmurr [6d?\]: q11 p10 r9 probably though
+]
+;B[pi]BL[1178.985]
+;W[oj]WL[2247.603]
+;B[qk]BL[1175.202]
+;W[pl]WL[2229.346]C[murrmurr [6d?\]: this aims at p6 now
+wildseven [16k?\]: is this joseki
+murrmurr [6d?\]: so black has to ... o4?
+]
+;B[mp]BL[1068.102]
+;W[oo]WL[2218.483]
+;B[on]BL[1065.556]
+;W[no]WL[2203.284]C[murrmurr [6d?\]: i would be scared to exchange much here as white 
+]
+;B[mo]BL[1057.64]C[murrmurr [6d?\]: p10 needs a jump to center afaik
+]
+;W[pn]WL[2196.177]C[eisenberg [7k\]: o3
+]
+;B[nn]BL[946.054]
+;W[pp]WL[2175.908]
+;B[qo]BL[943.753]
+;W[qq]WL[2175.198]
+;B[rq]BL[938.346]
+;W[rr]WL[2166.414]C[murrmurr [6d?\]: oops
+]
+;B[op]BL[930.845]C[murrmurr [6d?\]: and black has a good game now
+]
+;W[pq]WL[2133.314]
+;B[nq]BL[925.665]
+;W[rp]WL[2131.34]
+;B[ro]BL[922.994]
+;W[sq]WL[2128.74]C[murrmurr [6d?\]: m10 or such
+eisenberg [7k\]: p10 is surround  now
+]
+;B[gp]BL[798.769]C[eisenberg [7k\]: reduction invasion??????
+murrmurr [6d?\]: it's ok
+]
+;W[do]WL[2089.337]C[murrmurr [6d?\]: but killing k4 is much smaller than p10
+]
+;B[io]BL[780.087]C[murrmurr [6d?\]: now white jumps with p10...
+murrmurr [6d?\]: g2 is still open, that bottom was not worth it
+]
+;W[oi]WL[2059.323]
+;B[ph]BL[776.079]
+;W[lk]WL[2049.555]
+;B[jo]BL[756.923]
+;W[gr]WL[2042.881]C[murrmurr [6d?\]: might want to m11 first, still weak enough to attack that white group
+eisenberg [7k\]: g4 was not good so?
+murrmurr [6d?\]: well, if black can attack well with m11 here
+]
+;B[cf]BL[711.869]C[murrmurr [6d?\]: well, g4 followup wasn't very good atleast
+eisenberg [7k\]: yep
+murrmurr [6d?\]: would have needed to fight it in bigger scale
+murrmurr [6d?\]: not try surround with j5 and k5
+shika12 [-\]: long game o.o
+shika12 [-\]: lots of time used
+shika12 [-\]: b15
+eisenberg [7k\]: do there best :o)
+murrmurr [6d?\]: well, black has c3 sequence to try seal bottom off still
+murrmurr [6d?\]: c3 c4 d2 c2 e3 
+shika12 [-\]: true
+shika12 [-\]: but at the cost of all the left?
+]
+;W[be]WL[1813.328]C[eisenberg [7k\]: and if bC4?
+murrmurr [6d?\]: anyway, m11 is more interesting to me
+shika12 [-\]: then wc3
+shika12 [-\]: that entire right side of the board is white's thorn
+murrmurr [6d?\]: well, c3 allows e4 which helps cut f2
+eisenberg [7k\]: yes got that
+]
+;B[lh]BL[522.098]C[murrmurr [6d?\]: well, i wasn't far off
+eisenberg [7k\]: :)
+]
+;W[ig]WL[1783.352]C[murrmurr [6d?\]: whoa
+murrmurr [6d?\]: danger
+murrmurr [6d?\]: oh well, i'm out, night
+]
+;B[mj]BL[387.377]
+;W[qn]WL[1777.429]C[shika12 [-\]: white feels way out of position
+shika12 [-\]: with m9 and j13
+]
+;B[mk]BL[271.24]
+;W[so]WL[1757.912]C[shika12 [-\]: ?
+shika12 [-\]: t5?
+]
+;B[np]BL[258.299]C[Viscontino [9k\]: forciçngf i gess
+Viscontino [9k\]: forrcing ^^
+]
+;W[oo]WL[1736.375]C[shika12 [-\]: i just forgot p5 was already dead
+]
+;B[no]BL[240.444]C[eisenberg [7k\]: murmur same 
+]
+;W[rn]WL[1681.521]
+;B[fh]BL[231.492]
+;W[ij]WL[1677.619]C[Viscontino [9k\]: do you know what their level is
+Viscontino [9k\]: cause i  feel they could rock my bottom.
+Viscontino [9k\]: ?
+]
+;B[ih]BL[30]OB[9]
+;W[jh]WL[1664.521]
+;B[ji]BL[30]OB[9]
+;W[hh]WL[1649.997]
+;B[ii]BL[30]OB[9]
+;W[hi]WL[1648.371]
+;B[hj]BL[30]OB[9]
+;W[gj]WL[1640.428]
+;B[hk]BL[30]OB[9]
+;W[ik]WL[1639.485]
+;B[il]BL[30]OB[9]
+;W[ki]WL[1630.118]
+;B[cm]BL[30]OB[9]
+;W[bn]WL[1614.122]
+;B[cq]BL[30]OB[9]
+;W[cr]WL[1595.093]
+;B[eq]BL[30]OB[9]
+;W[er]WL[1588.37]
+;B[dp]BL[30]OB[9]
+;W[dr]WL[1586.321]
+;B[cp]BL[30]OB[9]
+;W[ep]WL[1581.537]
+;B[eo]BL[30]OB[9]
+;W[fq]WL[1572.301]
+;B[co]BL[30]OB[9]
+;W[dn]WL[1570.149]
+;B[cn]BL[30]OB[9]
+;W[fo]WL[1568.816]
+;B[en]BL[30]OB[9]
+;W[fn]WL[1563.944]
+;B[em]BL[30]OB[9]
+;W[gk]WL[1557.729]
+;B[hl]BL[30]OB[9]
+;W[fi]WL[1555.889]
+;B[ir]BL[30]OB[9]
+;W[eh]WL[1537.916]
+;B[ci]BL[30]OB[9]
+;W[dl]WL[1526.764]
+;B[dm]BL[30]OB[9]
+;W[ck]WL[1525.707]
+;B[eg]BL[30]OB[6]
+;W[ei]WL[1504.728]
+;B[dk]BL[30]OB[6]
+;W[dj]WL[1499.205]
+;B[bk]BL[30]OB[6]
+;W[id]WL[1476.664]
+;B[ic]BL[30]OB[6]
+;W[jd]WL[1472.994]
+;B[jc]BL[30]OB[6]
+;W[kd]WL[1410.461]
+;B[lc]BL[30]OB[6]
+;W[bl]WL[1359.701]
+;B[cl]BL[30]OB[6]
+;W[cj]WL[1358.39]
+;B[bj]BL[30]OB[6]
+;W[bi]WL[1355.117]
+;B[bh]BL[30]OB[6]
+;W[db]WL[1333.95]
+;B[eb]BL[30]OB[6]
+;W[ca]WL[1332.451]
+;B[ll]BL[30]OB[6]
+;W[kk]WL[1325.604]
+;B[br]BL[30]OB[5]
+;W[bs]WL[1311.636]
+;B[ar]BL[30]OB[5]
+;W[ea]WL[1310.206]
+;B[fa]BL[30]OB[5]
+;W[kb]WL[1290.83]
+;B[kc]BL[30]OB[5]
+;W[fb]WL[1288.758]
+;B[da]BL[30]OB[5]
+;W[ak]WL[1276.378]
+;B[ai]BL[30]OB[5]
+;W[ea]WL[1275.4]
+;B[ga]BL[30]OB[5]
+;W[gb]WL[1273.341]
+;B[da]BL[30]OB[5]
+;W[aj]WL[1260.966]
+;B[al]BL[30]OB[5]
+;W[ea]WL[1259.592]
+;B[ha]BL[30]OB[5]
+;W[hb]WL[1258.88]
+;B[da]BL[30]OB[5]
+;W[hr]WL[1252.214]
+;B[iq]BL[30]OB[5]
+;W[ea]WL[1250.503]
+;B[ia]BL[30]OB[5]
+;W[ib]WL[1246.379]
+;B[da]BL[30]OB[5]
+;W[rf]WL[1214.392]
+;B[cb]BL[30]OB[5]
+;W[rh]WL[1190.518]
+;B[qi]BL[30]OB[5]
+;W[db]WL[1187.189]
+;B[ea]BL[30]OB[5]
+;W[nb]WL[1177.107]
+;B[mb]BL[30]OB[5]
+;W[ma]WL[1175.258]
+;B[la]BL[30]OB[5]
+;W[na]WL[1165.626]
+;B[nc]BL[30]OB[5]
+;W[ob]WL[1163.93]
+;B[oc]BL[30]OB[5]
+;W[qb]WL[1161.547]
+;B[fp]BL[30]OB[5]
+;W[fm]WL[1152.704]
+;B[fs]BL[30]OB[5]
+;W[hp]WL[1137.474]
+;B[hq]BL[30]OB[5]
+;W[gq]WL[1126.266]
+;B[go]BL[30]OB[5]
+;W[ho]WL[1119.17]
+;B[gn]BL[30]OB[5]
+;W[hn]WL[1117.537]
+;B[gm]BL[30]OB[5]
+;W[fl]WL[1114.94]
+;B[hm]BL[30]OB[5]
+;W[bq]WL[1110.107]
+;B[bp]BL[30]OB[5]
+;W[is]WL[1103.726]
+;B[jr]BL[30]OB[5]
+;W[ip]WL[1096.691]
+;B[kq]BL[30]OB[5]
+;W[ko]WL[1082.639]
+;B[kl]BL[30]OB[5]
+;W[jm]WL[1071.244]
+;B[jl]BL[30]OB[5]
+;W[lq]WL[1064.122]
+;B[lp]BL[30]OB[5]
+;W[kp]WL[1058.651]
+;B[lr]BL[30]OB[5]C[ChemBoy613 [-\]: gosh, that's a stupid way to lose
+kabradarf [-\]: ty
+ChemBoy613 [-\]: It was such a great game!
+ChemBoy613 [-\]: then I let myself die!
+kabradarf [-\]: arf
+ChemBoy613 [-\]: :'*(
+])

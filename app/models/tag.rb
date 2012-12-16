@@ -17,5 +17,5 @@ class Tag < ActiveRecord::Base
   belongs_to :event
 
   validates_uniqueness_of :phrase
-  validates_presence_of :event_id
+  # validates_presence_of :event_id
 end

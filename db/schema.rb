@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202075334) do
+ActiveRecord::Schema.define(:version => 20121216192754) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -56,8 +56,13 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.integer  "match_id"
     t.integer  "node"
     t.string   "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "handle"
+    t.string   "rank"
+    t.datetime "game_date"
+    t.integer  "node_number"
+    t.integer  "line_number"
   end
 
   add_index "comments", ["match_id"], :name => "index_comments_on_match_id"

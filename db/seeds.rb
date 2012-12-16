@@ -31,7 +31,6 @@ alpha_users.length.times do |n|
   end
 
 end
-
 Server.find_or_create_by_name("KGS")
 Server.find_or_create_by_name("Kaya")
 Tag.find_or_create_by_phrase("ASR League")

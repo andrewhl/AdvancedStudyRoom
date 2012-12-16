@@ -11,14 +11,19 @@ class Validator
         zip_file.extract(f, f_path) unless File.exists?(f_path)
 
         game = convert_sgf_to_game(f_path.to_s, username)
+        # binding.pry
 
         # TO DO:
         # comments = get_comments(game) # returns an array of comments
         # validate_game(comments) # loops through array of comments and validates the game
 
-        unless game.nil?
-          game.save
+        # binding.pry
+        unless game == "Invalid"
+          game_comments = get_comments(f_path.to_s, game.game_digest)
+          binding.pry
+          # game.save
         end
+
 
         # SAVE COMMENTS:
         # comments.each do |comment|
@@ -41,7 +46,7 @@ class Validator
     ginfo = game.current_node.properties
 
     # binding.pry
-    return nil if not (has_valid_tag(game)[0])
+    # return nil if not (has_valid_tag(game)[0])
 
     # date_time = game.date
     ruleset = game.rules
@@ -54,6 +59,10 @@ class Validator
 
     black_player = Registration.find_by_handle(black_player_name)
     white_player = Registration.find_by_handle(white_player_name)
+
+    # Check that both players are registered
+
+    return "Invalid" if !black_player or !white_player
 
     # Grab the id of the registration or make the id nil.
 
@@ -84,7 +93,7 @@ class Validator
 
     # game digest
 
-    digest_player = (black_player == username) ? black_player : white_player
+    digest_player = (black_player.handle == username) ? black_player.handle : white_player.handle
     digest_phrase = digest_player + game.date.to_s
     digest = Digest::MD5.hexdigest(digest_phrase)
 
@@ -112,20 +121,60 @@ class Validator
 
   end
 
-  def extract_match_comments sgf, game_id
+  def get_comments sgf, game_digest
 
     parser = SGF::Parser.new
     tree = parser.parse(sgf)
     game = tree.games.first
 
-    game.each do |node|
+    comments = Hash.new
+    comments[:game_digest] = game_digest
+
+    unprocessed_comments = []
+    comment_group_number = 0
+    game.each_with_index do |node, index|
+      next unless node.properties["C"]
       # binding.pry
-      unless node.properties["C"].nil?
-        valid_tag = true if !node.C.scan(tag_phrase).empty?
-      end
-      i += 1
-      return valid_tag if i > node_limit
+      unprocessed_comments << node.properties["C"].split("\n")
+      unprocessed_comments[comment_group_number] << index
+      comment_group_number += 1
+
     end
+
+    # Return nil if the game has no comments
+    return nil if unprocessed_comments.empty?
+    unprocessed_comments.each do |comment_group|
+      # binding.pry
+      line_number = 1
+      comment_group.each do |comment|
+
+        # Skip because last line in comment is the node number
+        next if comment.is_a? Fixnum
+
+        handle = comment.scan(/^[a-zA-Z0-9]+/).pop
+        rank = comment.scan(/\[([\d]+[d|k]|[\d]+[d|k]\?|\?|\-)\]/).flatten.pop
+        processed_comment = comment.scan(/\:\s(.+)/).flatten.pop
+        game_date = game.date
+        node_number = comment_group.last
+        comment_hash = {
+                  handle: handle,
+                  rank: rank,
+                  comment: processed_comment,
+                  game_date: game_date
+        }
+        if comments[:"node_#{node_number}"]
+          comments[:"node_#{node_number}"] = comments[:"node_#{node_number}"].merge :"line_#{line_number.to_s}" => comment_hash
+        else
+          comments[:"node_#{node_number}"] = { :"line_#{line_number.to_s}" => comment_hash }
+        end
+        # binding.pry
+
+        line_number += 1
+      end
+    end
+
+    comments
+
   end
 
   def has_valid_tag game
@@ -165,7 +214,6 @@ class Validator
       end
 
       # valid_tag = Tag.where("phrase like ?", comment).exists?
-
       return [valid_tag, nil] if i > node_limit
     end
 

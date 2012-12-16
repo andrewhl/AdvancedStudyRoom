@@ -12,7 +12,8 @@
 #
 
 class Registration < ActiveRecord::Base
-  attr_accessible :account_id, :event_id, :registration, :division_id, :handle
+  attr_accessible :account_id,
+                  :event_id, :registration, :division_id, :handle
 
   belongs_to :event
   belongs_to :account
