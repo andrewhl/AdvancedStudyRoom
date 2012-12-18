@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216192754) do
+ActiveRecord::Schema.define(:version => 20121217225749) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -230,6 +230,7 @@ ActiveRecord::Schema.define(:version => 20121216192754) do
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "node_limit"
   end
 
   add_index "tags", ["event_id"], :name => "index_tags_on_event_id"

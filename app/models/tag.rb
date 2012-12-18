@@ -8,10 +8,11 @@
 #  event_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  node_limit :integer
 #
 
 class Tag < ActiveRecord::Base
-  attr_accessible :phrase, :league_id, :event_id
+  attr_accessible :phrase, :league_id, :event_id, :node_limit
 
   belongs_to :league
   belongs_to :event

@@ -20,8 +20,23 @@ class Validator
         # binding.pry
         unless game == "Invalid"
           game_comments = get_comments(f_path.to_s, game.game_digest)
-          binding.pry
-          # game.save
+
+          return "Invalid game" unless game.has_valid_tag game_comments
+          if game.save
+            next if game.comments.any?
+            game_comments.each do |node, line|
+              next if line.is_a? String
+              line.each do |key, value|
+                node_number = node.to_s.scan(/\d/).pop.to_i
+                line_number = line.to_s.scan(/\d/).pop.to_i
+                value = value.merge(:node_number => node_number, :line_number => line_number)
+                comment = game.comments.build(value)
+                comment.save
+              end
+            end
+          end
+
+
         end
 
 
@@ -91,10 +106,9 @@ class Validator
     win_info = result[1]
     puts "valid game"
 
-    # game digest
+    # game digest == sgf file name (which will be unique), and the game date
 
-    digest_player = (black_player.handle == username) ? black_player.handle : white_player.handle
-    digest_phrase = digest_player + game.date.to_s
+    digest_phrase = File.basename(file) + game.date.to_s
     digest = Digest::MD5.hexdigest(digest_phrase)
 
     # binding.pry
@@ -128,10 +142,14 @@ class Validator
     game = tree.games.first
 
     comments = Hash.new
+
+    # associate the comments with a specific game
     comments[:game_digest] = game_digest
 
     unprocessed_comments = []
     comment_group_number = 0
+
+    # collect all the comments in the sgf file
     game.each_with_index do |node, index|
       next unless node.properties["C"]
       # binding.pry
@@ -143,9 +161,15 @@ class Validator
 
     # Return nil if the game has no comments
     return nil if unprocessed_comments.empty?
+
+    # in an sgf file there may be multiple coments per sgf node (i.e., move)
+    # so I am looping through them here
     unprocessed_comments.each do |comment_group|
       # binding.pry
       line_number = 1
+
+      # here I am processing each individual comment,
+      # and assigning them each to a hash
       comment_group.each do |comment|
 
         # Skip because last line in comment is the node number
@@ -177,47 +201,7 @@ class Validator
 
   end
 
-  def has_valid_tag game
 
-    valid_tag = false
-    i = 0
-    node_limit = 30 # Move limit in which the tag must appear
-
-    game.each do |node|
-
-      # Tag.find(the_string_in_the_comments)
-      i += 1
-      next if node.properties["C"].nil?
-
-
-      # unless node.properties["C"].nil?
-      #   valid_tag = !node.C.scan(tag_phrase).empty?
-      # end
-
-      # Tag.where("phrase like ?", q)
-
-      # TODO: HAVE A SEPARATE METHOD THAT EXTRACTS THE COMMENTS AND RETURNS THEM IN AN ARRAY
-
-      regex = /\s([a-zA-Z0-9\s\?\!\-\_\+\=\@\$\'\"\,]+)/
-
-      comments = node.properties["C"].split("\n")
-      comments.each do |comment|
-
-        comment = comment.scan(regex).flatten.pop.to_s
-        # binding.pry if not comment[/asr/i].nil?
-        tag = Tag.where("phrase like ?", comment)
-        unless tag.empty?
-          tag_id = tag.first.id
-        end
-        valid_tag = Tag.where("phrase like ?", comment).exists?
-        return [valid_tag, tag_id] if (valid_tag)
-      end
-
-      # valid_tag = Tag.where("phrase like ?", comment).exists?
-      return [valid_tag, nil] if i > node_limit
-    end
-
-  end
 
   def get_ruleset tag_id
 

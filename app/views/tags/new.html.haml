@@ -26,5 +26,11 @@
       .controls
         = f.select(:event_id, options_from_collection_for_select(@events, :id, :name))
 
+    .control-group
+      %label.control-label
+        Tag Phrase
+      .controls
+        = f.number_field :node_limit
+
     .actions
       = f.submit "Create Tag", class: "btn"

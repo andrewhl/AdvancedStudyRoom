@@ -8,6 +8,7 @@
 #  event_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  node_limit :integer
 #
 
 require 'test_helper'

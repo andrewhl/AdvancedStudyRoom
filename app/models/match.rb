@@ -52,4 +52,39 @@ class Match < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :points
 
+
+  def has_valid_tag comments
+
+    # TO DO: TEST IF THE NODE LIMIT WORKS ON A GAME WITH A TAG THAT APPEARS
+    # AFTER NODE 0
+
+    valid_tag = false
+
+    comments.each do |node, line|
+      next if line.is_a? String
+      line.each do |key, value|
+
+        # binding.pry
+        # see if tag exists that matches the current line's comment
+        if Tag.where("phrase like ?", value[:comment]).exists?
+          tag = Tag.where("phrase like ?", value[:comment]).first
+          valid_tag = true
+          node_limit ||= tag.node_limit
+
+        end
+
+        # check node limit (i.e., move limit in which tag phrase must appear)
+        if node_limit
+          # returns false if the current node key (when parsed) is greater than the node limit
+          return false if node.to_s.scan(/\d/).pop.to_i > node_limit
+        end
+
+
+      end
+
+      return valid_tag
+    end
+
+  end
+
 end
