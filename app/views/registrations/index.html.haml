@@ -13,7 +13,7 @@
   - else
     - @unassigned_players.each do |unassigned_player|
       %tr
-        %td= unassigned_player.account.handle
+        %td= unassigned_player.handle
 
 .event_registration_form
   = render "event_registrations_form", :unassigned_players => @unassigned_players, :divisions => @divisions

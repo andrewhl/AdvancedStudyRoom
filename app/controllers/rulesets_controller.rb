@@ -23,8 +23,10 @@ class RulesetsController < ApplicationController
   def index
     @ruleset = Ruleset.all
     @canon = Ruleset.canon
+
     @event_rulesets = Ruleset.event_rulesets
     @tier_rulesets = Ruleset.tier_rulesets
     @division_rulesets = Ruleset.division_rulesets
+    @rulesets = [@event_rulesets, @tier_rulesets, @division_rulesets]
   end
 end
