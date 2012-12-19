@@ -30,6 +30,9 @@ class Validator
                 node_number = node.to_s.scan(/\d/).pop.to_i
                 line_number = line.to_s.scan(/\d/).pop.to_i
                 value = value.merge(:node_number => node_number, :line_number => line_number)
+
+                # binding.pry if game.white_player_name.handle == "ChemBoy613" and node == :node_75
+                value[:comment].force_encoding("UTF-8")
                 comment = game.comments.build(value)
                 comment.save
               end
@@ -123,8 +126,8 @@ class Validator
       "overtime_type" => ot_type,
       "ot_stones_periods" => ot_stones,
       "ot_time_control" => ot_main,
-      "black_player_name" => black_player,
-      "white_player_name" => white_player,
+      "black_player_name" => black_player_name,
+      "white_player_name" => white_player_name,
       "handicap" => ginfo["HA"],
       "game_digest" => digest,
       "black_player_id" => black_player_id,
@@ -197,6 +200,8 @@ class Validator
       end
     end
 
+    # binding.pry if game.black_player == "twisted" and game.date != "2012-10-09"
+    # binding.pry if game.date == "2012-10-03"
     comments
 
   end
