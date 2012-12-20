@@ -4,6 +4,7 @@ class CreateTags < ActiveRecord::Migration
       t.string  :phrase
       t.integer :league_id
       t.integer :event_id
+      t.integer :node_limit
 
       t.timestamps
     end

@@ -10,7 +10,6 @@ class RulesetsController < ApplicationController
 
   def create
     @ruleset = Ruleset.create(params[:ruleset])
-    # binding.pry
     redirect_to :new_ruleset, :flash => {:success => "Your ruleset has been successfully created."}
   end
 

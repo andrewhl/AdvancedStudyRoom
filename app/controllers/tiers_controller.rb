@@ -13,6 +13,7 @@ class TiersController < ApplicationController
     if @tier.save
       if params[:tier][:tier_ruleset]
         @tier_ruleset = @tier.build_tier_ruleset(params[:tier][:tier_ruleset])
+        @tier_ruleset.parent_id = @event.event_ruleset.id
         @tier_ruleset.event_id = @event.id
         @tier_ruleset.save
       end

@@ -41,5 +41,8 @@ class DivisionRuleset < TierRuleset
 
   belongs_to :division
 
+  def parent
+    TierRuleset.find(parent_id)
+  end
 end
 

@@ -41,4 +41,8 @@ class EventRuleset < Ruleset
 
   belongs_to :event
 
+  def parent
+    Ruleset.find(parent_id)
+  end
+
 end

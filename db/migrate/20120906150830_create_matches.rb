@@ -17,11 +17,13 @@ class CreateMatches < ActiveRecord::Migration
       t.string   :white_player_name
       t.integer  :handicap
       t.string   :game_digest
+      t.integer  :division_id
 
       t.timestamps
     end
 
     add_index :matches, :black_player_id
     add_index :matches, :white_player_id
+    add_index :matches, :division_id
   end
 end

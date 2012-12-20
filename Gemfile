@@ -30,15 +30,15 @@ group :assets do
 end
 
 group :test do
-  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'rb-fsevent' #, '~> 0.9.1'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
   gem 'shoulda-context'
   gem 'shoulda-matchers'
-  gem 'guard'
+  # gem 'guard'
   gem 'growl'
-  gem 'spork'
+  # gem 'spork'
   gem 'guard-pow'
   gem 'guard-rspec'
   gem 'guard-spork'
@@ -56,8 +56,6 @@ group :test, :development do
   gem 'annotate', ">=2.5.0"
   gem "factory_girl_rails", "~> 3.0"
   gem 'cucumber-rails', :require => false
-  gem 'zeus'
-
 end
 
 group :production do

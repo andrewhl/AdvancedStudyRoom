@@ -16,6 +16,7 @@ class DivisionsController < ApplicationController
 
     if @division.save
       @division_ruleset = @division.build_division_ruleset(params[:division][:division_ruleset])
+      @division_ruleset.parent_id = @tier.tier_ruleset.id
       @division_ruleset.update_attributes(:event_id => @event.id, :tier_id => @tier.id)
       redirect_to manage_event_path(@event.id), :flash => {:success => "Your division has been successfully created."}
     else

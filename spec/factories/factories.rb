@@ -28,6 +28,50 @@ FactoryGirl.define do
     admin true
   end
 
+  factory :ruleset, :class => Ruleset do
+    name "KGS Default"
+    allowed_rengo false
+    allowed_teaching false
+    allowed_review false
+    allowed_free true
+    allowed_rated true
+    allowed_simul true
+    allowed_demonstration false
+    main_time_min 300.0
+    main_time_max 2700.0
+    overtime_required true
+    jovertime_allowed true
+    covertime_allowed true
+    jot_min_periods 5
+    jot_max_periods 30
+    jot_min_period_length 60.0
+    jot_max_period_length 300.0
+    cot_min_stones 25
+    cot_max_stones 25
+    cot_max_time 300.0
+    cot_min_time 300.0
+    handicap_default 0.5
+    ruleset_default nil
+    games_per_player 2
+    games_per_opponent 2
+    canonical true
+    type nil
+    max_komi 6.5
+    min_komi 6.5
+  end
+
+  factory :event_ruleset, :class => EventRuleset do
+    name "Event Ruleset"
+  end
+
+  factory :tier_ruleset, :class => TierRuleset do
+    name "Tier Ruleset"
+  end
+
+  factory :division_ruleset, :class => DivisionRuleset do
+    name "Division Ruleset"
+  end
+
   factory :match, :class => Match do
     datetime_completed "2012-10-09 00:00:00"
     komi 6.5

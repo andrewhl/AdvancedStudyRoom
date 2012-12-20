@@ -69,6 +69,7 @@ class Ruleset < ActiveRecord::Base
                   :division_id,
                   :tier_id,
                   :event_id,
+                  :parent_id,
                   :type,
                   :canonical
 

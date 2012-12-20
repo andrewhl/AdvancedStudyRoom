@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     event_params = params[:event].dup
     event_params.delete("event_ruleset")
     @event = Event.create(event_params)
-
+    params[:event][:event_ruleset][:parent_id] = params[:event][:ruleset_id]
     @event_ruleset = @event.create_event_ruleset(params[:event][:event_ruleset])
     redirect_to :new_event, :flash => {:success => "Your event has been successfully created."}
   end

@@ -87,6 +87,12 @@ class Validator
     black_player_id ||= black_player.id unless black_player.nil?
     white_player_id ||= white_player.id unless white_player.nil?
 
+    # confirm that both players are in the same division
+
+    return "Invalid" unless black_player.division == white_player.division
+
+    division_id = black_player.division.id
+
     # handicap = ginfo["HA"]
     result = ginfo["RE"].split("+")
 
@@ -131,7 +137,8 @@ class Validator
       "handicap" => ginfo["HA"],
       "game_digest" => digest,
       "black_player_id" => black_player_id,
-      "white_player_id" => white_player_id
+      "white_player_id" => white_player_id,
+      "division_id" => division_id
     }
 
     return match = Match.new(game_hash)

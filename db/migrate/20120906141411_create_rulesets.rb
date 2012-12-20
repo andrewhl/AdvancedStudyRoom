@@ -31,6 +31,9 @@ class CreateRulesets < ActiveRecord::Migration
       t.integer  :division_id
       t.integer  :tier_id
       t.integer  :event_id
+      t.integer  :parent_id
+      t.float    :max_komi
+      t.float    :min_komi
 
       t.timestamps
     end
@@ -38,6 +41,7 @@ class CreateRulesets < ActiveRecord::Migration
     add_index :rulesets, :division_id
     add_index :rulesets, :tier_id
     add_index :rulesets, :event_id
+    add_index :rulesets, :parent_id
 
   end
 end

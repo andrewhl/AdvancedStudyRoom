@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217234221) do
+ActiveRecord::Schema.define(:version => 20121202075334) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -55,13 +55,13 @@ ActiveRecord::Schema.define(:version => 20121217234221) do
   create_table "comments", :force => true do |t|
     t.integer  "match_id"
     t.string   "comment"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
     t.string   "handle"
     t.string   "rank"
     t.datetime "game_date"
     t.integer  "node_number"
     t.integer  "line_number"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "comments", ["match_id"], :name => "index_comments_on_match_id"
@@ -137,11 +137,13 @@ ActiveRecord::Schema.define(:version => 20121217234221) do
     t.string   "white_player_name"
     t.integer  "handicap"
     t.string   "game_digest"
+    t.integer  "division_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
   add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
+  add_index "matches", ["division_id"], :name => "index_matches_on_division_id"
   add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
 
   create_table "points", :force => true do |t|
@@ -208,12 +210,16 @@ ActiveRecord::Schema.define(:version => 20121217234221) do
     t.integer  "division_id"
     t.integer  "tier_id"
     t.integer  "event_id"
+    t.integer  "parent_id"
+    t.float    "max_komi"
+    t.float    "min_komi"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
 
   add_index "rulesets", ["division_id"], :name => "index_rulesets_on_division_id"
   add_index "rulesets", ["event_id"], :name => "index_rulesets_on_event_id"
+  add_index "rulesets", ["parent_id"], :name => "index_rulesets_on_parent_id"
   add_index "rulesets", ["tier_id"], :name => "index_rulesets_on_tier_id"
 
   create_table "servers", :force => true do |t|
@@ -227,9 +233,9 @@ ActiveRecord::Schema.define(:version => 20121217234221) do
     t.string   "phrase"
     t.integer  "league_id"
     t.integer  "event_id"
+    t.integer  "node_limit"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "node_limit"
   end
 
   add_index "tags", ["event_id"], :name => "index_tags_on_event_id"

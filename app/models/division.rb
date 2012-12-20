@@ -37,7 +37,9 @@ class Division < ActiveRecord::Base
 
   has_many :accounts
   has_many :registrations
+  has_many :matches
   has_one :division_ruleset, :dependent => :destroy
+
   belongs_to :tier
 
   accepts_nested_attributes_for :division_ruleset, allow_destroy: true

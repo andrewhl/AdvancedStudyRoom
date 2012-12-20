@@ -42,12 +42,14 @@ class Match < ActiveRecord::Base
                   :white_player_name,
                   :game_digest,
                   :black_player_id,
-                  :white_player_id
+                  :white_player_id,
+                  :division_id
 
   validates_uniqueness_of :game_digest, :on => :create, :message => "must be unique"
 
   belongs_to :black_player, :class_name => 'Registration'
   belongs_to :white_player, :class_name => 'Registration'
+  belongs_to :division
 
   has_many :comments, :dependent => :destroy
   has_many :points
@@ -88,6 +90,24 @@ class Match < ActiveRecord::Base
   end
 
   def is_valid?
+
+    division_ruleset = self.division.division_ruleset
+    tier_ruleset = division_ruleset.parent
+    event_ruleset = tier_ruleset.parent
+    ruleset = event_ruleset.parent
+
+    # check komi
+
+    # !division_ruleset.max_komi or !division_ruleset.min_komi
+
+    # what I want to do:
+    # write a meta script that checks self's ruleset for a specific method
+    # and if that method is nil, checks the parent for the same method
+    # and if that parent is nil, checks the next perent, and so on
+    # until type = 'ruleset' (the top level)
+    # if the rule is nil there, then the check passes
+    true
+
 
     # will check first that a rule in this ruleset is not nil
     # if not nil, it will check to see that the match applies the rule

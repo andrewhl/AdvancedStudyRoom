@@ -41,4 +41,8 @@ class TierRuleset < EventRuleset
 
   belongs_to :tier
 
+  def parent
+    EventRuleset.find(parent_id)
+  end
+
 end
