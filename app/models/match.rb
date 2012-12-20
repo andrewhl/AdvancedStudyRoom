@@ -87,4 +87,32 @@ class Match < ActiveRecord::Base
 
   end
 
+  def is_valid?
+
+    # will check first that a rule in this ruleset is not nil
+    # if not nil, it will check to see that the match applies the rule
+    # if it fails, the game will not be saved, will return false
+
+
+
+    #  datetime_completed :datetime
+    #  game_type          :string(255)
+    #  komi               :float
+    #  winner             :string(255)
+    #  win_info           :string(255)
+    #  main_time_control  :float
+    #  overtime_type      :string(255)
+    #  ot_stones_periods  :integer
+    #  ot_time_control    :float
+    #  url                :string(255)
+    #  black_player_id    :integer
+    #  white_player_id    :integer
+    #  black_player_name  :string(255)
+    #  white_player_name  :string(255)
+    #  handicap           :integer
+    #  game_digest        :string(255)
+
+
+  end
+
 end

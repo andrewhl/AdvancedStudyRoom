@@ -1,7 +1,6 @@
 class RemoveNodeFromComments < ActiveRecord::Migration
-  def up
-  end
 
-  def down
+  def change
+    remove_column :comments, :node
   end
 end

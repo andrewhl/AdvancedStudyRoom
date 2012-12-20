@@ -56,6 +56,7 @@ group :test, :development do
   gem 'annotate', ">=2.5.0"
   gem "factory_girl_rails", "~> 3.0"
   gem 'cucumber-rails', :require => false
+  gem 'zeus'
 
 end
 

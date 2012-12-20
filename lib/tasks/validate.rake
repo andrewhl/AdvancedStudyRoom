@@ -8,4 +8,5 @@ namespace :validator do
     test = Validator.new
     test.validate_games("./lib/kabradarf-2012-10.zip", "kabradarf")
   end
+
 end
