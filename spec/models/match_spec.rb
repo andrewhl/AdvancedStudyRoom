@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: matches
+#
+#  id                 :integer          not null, primary key
+#  datetime_completed :datetime
+#  game_type          :string(255)
+#  komi               :float
+#  winner             :string(255)
+#  win_info           :string(255)
+#  main_time_control  :float
+#  overtime_type      :string(255)
+#  ot_stones_periods  :integer
+#  ot_time_control    :float
+#  url                :string(255)
+#  black_player_id    :integer
+#  white_player_id    :integer
+#  black_player_name  :string(255)
+#  white_player_name  :string(255)
+#  handicap           :integer
+#  game_digest        :string(255)
+#  division_id        :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Match do
@@ -13,9 +39,9 @@ describe Match do
     @tier_ruleset = FactoryGirl.create(:tier_ruleset)
     @division_ruleset = FactoryGirl.create(:division_ruleset)
 
-    @division_ruleset.stub(:tier_ruleset).and_return(@tier_ruleset)
-    @tier_ruleset.stub(:event_ruleset).and_return(@event_ruleset)
-    @event_ruleset.stub(:ruleset).and_return(@ruleset)
+    @division_ruleset.stub(:parent).and_return(@tier_ruleset)
+    @tier_ruleset.stub(:parent).and_return(@event_ruleset)
+    @event_ruleset.stub(:parent).and_return(@ruleset)
     match.stub_chain(:division, :division_ruleset).and_return(@division_ruleset)
   end
 
@@ -29,12 +55,26 @@ describe Match do
 
     context "komi" do
 
-      it "should not exceed ruleset komi" do
-        match.division.division_ruleset.stub(:max_komi) { 6.5 }
-        match.division.division_ruleset.stub(:min_komi) { 6.5 }
+      it "should not go above max komi" do
+        match.division.division_ruleset.max_komi = 6.5
         match.komi = 7.5
 
         match.is_valid?.should be_false
+      end
+
+      it "should not go below min komi" do
+        match.division.division_ruleset.min_komi = 6.5
+        match.komi = 3.5
+
+        match.is_valid?.should be_false
+      end
+
+      it "should be valid if within komi range" do
+        match.division.division_ruleset.max_komi = 5.5
+        match.division.division_ruleset.min_komi = 7.5
+        match.komi = 6.5
+
+        match.is_valid?.should be_true
       end
 
     end

@@ -4,15 +4,14 @@
 #
 #  id          :integer          not null, primary key
 #  match_id    :integer
-#  node        :integer
 #  comment     :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
 #  handle      :string(255)
 #  rank        :string(255)
 #  game_date   :datetime
 #  node_number :integer
 #  line_number :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 class Comment < ActiveRecord::Base

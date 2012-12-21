@@ -7,6 +7,7 @@ gem 'mechanize'
 gem 'SgfParser'
 gem 'rubyzip', :require => 'zip/zip'
 gem 'client_side_validations'
+gem 'libv8', '~> 3.11.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

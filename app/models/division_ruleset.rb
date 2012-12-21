@@ -33,6 +33,9 @@
 #  division_id           :integer
 #  tier_id               :integer
 #  event_id              :integer
+#  parent_id             :integer
+#  max_komi              :float
+#  min_komi              :float
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #
