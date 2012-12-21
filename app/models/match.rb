@@ -185,7 +185,6 @@ class Match < ActiveRecord::Base
       game_status = check_method(method, ruleset)
       return game_status if game_status == false
     end
-    # binding.pry
     game_status
   end
 
