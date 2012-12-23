@@ -93,11 +93,26 @@
 
 .control-group
   %label.control-label
-    Handicap Default
+    Min Handicap
   .controls
-    = b.number_field(:handicap_default)
-    %a.btn{:rel => "popover", :data => {:title => "Handicap Default", :placement => "top", :trigger => "hover", :content => "This sets a default handicap requirement for the league. 0 is recommended."}}
+    = b.number_field(:min_handi)
+    %a.btn{:rel => "popover", :data => {:title => "Minimum Handicap", :placement => "top", :trigger => "hover", :content => "This sets a default minimum handicap for the league. 0 is recommended."}}
       %i.icon-question-sign
+  %label.control-label
+    Max Handicap
+  .controls
+    = b.number_field(:max_handi)
+    %a.btn{:rel => "popover", :data => {:title => "Maximum Handicap", :placement => "top", :trigger => "hover", :content => "This sets a default maximum handicap."}}
+      %i.icon-question-sign
+  %label.control-label
+    Handicap Required
+  .controls
+    = b.number_field(:handicap_required)
+    %a.btn{:rel => "popover", :data => {:title => "Handicap Required", :placement => "top", :trigger => "hover", :content => "Only set this to true if you want to require handicaps greater than 0."}}
+      %i.icon-question-sign
+
+
+.control-group
   %label.control-label
     Games Per Player
   .controls

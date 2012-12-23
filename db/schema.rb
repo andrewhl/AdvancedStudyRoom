@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202075334) do
+ActiveRecord::Schema.define(:version => 20121222192427) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -201,7 +201,6 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.integer  "cot_max_stones"
     t.float    "cot_max_time"
     t.float    "cot_min_time"
-    t.float    "handicap_default"
     t.integer  "ruleset_default"
     t.integer  "games_per_player"
     t.integer  "games_per_opponent"
@@ -215,6 +214,9 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.float    "min_komi"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "max_handi"
+    t.integer  "min_handi"
+    t.boolean  "handicap_required"
   end
 
   add_index "rulesets", ["division_id"], :name => "index_rulesets_on_division_id"

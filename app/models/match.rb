@@ -103,20 +103,6 @@ class Match < ActiveRecord::Base
 
     check_rulesets(division_ruleset)
 
-    # what I want to do:
-    # write a meta script that checks self's ruleset for a specific method
-    # and if that method is nil, checks the parent for the same method
-    # and if that parent is nil, checks the next perent, and so on
-    # until type = 'ruleset' (the top level)
-    # if the rule is nil there, then the check passes
-
-
-
-    # will check first that a rule in this ruleset is not nil
-    # if not nil, it will check to see that the match applies the rule
-    # if it fails, the game will not be saved, will return false
-
-
 
     #  datetime_completed :datetime
     #  game_type          :string(255)
@@ -141,14 +127,7 @@ class Match < ActiveRecord::Base
 
     game_status = false
 
-    methods = [:allowed_rengo,
-               :allowed_teaching,
-               :allowed_review,
-               :allowed_free,
-               :allowed_rated,
-               :allowed_simul,
-               :allowed_demonstration,
-               :main_time_min,
+    methods = [:main_time_min,
                :main_time_max,
                :overtime_required,
                :jovertime_allowed,
@@ -161,40 +140,139 @@ class Match < ActiveRecord::Base
                :cot_max_stones,
                :cot_max_time,
                :cot_min_time,
-               :handicap_default,
-               :ruleset_default,
-               :games_per_player,
                :games_per_opponent,
                :max_komi,
-               :min_komi]
+               :min_komi,
+               :max_handi,
+               :min_handi,
+               :handicap_required]
 
     methods.each do |method|
-      while ruleset.send(method).nil? and !ruleset.type.nil?
-        # binding.pry if ruleset.type.nil?
-        ruleset = ruleset.parent
-        unless !ruleset.send(method)
-          game_status = check_method(method, ruleset)
+    # binding.pry if (ruleset.name == "Division Ruleset") and (method == :games_per_opponent)
+
+      check_ruleset = ruleset
+
+      if !check_ruleset.send(method).nil?
+        game_status = check_method(method, check_ruleset)
+        return game_status if game_status == false
+      end
+
+      # if the method is nil, and the ruleset is not the top level
+      # proceed to the parent ruleset to check the method
+
+      while check_ruleset.send(method).nil? and !check_ruleset.type.nil?
+        check_ruleset = check_ruleset.parent unless check_ruleset.type.nil?
+
+        if check_ruleset.send(method)
+          game_status = check_method(method, check_ruleset)
           return game_status if game_status == false
         end
-        # if the method is not defined in the top ruleset, it should not invalidate the game
-        # game_status = true if !ruleset.type and !ruleset.send(method)
+        game_status = true if check_ruleset.send(method).nil? and check_ruleset.type.nil?
       end
-      # binding.pry
-      # break out of the while loop, because we've reached the top ruleset
-      # binding.pry if method == :min_komi
-      game_status = check_method(method, ruleset)
-      return game_status if game_status == false
+
     end
     game_status
   end
 
   def check_method method, ruleset
-    # binding.pry if method == :max_komi
+    # binding.pry if method == :max_handi
     case method
+    when :main_time_max
+      main_time_control > ruleset.main_time_max ? false : true
+    when :main_time_min
+      main_time_control < ruleset.main_time_min ? false : true
+    when :overtime_required
+      if ruleset.overtime_required
+        (overtime_type and ot_stones_periods and ot_time_control) ? true : false
+      else
+        true
+      end
+    when :jovertime_allowed
+      if !ruleset.jovertime_allowed
+        overtime_type == "byo-yomi" ? false : true
+      else
+        true
+      end
+    when :covertime_allowed
+      if !ruleset.covertime_allowed
+        overtime_type == "Canadian" ? false : true
+      else
+        true
+      end
+    when :jot_max_periods
+      if overtime_type == "byo_yomi"
+        ot_stones_periods > ruleset.jot_max_periods ? false : true
+      else
+        true
+      end
+    when :jot_min_periods
+      if overtime_type == "byo_yomi"
+        ot_stones_periods < ruleset.jot_min_periods ? false : true
+      else
+        true
+      end
+    when :jot_max_period_length
+      if overtime_type == "byo_yomi"
+        ot_time_control > ruleset.jot_max_period_length ? false : true
+      else
+        true
+      end
+    when :jot_min_period_length
+      if overtime_type == "byo_yomi"
+        ot_time_control < ruleset.jot_min_period_length ? false : true
+      else
+        true
+      end
+    when :cot_max_stones
+      if overtime_type == "Canadian"
+        ot_stones_periods > ruleset.cot_max_stones ? false : true
+      else
+        true
+      end
+    when :cot_min_stones
+      if overtime_type == "Canadian"
+        ot_stones_periods < ruleset.cot_min_stones ? false : true
+      else
+        true
+      end
+    when :cot_max_time
+      if overtime_type == "Canadian"
+        ot_time_control > ruleset.cot_max_time ? false : true
+      else
+        true
+      end
+    when :cot_min_time
+      if overtime_type == "Canadian"
+        ot_time_control < ruleset.cot_min_time ? false : true
+      else
+        true
+      end
     when :max_komi
+      # binding.pry if ruleset.name == "Division Ruleset"
       komi > ruleset.max_komi ? false : true
     when :min_komi
       komi < ruleset.min_komi ? false : true
+    when :max_handi
+      handicap > ruleset.max_handi ? false : true
+    when :min_handi
+      handicap < ruleset.min_handi ? false : true
+    when :handicap_required
+      if ruleset.handicap_required
+        handicap > 0 ? true : false
+      else
+        true
+      end
+    when :games_per_opponent
+      # binding.pry if ruleset.name == "Division Ruleset"
+      similar_games.count > ruleset.games_per_opponent ? false : true
     end
+  end
+
+  def similar_games
+    binding.pry
+    current_matches = Match.all.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
+    matches = current_matches.select { |match| match.black_player_id == black_player_id and match.white_player_id == white_player_id }
+    matches += current_matches.select { |match| match.black_player_id == white_player_id and match.white_player_id == black_player_id }
+    matches
   end
 end

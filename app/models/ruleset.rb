@@ -93,6 +93,10 @@ class Ruleset < ActiveRecord::Base
     super
   end
 
+  # add validation that prevents ruleset from being saved if
+  # both jovertime and covertimer and false
+  # and overtime stones/period settings or control settings are enabled
+
   def validate_game game
 
     # game is a Match object

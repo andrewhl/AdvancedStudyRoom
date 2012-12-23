@@ -11,11 +11,6 @@ class Validator
         zip_file.extract(f, f_path) unless File.exists?(f_path)
 
         game = convert_sgf_to_game(f_path.to_s, username)
-        # binding.pry
-
-        # TO DO:
-        # comments = get_comments(game) # returns an array of comments
-        # validate_game(comments) # loops through array of comments and validates the game
 
         # binding.pry
         unless game == "Invalid"
@@ -41,13 +36,6 @@ class Validator
 
 
         end
-
-
-        # SAVE COMMENTS:
-        # comments.each do |comment|
-        #   game.comments.create(comment)
-        # end
-
 
         FileUtils.remove_entry(f_path)
       end
@@ -89,6 +77,8 @@ class Validator
 
     # confirm that both players are in the same division
 
+    return "Invalid" if black_player.division.nil? or white_player.division.nil?
+
     return "Invalid" unless black_player.division == white_player.division
 
     division_id = black_player.division.id
@@ -115,6 +105,10 @@ class Validator
     win_info = result[1]
     puts "valid game"
 
+    # handicap
+    handicap = 0
+    handicap = ginfo["HA"] unless !ginfo["HA"]
+
     # game digest == sgf file name (which will be unique), and the game date
 
     digest_phrase = File.basename(file) + game.date.to_s
@@ -134,7 +128,7 @@ class Validator
       "ot_time_control" => ot_main,
       "black_player_name" => black_player_name,
       "white_player_name" => white_player_name,
-      "handicap" => ginfo["HA"],
+      "handicap" => handicap,
       "game_digest" => digest,
       "black_player_id" => black_player_id,
       "white_player_id" => white_player_id,

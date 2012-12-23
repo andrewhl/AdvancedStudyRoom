@@ -50,14 +50,14 @@ FactoryGirl.define do
     cot_max_stones 25
     cot_max_time 300.0
     cot_min_time 300.0
-    handicap_default 0.5
-    ruleset_default nil
     games_per_player 2
     games_per_opponent 2
     canonical true
-    type nil
     max_komi 6.5
     min_komi 6.5
+    max_handi 5
+    min_handi 0
+    handicap_required false
   end
 
   factory :event_ruleset, :class => EventRuleset do
@@ -68,12 +68,36 @@ FactoryGirl.define do
     name "Tier Ruleset"
   end
 
+  factory :empty_division_ruleset, :class => DivisionRuleset do
+    name "Empty Division Ruleset"
+  end
+
   factory :division_ruleset, :class => DivisionRuleset do
     name "Division Ruleset"
+    main_time_min 300.0
+    main_time_max 2700.0
+    overtime_required true
+    jovertime_allowed true
+    covertime_allowed true
+    jot_min_periods 5
+    jot_max_periods 30
+    jot_min_period_length 60.0
+    jot_max_period_length 300.0
+    cot_min_stones 25
+    cot_max_stones 25
+    cot_max_time 300.0
+    cot_min_time 300.0
+    games_per_player 2
+    games_per_opponent 1
+    max_komi 6.5
+    min_komi 5.5
+    max_handi 5
+    min_handi 0
+    handicap_required false
   end
 
   factory :match, :class => Match do
-    datetime_completed "2012-10-09 00:00:00"
+    datetime_completed "#{Time.now.strftime("%Y-%m-%d %T")}"
     komi 6.5
     winner "W"
     win_info "Resign"
@@ -85,8 +109,17 @@ FactoryGirl.define do
     white_player_id 11
     black_player_name "twisted"
     white_player_name "kabradarf"
-    handicap nil
+    handicap 0
     game_digest "5fed482a6963e7efce38986906b687fb"
   end
+
+  factory :second_match, :class => Match do
+    datetime_completed "#{Time.now.strftime("%Y-%m-%d %T")}"
+    black_player_id 11
+    white_player_id 18
+    black_player_name "kabradarf"
+    white_player_name "twisted"
+  end
+
 
 end
