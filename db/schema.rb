@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222192427) do
+ActiveRecord::Schema.define(:version => 20121224081722) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -217,11 +217,13 @@ ActiveRecord::Schema.define(:version => 20121222192427) do
     t.integer  "max_handi"
     t.integer  "min_handi"
     t.boolean  "handicap_required"
+    t.integer  "ruleset_id"
   end
 
   add_index "rulesets", ["division_id"], :name => "index_rulesets_on_division_id"
   add_index "rulesets", ["event_id"], :name => "index_rulesets_on_event_id"
   add_index "rulesets", ["parent_id"], :name => "index_rulesets_on_parent_id"
+  add_index "rulesets", ["ruleset_id"], :name => "index_rulesets_on_ruleset_id"
   add_index "rulesets", ["tier_id"], :name => "index_rulesets_on_tier_id"
 
   create_table "servers", :force => true do |t|

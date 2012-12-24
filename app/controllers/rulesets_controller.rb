@@ -9,7 +9,11 @@ class RulesetsController < ApplicationController
   end
 
   def create
-    @ruleset = Ruleset.create(params[:ruleset])
+    @ruleset = Ruleset.new(params[:ruleset])
+    if params[:ruleset][:canonical]
+      @ruleset.canonical = true
+    end
+    @ruleset.save
     redirect_to :new_ruleset, :flash => {:success => "Your ruleset has been successfully created."}
   end
 

@@ -26,6 +26,13 @@
     .controls
       = f.select(:event_type, ["League", "Tournament"])
 
+  = f.fields_for(@tag) do |b|
+    .control-group
+      %label.control-label
+        Define a Tag Phrase
+      .controls
+        = b.text_field :phrase
+
   .accordion#accordion1
     .accordion-group
       .accordion-heading

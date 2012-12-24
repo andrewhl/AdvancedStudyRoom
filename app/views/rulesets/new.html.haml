@@ -1,6 +1,7 @@
 %h1 Rulesets
 
 = form_for @ruleset, :html => {:class => "form-horizontal"} do |f|
+  = f.hidden_field :canonical
   = render "events/ruleset_fields", :b => f
 
   .actions

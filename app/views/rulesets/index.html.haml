@@ -12,7 +12,8 @@
     %th JOT Max Length
     %th COT Min Stones
     %th COT Max Stones
-    %th Handi Default
+    %th Min Handi
+    %th Max Handi
     %th Ruleset Default
     %th Games per player
     %th Games per opponent
@@ -30,7 +31,8 @@
       %td= ruleset.jot_max_period_length
       %td= ruleset.cot_min_stones
       %td= ruleset.cot_max_stones
-      %td= ruleset.handicap_default
+      %td= ruleset.min_handi
+      %td= ruleset.max_handi
       %td= ruleset.ruleset_default
       %td= ruleset.games_per_player
       %td= ruleset.games_per_opponent
@@ -55,7 +57,8 @@
         %th JOT Max Length
         %th COT Min Stones
         %th COT Max Stones
-        %th Handi Default
+        %th Min Handi
+        %th Max Handi
         %th Ruleset Default
         %th Games per player
         %th Games per opponent
@@ -73,11 +76,13 @@
           %td= ruleset.jot_max_period_length
           %td= ruleset.cot_min_stones
           %td= ruleset.cot_max_stones
-          %td= ruleset.handicap_default
+          %td= ruleset.min_handi
+          %td= ruleset.max_handi
           %td= ruleset.ruleset_default
           %td= ruleset.games_per_player
           %td= ruleset.games_per_opponent
-  - event_rulesets
+
+  - else
     %p
       No
       - case index

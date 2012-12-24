@@ -56,7 +56,8 @@ if Ruleset.find_by_name("KGS Default").nil?
                  cot_max_stones: 25,
                  cot_max_time: 300,
                  cot_min_time: 300,
-                 handicap_default: 0.5,
+                 min_handi: 0,
+                 max_handi: 9,
                  games_per_player: 2,
                  games_per_opponent: 2,
                  canonical: true)

@@ -254,6 +254,26 @@ describe Match do
 
   end
 
+  describe "without canonical ruleset" do
+
+    before(:each) do
+      @event_ruleset = FactoryGirl.create(:event_ruleset)
+      @tier_ruleset = FactoryGirl.create(:tier_ruleset)
+      @division_ruleset = FactoryGirl.create(:empty_division_ruleset)
+
+      @division_ruleset.stub(:parent).and_return(@tier_ruleset)
+      @tier_ruleset.stub(:parent).and_return(@event_ruleset)
+      @event_ruleset.stub(:parent).and_return(nil)
+      match.stub_chain(:division, :division_ruleset).and_return(@division_ruleset)
+
+    end
+
+    it "should be valid" do
+      match.is_valid?.should be_true
+    end
+  end
+
+
 
 end
 

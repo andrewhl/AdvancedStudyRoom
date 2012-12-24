@@ -10,6 +10,9 @@
   - @tags.each do |tag|
     %tr
       %td= tag.phrase
-      %td= link_to "#{tag.event.name}", event_path(tag.event)
+      - if tag.event
+        %td= link_to "#{tag.event.name}", event_path(tag.event)
+      - else
+        %td No event assigned
       %td= link_to "Edit", edit_tag_path(tag)
       %td= link_to "Delete", tag_path(tag), :method => :delete

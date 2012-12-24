@@ -74,44 +74,44 @@ class Ruleset < ActiveRecord::Base
                   :event_id,
                   :parent_id,
                   :type,
-                  :canonical
+                  :canonical,
+                  :min_handi,
+                  :max_handi,
+                  :handicap_required
 
   has_many :leagues
   has_many :events
+  has_many :event_rulesets
 
   scope :canon, where(:canonical => true)
   scope :event_rulesets, where(:type => "EventRuleset")
   scope :tier_rulesets, where(:type => "TierRuleset")
   scope :division_rulesets, where(:type => "DivisionRuleset")
 
-  def destroy
+  before_destroy :ensure_no_children
+  before_destroy :clear_event_id
+
+  def ensure_no_children
+    if not event_rulesets.empty?
+      raise ActiveRecord::Rollback, "Ruleset has children, and cannot be deleted."
+    end
+  end
+
+  # if you destroy a canonical ruleset,
+  # the event it belongs to needs to have the foreign key cleared
+
+  def clear_event_id
     events = self.events
     events.each do |event|
       event.ruleset_id = nil
       event.save
     end
-    super
   end
 
   # add validation that prevents ruleset from being saved if
   # both jovertime and covertimer and false
   # and overtime stones/period settings or control settings are enabled
 
-  def validate_game game
 
-    # game is a Match object
-
-    valid_game = false
-    if false
-      return true
-    else
-      return false
-    end
-
-    # binding.pry
-
-
-
-  end
 
 end

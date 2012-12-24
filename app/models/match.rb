@@ -148,10 +148,11 @@ class Match < ActiveRecord::Base
                :handicap_required]
 
     methods.each do |method|
-    # binding.pry if (ruleset.name == "Division Ruleset") and (method == :games_per_opponent)
+    # binding.pry if ruleset.parent.parent.parent.nil?
 
       check_ruleset = ruleset
 
+      # if the ruleset method has been set, check it
       if !check_ruleset.send(method).nil?
         game_status = check_method(method, check_ruleset)
         return game_status if game_status == false
@@ -269,7 +270,6 @@ class Match < ActiveRecord::Base
   end
 
   def similar_games
-    binding.pry
     current_matches = Match.all.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
     matches = current_matches.select { |match| match.black_player_id == black_player_id and match.white_player_id == white_player_id }
     matches += current_matches.select { |match| match.black_player_id == white_player_id and match.white_player_id == black_player_id }

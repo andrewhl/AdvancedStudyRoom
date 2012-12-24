@@ -31,7 +31,8 @@ class Event < ActiveRecord::Base
                   :event_ruleset_attributes,
                   :event_ruleset,
                   :account_attributes,
-                  :registrations_attributes
+                  :registrations_attributes,
+                  :tags_attributes
 
   belongs_to :ruleset
   belongs_to :server
@@ -47,6 +48,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :accounts
   accepts_nested_attributes_for :event_ruleset, allow_destroy: true
   accepts_nested_attributes_for :registrations, allow_destroy: true
+  accepts_nested_attributes_for :tags
 
   scope :leagues, where(:event_type => "League")
   scope :tournaments, where(:event_type => "Tournament")

@@ -2,28 +2,33 @@
   Results for
   = @event.name
 
-.quick-links
-  %h4 Quick Links
-  %ul
-    - @tiers.each do |tier|
-      - tier.divisions.each do |division|
-        %li= link_to "#{division.name}", { :division => division.name }
+- if @event.tiers.empty? or @event.tiers.first.nil?
+  %h4
+    This event has no divisions.
+    = link_to "Please create them.", manage_event_path(@event)
+- else
+  .quick-links
+    %h4 Quick Links
+    %ul
+      - @tiers.each do |tier|
+        - tier.divisions.each do |division|
+          %li= link_to "#{division.name}", { :division => division.name }
 
-- css_id = params[:division].downcase.gsub(/\s+/, "")
+  - css_id = params[:division].downcase.gsub(/\s+/, "")
 
-- @tiers.each do |tier|
-  - tier.divisions.each do |division|
-    %h4= division.name
-    %table.table.table-condensed.table-bordered.table-hover
-      %tr
-        %th Player
-        - division.registrations.each do |col_player|
-          %th= col_player.handle
-      - division.registrations.each do |row_player|
+  - @tiers.each do |tier|
+    - tier.divisions.each do |division|
+      %h4= division.name
+      %table.table.table-condensed.table-bordered.table-hover
         %tr
-          %td= row_player.handle
+          %th Player
           - division.registrations.each do |col_player|
-            - if col_player == row_player
-              %td X
-            - else
-              %td
+            %th= col_player.handle
+        - division.registrations.each do |row_player|
+          %tr
+            %td= row_player.handle
+            - division.registrations.each do |col_player|
+              - if col_player == row_player
+                %td X
+              - else
+                %td

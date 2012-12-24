@@ -1,7 +1,24 @@
 %h1= @event.name
 
+- if @rulesets.empty?
+  %h4
+    There are no rulesets.
+    = link_to "Please create one.", new_ruleset_path
+- elsif !@event.ruleset
+  %h4
+    This event has no base ruleset.
+    Please select one:
+    = form_for @event do |f|
+      = f.select(:ruleset_id, options_from_collection_for_select(@rulesets, :id, :name))
+      = f.submit "Apply ruleset", class: "btn"
+- else
+  %h4 Change your base (canonical) ruleset.
+  = form_for @event do |f|
+    / = collection_select :event, :ruleset_id, @rulesets, :id, :name, { :selected => @event.ruleset.name }
+    = f.select :ruleset_id, options_from_collection_for_select(@rulesets, "id", "name", :selected => @event.ruleset.id)
+    = f.submit "Change ruleset", class: "btn"
 - if @event.tiers.empty?
-  %h2 This event has no tiers. Please create one.
+  %h4 This event has no tiers. Please create one.
 - else
 
   %h3 Tiers

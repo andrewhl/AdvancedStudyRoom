@@ -28,7 +28,8 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags = Tag.all
+    @event = Event.find(params[:event_id])
+    @tags = @event.tags
   end
 
   def edit

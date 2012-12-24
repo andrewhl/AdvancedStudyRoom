@@ -20,6 +20,10 @@
         = link_to "Manage", manage_event_path(event)
         |
         = link_to "Overview", event_path(event)
+        |
+        = link_to "Tags", tags_event_path(event)
+        |
+        = link_to "Results", results_event_path(event)
       %td
         = link_to "Assign", event_registrations_path(event)
       %td

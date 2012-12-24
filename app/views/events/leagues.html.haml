@@ -9,6 +9,7 @@
       %th Name
       %th Participants
       %th Server
+      %th Results
     - @leagues.each do |league|
       %tr
         %td
@@ -33,3 +34,4 @@
         %td= league.name
         %td= league.registrations.count
         %td= league.server.name
+        %td= link_to "View Results", results_event_path(league)

@@ -6,7 +6,11 @@
       Phrase
     .controls
       = f.text_field :phrase
+    %label.control-label
+      Move Limit
+    .controls
+      = f.number_field :node_limit
 
   .control-group
     .controls
-      = f.submit :submit
+      = f.submit :submit, class: "btn"
