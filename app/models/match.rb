@@ -97,10 +97,7 @@ class Match < ActiveRecord::Base
     event_ruleset = tier_ruleset.parent
     ruleset = event_ruleset.parent
 
-    # check komi
-
-    # !division_ruleset.max_komi or !division_ruleset.min_komi
-
+    # check_rulesets returns true or false
     check_rulesets(division_ruleset)
 
 
@@ -148,7 +145,7 @@ class Match < ActiveRecord::Base
                :handicap_required]
 
     methods.each do |method|
-    # binding.pry if ruleset.parent.parent.parent.nil?
+
 
       check_ruleset = ruleset
 
@@ -161,14 +158,26 @@ class Match < ActiveRecord::Base
       # if the method is nil, and the ruleset is not the top level
       # proceed to the parent ruleset to check the method
 
-      while check_ruleset.send(method).nil? and !check_ruleset.type.nil?
-        check_ruleset = check_ruleset.parent unless check_ruleset.type.nil?
+      while check_ruleset.send(method).nil? and !check_ruleset.is_top_level?
+        # binding.pry if ruleset.parent.parent.parent.nil? and check_ruleset.type == "EventRuleset"
+        check_ruleset = check_ruleset.parent unless check_ruleset.is_top_level?
 
-        if check_ruleset.send(method)
-          game_status = check_method(method, check_ruleset)
-          return game_status if game_status == false
+        # in the unlikely event that the canonical ruleset has been deleted
+        # then it means the method is nil and we should move to the next one
+        # note: it will never be possible for non-top-level rulesets to be nil
+
+        if check_ruleset.nil?
+          game_status = true
+          break
+        else
+
+          if check_ruleset.send(method)
+            game_status = check_method(method, check_ruleset)
+            return game_status if game_status == false
+          end
+          game_status = true if check_ruleset.send(method).nil? and check_ruleset.is_top_level?
+
         end
-        game_status = true if check_ruleset.send(method).nil? and check_ruleset.type.nil?
       end
 
     end

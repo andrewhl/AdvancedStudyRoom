@@ -16,6 +16,7 @@ class EventsController < ApplicationController
     @servers = Server.all
     @event_ruleset = @event.build_event_ruleset
     @tag = Tag.new
+    @tags = Tag.select { |tag| !tag.event.nil? }
   end
 
   def create
@@ -23,18 +24,20 @@ class EventsController < ApplicationController
     event_params = params[:event].dup
     event_params.delete("event_ruleset")
 
-    if event_params[:tag][:phrase].empty?
+    tag_params = event_params.delete("tag")
+
+    if params[:event][:tag][:phrase].empty?
       redirect_to :new_event, :flash => { :error => "Tag phrase can not be blank." }
     else
-      tag_params = event_params.delete("tag")
-      @event = Event.create(event_params)
 
+      @event = Event.create(event_params)
       params[:event][:event_ruleset][:parent_id] = params[:event][:ruleset_id]
       @event_ruleset = @event.build_event_ruleset(params[:event][:event_ruleset])
       @event_ruleset.ruleset_id = @event.ruleset.id
       @event_ruleset.save
 
       @tag = @event.tags.create(tag_params)
+
       redirect_to :new_event, :flash => {:success => "Your event has been successfully created."}
     end
   end
@@ -84,9 +87,10 @@ class EventsController < ApplicationController
   def results
     @tiers = @event.tiers
 
-    unless @tiers.empty?
+    unless @tiers.empty? or @tiers.first.divisions.empty?
       params[:division] ||= @tiers.first.divisions.first.name
     end
+
     # Default values for the page sorting.
     params[:sort] ||= "points"
     params[:direction] ||= "desc"

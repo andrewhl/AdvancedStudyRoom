@@ -93,7 +93,9 @@ class Ruleset < ActiveRecord::Base
 
   def ensure_no_children
     if not event_rulesets.empty?
-      raise ActiveRecord::Rollback, "Ruleset has children, and cannot be deleted."
+      # raise ActiveRecord::Rollback, "Ruleset has children, and cannot be deleted."
+      errors.add(:base, "Ruleset has child rulesets, and cannot be deleted.")
+      return false
     end
   end
 
@@ -106,6 +108,10 @@ class Ruleset < ActiveRecord::Base
       event.ruleset_id = nil
       event.save
     end
+  end
+
+  def is_top_level?
+    type.nil? ? true : false
   end
 
   # add validation that prevents ruleset from being saved if

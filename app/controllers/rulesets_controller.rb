@@ -19,8 +19,15 @@ class RulesetsController < ApplicationController
 
   def destroy
     ruleset = Ruleset.find(params[:id])
-    ruleset.destroy
-    redirect_to rulesets_path, :flash => {:success => "The ruleset has been deleted."}
+    if ruleset.destroy
+      redirect_to rulesets_path, :flash => {:success => "The ruleset has been deleted."}
+    else
+      respond_to do |format|
+        format.html { redirect_to rulesets_path, :flash => {:notice => "Notice! #{ruleset.errors[:base].to_s}"} }
+      end
+    end
+    # redirect_to rulesets_path, :flash => {:success => "The ruleset has been deleted."}
+
   end
 
   def index

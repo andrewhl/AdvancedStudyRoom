@@ -2,7 +2,7 @@
   Results for
   = @event.name
 
-- if @event.tiers.empty? or @event.tiers.first.nil?
+- if !params[:division]
   %h4
     This event has no divisions.
     = link_to "Please create them.", manage_event_path(@event)

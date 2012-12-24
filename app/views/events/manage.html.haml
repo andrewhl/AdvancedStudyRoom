@@ -14,7 +14,6 @@
 - else
   %h4 Change your base (canonical) ruleset.
   = form_for @event do |f|
-    / = collection_select :event, :ruleset_id, @rulesets, :id, :name, { :selected => @event.ruleset.name }
     = f.select :ruleset_id, options_from_collection_for_select(@rulesets, "id", "name", :selected => @event.ruleset.id)
     = f.submit "Change ruleset", class: "btn"
 - if @event.tiers.empty?

@@ -22,12 +22,11 @@ alpha_users.length.times do |n|
     account = user.accounts.create(rank: 1, handle: alpha_users[n], server_id: 1) unless Account.find_by_handle(alpha_users[n])
   end
 
-  unless Event.find_by_id(1)
-    unless Registration.find_by_account_id(user.accounts.first.id)
-      registration = Registration.create(account_id: user.accounts.first.id,
-                                         event_id: 1,
-                                         handle: user.accounts.first.handle)
-    end
+  event = Event.find_or_create_by_name("ASR League")
+  unless Registration.find_by_account_id(user.accounts.first.id)
+    registration = Registration.create(account_id: user.accounts.first.id,
+                                       event_id: event.id,
+                                       handle: user.accounts.first.handle)
   end
 
 end
