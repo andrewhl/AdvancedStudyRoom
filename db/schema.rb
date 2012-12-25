@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224081722) do
+ActiveRecord::Schema.define(:version => 20121225023516) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -140,11 +140,14 @@ ActiveRecord::Schema.define(:version => 20121224081722) do
     t.integer  "division_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "winner_name"
+    t.integer  "winner_id"
   end
 
   add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
   add_index "matches", ["division_id"], :name => "index_matches_on_division_id"
   add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
+  add_index "matches", ["winner_id"], :name => "index_matches_on_winner_id"
 
   create_table "points", :force => true do |t|
     t.integer  "count"

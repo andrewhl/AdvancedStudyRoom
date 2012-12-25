@@ -102,6 +102,16 @@ class Validator
     ot_stones = ot_settings[1]
 
     winner = result[0]
+
+    case winner
+    when "W"
+      winner_name = white_player_name
+      winner_id = white_player_id
+    when "B"
+      winner_name = black_player_name
+      winner_id = black_player_id
+    end
+
     win_info = result[1]
     puts "valid game"
 
@@ -132,6 +142,8 @@ class Validator
       "game_digest" => digest,
       "black_player_id" => black_player_id,
       "white_player_id" => white_player_id,
+      "winner_id" => winner_id,
+      "winner_name" => winner_name,
       "division_id" => division_id
     }
 
