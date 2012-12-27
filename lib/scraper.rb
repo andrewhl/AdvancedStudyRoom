@@ -1,10 +1,10 @@
-# require 'net/http'
-# require 'uri'
-# require 'nokogiri'
-# require 'mechanize'
+require 'net/http'
+require 'uri'
+require 'nokogiri'
+require 'mechanize'
 # require 'epitools'
 
-# class Scraper
+class Scraper
 
 #   #############################################################################
 
@@ -38,35 +38,62 @@
 
 #   #############################################################################
 
-#   def initialize(delay=2)
-#     @delay = delay
+  def initialize(delay=3)
+    @delay = delay
 
-#     @agent = Mechanize.new do |a|
-#       # ["Mechanize", "Mac Mozilla", "Linux Mozilla", "Windows IE 6", "iPhone", "Linux Konqueror", "Windows IE 7", "Mac FireFox", "Mac Safari", "Windows Mozilla"]
-#       a.user_agent_alias = "Windows IE 7"
-#       a.max_history = 10
-#       #a.log = Logger.new "mechanize.log" if @use_logs
-#     end
-#   end
+    @agent = Mechanize.new do |a|
+      # ["Mechanize", "Mac Mozilla", "Linux Mozilla", "Windows IE 6", "iPhone", "Linux Konqueror", "Windows IE 7", "Mac FireFox", "Mac Safari", "Windows Mozilla"]
+      a.user_agent_alias = "Windows IE 7"
+      a.max_history = 10
+      #a.log = Logger.new "mechanize.log" if @use_logs
+    end
+  end
 
-#   def get(url)
-#     if @last_get
-#       elapsed = Time.now - @last_get
-#       sleep(@delay - elapsed) if elapsed > @delay
-#     end
+  def get(url)
+    # if @last_get
+    #   elapsed = Time.now - @last_get
+    #   binding.pry if (@delay - elapsed > 0)
+    #   sleep(@delay - elapsed) if elapsed > @delay
+    # end
 
-#     @last_get = Time.now
-#     @agent.get(url)
-#   end
+    # @last_get = Time.now
+    @agent.pluggable_parser.default = Mechanize::Download
+    # @agent.pluggable_parser.zip = Mechanize::FileSaver
+    sleep(@delay)
+    a = @agent.get(url)
+    a = a.search("p > a").first
+    url = a.first[1]
+    filename = url.scan(/en_US\/(.+)/).flatten[0]
+    url = "http://www.gokgs.com" + url
+    binding.pry
+    @agent.get(url)
+    # @agent.get(url).save(filename)
+  end
 
-#   def get_users(users)
-#     binding.pry
-#     Hash[users.map { |user| [user, get_user(user)] }]
-#   end
+  def get_sgf_zip(user)
+    time = Time.now
+    Net::HTTP.start("www.gokgs.com") { |http|
 
-#   def get_user(username)
-#     get "http://www.gokgs.com/gameArchives.jsp?user=#{username}"
-#   end
+      resp = http.get("/servlet/archives/en_US/#{user}-#{time.year}-#{time.month}.zip")
+      if resp.is_a? Net::HTTPNotFound # if the player has no games this month
+        FileUtils.touch("./temp/no_games.txt")
+      else
+        open("#{user}-#{time.year}-#{time.month}.zip", "wb") { |file|
+          file.write(resp.body)
+          FileUtils.mv("#{user}-#{time.year}-#{time.month}.zip", "temp/")
+        }
+      end
+    }
+  end
+
+  def get_users(users)
+    Hash[users.map { |user| [user, get_user(user)] }]
+  end
+
+  def get_user(username)
+    # binding.pry
+    get "http://www.gokgs.com/gameArchives.jsp?user=#{username}"
+  end
 
 #   #############################################################################
 
@@ -94,4 +121,4 @@
 #     end
 #   end
 
-# end
+end

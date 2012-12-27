@@ -1,11 +1,11 @@
 # # encoding: utf-8
 
-# require 'spec_helper'
-# require 'scraper'
+require 'spec_helper'
+require 'scraper'
 
-# describe Scraper do
-#   # subject(:scraper) { Scraper.new("http://www.gokgs.com/gameArchives.jsp?user=andrew&year=2012&month=7") }
-#   subject(:scraper) { Scraper.new }
+describe Scraper do
+  # subject(:scraper) { Scraper.new("http://www.gokgs.com/gameArchives.jsp?user=andrew&year=2012&month=7") }
+  # subject(:scraper) { Scraper.new }
 
 #   def open_test_html(filename)
 #     Nokogiri::HTML(open("spec/test_pages/#{filename}"))
@@ -121,4 +121,4 @@
 #       pending
 #     end
 #   end
-# end
+end

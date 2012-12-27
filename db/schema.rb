@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121225023516) do
+ActiveRecord::Schema.define(:version => 20121202075334) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -138,10 +138,11 @@ ActiveRecord::Schema.define(:version => 20121225023516) do
     t.integer  "handicap"
     t.string   "game_digest"
     t.integer  "division_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
     t.string   "winner_name"
     t.integer  "winner_id"
+    t.integer  "board_size"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
@@ -213,14 +214,16 @@ ActiveRecord::Schema.define(:version => 20121225023516) do
     t.integer  "tier_id"
     t.integer  "event_id"
     t.integer  "parent_id"
+    t.integer  "ruleset_id"
     t.float    "max_komi"
     t.float    "min_komi"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
     t.integer  "max_handi"
     t.integer  "min_handi"
     t.boolean  "handicap_required"
-    t.integer  "ruleset_id"
+    t.integer  "max_board_size"
+    t.integer  "min_board_size"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   add_index "rulesets", ["division_id"], :name => "index_rulesets_on_division_id"

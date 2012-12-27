@@ -13,6 +13,7 @@ class Validator
         game = convert_sgf_to_game(f_path.to_s, username)
 
         # binding.pry
+        puts game
         unless game == "Invalid"
           game_comments = get_comments(f_path.to_s, game.game_digest)
 
@@ -33,8 +34,6 @@ class Validator
               end
             end
           end
-
-
         end
 
         FileUtils.remove_entry(f_path)
@@ -43,6 +42,7 @@ class Validator
   end
 
   def convert_sgf_to_game file, username
+
     parser = SGF::Parser.new
     tree = parser.parse(file)
     game = tree.games.first
@@ -51,6 +51,7 @@ class Validator
 
     ginfo = game.current_node.properties
 
+    # binding.pry if file != "temp/Unbeatable-ChemBoy613.sgf"
     # binding.pry
     # return nil if not (has_valid_tag(game)[0])
 
@@ -58,6 +59,14 @@ class Validator
     ruleset = game.rules
     board_size = ginfo["SZ"]
     # komi = game.komi.to_f
+
+    # if the game is a demonstration game, game.black_player or game.white_player
+    # will raise an SGF:NoIdentityError
+
+    if ginfo["PB"].nil? or ginfo["PW"].nil?
+      return "Invalid"
+    end
+
     black_player_name = game.black_player
     white_player_name = game.white_player
 
@@ -88,6 +97,9 @@ class Validator
 
     main_time = ginfo["TM"]
     overtime = ginfo["OT"].split(" ")
+
+    # Board size
+    board_size = ginfo["SZ"].to_i
 
     # Type of overtime, e.g. byo-yomi, Canadian
     ot_type = overtime[1]
@@ -144,6 +156,7 @@ class Validator
       "white_player_id" => white_player_id,
       "winner_id" => winner_id,
       "winner_name" => winner_name,
+      "board_size" => board_size,
       "division_id" => division_id
     }
 

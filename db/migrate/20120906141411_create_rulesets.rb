@@ -22,7 +22,6 @@ class CreateRulesets < ActiveRecord::Migration
       t.integer  :cot_max_stones
       t.float    :cot_max_time
       t.float    :cot_min_time
-      t.float    :handicap_default
       t.integer  :ruleset_default
       t.integer  :games_per_player
       t.integer  :games_per_opponent
@@ -32,8 +31,14 @@ class CreateRulesets < ActiveRecord::Migration
       t.integer  :tier_id
       t.integer  :event_id
       t.integer  :parent_id
+      t.integer  :ruleset_id
       t.float    :max_komi
       t.float    :min_komi
+      t.integer  :max_handi
+      t.integer  :min_handi
+      t.boolean  :handicap_required
+      t.integer  :max_board_size
+      t.integer  :min_board_size
 
       t.timestamps
     end
@@ -42,6 +47,7 @@ class CreateRulesets < ActiveRecord::Migration
     add_index :rulesets, :tier_id
     add_index :rulesets, :event_id
     add_index :rulesets, :parent_id
+    add_index :rulesets, :ruleset_id
 
   end
 end

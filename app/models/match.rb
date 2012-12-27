@@ -46,6 +46,7 @@ class Match < ActiveRecord::Base
                   :white_player_id,
                   :winner_id,
                   :winner_name,
+                  :board_size,
                   :division_id
 
   validates_uniqueness_of :game_digest, :on => :create, :message => "must be unique"

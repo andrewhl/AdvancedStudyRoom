@@ -18,6 +18,9 @@ class CreateMatches < ActiveRecord::Migration
       t.integer  :handicap
       t.string   :game_digest
       t.integer  :division_id
+      t.string   :winner_name
+      t.integer  :winner_id
+      t.integer  :board_size
 
       t.timestamps
     end
@@ -25,5 +28,6 @@ class CreateMatches < ActiveRecord::Migration
     add_index :matches, :black_player_id
     add_index :matches, :white_player_id
     add_index :matches, :division_id
+    add_index :matches, :winner_id
   end
 end
