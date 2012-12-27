@@ -7,7 +7,7 @@
     = select_tag("registration_id", options_from_collection_for_select(@unassigned_players, "id", :handle), :multiple => true)
 
 
-    - @divisions.ranked.each do |division|
+    - @divisions.each do |division|
 
       - if division.registrations.nil?
         %p This division is empty.
