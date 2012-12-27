@@ -12,7 +12,7 @@
         %td{:colspan => 3}
           This tier has no divisions. Please create them.
     - else
-      - tier.divisions.each do |division|
+      - tier.divisions.ranked.each do |division|
         %tr
           %td
             = division.name

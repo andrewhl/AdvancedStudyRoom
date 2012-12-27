@@ -63,7 +63,6 @@ all_users.length.times do |n|
                          server_id: 1,
                          ruleset_id: Ruleset.find_by_name("KGS Default").id)
     @event.create_event_ruleset
-    binding.pry
   end
 
   unless Registration.find_by_account_id(user.accounts.first.id)

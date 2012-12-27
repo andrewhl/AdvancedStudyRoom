@@ -31,6 +31,8 @@ class Division < ActiveRecord::Base
                   :custom_name,
                   :use_custom_name
 
+  scope :ranked, order("division_index ASC")
+
   validate :less_than_max_players
   validate :greater_than_min_players
   validates_presence_of :minimum_players, :maximum_players
