@@ -24,7 +24,6 @@
 #  cot_max_stones        :integer
 #  cot_max_time          :float
 #  cot_min_time          :float
-#  handicap_default      :float
 #  ruleset_default       :integer
 #  games_per_player      :integer
 #  games_per_opponent    :integer
@@ -34,8 +33,14 @@
 #  tier_id               :integer
 #  event_id              :integer
 #  parent_id             :integer
+#  ruleset_id            :integer
 #  max_komi              :float
 #  min_komi              :float
+#  max_handi             :integer
+#  min_handi             :integer
+#  handicap_required     :boolean
+#  max_board_size        :integer
+#  min_board_size        :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #

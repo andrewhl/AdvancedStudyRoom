@@ -20,6 +20,9 @@
 #  handicap           :integer
 #  game_digest        :string(255)
 #  division_id        :integer
+#  winner_name        :string(255)
+#  winner_id          :integer
+#  board_size         :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
