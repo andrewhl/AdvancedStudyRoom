@@ -23,13 +23,13 @@
     This event has no tiers.
     = link_to "Please create them.", manage_event_path(@event)
 - else
-  - @event.tiers.each do |tier|
+  - @event.tiers.ranked.each do |tier|
     %h3= tier.name
     - if tier.divisions.empty?
       This tier has no divisions.
       = link_to "Please create them.", manage_event_path(@event)
     - else
-      - tier.divisions.each do |division|
+      - tier.divisions.ranked.each do |division|
         %h4= tier.name + " " + division.division_index.to_s
         %table.table.table-condensed.table-bordered.table-hover
           %tr
