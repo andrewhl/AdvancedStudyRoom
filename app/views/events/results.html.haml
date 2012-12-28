@@ -16,24 +16,22 @@
 
   - css_id = params[:division].downcase.gsub(/\s+/, "")
 
-  - @tiers.each do |tier|
-    - tier.divisions.each do |division|
-      %h4= division.name
-      %table.table.table-condensed.table-bordered.table-hover
-        %tr
-          %th Player
-          - division.registrations.each do |col_player|
-            %th= col_player.handle
-        - division.registrations.each do |row_player|
-          %tr
-            %td= row_player.handle
-            - division.registrations.each do |col_player|
-              - if col_player == row_player
-                %td X
-              - else
-                %td
-                  - col_player.match_results(true, true, row_player.id).each do |win|
-                    %span W
-                  - col_player.match_results(true, false, row_player.id).each do |loss|
-                    %span L
+  %h4= @division[0].name
+  %table.table.table-condensed.table-bordered.table-hover
+    %tr
+      %th Player
+      - @division[0].registrations.each do |col_player|
+        %th= col_player.handle
+    - @division[0].registrations.each do |row_player|
+      %tr
+        %td= row_player.handle
+        - @division[0].registrations.each do |col_player|
+          - if col_player == row_player
+            %td X
+          - else
+            %td
+              - col_player.match_results(true, true, row_player.id).each do |win|
+                %span W
+              - col_player.match_results(true, false, row_player.id).each do |loss|
+                %span L
 
