@@ -18,21 +18,20 @@ class Validator
           game_comments = get_comments(f_path.to_s, game.game_digest)
 
           return "Invalid game" unless game.has_valid_tag game_comments
-          if game.save
-            next if game.comments.any?
-            game_comments.each do |node, line|
-              next if line.is_a? String
-              line.each do |key, value|
-                node_number = node.to_s.scan(/\d/).pop.to_i
-                line_number = line.to_s.scan(/\d/).pop.to_i
-                value = value.merge(:node_number => node_number, :line_number => line_number)
 
-                # binding.pry if game.white_player_name.handle == "ChemBoy613" and node == :node_75
-                value[:comment].force_encoding("UTF-8")
-                comment = game.comments.build(value)
-                comment.save
-              end
+          # binding.pry if game != "Invalid"
+          if game.save
+
+            # process the RegistrationMatch
+            unless RegistrationMatch.find_by_game_digest(game.game_digest)
+              create_registration_match(game)
             end
+
+            # skip this step if for some reason this game's comments already exist
+            next if game.comments.any?
+
+            process_comments(game, game_comments)
+
           end
         end
 
@@ -40,6 +39,8 @@ class Validator
       end
     end
   end
+
+
 
   def convert_sgf_to_game file, username
 
@@ -125,7 +126,6 @@ class Validator
     end
 
     win_info = result[1]
-    puts "valid game"
 
     # handicap
     handicap = 0
@@ -163,6 +163,8 @@ class Validator
     return match = Match.new(game_hash)
 
   end
+
+
 
   def get_comments sgf, game_digest
 
@@ -234,7 +236,59 @@ class Validator
 
 
 
-  def get_ruleset tag_id
+  def create_registration_match game
+
+    division = game.division
+    registrations = division.registrations
+
+    # search the existing game's division's registrations;
+    # no duplicate handles should be found here,
+    # even though registraion handles are not unique
+
+
+
+    white = registrations.select { |reg| reg.handle == game.white_player_name }
+    black = registrations.select { |reg| reg.handle == game.black_player_name }
+
+    # Registration.find_by_handle(game.white_player_name)
+    # black = Registration.find_by_handle(game.black_player_name)
+
+    reg_match_hash = Hash.new
+
+    reg_match_hash = {
+      "white_player_name" => white[0].handle,
+      "black_player_name" => black[0].handle,
+      "white_player_id" => white[0].id,
+      "black_player_id" => black[0].id,
+      "game_digest" => game.game_digest,
+      "winner_id" => game.winner_id,
+      "winner_name" => game.winner_name,
+      "division_id" => division.id,
+      "match_id" => game.id
+    }
+
+    reg_match = RegistrationMatch.create(reg_match_hash)
+
+  end
+
+
+
+  def process_comments game, game_comments
+
+
+    game_comments.each do |node, line|
+      next if line.is_a? String
+      line.each do |key, value|
+        node_number = node.to_s.scan(/\d/).pop.to_i
+        line_number = line.to_s.scan(/\d/).pop.to_i
+        value = value.merge(:node_number => node_number, :line_number => line_number)
+
+        # binding.pry if game.white_player_name.handle == "ChemBoy613" and node == :node_75
+        value[:comment].force_encoding("UTF-8")
+        comment = game.comments.build(value)
+        comment.save
+      end
+    end
 
   end
 

@@ -39,6 +39,7 @@ class Division < ActiveRecord::Base
 
   has_many :accounts
   has_many :registrations
+  has_many :registration_matches
   has_many :matches
   has_one :division_ruleset, :dependent => :destroy
 

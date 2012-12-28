@@ -60,6 +60,8 @@ class Match < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
   has_many :points
+  has_many :registrations, :through => :registration_matches
+  has_many :registration_matches
 
 
   def has_valid_tag comments

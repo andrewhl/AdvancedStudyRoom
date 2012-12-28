@@ -19,6 +19,8 @@ class Registration < ActiveRecord::Base
   belongs_to :account
   belongs_to :division
   has_many :points
+  has_many :matches, :through => :registration_matches
+  has_many :registration_matches
 
   def own_matches
     matches = Match.where("black_player_id = ? or white_player_id = ?", id, id)

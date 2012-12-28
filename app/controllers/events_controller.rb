@@ -94,6 +94,8 @@ class EventsController < ApplicationController
     @divisions = Division.all.select { |division| division.tier.event == @event }
     @division = @divisions.select { |division| division.name == params[:division] }
 
+    # @division = Division.find(params[:division])
+
     # @tiers.divisions.select { |division| division.name == params[:division] }
 
     # Default values for the page sorting.

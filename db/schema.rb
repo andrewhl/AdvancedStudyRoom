@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228065041) do
+ActiveRecord::Schema.define(:version => 20121228081230) do
 
   create_table "accounts", :force => true do |t|
     t.integer   "user_id"
@@ -172,6 +172,28 @@ ActiveRecord::Schema.define(:version => 20121228065041) do
   add_index "points", ["game_hash"], :name => "index_points_on_game_hash"
   add_index "points", ["match_id"], :name => "index_points_on_match_id"
 
+  create_table "registration_matches", :force => true do |t|
+    t.integer  "registration_id"
+    t.integer  "match_id"
+    t.integer  "black_player_id"
+    t.integer  "white_player_id"
+    t.string   "black_player_name"
+    t.string   "white_player_name"
+    t.integer  "winner_id"
+    t.string   "winner_name"
+    t.integer  "division_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "game_digest"
+  end
+
+  add_index "registration_matches", ["black_player_id"], :name => "index_registration_matches_on_black_player_id"
+  add_index "registration_matches", ["division_id"], :name => "index_registration_matches_on_division_id"
+  add_index "registration_matches", ["game_digest"], :name => "index_registration_matches_on_game_digest"
+  add_index "registration_matches", ["match_id"], :name => "index_registration_matches_on_match_id"
+  add_index "registration_matches", ["registration_id"], :name => "index_registration_matches_on_registration_id"
+  add_index "registration_matches", ["white_player_id"], :name => "index_registration_matches_on_white_player_id"
+
   create_table "registrations", :force => true do |t|
     t.integer   "account_id"
     t.integer   "event_id"
@@ -179,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20121228065041) do
     t.string    "handle"
     t.timestamp "created_at",  :null => false
     t.timestamp "updated_at",  :null => false
+    t.boolean   "active"
   end
 
   add_index "registrations", ["account_id"], :name => "index_registrations_on_account_id"

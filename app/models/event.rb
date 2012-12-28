@@ -37,7 +37,7 @@ class Event < ActiveRecord::Base
   belongs_to :ruleset
   belongs_to :server
   has_one :event_ruleset, :dependent => :destroy
-  has_many :registrations, :dependent => :destroy
+  has_many :registrations
   has_many :accounts, :through => :registrations
   has_many :tiers, dependent: :destroy
   has_many :tags

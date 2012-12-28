@@ -1,0 +1,475 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[Japanese]SZ[19]KM[6.50]TM[2400]OT[5x30 byo-yomi]
+PW[twisted]PB[compgo74]BR[1d]DT[2012-12-14]PC[The KGS Go Server at http://www.gokgs.com/]C[twisted [-\]: hello again
+twisted [-\]: enjoy
+]RE[W+1.50]
+;B[pd]BL[2386.954]C[twisted [-\]: asr league
+compgo74 [1d\]: hi,gg
+]
+;W[dp]WL[2391.783]
+;B[qp]BL[2384.11]
+;W[ed]WL[2374.834]
+;B[fq]BL[2379.509]
+;W[hq]WL[2354.102]
+;B[lq]BL[2364.66]
+;W[cn]WL[2316.296]
+;B[pj]BL[2354.745]
+;W[nc]WL[2304.781]
+;B[pf]BL[2333.773]
+;W[pb]WL[2301.272]
+(;B[cd]BL[2318.503]
+;W[df]WL[2285.905]
+;B[ec]BL[2301.652]
+;W[fc]WL[2273.479]
+;B[dc]BL[2296.959]
+;W[fd]WL[2270.732]
+;B[bf]BL[2290.959]
+;W[kd]WL[2265.989]
+(;B[cq]BL[2268.158]C[compgo74 [1d\]: i retained r17 for later i could play m17
+twisted [-\]: ah niuce idea
+twisted [-\]: i think here d3 is more common
+]
+;W[dq]WL[2251.115]
+;B[dr]BL[2263.734]
+;W[er]WL[2249.8]
+;B[cr]BL[2260.888]
+;W[eq]WL[2248.525]C[compgo74 [1d\]: hmm
+]
+;B[bo]BL[2256.588]
+;W[bn]WL[2243.245]
+;B[co]BL[2254.392]
+;W[do]WL[2242.008]
+(;B[cp]BL[2250.934]C[ChemBoy613 [-\]: fixing here is a gift for white
+ChemBoy613 [-\]: my wife says, always cut first
+ChemBoy613 [-\]: then come back to live
+twisted [-\]: ahh  good to know
+compgo74 [1d\]: ah thats better
+twisted [-\]: i didnt know here
+ChemBoy613 [-\]: I'd fix
+twisted [-\]: i was tempted
+compgo74 [1d\]: neither do i
+ChemBoy613 [-\]: but p4 is very large
+]
+(;W[op]WL[2136.932]
+;B[oq]BL[2214.531]C[compgo74 [1d\]: Are you in Korea for long or go back to Canada?
+twisted [-\]: i just handed my notice in to the univercity i work at actually, but not being canadian i have no plans for going to canada =)
+twisted [-\]: university srry
+twisted [-\]: lol
+compgo74 [1d\]: i see
+]
+;W[pp]WL[1959.663]
+;B[pq]BL[2211.008]
+;W[qo]WL[1958.439]
+;B[qq]BL[2183.192]
+;W[np]WL[1953.891]
+;B[nq]BL[2177.489]
+;W[pl]WL[1926.137]
+;B[mp]BL[2157.627]
+;W[ph]WL[1900.492]
+;B[ok]BL[2134.24]
+;W[nn]WL[1886.234]
+;B[ol]BL[2066.91]
+;W[qg]WL[1850.327]
+;B[qf]BL[2048.425]
+;W[nh]WL[1844.469]
+;B[me]BL[2037.444]
+;W[ne]WL[1819.662]
+;B[nf]BL[2031.094]
+;W[md]WL[1813.607]
+;B[oe]BL[2022.214]
+(;W[ql]WL[1805.572]C[twisted [-\]: i wanted to threaten to connect
+ChemBoy613 [-\]: how did this happen on the right?becau
+compgo74 [1d\]: i saw that
+ChemBoy613 [-\]: I like B
+twisted [-\]: but it left me with horrible shape
+ChemBoy613 [-\]: since W is split
+compgo74 [1d\]: still m12
+twisted [-\]: i felt q4 group could live pretty easy so main worry was o12
+twisted [-\]: but hoped b didnt get time
+twisted [-\]: or i could just sacrifice, it was an invasin after all in a big b moyo
+compgo74 [1d\]: ok
+twisted [-\]: but probably trying to do too many things
+compgo74 [1d\]: sorry i got busy
+]
+;B[pn]BL[1906.663]
+;W[qn]WL[1771.009]
+;B[om]BL[1897.099]
+;W[po]WL[1766.52]
+;B[nd]BL[1867.651]
+;W[mc]WL[1722.747]
+;B[mm]BL[1852.032]C[compgo74 [1d\]: good luck
+twisted [-\]: np
+twisted [-\]: you too
+twisted [-\]: thx again
+]
+(;W[rj]WL[1688.479]
+;B[qi]BL[1818.9]
+;W[ri]WL[1685.035]
+;B[rg]BL[1814.766]
+;W[rh]WL[1671.457]
+;B[qh]BL[1810.089]
+;W[pg]WL[1666.403]
+;B[re]BL[1801.717]
+;W[sg]WL[1663.422]
+;B[rf]BL[1799.808]
+;W[lh]WL[1645.39]
+;B[ke]BL[1790.048]
+;W[mj]WL[1619.297]
+;B[mk]BL[1773.524]
+;W[je]WL[1611.297]
+;B[kf]BL[1769.003]
+;W[jf]WL[1608]
+;B[kg]BL[1763.45]
+;W[lk]WL[1603.272]
+;B[ll]BL[1760.106]
+;W[ji]WL[1554.291]
+;B[jg]BL[1755.581]
+;W[ig]WL[1530.867]
+;B[ih]BL[1735.663]
+;W[jh]WL[1528.883]
+;B[hh]BL[1731.829]
+(;W[hj]WL[1412.49]
+;B[fh]BL[1655.245]
+(;W[bg]WL[1353.386]
+;B[cf]BL[1646.685]
+;W[cg]WL[1344.158]
+;B[gj]BL[1639.616]
+;W[gk]WL[1320.798]
+;B[fj]BL[1629.951]
+(;W[ck]WL[1266.205]C[ChemBoy613 [-\]: you didn't fix cut?
+twisted [-\]: =)
+ChemBoy613 [-\]: :S
+ChemBoy613 [-\]: that too
+twisted [-\]: but somehow got away with it
+]
+(;B[hk]BL[1600.159]
+;W[ik]WL[1261.994]
+;B[hl]BL[1596.362]
+;W[il]WL[1260.685]
+;B[hm]BL[1556.375]
+;W[im]WL[1253.193]
+;B[fl]BL[1487.443]
+;W[hn]WL[1248.9]C[ChemBoy613 [-\]: W has some real wweaknesses
+]
+;B[gn]BL[1465.646]
+;W[go]WL[1246.364]
+;B[in]BL[1460.621]
+;W[ho]WL[1243.852]
+;B[jn]BL[1453.86]
+;W[kk]WL[1226.07]
+;B[nj]BL[1434.463]
+;W[ni]WL[1190.963]
+;B[lj]BL[1427.251]
+;W[mi]WL[1182.147]
+;B[kl]BL[1421.235]
+;W[kj]WL[1139.716]
+(;B[ij]BL[1390.424]
+;W[mg]WL[1109.483]C[twisted [-\]: m16 was kind
+]
+;B[ld]BL[1370.343]
+;W[kc]WL[1084.783]
+;B[qc]BL[1351.604]
+;W[ek]WL[1064.732]
+;B[fk]BL[1347.287]
+;W[kr]WL[1057.416]
+;B[lr]BL[1340.19]
+;W[fn]WL[1041.349]
+;B[if]BL[1329.108]
+;W[ie]WL[1036.363]
+;B[fb]BL[1283.773]
+;W[gb]WL[1033.404]
+;B[eb]BL[1281.387]
+;W[gm]WL[1021.812]
+;B[gl]BL[1277.226]
+;W[hf]WL[1007.674]
+;B[jr]BL[1219.781]
+;W[jp]WL[973.253]
+;B[kq]BL[1209.841]
+;W[af]WL[960.625]
+;B[be]BL[1199.875]
+;W[qb]WL[955.04]C[twisted [-\]: and as for yose i have no idea, im awful at it
+twisted [-\]: so i guess thats all folks =)
+kabradarf [2d\]: cya
+twisted [-\]: gorobei would you like a game?
+twisted [-\]: c u
+Gorobei [2k\]: i do
+twisted [-\]: great
+Gorobei [2k\]: but breakfast irst
+twisted [-\]: i'll put it up
+twisted [-\]: ok
+twisted [-\]: let me know when youre free
+Gorobei [2k\]: will do
+]
+;B[hr]BL[1170.276]
+;W[gr]WL[930.263]
+;B[iq]BL[1166.268]
+;W[hs]WL[910.145]
+;B[ir]BL[1160.905]
+;W[ip]WL[878.402]
+;B[gq]BL[1148.96]
+;W[fr]WL[856.942]
+;B[hp]BL[1145.571]
+;W[io]WL[821.053]
+;B[rb]BL[1132.211]
+;W[ra]WL[818.853]
+;B[rc]BL[1117.66]
+;W[rp]WL[806.241]
+;B[rq]BL[1112.944]
+;W[so]WL[804.525]
+;B[sq]BL[1092.227]
+;W[ao]WL[778.69]
+;B[ap]BL[1084.606]
+;W[an]WL[777.335]
+;B[ar]BL[1073.576]
+;W[el]WL[766.744]
+;B[di]BL[1068.063]
+;W[ci]WL[758.064]
+;B[dj]BL[1060.19]
+;W[cj]WL[753.479]
+;B[ga]BL[956.157]
+;W[hb]WL[748.961]
+;B[ha]BL[949.628]
+;W[ia]WL[747.598]
+;B[fa]BL[947.733]
+;W[jb]WL[697.983]
+;B[ko]BL[908.02]
+;W[mo]WL[678.758]
+;B[lo]BL[901.033]
+;W[mn]WL[675.236]
+;B[ln]BL[866.59]
+;W[nm]WL[669.674]
+;B[nl]BL[855.288]
+;W[kp]WL[654.975]
+;B[on]BL[850.257]
+;W[no]WL[652.925]
+;B[lp]BL[848.002]C[ChemBoy613 [-\]: is white alive in the middle?
+ChemBoy613 [-\]: just barely
+]
+;W[lc]WL[612.277]C[kadoban [?\]: ya. that part made me sad for black
+kabradarf [2d\]: i think it is
+ChemBoy613 [-\]: n12 is an eye, m10 is an eye
+]
+;B[le]BL[832.451]C[ChemBoy613 [-\]: but the shape is funny
+]
+;W[oi]WL[518.54]
+;B[qj]BL[813.089]
+;W[rl]WL[469.109]
+;B[gg]BL[794.593]
+;W[gf]WL[461.704]
+;B[ff]BL[788.277]
+;W[eg]WL[458.396]
+;B[fg]BL[783.736]
+;W[oj]WL[445.932]
+;B[pk]BL[775.639]
+;W[nk]WL[444.741]
+;B[ml]BL[765.014]
+;W[oc]WL[419.959]C[kabradarf [2d\]: hmmm
+]
+;B[fe]BL[739.531]
+;W[ge]WL[417.684]
+;B[fm]BL[725.62]
+;W[em]WL[414.673]
+;B[sp]BL[708.159]
+;W[ro]WL[409.329]
+;B[dh]BL[690.372]
+;W[dg]WL[396.17]C[kabradarf [2d\]: thers something in center with k9 k10 j11 k8 k7 k10 l12 m11 l11 
+]
+;B[dk]BL[685.286]
+;W[dl]WL[391.95]
+;B[ch]BL[681.986]
+;W[bh]WL[390.056]
+;B[fp]BL[674.344]
+;W[fo]WL[383.689]
+;B[ng]BL[651.684]
+;W[og]WL[364.732]
+;B[pi]BL[642.865]
+;W[lg]WL[360.99]
+;B[od]BL[623.293]C[kabradarf [2d\]: capture j8 then .could change result
+kadoban [?\]: nice find
+]
+;W[ds]WL[334.673]
+;B[cs]BL[618.225]
+;W[jm]WL[310.428]
+;B[km]BL[614.55]
+;W[jo]WL[308.829]
+;B[kn]BL[596.446]
+;W[ii]WL[303.787]
+;B[hi]BL[587.989]
+;W[jk]WL[302.055]C[kadoban [?\]: hmm, too bad
+]
+;B[de]BL[545.065]
+;W[ee]WL[269.935]
+;B[dd]BL[535.336]
+;W[ef]WL[267.879]
+;B[ae]BL[527.893]
+;W[eh]WL[265.063]
+;B[fi]BL[523.037]
+;W[sb]WL[230.84]
+;B[pc]BL[506.79]
+;W[pm]WL[184.374]
+;B[qk]BL[504.661]
+;W[rk]WL[181.462]
+;B[hg]BL[485.973]
+;W[sf]WL[140.927]
+;B[se]BL[482.09]
+;W[sh]WL[139.048]
+;B[kh]BL[476.328]
+;W[ki]WL[134.056]
+;B[jq]BL[455.065]
+;W[is]WL[128.291]
+;B[js]BL[440.309]
+;W[gs]WL[124.572]
+;B[es]BL[432.884]
+;W[ag]WL[89.837]
+;B[sc]BL[420.889]
+;W[ob]WL[85.574]
+;B[ep]BL[398.641]
+;W[eo]WL[77.665]
+;B[sa]BL[385.516]
+;W[qa]WL[66.744]
+;B[if]BL[381.658]
+;W[ei]WL[23.309]
+;B[ej]BL[376.566]
+;W[ig]WL[22.151]C[kabradarf [2d\]: 0.5 game?
+]
+;B[of]BL[340.53]
+;W[oh]WL[19.716]
+;B[if]BL[338.653]
+;W[gp]WL[18.752]
+;B[hq]BL[335.257]
+;W[ig]WL[14.501]
+;B[ib]BL[323.627]
+;W[ic]WL[10.495]
+;B[if]BL[320.379]C[kadoban [?\]: hmm, pretty close to if not
+]
+;W[bc]WL[30]OW[5]
+;B[cb]BL[304.818]
+;W[ig]WL[30]OW[5]
+;B[mf]BL[298.203]
+;W[if]WL[30]OW[5]
+;B[sb]BL[294.441]
+;W[gn]WL[30]OW[5]
+;B[ds]BL[274.111]
+;W[nj]WL[30]OW[5]
+;B[hj]BL[258.207]
+;W[li]WL[30]OW[5]
+;B[fs]BL[253.548]C[kadoban [?\]: that sure looks sente
+]
+;W[dn]WL[30]OW[4]
+;B[]BL[253.547]
+;W[]WL[30]OW[4]TW[ja][ka][la][ma][na][oa][pa][ib][kb][lb][mb][nb][gc][hc][jc][gd][hd][id][jd][he][ah][mh][ai][bi][si][aj][bj][lj][sj][ak][bk][sk][al][bl][cl][sl][am][bm][cm][dm][qm][rm][sm][en][rn][sn]TB[aa][ba][ca][da][ea][ab][bb][db][ac][bc][cc][ad][bd][qd][rd][sd][ce][ne][pe][qe][gh][gi][gk][lm][bp][aq][bq][mq][br][kr][mr][nr][or][pr][qr][rr][sr][as][bs][ks][ls][ms][ns][os][ps][qs][rs][ss]C[compgo74 [1d\]: thx
+twisted [-\]: thank you
+twisted [-\]: gg
+compgo74 [1d\]: gg
+compgo74 [1d\]: i failed in yose
+twisted [-\]: makes a change for me =)
+twisted [-\]: was really tough game
+compgo74 [1d\]: could you review?
+])
+(;B[jd]C[twisted [-\]: i think b could have some fun now before going after the big group
+]))
+(;B[ij]C[ChemBoy613 [-\]: i think this asking for trouble
+kabradarf [2d\]: k16 for black would be painful for white
+]))
+(;W[hk]C[twisted [-\]: c9 was a bit too greedy i think
+]))
+(;W[kl]C[ChemBoy613 [-\]: yeah
+ChemBoy613 [-\]: something to stabilize your group
+twisted [-\]: i wanted this
+ChemBoy613 [-\]: remember B still has D6
+twisted [-\]: thats why i played like i did
+twisted [-\]:  i wanted to stabalise the left
+twisted [-\]: d6 was getting to be a problem
+twisted [-\]: so i thought maybe fix it while pressuring h12 stones a bit
+])
+(;W[dh]C[twisted [-\]: maybe just this
+]
+;B[gj]
+;W[gk]C[twisted [-\]: hmm not sure
+]))
+(;W[jk]C[twisted [-\]: h10 felt ugly
+twisted [-\]: again i think this is better shape
+kabradarf [2d\]: s10 looks bad is r10 working?
+twisted [-\]: still pretty even points wise
+]))
+(;W[qj]
+;B[qi]
+;W[pi]
+;B[qk]
+;W[rj]C[ChemBoy613 [-\]: but this actually connects
+kabradarf [2d\]: r7
+]
+;B[qm]C[kabradarf [2d\]: s8
+]
+;W[rl]C[kabradarf [2d\]: yeah it connects
+twisted [-\]: seems ok
+twisted [-\]: yes much better than the game, i didnt think it worked in the game
+twisted [-\]: much easier for w now
+kabradarf [2d\]: would avoid a lot of triuble
+ChemBoy613 [-\]: B almost wants to connect his group
+twisted [-\]: now i think b is short on points
+ChemBoy613 [-\]: m8 seems almost needed
+twisted [-\]: certainly gives b a few worries
+]
+;B[ll]))
+(;W[pn]C[compgo74 [1d\]: m12
+twisted [-\]: much better shape for w
+]
+;B[lh]C[ChemBoy613 [-\]: what did you play in game?
+]))
+(;W[em]
+;B[op]
+;W[pk]C[twisted [-\]: maybe this
+compgo74 [1d\]: p9
+]
+;B[ok]
+;W[pl]C[compgo74 [1d\]: r10
+]
+;B[qj]
+;W[ol]
+;B[nl]C[compgo74 [1d\]: o8
+]
+;W[nm]C[compgo74 [1d\]: o9
+]
+;B[nk]C[twisted [-\]: i think it will get out, not sure if its better than the game
+]))
+(;B[dn]C[ChemBoy613 [-\]: yeah, she is much stronger than me :)
+]
+;W[cl]C[ChemBoy613 [-\]: strong enough to take the test and not lose a ton
+ChemBoy613 [-\]: that's pretty strong to me
+twisted [-\]: is c8 normal here chem?
+compgo74 [1d\]: does she play inKGS?
+ChemBoy613 [-\]: not anymore
+ChemBoy613 [-\]: it depends on the board hmmm.
+ChemBoy613 [-\]: i would say c8 or f4
+ChemBoy613 [-\]: the F3 aji is very annoying
+twisted [-\]: k thx
+twisted [-\]: yes
+]
+;B[cp]C[compgo74 [1d\]: really
+ChemBoy613 [-\]: or you can take f2 or a few things
+ChemBoy613 [-\]: yeah, she almost went pro when she was a kid
+]))
+(;B[dq]
+;W[cq]
+;B[cr]
+;W[eq]
+;B[dr]
+;W[ep]
+;B[cp]C[twisted [-\]: is what i see a lot
+]))
+(;B[qc]
+(;W[ld]
+;B[cd]C[twisted [-\]: maybe?
+ChemBoy613 [-\]: i think W would be lower in this line
+ChemBoy613 [-\]: b/c e16 is high
+])
+(;W[kc]C[ChemBoy613 [-\]: right
+ChemBoy613 [-\]: this way
+twisted [-\]: ok, i was thinking greed =)
+compgo74 [1d\]: maybe
+ChemBoy613 [-\]: my study suggests that play low when corner is high and play high when corner is low
+compgo74 [1d\]: good policy
+twisted [-\]: i like high as i was hoping for a center game
+twisted [-\]: ok good to keep in mind
+])))

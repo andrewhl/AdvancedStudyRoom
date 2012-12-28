@@ -30,8 +30,8 @@
             %td X
           - else
             %td
-              - col_player.match_results(true, true, row_player.id).each do |win|
-                %span W
-              - col_player.match_results(true, false, row_player.id).each do |loss|
-                %span L
+              / - col_player.match_results(true, true, row_player.id).each do |win|
+              / %span W
+              / - col_player.match_results(true, false, row_player.id).each do |loss|
+              / %span L
 
