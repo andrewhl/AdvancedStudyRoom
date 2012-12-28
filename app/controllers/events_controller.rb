@@ -88,6 +88,7 @@ class EventsController < ApplicationController
     @tiers = @event.tiers
 
     unless @tiers.empty? or @tiers.first.divisions.empty?
+      binding.pry
       params[:division] ||= @tiers.first.divisions.first.name
     end
 
