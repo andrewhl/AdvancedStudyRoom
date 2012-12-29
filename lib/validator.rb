@@ -23,9 +23,9 @@ class Validator
           if game.save
 
             # process the RegistrationMatch
-            unless RegistrationMatch.find_by_game_digest(game.game_digest)
-              create_registration_match(game)
-            end
+            # unless RegistrationMatch.find_by_game_digest(game.game_digest)
+            #   create_registration_match(game)
+            # end
 
             # skip this step if for some reason this game's comments already exist
             next if game.comments.any?

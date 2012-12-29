@@ -15,4 +15,5 @@ class RegistrationMatch < ActiveRecord::Base
   belongs_to :black_player, :class_name => "Registration"
   belongs_to :white_player, :class_name => "Registration"
   belongs_to :winner, :class_name => "Registration"
+
 end

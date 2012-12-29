@@ -12,26 +12,51 @@
     %ul
       - @tiers.each do |tier|
         - tier.divisions.each do |division|
-          %li= link_to "#{division.name}", { :division => division.name }
+          %li= link_to "#{division.name}", { :division => division.id }
 
-  - css_id = params[:division].downcase.gsub(/\s+/, "")
+  - css_id = @division.name.downcase.gsub(/\s+/, "")
 
-  %h4= @division[0].name
-  %table.table.table-condensed.table-bordered.table-hover
-    %tr
-      %th Player
-      - @division[0].registrations.each do |col_player|
-        %th= col_player.handle
-    - @division[0].registrations.each do |row_player|
+  %h4= @division.name
+
+  - if @division.registrations.count > 30
+    %table.table.table-condensed.table-bordered.table-hover
       %tr
-        %td= row_player.handle
-        - @division[0].registrations.each do |col_player|
-          - if col_player == row_player
-            %td X
-          - else
-            %td
-              / - col_player.match_results(true, true, row_player.id).each do |win|
-              / %span W
-              / - col_player.match_results(true, false, row_player.id).each do |loss|
-              / %span L
+        %th Player
+        %th Wins/Losses
+      - @division.registrations.each do |player|
+        %tr
+          %td= player.handle
+          %td
+            - won_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and col_player.id == game.winner_id }
+            - lost_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and col_player.id != game.winner_id }
+
+            - won_games.each do
+              %span W
+            - lost_games.each do
+              %span L
+  - else
+    %table.table.table-condensed.table-bordered.table-hover
+      %tr
+        %th Player
+        - @division.registrations.each do |col_player|
+          %th= col_player.handle
+      - @division.registrations.each do |row_player|
+        %tr
+          %td= row_player.handle
+          - @division.registrations.each do |col_player|
+            - if col_player == row_player
+              %td X
+            - else
+              %td
+                - won_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and col_player.id == game.winner_id }
+                - lost_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and col_player.id != game.winner_id }
+
+                - won_games.each do
+                  %span W
+                - lost_games.each do
+                  %span L
+                / - col_player.match_results(true, true, row_player.id).each do |win|
+                / %span W
+                / - col_player.match_results(true, false, row_player.id).each do |loss|
+                / %span L
 

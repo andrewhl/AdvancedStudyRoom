@@ -85,17 +85,18 @@ class EventsController < ApplicationController
   end
 
   def results
-    @tiers = @event.tiers
+    @tiers = @event.tiers.order("tier_hierarchy_position ASC")
 
     unless @tiers.empty? or @tiers.first.divisions.empty?
-      binding.pry
-      params[:division] ||= @tiers.first.divisions.first.name
+      params[:division] ||= @tiers.first.divisions.order("division_index ASC").first.id
     end
 
     @divisions = Division.all.select { |division| division.tier.event == @event }
-    @division = @divisions.select { |division| division.name == params[:division] }
+    @division = Division.find(params[:division])
 
-    # @division = Division.find(params[:division])
+    # get current matches for this division
+
+    @matches = @division.matches.select { |item| item.created_at.month == Time.now.month }
 
     # @tiers.divisions.select { |division| division.name == params[:division] }
 
