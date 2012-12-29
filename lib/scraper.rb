@@ -80,7 +80,7 @@ class Scraper
       else
         open("#{user}-#{time.year}-#{time.month}.zip", "wb") { |file|
           file.write(resp.body)
-          FileUtils.mv("#{user}-#{time.year}-#{time.month}.zip", "./temp/")
+          FileUtils.mv("#{user}-#{time.year}-#{time.month}.zip", "temp/")
         }
       end
     }
