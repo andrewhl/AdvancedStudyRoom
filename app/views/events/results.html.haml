@@ -11,7 +11,7 @@
     %h4 Quick Links
     %ul
       - @tiers.each do |tier|
-        - tier.divisions.each do |division|
+        - tier.divisions.ranked.each do |division|
           %li= link_to "#{division.name}", { :division => division.id }
 
   - css_id = @division.name.downcase.gsub(/\s+/, "")

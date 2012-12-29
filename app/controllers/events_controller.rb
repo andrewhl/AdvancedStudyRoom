@@ -88,7 +88,7 @@ class EventsController < ApplicationController
     @tiers = @event.tiers.order("tier_hierarchy_position ASC")
 
     unless @tiers.empty? or @tiers.first.divisions.empty?
-      params[:division] ||= @tiers.first.divisions.order("division_index ASC").first.id
+      params[:division] ||= @tiers.first.divisions.ranked.first.id
     end
 
     @divisions = Division.all.select { |division| division.tier.event == @event }
