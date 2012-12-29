@@ -17,24 +17,24 @@ namespace :validator do
       scraper.get_sgf_zip(registration.handle)
 
       # check to see if the get_sgf_zip method returned no_games.txt
-      Dir.foreach("./temp/") do |item|
+      Dir.foreach("./lib/temp/") do |item|
         next if item == "." or item == ".."
         if File.fnmatch("no_games*", item)
-          FileUtils.remove_entry("./temp/#{item}")
+          FileUtils.remove_entry("./lib/temp/#{item}")
           has_games = false
         end
       end
       unless has_games == false
-        validator.validate_games("./temp/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip", "#{registration.handle}")
+        validator.validate_games("./lib/temp/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip", "#{registration.handle}")
       end
       sleep(3)
     end
 
     # Clean up
-    Dir.foreach("./temp/") do |item|
+    Dir.foreach("./lib/temp/") do |item|
       next if item == "." or item == ".."
       if File.fnmatch("*.zip", item) or File.fnmatch("*.sgf", item)
-        FileUtils.remove_entry("./temp/#{item}")
+        FileUtils.remove_entry("./lib/temp/#{item}")
       end
     end
   end

@@ -76,11 +76,11 @@ class Scraper
 
       resp = http.get("/servlet/archives/en_US/#{user}-#{time.year}-#{time.month}.zip")
       if resp.is_a? Net::HTTPNotFound # if the player has no games this month
-        FileUtils.touch("./temp/no_games.txt")
+        FileUtils.touch("./lib/temp/no_games.txt")
       else
         open("#{user}-#{time.year}-#{time.month}.zip", "wb") { |file|
           file.write(resp.body)
-          FileUtils.mv("#{user}-#{time.year}-#{time.month}.zip", "temp/")
+          FileUtils.mv("#{user}-#{time.year}-#{time.month}.zip", "lib/temp/")
         }
       end
     }
