@@ -23,6 +23,7 @@
 #  winner_name        :string(255)
 #  winner_id          :integer
 #  board_size         :integer
+#  valid              :boolean
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -60,29 +61,46 @@ class Match < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
   has_many :points
+
+  scope :valid_games, where("valid_game = ?", true)
+  scope :tagged, where("tagged = ?", true)
   # has_many :black_players, :through => :registration_matches
   # has_many :white_players, :through => :registration_matches
   # has_many :registration_matches
 
   def has_valid_tag comments
 
+    event = division.event
+    tags = event.tags
+
     # TO DO: TEST IF THE NODE LIMIT WORKS ON A GAME WITH A TAG THAT APPEARS
     # AFTER NODE 0
 
     valid_tag = false
+
+    # TO DO: COMMENTS CURENTLY IS A HASH, BUT WILL BE A COLLECTION LATER
+    # REWRITE CODE FOR THAT
 
     comments.each do |node, line|
       next if line.is_a? String
       line.each do |key, value|
 
         # binding.pry
+        # binding.pry if game_digest == "53f9e6782e41ed6d90dec2267a284a04" and value[:comment] == "hi ASR League"
         # see if tag exists that matches the current line's comment
-        if Tag.where("phrase like ?", value[:comment]).exists?
-          tag = Tag.where("phrase like ?", value[:comment]).first
-          valid_tag = true
-          node_limit ||= tag.node_limit
 
+        tags.each do |tag|
+          phrase = Regexp.new(tag.phrase, true)
+          valid_tag = true if phrase =~ value[:comment]
+          node_limit ||= tag.node_limit
         end
+
+        # if Tag.where("phrase like ?", value[:comment]).exists?
+        #   tag = Tag.where("phrase like ?", value[:comment]).first
+        #   valid_tag = true
+        #   node_limit ||= tag.node_limit
+
+        # end
 
         # check node limit (i.e., move limit in which tag phrase must appear)
         if node_limit
@@ -286,8 +304,15 @@ class Match < ActiveRecord::Base
     end
   end
 
-  def similar_games
-    current_matches = Match.all.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
+  def similar_games tagged=true
+
+    # assumes the game is tagged
+    if tagged
+      current_matches = Match.tagged.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
+    else # if tagged parameter is false
+      current_matches = Match.all.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
+    end
+
     matches = current_matches.select { |match| match.black_player_id == black_player_id and match.white_player_id == white_player_id }
     matches += current_matches.select { |match| match.black_player_id == white_player_id and match.white_player_id == black_player_id }
     matches

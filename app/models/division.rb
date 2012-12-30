@@ -3,6 +3,7 @@
 # Table name: divisions
 #
 #  id               :integer          not null, primary key
+#  event_id         :integer
 #  tier_id          :integer
 #  month            :datetime
 #  division_index   :integer
@@ -28,7 +29,9 @@ class Division < ActiveRecord::Base
                   :demoted_players,
                   :division_ruleset,
                   :division_ruleset_attributes,
+                  :name,
                   :custom_name,
+                  :event_id,
                   :use_custom_name
 
   scope :ranked, order("division_index ASC")
@@ -44,6 +47,7 @@ class Division < ActiveRecord::Base
   has_one :division_ruleset, :dependent => :destroy
 
   belongs_to :tier
+  belongs_to :event
 
   accepts_nested_attributes_for :division_ruleset, allow_destroy: true
 

@@ -1,0 +1,417 @@
+(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]
+RU[Japanese]SZ[19]KM[6.50]TM[1800]OT[5x30 byo-yomi]
+PW[humblelife]PB[freehold]BR[2k]DT[2012-12-28]PC[The KGS Go Server at http://www.gokgs.com/]RE[W+19.50]
+;B[qd]BL[1796.878]C[humblelife [-\]: hello
+]
+;W[dp]WL[1793.958]C[freehold [2k\]: good to play you again
+freehold [2k\]: asr league
+npzatoichi [1k\]: b*
+]
+;B[pq]BL[1781.293]
+;W[dc]WL[1783.971]C[humblelife [-\]: yes?
+]
+;B[oc]BL[1774.499]C[freehold [2k\]: what is the question?
+]
+;W[po]WL[1780.755]
+;B[qm]BL[1747.25]
+;W[qq]WL[1776.625]
+;B[qp]BL[1744.337]
+;W[pp]WL[1773.967]
+;B[qo]BL[1742.672]
+;W[qn]WL[1771.706]
+;B[rn]BL[1740.536]
+;W[oq]WL[1747.141]
+;B[pn]BL[1710.998]C[freehold [2k\]: many mistakes, I agree...
+]
+;W[pr]WL[1744.402]C[npzatoichi [1k\]: i was just correcting my statement
+freehold [2k\]: It is an experiment
+]
+(;B[pi]BL[1703.288]C[humblelife [-\]: this seems a bit strange
+]
+;W[jd]WL[1733.809]
+(;B[ce]BL[1690.809]C[humblelife [-\]: oh, right
+freehold [2k\]: I think my stones on the right are working very efficiently
+humblelife [-\]: ok
+]
+(;W[dh]WL[1719.926]
+;B[fe]BL[1684.64]
+;W[gc]WL[1712.634]
+;B[cj]BL[1671.266]
+;W[ei]WL[1704.466]
+;B[cm]BL[1664.485]
+;W[dk]WL[1635.898]C[freehold [2k\]: this fight was interesting, not sure what the outcome should have been
+freehold [2k\]: seemed bad to submit to you connecting
+humblelife [-\]: ok
+]
+;B[dj]BL[1660.272]TR[dh][ei][dk]C[humblelife [-\]: i've never seen this, but i almost never do this either
+]
+;W[ej]WL[1633.465]
+;B[ek]BL[1650.11]
+(;W[dl]WL[1613.941]C[humblelife [-\]: please chime in if you think you see a mistake
+freehold [2k\]: would have l8iked to play f9, don't think it works
+humblelife [-\]: these moves are strange to me, so i probably can't tell
+]
+(;B[dm]BL[1627.12]
+;W[el]WL[1611.879]
+;B[fk]BL[1625.399]
+;W[fl]WL[1607.487]
+;B[gk]BL[1618.757]C[humblelife [-\]: but that would require reading
+]
+(;W[bk]WL[1602.945]C[freehold [2k\]: now we set up the big fitght
+]
+(;B[ch]BL[1615.001]C[humblelife [-\]: i didn't expect this
+]
+;W[cg]WL[1598.851]
+;B[bh]BL[1608.227]C[freehold [2k\]: maybe d11 here?
+]
+(;W[df]WL[1552.933]
+;B[bg]BL[1602.501]
+;W[de]WL[1550.483]
+;B[cf]BL[1597.193]
+;W[dg]WL[1548.473]
+;B[bj]BL[1593.618]
+;W[bl]WL[1533.187]
+;B[dd]BL[1548.697]
+;W[cd]WL[1525.75]
+;B[ed]BL[1547.107]
+;W[bd]WL[1522.602]
+;B[be]BL[1544.436]
+;W[ae]WL[1517.168]
+;B[bf]BL[1542.638]
+;W[ec]WL[1514.467]
+;B[di]BL[1529.331]
+;W[fg]WL[1511.786]
+;B[gf]BL[1519.417]
+;W[gg]WL[1509.966]
+;B[hf]BL[1488.007]
+;W[hg]WL[1504.815]
+;B[if]BL[1455.723]
+;W[fd]WL[1503.376]
+;B[ee]BL[1452.492]
+;W[ge]WL[1501.173]
+;B[ff]BL[1449.231]
+;W[ig]WL[1491.681]
+;B[jf]BL[1393.068]
+;W[jg]WL[1488.428]
+;B[kf]BL[1386.448]
+;W[ik]WL[1486.075]
+;B[gl]BL[1383.097]
+;W[fn]WL[1483.888]
+;B[gm]BL[1380.788]
+;W[co]WL[1467.935]
+;B[fm]BL[1360.845]
+;W[em]WL[1466.109]
+;B[en]BL[1359.09]
+;W[eo]WL[1442.205]
+;B[dn]BL[1347.736]
+;W[bm]WL[1439.917]
+;B[fo]BL[1343.292]
+;W[gn]WL[1437.273]
+;B[fp]BL[1324.36]
+;W[hn]WL[1429.765]
+;B[il]BL[1316.121]
+;W[jn]WL[1422.782]
+;B[im]BL[1308.092]
+;W[in]WL[1414.45]
+;B[ep]BL[1303.81]
+;W[do]WL[1412.711]
+;B[jk]BL[1260.674]
+;W[ij]WL[1407.132]
+;B[er]BL[1236.617]
+;W[jj]WL[1392.152]
+;B[kk]BL[1232.478]
+;W[kj]WL[1387.672]
+;B[km]BL[1226.483]
+;W[lk]WL[1378.903]
+;B[kn]BL[1212.009]
+;W[hq]WL[1367.162]
+;B[fi]BL[1203.675]
+;W[eh]WL[1351.987]
+;B[dq]BL[1199.034]
+;W[fq]WL[1308.895]
+;B[cq]BL[1186.423]
+;W[gq]WL[1303.246]
+;B[bo]BL[1177.194]
+;W[cn]WL[1285.241]
+;B[ll]BL[1151.274]
+;W[jl]WL[1279.954]
+;B[jm]BL[1140.624]
+;W[kl]WL[1278.171]
+;B[ml]BL[1138.807]
+;W[mf]WL[1254.292]
+;B[kd]BL[1132.977]
+;W[kc]WL[1249.576]
+;B[ld]BL[1124.408]
+;W[lc]WL[1248.028]
+;B[md]BL[1116.151]
+;W[mc]WL[1246.577]
+;B[kg]BL[1101.856]
+;W[nj]WL[1230.769]
+;B[nc]BL[1091.243]
+;W[ic]WL[1204.23]
+;B[nh]BL[1073.226]
+;W[qj]WL[1201.692]
+;B[pj]BL[1070.916]
+;W[qi]WL[1200.406]
+;B[qg]BL[1054.995]
+;W[pk]WL[1198.455]
+;B[ok]BL[1047.995]
+;W[ph]WL[1195.33]
+;B[qh]BL[1036.658]
+;W[oj]WL[1188.693]
+;B[oi]BL[1033.433]
+;W[ni]WL[1186.993]
+;B[oh]BL[1030.425]
+;W[nk]WL[1184.125]
+;B[ol]BL[1028.614]
+;W[nl]WL[1182.796]
+;B[nm]BL[1008.993]
+;W[om]WL[1181.157]
+;B[pl]BL[1007.334]
+;W[nn]WL[1171.328]
+;B[mm]BL[1003.823]
+;W[on]WL[1162.831]
+;B[mn]BL[987.812]
+;W[lo]WL[1155.041]
+;B[ko]BL[979.538]
+;W[mo]WL[1152.979]
+;B[kq]BL[971.361]
+;W[jp]WL[1147.249]
+;B[kp]BL[965.555]
+;W[jr]WL[1071.661]
+;B[ln]BL[958.369]
+;W[kr]WL[1052.579]
+;B[li]BL[895.965]
+;W[lj]WL[1040.934]
+;B[no]BL[837.501]
+;W[np]WL[1022.987]
+;B[mp]BL[822.018]
+;W[oo]WL[1020.658]
+;B[hi]BL[776.222]
+;W[ii]WL[962.997]
+;B[jh]BL[710.789]
+;W[ih]WL[906.779]
+;B[fh]BL[652.789]
+;W[fj]WL[759.62]
+;B[gj]BL[640.92]
+;W[eg]WL[752.095]
+;B[ki]BL[604.557]
+;W[ai]WL[663.442]
+;B[aj]BL[469.637]
+;W[bi]WL[659.684]
+;B[af]BL[465.24]
+;W[ah]WL[657.61]
+;B[ad]BL[460.607]
+;W[bc]WL[654.112]
+;B[hm]BL[386.243]
+;W[hk]WL[609.655]
+;B[mq]BL[363.09]
+;W[lr]WL[596.268]
+;B[mi]BL[337.093]
+;W[ck]WL[583.93]
+;B[ji]BL[325.469]
+;W[ak]WL[581.492]
+;B[ci]BL[322.424]
+;W[ac]WL[578.18]
+;B[gh]BL[315.973]
+;W[hj]WL[563.036]
+;B[ef]BL[304.818]
+;W[ae]WL[560.971]
+(;B[mk]BL[300.499]
+;W[mj]WL[538.053]
+;B[ad]BL[297.6]
+;W[pm]WL[532.365]
+;B[qk]BL[287.476]
+;W[ae]WL[530.146]
+;B[kk]BL[283.765]
+;W[ag]WL[376.135]
+;B[jk]BL[274.262]
+;W[eq]WL[370.151]
+;B[bn]BL[235.101]
+;W[cl]WL[351.37]
+;B[bp]BL[225.153]
+;W[mb]WL[342.966]
+;B[rq]BL[207.878]
+;W[rr]WL[338.674]
+;B[sp]BL[203.845]
+;W[pa]WL[335.556]
+;B[pb]BL[200.628]
+;W[na]WL[332.972]
+;B[qa]BL[197.895]
+;W[oa]WL[331.754]
+;B[qb]BL[190.943]
+;W[mr]WL[312.373]
+;B[fr]BL[186.157]
+;W[gr]WL[310.173]
+;B[sr]BL[181.726]
+;W[fs]WL[307.765]
+;B[ds]BL[177.218]
+;W[rs]WL[304.915]
+;B[jo]BL[171.594]
+;W[ip]WL[293.888]
+;B[jq]BL[168.941]
+;W[iq]WL[292.375]
+;B[nq]BL[163.697]
+;W[nr]WL[290.073]
+;B[hd]BL[160.238]
+;W[gd]WL[286.059]
+;B[id]BL[142.538]
+;W[hc]WL[284.052]
+;B[je]BL[140.405]
+;W[jc]WL[278.974]
+;B[io]BL[126.265]
+;W[ho]WL[273.959]
+;B[am]BL[32.339]
+;W[he]WL[268.86]
+;B[ie]BL[29.806]
+;W[an]WL[267.622]
+;B[ao]BL[21.911]
+;W[cp]WL[248.878]
+;B[br]BL[15.402]
+;W[ss]WL[240.012]
+;B[sq]BL[3.287]
+;W[qn]WL[233.41]
+;B[ro]BL[30]OB[5]
+;W[nb]WL[159.899]
+;B[es]BL[30]OB[5]
+;W[gs]WL[157.307]
+;B[pn]BL[30]OB[5]
+;W[cs]WL[130.3]
+;B[dr]BL[30]OB[5]
+;W[qn]WL[128.452]
+;B[qr]BL[30]OB[5]
+;W[qs]WL[125.389]
+;B[pn]BL[30]OB[5]
+;W[kl]WL[110.897]
+;B[jl]BL[30]OB[5]
+;W[qn]WL[109.496]
+;B[ps]BL[30]OB[5]
+;W[os]WL[106.183]
+;B[pn]BL[30]OB[5]
+;W[hh]WL[100.501]
+;B[gi]BL[30]OB[5]
+;W[qn]WL[98.643]
+;B[lp]BL[30]OB[5]
+;W[no]WL[96.228]
+;B[pn]BL[30]OB[5]
+;W[ql]WL[92.564]
+;B[rl]BL[30]OB[5]
+;W[qn]WL[91.066]
+;B[an]BL[30]OB[5]
+;W[pn]WL[88.192]
+;B[]BL[30]OB[5]
+;W[]WL[88.191]TW[aa][ba][ca][da][ea][fa][ga][ha][ia][ja][ka][la][ma][ab][bb][cb][db][eb][fb][gb][hb][ib][jb][kb][lb][cc][fc][ad][be][ce][af][bf][cf][bg][bh][ch][ci][di][aj][bj][cj][dj][cm][dm][dn][en][fo][go][ep][fp][gp][hp][op][pq][hr][ir][or][qr][hs][is][js][ks][ls][ms][ns][ps]TB[ra][sa][rb][sb][pc][qc][rc][sc][nd][od][pd][rd][sd][ke][le][me][ne][oe][pe][qe][re][se][lf][mf][nf][of][pf][qf][rf][sf][lg][mg][ng][og][pg][rg][sg][kh][lh][mh][ph][rh][sh][qi][ri][si][qj][rj][sj][pk][rk][sk][kl][ql][sl][lm][rm][sm][sn][so][ap][rp][aq][bq][ar][cr][as][bs][cs]C[freehold [2k\]: thanks
+freehold [2k\]: I played that ko very badly
+humblelife [-\]: which ko?
+])
+(;B[ag]
+;W[ai]
+;B[ad]C[freehold [2k\]: I had extra moves that would have won the fight
+]
+;W[pm]
+;B[qk]
+;W[ae]
+;B[mk]
+;W[ah]
+;B[ad]
+;W[mj]
+;B[hl]
+;W[ae]
+;B[bi]
+;W[ad]
+;B[kk]C[freehold [2k\]: not quite I guess
+humblelife [-\]: woops
+freehold [2k\]: but still a mistake on my part
+npzatoichi [1k\]: w had a throw in earlier that reduced a liberty
+freehold [2k\]: you have control
+humblelife [-\]: i imagine many mistakes led to this mess
+freehold [2k\]: if you would review?
+]))
+(;W[di]C[freehold [2k\]: sorry
+]
+;B[bj]C[freehold [2k\]: meant c11
+])
+(;W[ci]C[freehold [2k\]: but b10 maybe best, or what you did
+]
+(;B[bj]
+;W[bg])
+(;B[bg]C[freehold [2k\]: let me connect under, you take corner above
+]
+;W[bj]
+;B[fq]C[freehold [2k\]: this would have been bad for B, wouldn't have gone this route
+])
+(;B[dg]C[freehold [2k\]: I think I should have played b10 before b12
+humblelife [-\]: i geve you control, so can you demonstrate?
+freehold [2k\]: tricky fight in any case
+]
+;W[bg])))
+(;B[bj]
+(;W[bh]
+;B[ck])
+(;W[bl]
+;B[ch]C[humblelife [-\]: w man c8 instead
+])))
+(;W[bl]
+;B[bj]
+;W[bk]
+;B[ch]C[humblelife [-\]: seems tough for w
+freehold [2k\]: same outcome, mabye W ahead, c7 is wasted
+freehold [2k\]: anyway, thanks a lot for the games.
+humblelife [-\]: yes. thank you
+freehold [2k\]: I look forward to playing you again another time
+humblelife [-\]: me too
+npzatoichi [1k\]: nice job in the fighting
+humblelife [-\]: thanks. can you help me review?
+npzatoichi [1k\]: sure
+humblelife [-\]: i need to open another one. hold on
+]))
+(;B[fk]C[freehold [2k\]: but b9?
+]
+(;W[gi]
+;B[ch]
+;W[dm]C[freehold [2k\]: if you had done that, I am happy
+humblelife [-\]: agreed
+])
+(;W[bk]
+;B[em]
+(;W[dm]
+;B[dn]
+;W[en]C[freehold [2k\]: no, just b10 instead of d7
+])
+(;W[bj]
+;B[dm]
+(;W[fp])
+(;W[bl]C[humblelife [-\]: i suppose the corner is ok
+]
+;B[fq]
+;W[co]C[humblelife [-\]: but i didn't notice this until later
+]
+;B[fo]
+;W[bm]C[freehold [2k\]: looks good for W
+humblelife [-\]: agreed
+]
+;B[cc])))))
+(;W[fk]
+;B[el]
+;W[fl]
+;B[em]C[freehold [2k\]: peaceful outcome
+]
+;W[cc]C[humblelife [-\]: maybe this is proper
+]
+(;B[fq]C[freehold [2k\]: c12 severe
+])
+(;B[ch]
+;W[cg]
+;B[dg]C[humblelife [-\]: ah
+])))
+(;W[md]C[humblelife [-\]: it just seems a bit early to take on the burden of protecting territory
+freehold [2k\]: seems small at this stage
+]))
+(;B[cf]SQ[dc][jd][cf]C[humblelife [-\]: this is normal
+freehold [2k\]: ah, ok
+humblelife [-\]: but i'm not sure which pincer to use
+humblelife [-\]: the logic behind kobayashi
+]))
+(;B[jd]
+;W[qi]C[humblelife [-\]: i see
+]))

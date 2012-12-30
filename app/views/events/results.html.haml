@@ -27,8 +27,8 @@
         %tr
           %td= player.handle
           %td
-            - won_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and col_player.id == game.winner_id }
-            - lost_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and col_player.id != game.winner_id }
+            - won_games = @matches.select { |game| (player.id == game.black_player_id or player.id == game.white_player_id) and player.id == game.winner_id }
+            - lost_games = @matches.select { |game| (player.id == game.black_player_id or player.id == game.white_player_id) and player.id != game.winner_id }
 
             - won_games.each do
               %span W

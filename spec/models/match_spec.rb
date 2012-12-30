@@ -23,6 +23,7 @@
 #  winner_name        :string(255)
 #  winner_id          :integer
 #  board_size         :integer
+#  valid              :boolean
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

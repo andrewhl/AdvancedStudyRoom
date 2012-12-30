@@ -1,6 +1,7 @@
 class CreateDivisions < ActiveRecord::Migration
   def change
     create_table :divisions do |t|
+      t.integer  :event_id
       t.integer  :tier_id
       t.datetime :month
       t.integer  :division_index
@@ -16,6 +17,7 @@ class CreateDivisions < ActiveRecord::Migration
     end
 
     add_index :divisions, :division_index
+    add_index :divisions, :event_id
     add_index :divisions, :tier_id
   end
 end

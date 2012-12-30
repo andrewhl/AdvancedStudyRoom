@@ -12,6 +12,7 @@ class DivisionsController < ApplicationController
     @tier = Tier.find(params[:tier_id])
     @event = Event.find(@tier.event.id)
     @division = @tier.divisions.build(division_params)
+    @division.event_id = @event.id
     @division.name = "#{@tier.name} #{@division.division_index}"
 
     if @division.save

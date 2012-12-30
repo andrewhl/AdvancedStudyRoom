@@ -73,14 +73,16 @@ class Scraper
   def get_sgf_zip(user)
     time = Time.now
     Net::HTTP.start("www.gokgs.com") { |http|
-
+      # binding.pry
       resp = http.get("/servlet/archives/en_US/#{user}-#{time.year}-#{time.month}.zip")
-      if resp.is_a? Net::HTTPNotFound # if the player has no games this month
-        FileUtils.touch("./lib/temp/no_games.txt")
+      if resp.is_a? Net::HTTPNotFound # if the player does not exist
+        FileUtils.touch("./lib/games/no_games.txt")
+      # elsif # player has no games
+
       else
         open("#{user}-#{time.year}-#{time.month}.zip", "wb") { |file|
           file.write(resp.body)
-          FileUtils.mv("#{user}-#{time.year}-#{time.month}.zip", "lib/temp/")
+          FileUtils.mv("#{user}-#{time.year}-#{time.month}.zip", "lib/games/")
         }
       end
     }

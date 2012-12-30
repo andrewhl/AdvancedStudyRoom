@@ -21,6 +21,9 @@ class CreateMatches < ActiveRecord::Migration
       t.string   :winner_name
       t.integer  :winner_id
       t.integer  :board_size
+      t.boolean  :valid_game
+      t.boolean  :tagged
+      t.string   :url
 
       t.timestamps
     end
