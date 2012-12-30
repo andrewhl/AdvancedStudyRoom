@@ -5,6 +5,7 @@ class CreateRegistrations < ActiveRecord::Migration
       t.integer :event_id
       t.integer :division_id
       t.string  :handle
+      t.boolean :active
 
       t.timestamps
     end

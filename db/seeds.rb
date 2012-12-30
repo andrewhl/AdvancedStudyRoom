@@ -43,32 +43,89 @@ if Ruleset.find_by_name("KGS Default").nil?
                  canonical: true)
 end
 
-alpha_users = ["baboon", "chemboy613", "compgo74", "dr4ch3", "drgoplayer", "gleek", "goldbird", "gorobei", "hernan1987", "kabradarf", "kanmuru", "keitarokun", "redreoicy", "sita", "socratease", "titanpupil", "twisted", "whuang"]
+# Create the seed Event (ASR League), if it doesn't exist
 
-all_users = ["baboon", "chemboy613", "compgo74", "dr4ch3", "drgoplayer", "gleek", "goldbird", "gorobei", "hernan1987", "kabradarf", "kanmuru", "keitarokun", "redreoicy", "sita", "socratease", "titanpupil", "twisted", "whuang", "akagi", "bethestone", "bolko", "braa", "danielxr", "dragoness", "geser", "lowlander", "monk316", "mw42", "nebilim", "plain", "reepicheep", "soutkin", "timotamo", "ukiyo", "usagi", "vandalis", "vectnik", "zeekmund", "bengozen", "cararam11", "dedyz", "explo", "jayy", "kwinin", "leaves", "mapuche27", "mendieta", "nannyogg", "nathan", "nh3ch2cooh", "rapt", "rottenhat", "rpchuang", "saqua", "turingtest", "ufo", "vdk", "waynec", "aperezwi", "arroc", "babolat", "bufrisa", "calm", "ciaso", "conankudo3", "elligain", "eventy", "freehold", "humblelife", "irises", "johnboy", "kemist", "komulink38", "maou", "mathmaz", "michelxy", "nazril", "ribab", "spartaaaaa", "tilwen", "uncoil", "vladxnev", "wrathful", "agzam", "anatoly", "antek", "bentaye", "chente00", "detect", "dragoneye", "ez4u", "goldgarden", "hanen", "horner", "ijoka", "jb33", "kamanari", "lafayette", "laurels", "magnus86", "mdm", "momochan", "pavl007", "pauzle", "ryuujin", "scatcat", "watchingo", "wema", "xgoplayer", "lebertran", "aka179", "anotherday", "bryenb", "dsaws", "christianb", "domini1000", "fayt", "gigantom", "himora", "hushfield", "icanflylol", "kobutz", "kranich", "krazulz", "nano", "oldyew", "pablorr", "rime", "rykage", "mitvailer", "lit", "nayaeaude", "sara", "shika12", "suteru", "tsukime", "as91", "blue", "byakuran", "cyril", "davince", "davy014", "eeveem", "emerick", "faceless1", "fua", "freak", "joseki", "jr4ya", "lisztbach", "lord", "mag121", "otakujack", "rafannabis", "saturdayz", "thesirjay", "vierbaum", "wildplants", "yadeehoo", "yannick123", "zebra131", "druid", "adius", "aguess", "allara", "anhtuan", "antoinem", "bjondro", "boshy", "coreon", "detritus", "doiel", "dreamc", "dropbear", "duakers", "dukedaniel", "fogrob", "frodwith", "gwofu", "griagor", "hdfdirlvf", "horsti", "inrm", "jonago1", "julbla", "kalin1", "kenpruitt", "kickaha", "mejinsai", "mic", "moussepi", "naishin", "quinn", "qingshui", "renchin", "rukis", "sage", "selpahi", "sheriffi", "shrestha", "slowpoka", "tom111", "trethtzer", "tytalus", "waya1258", "viscontino", "saiomega", "strlov", "swizzle", "tgontg", "tiansrealm", "vanille", "vsl", "whitenoise", "tan", "remix", "orbix19", "aceshigh", "kirmoar", "konservas", "nkenzo", "path", "goatsunday", "awakewise", "tenshi12", "novus", "melaleuca", "therookie", "benjamingl", "kiroshisan", "invader", "quirra", "madavenger", "moboy78", "nkrach", "netsujo", "mrmago", "fight4pro", "tin", "danz", "koyou", "miyuki", "vallkan", "stonedplay", "uchihatobi", "modoki", "affytaffy", "kadoban", "totoshi", "hollumber", "img", "kratos35", "nosabe", "robertt", "leothelion", "ed", "curi", "anik", "vogdush", "togofwd", "leok", "lance123", "benjamind", "twitchygo", "ricopanda", "pegaseo", "ddkyu", "go4fever", "elliott", "mrdingo", "millstone", "billywoods", "actorios"]
+unless @event = Event.find_by_name("ASR League")
+  @event = Event.create(name: "ASR League",
+                       server_id: 1,
+                       ruleset_id: Ruleset.find_by_name("KGS Default").id)
+  @event.create_event_ruleset
+end
 
-all_users.length.times do |n|
-  unless user = User.find_by_email("test_user#{n}@test.com")
-    user = User.create(username: "#{all_users[n]}", first_name: "Test#{n}", email: "test_user#{n}@test.com", password: "testtest")
+if @event.tiers.empty?
+  tiers = %w{Alpha Beta Gamma Delta}
+  tiers.each_with_index do |tier, index|
+    new_tier = @event.tiers.create(:name => tier, :tier_hierarchy_position => index)
+    new_tier.create_tier_ruleset
+  end
+end
+
+# Create all the divisions, and give them a division_index (relative position inside tier, 1 is top, 2 is below that, etc.)
+def division_create tier, count
+  count.times do |n|
+    unless tier.divisions.find_by_name("tier.name + #{ n}")
+      new_division = tier.divisions.create(:name => tier.name + " #{n}", :division_index => n, :mininum_players => 2, :maximum_players => 200)
+      new_division.create_division_ruleset
+    end
+  end
+end
+
+# Specify the number of divisions for each tier
+
+@event.tiers.each do |tier|
+  count = 0
+  case tier.name
+  when "Alpha"
+    count = 1
+  when "Beta"
+    count = 2
+  when "Gamma"
+    count = 4
+  when "Delta"
+    count = 1
   end
 
-  unless all_users[n].nil?
-    account = user.accounts.create(rank: 1, handle: all_users[n], server_id: 1) unless Account.find_by_handle(all_users[n])
+  division_create(tier, count)
+end
+
+all_users = {alpha => alpha}
+
+alpha = ["baboon", "chemboy613", "compgo74", "dr4ch3", "drgoplayer", "gleek", "goldbird", "gorobei", "hernan1987", "kabradarf", "kanmuru", "keitarokun", "redreoicy", "sita", "socratease", "titanpupil", "twisted", "whuang"]
+beta_i = ["akagi", "bethestone", "bolko", "braa", "danielxr", "dragoness", "geser", "lowlander", "monk316", "mw42", "nebilim", "plain", "reepicheep", "soutkin", "timotamo", "ukiyo", "usagi", "vandalis", "vectnik", "zeekmund"]
+beta_ii = ["bengozen", "cararam11", "dedyz", "explo", "jayy", "kwinin", "leaves", "mapuche27", "mendieta", "nannyogg", "nathan", "nh3ch2cooh", "rapt", "rottenhat", "rpchuang", "saqua", "turingtest", "ufo", "vdk", "waynec"]
+gamma_i = ["aperezwi", "arroc", "babolat", "bufrisa", "calm", "ciaso", "conankudo3", "elligain", "eventy", "freehold", "humblelife", "irises", "johnboy", "kemist", "komulink38", "maou", "mathmaz", "michelxy", "nazril", "ribab", "spartaaaaa", "tilwen", "uncoil", "vladxnev", "wrathful", "agzam"]
+gamma_ii = ["anatoly", "antek", "bentaye", "chente00", "detect", "dragoneye", "ez4u", "goldgarden", "hanen", "horner", "ijoka", "jb33", "kamanari", "lafayette", "laurels", "magnus86", "mdm", "momochan", "pavl007", "pauzle", "ryuujin", "scatcat", "watchingo", "wema", "xgoplayer", "lebertran"]
+gamma_iii = ["aka179", "anotherday", "bryenb", "dsaws", "christianb", "domini1000", "fayt", "gigantom", "himora", "hushfield", "icanflylol", "kobutz", "kranich", "krazulz", "nano", "oldyew", "pablorr", "rime", "rykage", "mitvailer", "lit", "nayaeaude", "sara", "shika12", "suteru", "tsukime"]
+gamma_iv = ["as91", "blue", "byakuran", "cyril", "davince", "davy014", "eeveem", "emerick", "faceless1", "fua", "freak", "joseki", "jr4ya", "lisztbach", "lord", "mag121", "otakujack", "rafannabis", "saturdayz", "thesirjay", "vierbaum", "wildplants", "yadeehoo", "yannick123", "zebra131", "druid"]
+delta = ["adius", "aguess", "allara", "anhtuan", "antoinem", "bjondro", "boshy", "coreon", "detritus", "doiel", "dreamc", "dropbear", "duakers", "dukedaniel", "fogrob", "frodwith", "gwofu", "griagor", "hdfdirlvf", "horsti", "inrm", "jonago1", "julbla", "kalin1", "kenpruitt", "kickaha", "mejinsai", "mic", "moussepi", "naishin", "quinn", "qingshui", "renchin", "rukis", "sage", "selpahi", "sheriffi", "shrestha", "slowpoka", "tom111", "trethtzer", "tytalus", "waya1258", "viscontino", "saiomega", "strlov", "swizzle", "tgontg", "tiansrealm", "vanille", "vsl", "whitenoise", "tan", "remix", "orbix19", "aceshigh", "kirmoar", "konservas", "nkenzo", "path", "goatsunday", "awakewise", "tenshi12", "novus", "melaleuca", "therookie", "benjamingl", "kiroshisan", "invader", "quirra", "madavenger", "moboy78", "nkrach", "netsujo", "mrmago", "fight4pro", "tin", "danz", "koyou", "miyuki", "vallkan", "stonedplay", "uchihatobi", "modoki", "affytaffy", "kadoban", "totoshi", "hollumber", "img", "kratos35", "nosabe", "robertt", "leothelion", "ed", "curi", "anik", "vogdush", "togofwd", "leok", "lance123", "benjamind", "twitchygo", "ricopanda", "pegaseo", "ddkyu", "go4fever", "elliott", "mrdingo", "millstone", "billywoods", "actorios"]
+
+all_users = {"Alpha" => alpha,
+             "Beta 1" => beta_i,
+             "Beta 2" => beta_ii,
+             "Gamma 1" => gamma_i,
+             "Gamma 2" => gamma_ii,
+             "Gamma 3" => gamma_iii,
+             "Gamma 4" => gamma_iv,
+             "Delta" => delta}
+
+@divisions = Division.where("event_id = ?", @event.id)
+
+all_users.each do |name, division|
+
+  division.length.times do |n|
+    unless user = User.find_by_email("test_user#{n}@test.com")
+      user = User.create(username: "#{division[n]}", first_name: "Test#{n}", email: "test_user#{n}@test.com", password: "testtest")
+    end
+
+    unless division[n].nil?
+      account = user.accounts.create(rank: 1, handle: division[n], server_id: 1) unless Account.find_by_handle(division[n])
+    end
+
+    unless Registration.find_by_account_id(user.accounts.first.id)
+      registration = Registration.create(account_id: user.accounts.first.id,
+                                         event_id: @event.id,
+                                         handle: user.accounts.first.handle
+                                         division_id: @divisions.find_by_name(name))
+    end
   end
-
-  # Create the seed Event (ASR League), if it doesn't exist
-
-  unless @event = Event.find_by_name("ASR League")
-    @event = Event.create(name: "ASR League",
-                         server_id: 1,
-                         ruleset_id: Ruleset.find_by_name("KGS Default").id)
-    @event.create_event_ruleset
-  end
-
-  unless Registration.find_by_account_id(user.accounts.first.id)
-    registration = Registration.create(account_id: user.accounts.first.id,
-                                       event_id: @event.id,
-                                       handle: user.accounts.first.handle)
-  end
-
 end

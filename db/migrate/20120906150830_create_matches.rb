@@ -25,6 +25,8 @@ class CreateMatches < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :matches, :black_player_name
+    add_index :matches, :white_player_name
     add_index :matches, :black_player_id
     add_index :matches, :white_player_id
     add_index :matches, :division_id
