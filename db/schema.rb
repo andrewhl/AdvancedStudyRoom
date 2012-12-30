@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
 
   create_table "comments", :force => true do |t|
     t.integer  "match_id"
-    t.string   "comment"
+    t.text     "comment"
     t.string   "handle"
     t.string   "rank"
     t.datetime "game_date"
