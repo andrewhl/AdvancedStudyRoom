@@ -83,8 +83,8 @@ class Downloader
 
     # Find the registration that matches the black and white player names.
 
-    black_player = Registration.find_by_handle(black_player_name)
-    white_player = Registration.find_by_handle(white_player_name)
+    black_player = Registration.find_by_handle(black_player_name.downcase)
+    white_player = Registration.find_by_handle(white_player_name.downcase)
 
     # Check that both players are registered
 

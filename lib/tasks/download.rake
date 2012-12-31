@@ -11,7 +11,7 @@ namespace :downloader do
     events = Event.all #Event.find_by_name("ASR League")
 
     events.each do |event|
-      # [Registration.find_by_handle("mdm")].each do |registration|
+      # [Registration.find_by_handle("socratease")].each do |registration|
       event.registrations.each do |registration|
         has_games = true
         puts "Downloading #{registration.handle}'s games..."
