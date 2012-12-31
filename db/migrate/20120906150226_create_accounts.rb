@@ -10,6 +10,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer  :rank
       t.integer  :status
       t.integer  :division_id
+      t.string   :display_name
 
       t.timestamps
     end

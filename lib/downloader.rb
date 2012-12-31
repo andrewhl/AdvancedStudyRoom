@@ -4,6 +4,7 @@ class Downloader
 
   def download_games filepath, username
 
+    # downloads games, converts to sgf, saves them, then saves comments
     Zip::ZipFile.open(filepath) do |zip_file|
       zip_file.each do |f|
 
@@ -260,40 +261,40 @@ class Downloader
 
 
 
-  def create_registration_match game
+  # def create_registration_match game
 
-    division = game.division
-    registrations = division.registrations
+  #   division = game.division
+  #   registrations = division.registrations
 
-    # search the existing game's division's registrations;
-    # no duplicate handles should be found here,
-    # even though registraion handles are not unique
+  #   # search the existing game's division's registrations;
+  #   # no duplicate handles should be found here,
+  #   # even though registraion handles are not unique
 
 
 
-    white = registrations.select { |reg| reg.handle == game.white_player_name }
-    black = registrations.select { |reg| reg.handle == game.black_player_name }
+  #   white = registrations.select { |reg| reg.handle == game.white_player_name }
+  #   black = registrations.select { |reg| reg.handle == game.black_player_name }
 
-    # Registration.find_by_handle(game.white_player_name)
-    # black = Registration.find_by_handle(game.black_player_name)
+  #   # Registration.find_by_handle(game.white_player_name)
+  #   # black = Registration.find_by_handle(game.black_player_name)
 
-    reg_match_hash = Hash.new
+  #   reg_match_hash = Hash.new
 
-    reg_match_hash = {
-      "white_player_name" => white[0].handle,
-      "black_player_name" => black[0].handle,
-      "white_player_id" => white[0].id,
-      "black_player_id" => black[0].id,
-      "game_digest" => game.game_digest,
-      "winner_id" => game.winner_id,
-      "winner_name" => game.winner_name,
-      "division_id" => division.id,
-      "match_id" => game.id
-    }
+  #   reg_match_hash = {
+  #     "white_player_name" => white[0].handle,
+  #     "black_player_name" => black[0].handle,
+  #     "white_player_id" => white[0].id,
+  #     "black_player_id" => black[0].id,
+  #     "game_digest" => game.game_digest,
+  #     "winner_id" => game.winner_id,
+  #     "winner_name" => game.winner_name,
+  #     "division_id" => division.id,
+  #     "match_id" => game.id
+  #   }
 
-    reg_match = RegistrationMatch.create(reg_match_hash)
+  #   reg_match = RegistrationMatch.create(reg_match_hash)
 
-  end
+  # end
 
 
 

@@ -6,6 +6,7 @@ class CreateRegistrations < ActiveRecord::Migration
       t.integer :division_id
       t.string  :handle
       t.boolean :active
+      t.string  :display_name
 
       t.timestamps
     end

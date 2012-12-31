@@ -14,6 +14,7 @@
 #  division_id   :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  display_name  :string(255)
 #
 
 class Account < ActiveRecord::Base
@@ -23,7 +24,8 @@ class Account < ActiveRecord::Base
                   :league_active,
                   :league_tier,
                   :user_id,
-                  :event_id
+                  :event_id,
+                  :display_name
 
   has_many :division_players
   has_many :points

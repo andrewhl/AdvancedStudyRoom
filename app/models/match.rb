@@ -23,7 +23,8 @@
 #  winner_name        :string(255)
 #  winner_id          :integer
 #  board_size         :integer
-#  valid              :boolean
+#  valid_game         :boolean
+#  tagged             :boolean
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -63,14 +64,18 @@ class Match < ActiveRecord::Base
   has_many :points
 
   scope :valid_games, where("valid_game = ?", true)
-  scope :tagged, where("tagged = ?", true)
+  scope :tagged, where("tagged = ?", true) # confirmed has tag
+  scope :unchecked, lambda { where("tagged = NULL") } # not checked for tags
+  scope :untagged, where("tagged = ?", false) # confirmed has no tag
+
   # has_many :black_players, :through => :registration_matches
   # has_many :white_players, :through => :registration_matches
   # has_many :registration_matches
 
-  def has_valid_tag comments
+  def has_valid_tag?
 
     event = division.event
+    registrations = event.registrations
     tags = event.tags
 
     # TO DO: TEST IF THE NODE LIMIT WORKS ON A GAME WITH A TAG THAT APPEARS
@@ -81,44 +86,69 @@ class Match < ActiveRecord::Base
     # TO DO: COMMENTS CURENTLY IS A HASH, BUT WILL BE A COLLECTION LATER
     # REWRITE CODE FOR THAT
 
-    comments.each do |node, line|
-      next if line.is_a? String
-      line.each do |key, value|
+    if comments.nil?
+      return valid_tag
+    end
 
-        # binding.pry
-        # binding.pry if game_digest == "53f9e6782e41ed6d90dec2267a284a04" and value[:comment] == "hi ASR League"
-        # see if tag exists that matches the current line's comment
 
-        tags.each do |tag|
-          phrase = Regexp.new(tag.phrase, true)
-          valid_tag = true if phrase =~ value[:comment]
-          node_limit ||= tag.node_limit
-        end
+    tags.each do |tag|
 
-        # if Tag.where("phrase like ?", value[:comment]).exists?
-        #   tag = Tag.where("phrase like ?", value[:comment]).first
-        #   valid_tag = true
-        #   node_limit ||= tag.node_limit
+      node_limit ||= tag.node_limit
+      phrase = Regexp.new(tag.phrase, true)
 
-        # end
+      comments.each do |comment|
+        # ensure the comment is made by someone in the event
+        next unless registrations.find_by_handle(comment.handle)
 
-        # check node limit (i.e., move limit in which tag phrase must appear)
-        if node_limit
-          # returns false if the current node key (when parsed) is greater than the node limit
-          return false if node.to_s.scan(/\d/).pop.to_i > node_limit
-        end
+        comment_node = comment.node_number + 1
+        return valid_tag = true if phrase =~ comment.comment and (comment_node <= tag.node_limit)
+        # return valid_tag if valid_tag == true
 
+        break if comment_node > tag.node_limit
 
       end
 
-      return valid_tag
     end
+
+    return valid_tag
+
+    # comments.each do |comment|
+
+
+    #  # see if tag exists that matches the current line's comment
+
+    #   tags.each do |tag|
+    #     binding.pry
+    #     phrase = Regexp.new(tag.phrase, true)
+    #     valid_tag = true if phrase =~ comment.comment
+    #     node_limit ||= tag.node_limit
+    #   end
+
+    #   # if Tag.where("phrase like ?", value[:comment]).exists?
+    #   #   tag = Tag.where("phrase like ?", value[:comment]).first
+    #   #   valid_tag = true
+    #   #   node_limit ||= tag.node_limit
+
+    #   # end
+
+    #   # check node limit (i.e., move limit in which tag phrase must appear)
+    #   if node_limit
+    #     # returns false if the current node key (when parsed) is greater than the node limit
+    #     return false if node.to_s.scan(/\d/).pop.to_i > node_limit
+    #   end
+
+
+
+    #   return valid_tag
+    # end
 
   end
 
   def is_valid?
-
     division_ruleset = self.division.division_ruleset
+
+    binding.pry if division_ruleset.parent_id.nil?
+
     tier_ruleset = division_ruleset.parent
     event_ruleset = tier_ruleset.parent
     ruleset = event_ruleset.parent

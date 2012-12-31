@@ -2,19 +2,24 @@
 #
 # Table name: registrations
 #
-#  id          :integer          not null, primary key
-#  account_id  :integer
-#  event_id    :integer
-#  division_id :integer
-#  handle      :string(255)
-#  active      :boolean
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id           :integer          not null, primary key
+#  account_id   :integer
+#  event_id     :integer
+#  division_id  :integer
+#  handle       :string(255)
+#  active       :boolean
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  display_name :string(255)
 #
 
 class Registration < ActiveRecord::Base
   attr_accessible :account_id,
-                  :event_id, :registration, :division_id, :handle
+                  :event_id,
+                  :registration,
+                  :division_id,
+                  :handle,
+                  :display_name
 
   belongs_to :event
   belongs_to :account

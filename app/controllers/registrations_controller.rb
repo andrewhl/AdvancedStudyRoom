@@ -11,6 +11,7 @@ class RegistrationsController < ApplicationController
     @registration.account_id = params[:registration][:registration][:account_id]
     account = Account.find(@registration.account_id)
     @registration.handle = account.handle.downcase # all registrations will be saved as lowercase
+    @registration.display_name = account.display_name # the display name is the handle, but as the user entered it
     @registration.save
     redirect_to :leagues, :flash => {:success => "Event joined."}
   end

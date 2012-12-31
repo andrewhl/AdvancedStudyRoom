@@ -75,6 +75,7 @@ class Ruleset < ActiveRecord::Base
                   :ruleset_default,
                   :tag_text,
                   :division_id,
+                  :ruleset_id,
                   :tier_id,
                   :event_id,
                   :parent_id,

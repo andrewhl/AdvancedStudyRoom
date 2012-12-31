@@ -12,7 +12,8 @@ class AccountsController < ApplicationController
     server = Server.find_by_name(params[:account][:server_id])
 
     handle_params = {
-      handle: params[:account][:handle],
+      handle: params[:account][:handle].downcase,
+      display_name: params[:account][:handle],
       rank: params[:account][:rank],
       server_id: server.id
     }

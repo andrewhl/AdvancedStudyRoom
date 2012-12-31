@@ -15,8 +15,6 @@ end
 Server.find_or_create_by_name("KGS")
 Server.find_or_create_by_name("Kaya")
 
-Tag.find_or_create_by_phrase("ASR League")
-
 if Ruleset.find_by_name("KGS Default").nil?
   puts "Creating ruleset..."
   Ruleset.create(name: "KGS Default",
@@ -54,15 +52,19 @@ unless @event = Event.find_by_name("ASR League")
   @event = Event.create(name: "ASR League",
                        server_id: 1,
                        ruleset_id: Ruleset.find_by_name("KGS Default").id)
-  @event.create_event_ruleset
+  @event_ruleset = @event.create_event_ruleset(:ruleset_id => @event.ruleset.id, :parent_id => @event.ruleset.id)
+end
+
+unless Tag.find_by_phrase("ASR League")
+  Tag.create(:phrase => "ASR League", :event_id => @event.id)
 end
 
 if @event.tiers.empty?
   puts "Creating tiers..."
   tiers = %w{Alpha Beta Gamma Delta}
   tiers.each_with_index do |tier, index|
-    new_tier = @event.tiers.create(:name => tier, :tier_hierarchy_position => index)
-    new_tier.create_tier_ruleset
+    new_tier = @event.tiers.create(:name => tier, :tier_hierarchy_position => index + 1)
+    @tier_ruleset = new_tier.create_tier_ruleset(:parent_id => @event_ruleset.id)
   end
 end
 
@@ -76,7 +78,7 @@ def division_create tier, count
                     :minimum_players => 2,
                     :maximum_players => 200,
                     :event_id => @event.id)
-      new_division.create_division_ruleset
+      @division_ruleset = new_division.create_division_ruleset(:parent_id => @tier_ruleset.id)
     end
   end
 end
@@ -136,7 +138,10 @@ all_users.each do |name, division|
     # binding.pry if name == "Beta 1" and n == 1
     unless division[n].nil? # don't do this if the name is nil
       puts "Creating user accounts for #{division[n]}"
-      account = user.accounts.create(rank: 1, handle: division[n], server_id: 1) unless Account.find_by_handle(division[n])
+      account = user.accounts.create(rank: 1,
+                    handle: division[n].downcase,
+                    display_name: division[n],
+                    server_id: 1) unless Account.find_by_handle(division[n])
     end
 
     unless Registration.find_by_account_id(user.accounts.first.id)
@@ -144,6 +149,7 @@ all_users.each do |name, division|
       registration = Registration.create(account_id: user.accounts.first.id,
                                          event_id: @event.id,
                                          handle: user.accounts.first.handle,
+                                         display_name: user.accounts.first.display_name,
                                          division_id: @divisions.find_by_name(name).id)
     end
   end

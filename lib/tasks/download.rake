@@ -1,5 +1,4 @@
-require 'downloader'
-require 'scraper'
+['downloader', 'validator', 'scraper'].each { |x| require x }
 
 namespace :downloader do
   desc "Validate games"
@@ -13,6 +12,10 @@ namespace :downloader do
     events.each do |event|
       # [Registration.find_by_handle("socratease")].each do |registration|
       event.registrations.each do |registration|
+
+        time_before = Time.now
+        delay = 3
+
         has_games = true
         puts "Downloading #{registration.handle}'s games..."
         scraper.get_sgf_zip(registration.handle)
@@ -33,8 +36,24 @@ namespace :downloader do
           FileUtils.remove_entry("./lib/games/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip")
         end
 
-        sleep(3)
+        time_after = Time.now
+
+        if (time_after - time_before) <= delay
+          sleep(3)
+        end
       end
+
+      # Validate and tag event games
+      event.divisions.each do |division|
+        validator = Validator.new(division)
+
+        validator.validate_games
+
+        unless event.tags.empty?
+          validator.tag_games
+        end
+      end
+
     end
 
 

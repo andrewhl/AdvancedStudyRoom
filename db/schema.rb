@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.integer  "rank"
     t.integer  "status"
     t.integer  "division_id"
+    t.string   "display_name"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -77,11 +78,6 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
 
   add_index "division_players", ["account_id"], :name => "index_division_players_on_account_id"
   add_index "division_players", ["division_id"], :name => "index_division_players_on_division_id"
-
-  create_table "division_rules", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "divisions", :force => true do |t|
     t.integer  "event_id"
@@ -182,8 +178,9 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.integer  "division_id"
     t.string   "handle"
     t.boolean  "active"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "display_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "registrations", ["account_id"], :name => "index_registrations_on_account_id"

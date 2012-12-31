@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  match_id    :integer
-#  comment     :string(255)
+#  comment     :text
 #  handle      :string(255)
 #  rank        :string(255)
 #  game_date   :datetime

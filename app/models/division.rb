@@ -38,11 +38,10 @@ class Division < ActiveRecord::Base
 
   validate :less_than_max_players
   validate :greater_than_min_players
-  validates_presence_of :minimum_players, :maximum_players
+  # validates_presence_of :minimum_players, :maximum_players
 
   has_many :accounts
   has_many :registrations
-  has_many :registration_matches
   has_many :matches
   has_one :division_ruleset, :dependent => :destroy
 
