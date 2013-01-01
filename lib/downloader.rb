@@ -11,7 +11,7 @@ class Downloader
 
         # Review games match the regex: ^\w+-\d+\.sgf|^\w+\.sgf, (e.g. username-#.sgf or just username.sgf)
         # These games should not be counted
-        # binding.pry
+
         next if not File.basename(f.to_s).scan(/^\w+-\d+\.sgf|^\w+\.sgf/).empty?
 
         f_path = File.join("temp", File.basename(f.to_s))
@@ -31,11 +31,6 @@ class Downloader
 
           # binding.pry if game != "Invalid"
           if game.save
-
-            # process the RegistrationMatch
-            # unless RegistrationMatch.find_by_game_digest(game.game_digest)
-            #   create_registration_match(game)
-            # end
 
             # skip this step if for some reason this game's comments already exist
             next if game.comments.any?
@@ -62,10 +57,6 @@ class Downloader
 
     ginfo = game.current_node.properties
 
-
-    # binding.pry if file != "temp/Unbeatable-ChemBoy613.sgf"
-    # binding.pry
-    # return nil if not (has_valid_tag(game)[0])
 
     # date_time = game.date
     ruleset = game.rules
