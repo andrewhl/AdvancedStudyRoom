@@ -56,25 +56,6 @@ namespace :downloader do
 
     end
 
-
-    # Clean up
-    # Dir.foreach("./lib/games/") do |item|
-    #   next if item == "." or item == ".."
-    #   if File.fnmatch("*.zip", item) or File.fnmatch("*.sgf", item)
-    #     FileUtils.remove_entry("./lib/games/#{item}")
-    #   end
-    # end
   end
 
-  desc "Scrape games"
-  task :scrape_games => :environment do
-
-    users = ["kabradarf", "twisted"]
-
-    test = Scraper.new
-
-    # test.get_users(users)
-    test.get_sgf_zip("gohandle")
-  end
 end
-# http://www.gokgs.com/servlet/archives/en_US/kabradarf-2012-12.zip

@@ -68,23 +68,13 @@ class Match < ActiveRecord::Base
   scope :unchecked, lambda { where("tagged = NULL") } # not checked for tags
   scope :untagged, where("tagged = ?", false) # confirmed has no tag
 
-  # has_many :black_players, :through => :registration_matches
-  # has_many :white_players, :through => :registration_matches
-  # has_many :registration_matches
-
   def has_valid_tag?
 
     event = division.event
     registrations = event.registrations
     tags = event.tags
 
-    # TO DO: TEST IF THE NODE LIMIT WORKS ON A GAME WITH A TAG THAT APPEARS
-    # AFTER NODE 0
-
     valid_tag = false
-
-    # TO DO: COMMENTS CURENTLY IS A HASH, BUT WILL BE A COLLECTION LATER
-    # REWRITE CODE FOR THAT
 
     if comments.nil?
       return valid_tag
@@ -112,37 +102,10 @@ class Match < ActiveRecord::Base
 
     return valid_tag
 
-    # comments.each do |comment|
-
-
-    #  # see if tag exists that matches the current line's comment
-
-    #   tags.each do |tag|
-    #     binding.pry
-    #     phrase = Regexp.new(tag.phrase, true)
-    #     valid_tag = true if phrase =~ comment.comment
-    #     node_limit ||= tag.node_limit
-    #   end
-
-    #   # if Tag.where("phrase like ?", value[:comment]).exists?
-    #   #   tag = Tag.where("phrase like ?", value[:comment]).first
-    #   #   valid_tag = true
-    #   #   node_limit ||= tag.node_limit
-
-    #   # end
-
-    #   # check node limit (i.e., move limit in which tag phrase must appear)
-    #   if node_limit
-    #     # returns false if the current node key (when parsed) is greater than the node limit
-    #     return false if node.to_s.scan(/\d/).pop.to_i > node_limit
-    #   end
-
-
-
-    #   return valid_tag
-    # end
 
   end
+
+
 
   def is_valid?
     division_ruleset = self.division.division_ruleset
@@ -157,24 +120,9 @@ class Match < ActiveRecord::Base
     check_rulesets(division_ruleset)
 
 
-    #  datetime_completed :datetime
-    #  game_type          :string(255)
-    #  komi               :float
-    #  winner             :string(255)
-    #  win_info           :string(255)
-    #  main_time_control  :float
-    #  overtime_type      :string(255)
-    #  ot_stones_periods  :integer
-    #  ot_time_control    :float
-    #  url                :string(255)
-    #  black_player_id    :integer
-    #  white_player_id    :integer
-    #  black_player_name  :string(255)
-    #  white_player_name  :string(255)
-    #  handicap           :integer
-    #  game_digest        :string(255)
-
   end
+
+
 
   def check_rulesets ruleset
 
