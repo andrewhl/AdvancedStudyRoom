@@ -138,8 +138,6 @@ describe Match do
 
       it "should not have too few byo_yomi periods" do
         @division_ruleset = FactoryGirl.create(:empty_division_ruleset, jot_min_periods: 10, jovertime_allowed: true)
-        # @division_ruleset.jot_min_periods = 10
-        # @division_ruleset.jovertime_allowed = true
         match.overtime_type = "byo_yomi"
         match.ot_stones_periods = 5
       end

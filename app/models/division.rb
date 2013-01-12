@@ -35,6 +35,7 @@ class Division < ActiveRecord::Base
                   :use_custom_name
 
   scope :ranked, order("division_index ASC")
+  scope :valid_matches, lambda { matches.where("valid_game = TRUE") }
 
   validate :less_than_max_players
   validate :greater_than_min_players

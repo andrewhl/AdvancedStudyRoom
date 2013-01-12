@@ -94,6 +94,7 @@ class Match < ActiveRecord::Base
         return valid_tag = true if phrase =~ comment.comment and (comment_node <= tag.node_limit)
         # return valid_tag if valid_tag == true
 
+        # TODO: handle nil objects (either comment_node or node_limit)
         break if comment_node > tag.node_limit
 
       end
