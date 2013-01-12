@@ -53,4 +53,8 @@ class TierRuleset < EventRuleset
     EventRuleset.find(parent_id)
   end
 
+  def event
+    event = event || parent.event
+  end
+
 end

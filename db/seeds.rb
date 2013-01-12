@@ -56,7 +56,7 @@ unless @event = Event.find_by_name("ASR League")
 end
 
 unless Tag.find_by_phrase("ASR League")
-  Tag.create(:phrase => "ASR League", :event_id => @event.id)
+  Tag.create(:phrase => "ASR League", :event_id => @event.id, :event_type => "League")
 end
 
 if @event.tiers.empty?
@@ -101,14 +101,14 @@ end
   division_create(tier, count)
 end
 
-alpha = ["baboon", "chemboy613", "compgo74", "dr4ch3", "drgoplayer", "gleek", "goldbird", "gorobei", "hernan1987", "kabradarf", "kanmuru", "keitarokun", "redreoicy", "sita", "socratease", "titanpupil", "twisted", "whuang"]
-beta_i = ["akagi", "bethestone", "bolko", "braa", "danielxr", "dragoness", "geser", "lowlander", "monk316", "mw42", "nebilim", "plain", "reepicheep", "soutkin", "timotamo", "ukiyo", "usagi", "vandalis", "vectnik", "zeekmund"]
-beta_ii = ["bengozen", "cararam11", "dedyz", "explo", "jayy", "kwinin", "leaves", "mapuche27", "mendieta", "nannyogg", "nathan", "nh3ch2cooh", "rapt", "rottenhat", "rpchuang", "saqua", "turingtest", "ufo", "vdk", "waynec"]
-gamma_i = ["aperezwi", "arroc", "babolat", "bufrisa", "calm", "ciaso", "conankudo3", "elligain", "eventy", "freehold", "humblelife", "irises", "johnboy", "kemist", "komulink38", "maou", "mathmaz", "michelxy", "nazril", "ribab", "spartaaaaa", "tilwen", "uncoil", "vladxnev", "wrathful", "agzam"]
-gamma_ii = ["anatoly", "antek", "bentaye", "chente00", "detect", "dragoneye", "ez4u", "goldgarden", "hanen", "horner", "ijoka", "jb33", "kamanari", "lafayette", "laurels", "magnus86", "mdm", "momochan", "pavl007", "pauzle", "ryuujin", "scatcat", "watchingo", "wema", "xgoplayer", "lebertran"]
-gamma_iii = ["aka179", "anotherday", "bryenb", "dsaws", "christianb", "domini1000", "fayt", "gigantom", "himora", "hushfield", "icanflylol", "kobutz", "kranich", "krazulz", "nano", "oldyew", "pablorr", "rime", "rykage", "mitvailer", "lit", "nayaeaude", "sara", "shika12", "suteru", "tsukime"]
-gamma_iv = ["as91", "blue", "byakuran", "cyril", "davince", "davy014", "eeveem", "emerick", "faceless1", "fua", "freak", "joseki", "jr4ya", "lisztbach", "lord", "mag121", "otakujack", "rafannabis", "saturdayz", "thesirjay", "vierbaum", "wildplants", "yadeehoo", "yannick123", "zebra131", "druid"]
-delta = ["adius", "aguess", "allara", "anhtuan", "antoinem", "bjondro", "boshy", "coreon", "detritus", "doiel", "dreamc", "dropbear", "duakers", "dukedaniel", "fogrob", "frodwith", "gwofu", "griagor", "hdfdirlvf", "horsti", "inrm", "jonago1", "julbla", "kalin1", "kenpruitt", "kickaha", "mejinsai", "mic", "moussepi", "naishin", "quinn", "qingshui", "renchin", "rukis", "sage", "selpahi", "sheriffi", "shrestha", "slowpoka", "tom111", "trethtzer", "tytalus", "waya1258", "viscontino", "saiomega", "strlov", "swizzle", "tgontg", "tiansrealm", "vanille", "vsl", "whitenoise", "tan", "remix", "orbix19", "aceshigh", "kirmoar", "konservas", "nkenzo", "path", "goatsunday", "awakewise", "tenshi12", "novus", "melaleuca", "therookie", "benjamingl", "kiroshisan", "invader", "quirra", "madavenger", "moboy78", "nkrach", "netsujo", "mrmago", "fight4pro", "tin", "danz", "koyou", "miyuki", "vallkan", "stonedplay", "uchihatobi", "modoki", "affytaffy", "kadoban", "totoshi", "hollumber", "img", "kratos35", "nosabe", "robertt", "leothelion", "ed", "curi", "anik", "vogdush", "togofwd", "leok", "lance123", "benjamind", "twitchygo", "ricopanda", "pegaseo", "ddkyu", "go4fever", "elliott", "mrdingo", "millstone", "billywoods", "actorios"]
+alpha = ["nh3ch2cooh","jayy","dedyz","explo","lowlander","mw42","vandalis","zeekmund","chemboy613","compgo74","gleek","goldbird","hernan1987","kabradarf","redreoicy","sita","twisted","ufo"]
+beta_i = ["as91","byakuran","faceless1","anotherday","oldyew","mitvailer","mdm","anatoly","tilwen","agzam","baboon","dr4ch3","drgoplayer","gorobei","bolko","danielxr","geser","plain","soutkin","vectnik"]
+beta_ii = ["calm","komulink38","humblelife","antek","chente00","ryuujin","rykage","tsukime","lit","yannick123","druid","keitarokun","socratease","titanpupil","whuang","bengozen","mapuche27","nathan","saqua","turingtest"]
+gamma_i = ["braa","cararam11","kwinin","leaves","novus","konservas","nkenzo","nkrach","robertt","allara","dukedaniel","kadoban","tenshi12","kratos35","rukis","coreon","trethtzer","mejinsai","aperezwi","eventy","freehold","irises","kemist","mathmaz","uncoil"]
+gamma_ii = ["ukiyo","mendieta","nannyogg","togofwd","whitenoise","leothelion","ed","koyou","actorios","orbix19","therookie","tin","img","leok","hollumber","danz","affytaffy","ez4u","horner","ijoka","lafayette","laurels","magnus86","momochan","lebertran","wiles"]
+gamma_iii = ["monk316","rapt","rottenhat","anik","doiel","fight4pro","quirra","kalin1","quinn","kirmoar","ricopanda","billywoods","pegaseo","bjondro","tan","aceshigh","stonedplay","curi","invader","christianb","domini1000","gigantom","kranich","nano","sara","owen"]
+gamma_iv = ["timotamo","waynec","rpchuang","gwofu","julbla","elliott","antoinem","awakewise","netsujo","tom111","kwinsure","ed2antes","hanabusa","revelation","oin","joseki","davy014","eeveem","emerick","freak","lord","rafannabis","thesirjay","yurisch","uriel"]
+delta = ["asbag","avicenna","atheri","bottleneck","chuibete","nosabe","nottengen","nuclear","storn","thegame","zischty","michelxy","vladxnev","wrathful","arroc","babolat","bufrisa","ribab","johnboy","pavl007","pauzle","goldgarden","xgoplayer","pablorr","aka179","nayaeaude","cyril","fua","jr4ya","mag121","zebra131","glasszee","maximg","skeletor","malie","twitchygo","weakgo","tmath","zs","testplay09","urg","fayt","agony","yusakukudo","mrmago","libertad","jenj","prue","googolplex","eiszaepfle","cylonbuney","diy","cofeebreak","vogdush","alphanum","dmitriy81","vrnbugatti","zzzzzzz22","trudeln","amakaresu","timk","marcus316","pont","brodiaga","hailthorn","only4fun","barrauss","odin1337","rayheart","xdmistakes","erdbeere","modoki","fpqc","drankel","csendelet","cptidiot","takahira","cadet354","viator","adamcb","panterka","ganta","kosach","ciaso","joenosai","tacitus","schui4i","stefan799"]
 
 all_users = {"Alpha 1" => alpha,
              "Beta 1" => beta_i,

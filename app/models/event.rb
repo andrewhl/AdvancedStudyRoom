@@ -19,20 +19,7 @@
 
 
 class Event < ActiveRecord::Base
-  attr_accessible :end_time,
-                  :name,
-                  :start_time,
-                  :event_type,
-                  :ruleset_default,
-                  :event_type_id,
-                  :tiers_attributes,
-                  :server_id,
-                  :ruleset_id,
-                  :event_ruleset_attributes,
-                  :event_ruleset,
-                  :account_attributes,
-                  :registrations_attributes,
-                  :tags_attributes
+  attr_protected
 
   belongs_to :ruleset
   belongs_to :server

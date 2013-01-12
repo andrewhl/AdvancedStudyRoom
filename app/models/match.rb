@@ -94,6 +94,7 @@ class Match < ActiveRecord::Base
         return valid_tag = true if phrase =~ comment.comment and (comment_node <= tag.node_limit)
         # return valid_tag if valid_tag == true
 
+        # TODO: handle nil objects (either comment_node or node_limit)
         break if comment_node > tag.node_limit
 
       end
@@ -110,7 +111,7 @@ class Match < ActiveRecord::Base
   def is_valid?
     division_ruleset = self.division.division_ruleset
 
-    binding.pry if division_ruleset.parent_id.nil?
+    # binding.pry if division_ruleset.parent_id.nil?
 
     tier_ruleset = division_ruleset.parent
     event_ruleset = tier_ruleset.parent

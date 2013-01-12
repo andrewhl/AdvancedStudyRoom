@@ -48,42 +48,7 @@
 ['net/http', 'pry', 'open-uri', 'zip/zip', 'sgf', 'fileutils'].each { |x| require x }
 
 class Ruleset < ActiveRecord::Base
-  attr_accessible :allowed_demonstration,
-                  :allowed_free,
-                  :allowed_rated,
-                  :allowed_rengo,
-                  :allowed_review,
-                  :allowed_simul,
-                  :allowed_teaching,
-                  :cot_max_stones,
-                  :cot_min_stones,
-                  :cot_max_time,
-                  :cot_min_time,
-                  :covertime_allowed,
-                  :games_per_opponent,
-                  :games_per_player,
-                  :handicap_default,
-                  :jot_max_period_length,
-                  :jot_max_periods,
-                  :jot_min_period_length,
-                  :jot_min_periods,
-                  :jovertime_allowed,
-                  :main_time_max,
-                  :main_time_min,
-                  :name,
-                  :overtime_required,
-                  :ruleset_default,
-                  :tag_text,
-                  :division_id,
-                  :ruleset_id,
-                  :tier_id,
-                  :event_id,
-                  :parent_id,
-                  :type,
-                  :canonical,
-                  :min_handi,
-                  :max_handi,
-                  :handicap_required
+  attr_protected
 
   has_many :leagues
   has_many :events
@@ -118,6 +83,15 @@ class Ruleset < ActiveRecord::Base
 
   def is_top_level?
     type.nil? ? true : false
+  end
+
+  def event
+    binding.pry
+    if Event.find(event.id).nil?
+      super
+    else
+      event = Event.find(event_id)
+    end
   end
 
   # add validation that prevents ruleset from being saved if
