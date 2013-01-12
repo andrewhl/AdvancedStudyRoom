@@ -56,7 +56,7 @@ unless @event = Event.find_by_name("ASR League")
 end
 
 unless Tag.find_by_phrase("ASR League")
-  Tag.create(:phrase => "ASR League", :event_id => @event.id)
+  Tag.create(:phrase => "ASR League", :event_id => @event.id, :event_type => "League")
 end
 
 if @event.tiers.empty?

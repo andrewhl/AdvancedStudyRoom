@@ -111,7 +111,7 @@ class Match < ActiveRecord::Base
   def is_valid?
     division_ruleset = self.division.division_ruleset
 
-    binding.pry if division_ruleset.parent_id.nil?
+    # binding.pry if division_ruleset.parent_id.nil?
 
     tier_ruleset = division_ruleset.parent
     event_ruleset = tier_ruleset.parent

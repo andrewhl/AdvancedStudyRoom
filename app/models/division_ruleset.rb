@@ -52,5 +52,10 @@ class DivisionRuleset < TierRuleset
   def parent
     TierRuleset.find(parent_id)
   end
+
+  def event
+    event = event || parent.event
+  end
+
 end
 

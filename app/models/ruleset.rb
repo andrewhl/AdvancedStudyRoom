@@ -85,6 +85,15 @@ class Ruleset < ActiveRecord::Base
     type.nil? ? true : false
   end
 
+  def event
+    binding.pry
+    if Event.find(event.id).nil?
+      super
+    else
+      event = Event.find(event_id)
+    end
+  end
+
   # add validation that prevents ruleset from being saved if
   # both jovertime and covertimer and false
   # and overtime stones/period settings or control settings are enabled
