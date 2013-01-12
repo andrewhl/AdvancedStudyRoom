@@ -68,6 +68,9 @@ module AdvancedStudyRoom
       # you can also specify a different test framework or ORM here
       # g.test_framework  :rspec
       # g.orm             :mongoid
+
     end
+
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
