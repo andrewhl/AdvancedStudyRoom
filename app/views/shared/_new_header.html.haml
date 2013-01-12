@@ -1,0 +1,76 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{:data => {:toggle => "collapse", :target => ".nav-collapse"}}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => "index.html"}
+        Advanced Study Room
+      .btn-group.pull-right
+        %a.btn.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+          %i.icon-user
+            John Doe
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => "#"}
+              Profile
+          %li
+            %a{:href => "#"}
+              Settings
+          %li
+            %a{:href => "#", :class => "cookie-delete"}
+              Delete Cookies
+          %li.divider
+            %a{:href => "#"}
+          %li
+            %a{:href => "login.html"}
+              Logout
+
+      .nav-collapse
+        %ul.nav
+          %li.dropdown
+            %a{:href => "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}}
+              Messages
+              %span.badge.badge-info
+                100
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"}
+                  Message 1
+              %li
+                %a{:href => "#"}
+                  Another message
+              %li
+                %a{:href => "#"}
+                  Something else message
+              %li.divider
+                %a{:href => "#"}
+              %li
+                %a{:href => "#"}
+                  Older messages...
+
+          %li.dropdown
+            %a{:href => "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}}
+              Settings
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"}
+                  Personal Info
+              %li
+                %a{:href => "#"}
+                  Preferences
+              %li
+                %a{:href => "#"}
+                  Alerts
+              %li
+                %a{:href => "#", :class => "cookie-delete"}
+                  Delete Cookies
+
+          %li
+            %a{:href => "#"}
+              Help
+

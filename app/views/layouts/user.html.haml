@@ -1,0 +1,24 @@
+!!!
+%html
+%head
+  %title Advanced Study Room
+  = stylesheet_link_tag "application", :media => "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+%body{:id => "#{yield(:layout_id)}", :class => "#{yield(:css_class)} #{yield(:layout_class)}"}
+  = render "shared/new_header"
+  .container-fluid
+    .row-fluid
+      .span2
+        = render :partial => "shared/new_navigation_sidebar"
+      .span10
+        %h1
+          = yield(:title)
+        = render_breadcrumbs
+        = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+        .row-fluid
+          = yield
+    %hr
+
+    %footer
+      %p &copy; Advanced Study Room 2012

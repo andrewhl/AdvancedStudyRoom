@@ -1,0 +1,61 @@
+.member-box.round-all
+  %a
+    = image_tag "member_ph.png", :class => "member-box-avatar"
+  %span
+    %strong Administrator
+    %br
+    %a John Doe
+    %br
+    %span.member-box-links
+      %a Settings
+      :plain
+        <span> | </span>
+      %a Logoout
+
+.sidebar-nav
+  .well{:style => "padding: 8px 0;"}
+  %ul.nav.nav-list
+    %li.nav-header
+      Main
+    %li.active
+      %a{:href => "#"}
+        %i.icon-home
+        Dashboard
+    %li
+      %a{:href => "#"}
+        %i.icon-edit
+        Add Blog Post
+    %li
+      %a{:href => "#"}
+        %i.icon-user
+        Members
+    %li
+      %a{:href => "#"}
+        %i.icon-comment
+        Comments
+    %li
+      %a{:href => "#"}
+        %i.icon-picture
+        Gallery
+    %li
+      %a{:href => "#"}
+        %i.icon-calendar
+        Calendar
+    %li.nav-header
+      Typography
+    %li
+      %a{:href => "#"}
+        %i.icon-font
+        Typography
+    %li
+      %a{:href => "#"}
+        %i.icon-th-large
+        Grid
+    %li
+      %a{:href => "#"}
+        %i.icon-th
+        Portlets
+    %li
+      %a{:href => "#"}
+        %i.icon-th
+        Forms
