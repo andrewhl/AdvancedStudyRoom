@@ -1,11 +1,29 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container-fluid
+      = link_to "Advanced Study Room", :root, :class => "brand"
+
+
       - if current_user
-        Logged in as
-        = current_user.email
-        = link_to "Log Out", logout_path, id: "logout"
+        .btn-group.pull-right
+          %a.btn.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+            %i.icon-user
+            = current_user.email
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"}
+                = link_to "My Profile", user_path(current_user)
+            %li.divider
+              %a{:href => "#"}
+            %li
+              = link_to "Log Out", logout_path, id: "logout"
+
+
       - else
-        = link_to "Sign Up", signup_path
-        or
-        = link_to "Log In", login_path
+        .nav-collapse
+          %ul.nav
+            %li
+              = link_to "Sign Up", signup_path
+            %li
+              = link_to "Log In", login_path

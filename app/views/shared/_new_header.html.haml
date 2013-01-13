@@ -5,28 +5,30 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand{:href => "index.html"}
-        Advanced Study Room
+      = link_to "Advanced Study Room", :root, :class => "brand"
+
+
+
       .btn-group.pull-right
-        %a.btn.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
-          %i.icon-user
-            John Doe
-          %span.caret
-        %ul.dropdown-menu
-          %li
-            %a{:href => "#"}
-              Profile
-          %li
-            %a{:href => "#"}
-              Settings
-          %li
-            %a{:href => "#", :class => "cookie-delete"}
-              Delete Cookies
-          %li.divider
-            %a{:href => "#"}
-          %li
-            %a{:href => "login.html"}
-              Logout
+        - if current_user
+          %a.btn.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+            %i.icon-user
+            = current_user.email
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"}
+                = link_to "My Profile", user_path(current_user)
+            %li.divider
+              %a{:href => "#"}
+            %li
+              = link_to "Log Out", logout_path, id: "logout"
+
+
+        - else
+          = link_to "Sign Up", signup_path
+          or
+          = link_to "Log In", login_path
 
       .nav-collapse
         %ul.nav
