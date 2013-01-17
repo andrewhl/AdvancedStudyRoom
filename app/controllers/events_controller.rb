@@ -74,6 +74,7 @@ class EventsController < ApplicationController
     @division = Division.new
     @divisions = @tier.divisions
     @rulesets = Ruleset.canon
+
   end
 
   def leagues
@@ -114,6 +115,26 @@ class EventsController < ApplicationController
 
     end
 
+  end
+
+  def validate_games
+    respond_to do |format|
+      format.js do
+        event = Event.find(params[:id])
+        event.validate_games
+        render :manage, flash[:success] = "Matches validated."
+      end
+    end
+  end
+
+  def tag_games
+    respond_to do |format|
+      format.js do
+        event = Event.find(params[:id])
+        event.tag_games
+        render :manage, flash[:success] = "Matches tagged."
+      end
+    end
   end
 
   private

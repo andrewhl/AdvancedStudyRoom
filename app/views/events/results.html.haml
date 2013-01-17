@@ -30,10 +30,12 @@
             - won_games = @matches.select { |game| (player.id == game.black_player_id or player.id == game.white_player_id) and player.id == game.winner_id }
             - lost_games = @matches.select { |game| (player.id == game.black_player_id or player.id == game.white_player_id) and player.id != game.winner_id }
 
-            - won_games.each do
-              %i.icon-ok
-            - lost_games.each do
-              %i.icon-remove
+            - won_games.each do |game|
+              = link_to game.url do
+                %i.icon-circle
+            - lost_games.each do |game|
+              = link_to game.url do
+                %i.icon-circle-blank
   - else
     %table.table.table-condensed.table-bordered.table-hover
       %tr
@@ -45,16 +47,19 @@
           %td= row_player.handle
           - @division.registrations.each do |col_player|
             - if col_player == row_player
-              %td X
+              %td
+                %i.icon-remove
             - else
               %td
                 - won_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and col_player.id == game.winner_id }
                 - lost_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and col_player.id != game.winner_id }
 
-                - won_games.each do
-                  %i.icon-circle
-                - lost_games.each do
-                  %i.icon-circle-blank
+                - won_games.each do |game|
+                  = link_to game.url do
+                    %i.icon-circle
+                - lost_games.each do |game|
+                  = link_to game.url do
+                    %i.icon-circle-blank
                 / - col_player.match_results(true, true, row_player.id).each do |win|
                 / %span W
                 / - col_player.match_results(true, false, row_player.id).each do |loss|

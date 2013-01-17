@@ -5,6 +5,7 @@ class CreateTags < ActiveRecord::Migration
       t.integer :league_id
       t.integer :event_id
       t.integer :node_limit
+      t.string  :event_type
 
       t.timestamps
     end

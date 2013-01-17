@@ -12,11 +12,12 @@
 #
 
 class Tag < ActiveRecord::Base
-  attr_accessible :phrase, :league_id, :event_id, :node_limit
+  attr_protected
 
   belongs_to :league
   belongs_to :event
 
   validates_uniqueness_of :phrase
   # validates_presence_of :event_id
+  validates_presence_of :node_limit
 end

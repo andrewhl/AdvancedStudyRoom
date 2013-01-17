@@ -18,13 +18,6 @@ Server.find_or_create_by_name("Kaya")
 if Ruleset.find_by_name("KGS Default").nil?
   puts "Creating ruleset..."
   Ruleset.create(name: "KGS Default",
-                 allowed_rengo: false,
-                 allowed_teaching: false,
-                 allowed_review: false,
-                 allowed_free: true,
-                 allowed_rated: true,
-                 allowed_simul: true,
-                 allowed_demonstration: false,
                  main_time_min: 300,
                  main_time_max: 2700,
                  overtime_required: true,
@@ -52,7 +45,7 @@ unless @event = Event.find_by_name("ASR League")
   @event = Event.create(name: "ASR League",
                        server_id: 1,
                        ruleset_id: Ruleset.find_by_name("KGS Default").id)
-  @event_ruleset = @event.create_event_ruleset(:ruleset_id => @event.ruleset.id, :parent_id => @event.ruleset.id)
+  @event_ruleset = @event.create_event_ruleset(:ruleset_id => @event.ruleset.id, :parent_id => @event.ruleset.id, :node_limit => 100)
 end
 
 unless Tag.find_by_phrase("ASR League")

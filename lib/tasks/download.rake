@@ -1,7 +1,7 @@
 ['downloader', 'validator', 'scraper'].each { |x| require x }
 
 namespace :downloader do
-  desc "Validate games"
+  desc "Download games"
   task :download_games => :environment do
 
     downloader = Downloader.new
@@ -10,7 +10,7 @@ namespace :downloader do
     events = Event.all #Event.find_by_name("ASR League")
 
     events.each do |event|
-      # [Registration.find_by_handle("socratease")].each do |registration|
+      # [Registration.find_by_handle("affytaffy")].each do |registration|
       event.registrations.each do |registration|
 
         time_before = Time.now

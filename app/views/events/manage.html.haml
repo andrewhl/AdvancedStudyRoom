@@ -20,6 +20,20 @@
   %h4 This event has no tiers. Please create one.
 - else
 
+  %h3 Validation and tagging
+  %p Use these buttons to re-validate and re-tag all the games in this event.
+
+  = form_tag "/validate_games", :method => :put, :remote => true, :id => "validate_games" do
+    = hidden_field_tag 'id', params[:id]
+    = submit_tag "Validate Games", :name => nil, :class => "btn", :data => {:target => "#validationModal" }
+  = form_tag "/tag_games", :method => :put, :remote => true, :id => "tag_games" do
+    = hidden_field_tag 'id', params[:id]
+    = submit_tag "Tag Games", :name => nil, :class => "btn", :data => {:target => "#tagModal" }
+
+  = render "modals/validation_modal"
+  = render "modals/tag_modal"
+
+
   %h3 Tiers
   %table.table.table-condensed.table-bordered.table-hover
     %tr

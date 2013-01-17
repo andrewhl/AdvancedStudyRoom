@@ -1,29 +1,76 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container-fluid
+      %a.btn.btn-navbar{:data => {:toggle => "collapse", :target => ".nav-collapse"}}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
       = link_to "Advanced Study Room", :root, :class => "brand"
 
 
-      - if current_user
-        .btn-group.pull-right
+
+      .btn-group.pull-right
+        - if current_user
           %a.btn.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
             %i.icon-user
             = current_user.email
             %span.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "#"}
-                = link_to "My Profile", user_path(current_user)
+              = link_to "My Profile", user_path(current_user)
             %li.divider
-              %a{:href => "#"}
             %li
               = link_to "Log Out", logout_path, id: "logout"
 
 
-      - else
-        .nav-collapse
-          %ul.nav
-            %li
-              = link_to "Sign Up", signup_path
-            %li
-              = link_to "Log In", login_path
+        - else
+          = link_to "Sign Up", signup_path
+          or
+          = link_to "Log In", login_path
+
+      .nav-collapse
+        %ul.nav
+          %li.dropdown
+            %a{:href => "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}}
+              Messages
+              %span.badge.badge-info
+                100
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"}
+                  Message 1
+              %li
+                %a{:href => "#"}
+                  Another message
+              %li
+                %a{:href => "#"}
+                  Something else message
+              %li.divider
+                %a{:href => "#"}
+              %li
+                %a{:href => "#"}
+                  Older messages...
+
+          %li.dropdown
+            %a{:href => "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}}
+              Settings
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"}
+                  Personal Info
+              %li
+                %a{:href => "#"}
+                  Preferences
+              %li
+                %a{:href => "#"}
+                  Alerts
+              %li
+                %a{:href => "#", :class => "cookie-delete"}
+                  Delete Cookies
+
+          %li
+            %a{:href => "#"}
+              Help
+

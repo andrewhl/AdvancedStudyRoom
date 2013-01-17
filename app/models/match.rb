@@ -30,29 +30,7 @@
 #
 
 class Match < ActiveRecord::Base
-  attr_accessible :datetime_completed,
-                  :game_type,
-                  :komi,
-                  :main_time_control,
-                  :ot_stones_periods,
-                  :ot_time_control,
-                  :overtime_type,
-                  :result,
-                  :url,
-                  :winner,
-                  :win_info,
-                  :black_player,
-                  :white_player,
-                  :handicap,
-                  :black_player_name,
-                  :white_player_name,
-                  :game_digest,
-                  :black_player_id,
-                  :white_player_id,
-                  :winner_id,
-                  :winner_name,
-                  :board_size,
-                  :division_id
+  attr_protected
 
   validates_uniqueness_of :game_digest, :on => :create, :message => "must be unique"
 
@@ -67,6 +45,7 @@ class Match < ActiveRecord::Base
   scope :tagged, where("tagged = ?", true) # confirmed has tag
   scope :unchecked, lambda { where("tagged = NULL") } # not checked for tags
   scope :untagged, where("tagged = ?", false) # confirmed has no tag
+  scope :tagged_and_valid, where("valid_game = ? and tagged = ?", true, true)
 
   def has_valid_tag?
 
@@ -95,6 +74,8 @@ class Match < ActiveRecord::Base
         # return valid_tag if valid_tag == true
 
         # TODO: handle nil objects (either comment_node or node_limit)
+        binding.pry if comment_node.nil? or tag.node_limit.nil?
+
         break if comment_node > tag.node_limit
 
       end
@@ -129,6 +110,8 @@ class Match < ActiveRecord::Base
 
     game_status = false
 
+    return false if main_time_control.nil? # TODO: incorporate permissions so main_time_control is conditionally checked
+
     methods = [:main_time_min,
                :main_time_max,
                :overtime_required,
@@ -159,6 +142,8 @@ class Match < ActiveRecord::Base
         game_status = check_method(method, check_ruleset)
         return game_status if game_status == false
       end
+
+
 
       # if the method is nil, and the ruleset is not the top level
       # proceed to the parent ruleset to check the method
@@ -191,6 +176,7 @@ class Match < ActiveRecord::Base
 
   def check_method method, ruleset
     # binding.pry if method == :max_handi
+    # binding.pry if white_player_name == "affytaffy"
     case method
     when :main_time_max
       main_time_control > ruleset.main_time_max ? false : true

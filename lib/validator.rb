@@ -8,7 +8,9 @@ class Validator
   end
 
   def validate_games
+    puts "Checking #{@division.name}..."
     @matches.each do |match|
+      puts "Checking #{match.white_player_name} vs. #{match.black_player_name}..."
       if match.is_valid?
         match.update_attribute(:valid_game, true)
       else

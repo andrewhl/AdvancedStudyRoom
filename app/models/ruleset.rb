@@ -53,6 +53,7 @@ class Ruleset < ActiveRecord::Base
   has_many :leagues
   has_many :events
   has_many :event_rulesets
+  has_many :permissions, :class_name => 'Permission', :as => :parent
 
   scope :canon, where(:canonical => true)
   scope :event_rulesets, where(:type => "EventRuleset")
@@ -61,6 +62,16 @@ class Ruleset < ActiveRecord::Base
 
   before_destroy :ensure_no_children
   before_destroy :clear_event_id
+
+  RULES = [:allowed_rengo,
+         :allowed_teaching,
+         :allowed_review,
+         :allowed_free,
+         :allowed_rated,
+         :allowed_simul,
+         :allowed_demonstration,
+         :allowed_no_time_settings]
+
 
   def ensure_no_children
     if not event_rulesets.empty?
@@ -86,7 +97,6 @@ class Ruleset < ActiveRecord::Base
   end
 
   def event
-    binding.pry
     if Event.find(event.id).nil?
       super
     else
@@ -97,6 +107,30 @@ class Ruleset < ActiveRecord::Base
   # add validation that prevents ruleset from being saved if
   # both jovertime and covertimer and false
   # and overtime stones/period settings or control settings are enabled
+
+  # this hunky chunk of code checks the list of RULES above
+  # and if a missing method matches one of those rules
+  # either as method= or method?, it provides the appropriate logic
+
+  def method_missing sym, *args
+    mthd = sym.to_s[0..-2].to_sym
+    name = sym.to_s
+
+    super unless RULES.include?(mthd)
+
+    if name =~ /\?$/
+      !permissions.find_by_perm(mthd).nil?
+    elsif name =~ /=$/
+      raise TypeError, "Must be a boolean value." unless args[0] == true or args[0] == false
+
+      if args[0] == true
+        permissions.find_by_perm(mthd) || permissions.create(:perm => mthd, :parent_id => id)
+      else
+        permissions.find_by_perm(mthd).destroy unless permissions.find_by_perm(mthd).nil?
+      end
+    end
+
+  end
 
 
 

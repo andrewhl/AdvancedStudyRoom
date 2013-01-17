@@ -151,6 +151,8 @@ class Downloader
 
     # URL on KGS Archive site
     date_path = game.date.gsub(/-/, "/")
+    date_path = date_path.gsub(/\/0(\d)/) { "/#{$1}" }
+
     url = "http://files.gokgs.com/games/#{date_path}/#{File.basename(file)}"
 
     game_hash = Hash.new

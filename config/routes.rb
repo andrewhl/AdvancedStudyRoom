@@ -18,6 +18,9 @@ AdvancedStudyRoom::Application.routes.draw do
   match 'results', to: 'pages#results'
   get 'tags', to: 'tags#new'
 
+  put 'validate_games', to: 'events#validate_games'
+  put 'tag_games', to: 'events#tag_games'
+
   resources :pages,
             :users,
             :sessions,
@@ -39,7 +42,6 @@ AdvancedStudyRoom::Application.routes.draw do
     end
     get :manage, on: :member
     get :results, on: :member
-    # get :tags, on: :member
 
   end
   resources :tiers do

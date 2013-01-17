@@ -1,31 +1,70 @@
-.well.sidebar-nav
-  %ul.nav.nav-list
-    %li
-      = nav_link 'Home', root_path
-    - if current_user
-      %li.nav-header Your Pages
-      %li{:class => ((params[:action] == 'new') and (params[:controller] == 'accounts')) ? 'active' : ''}
-        = link_to "Register Accounts", new_account_path
-      %li
-        = link_to "My Profile", user_path(current_user)
-    %li.nav-header Other Pages
+- if current_user
+  .member-box.round-all
+    %a
+      = image_tag "member_ph.png", :class => "member-box-avatar"
+    %span
+      %strong User
+      %br
+      = current_user.email
+      %br
+      %span.member-box-links
+        %a Settings
+        :plain
+          <span> | </span>
+        = link_to "Logout", logout_path, id: "logout"
 
-    %li
-      = link_to "Tournaments", tournaments_path
-    %li
-      = link_to "Leagues", leagues_path
-    %li
-      = link_to "Results", results_path
-    %li
-      %a Leader Board
-    %li.nav-header Admin Pages
-    %li
-      = link_to "Define Rulesets", new_ruleset_path
-    %li
-      = link_to "Manage Rulesets", rulesets_path
-    %li
-      = link_to "Create Event", new_event_path
-    %li
-      = link_to "View Events", events_path
-    %li
-      = link_to "Create Tags", new_tag_path
+
+.sidebar-nav
+  .well{:style => "padding: 8px 0;"}
+    %ul.nav.nav-list
+      - if current_user
+        %li.nav-header Your Pages
+        %li
+          = link_to user_path(current_user) do
+            %i.icon-home
+            My Profile
+        %li{:class => ((params[:action] == 'new') and (params[:controller] == 'accounts')) ? 'active' : ''}
+          = link_to new_account_path do
+            %i.icon-edit
+            Register Accounts
+
+      %li.nav-header
+        Main
+      %li
+        = link_to tournaments_path do
+          %i.icon-trophy
+          Tournaments
+      %li
+        = link_to leagues_path do
+          %i.icon-flag
+          Leagues
+      %li
+        = link_to results_path do
+          %i.icon-star
+          Results
+      %li
+        %a{:href => "#"}
+          %i.icon-group
+          Leader Board
+      %li.nav-header Admin Pages
+      %li
+        = link_to new_ruleset_path do
+          %i.icon-check
+          Define Rulesets
+      %li
+        = link_to rulesets_path do
+          %i.icon-cog
+          Manage Rulesets
+      %li
+        = link_to new_event_path do
+          %i.icon-plus
+          Create Event
+      %li
+        = link_to events_path do
+          %i.icon-tasks
+          View Events
+      %li
+        = link_to new_tag_path do
+          %i.icon-bullhorn
+          Create Tags
+

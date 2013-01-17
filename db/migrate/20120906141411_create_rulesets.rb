@@ -2,13 +2,6 @@ class CreateRulesets < ActiveRecord::Migration
   def change
     create_table :rulesets do |t|
       t.string   :name
-      t.boolean  :allowed_rengo
-      t.boolean  :allowed_teaching
-      t.boolean  :allowed_review
-      t.boolean  :allowed_free
-      t.boolean  :allowed_rated
-      t.boolean  :allowed_simul
-      t.boolean  :allowed_demonstration
       t.float    :main_time_min
       t.float    :main_time_max
       t.boolean  :overtime_required
@@ -39,6 +32,7 @@ class CreateRulesets < ActiveRecord::Migration
       t.boolean  :handicap_required
       t.integer  :max_board_size
       t.integer  :min_board_size
+      t.integer  :node_limit
 
       t.timestamps
     end

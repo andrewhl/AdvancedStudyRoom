@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202075334) do
+ActiveRecord::Schema.define(:version => 20130115192959) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -152,6 +152,16 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
   add_index "matches", ["white_player_name"], :name => "index_matches_on_white_player_name"
   add_index "matches", ["winner_id"], :name => "index_matches_on_winner_id"
 
+  create_table "permissions", :force => true do |t|
+    t.string   "perm"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "permissions", ["parent_id"], :name => "index_permissions_on_parent_id"
+
   create_table "points", :force => true do |t|
     t.integer  "count"
     t.integer  "account_id"
@@ -189,13 +199,6 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
 
   create_table "rulesets", :force => true do |t|
     t.string   "name"
-    t.boolean  "allowed_rengo"
-    t.boolean  "allowed_teaching"
-    t.boolean  "allowed_review"
-    t.boolean  "allowed_free"
-    t.boolean  "allowed_rated"
-    t.boolean  "allowed_simul"
-    t.boolean  "allowed_demonstration"
     t.float    "main_time_min"
     t.float    "main_time_max"
     t.boolean  "overtime_required"
@@ -226,6 +229,7 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.boolean  "handicap_required"
     t.integer  "max_board_size"
     t.integer  "min_board_size"
+    t.integer  "node_limit"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
@@ -248,6 +252,7 @@ ActiveRecord::Schema.define(:version => 20121202075334) do
     t.integer  "league_id"
     t.integer  "event_id"
     t.integer  "node_limit"
+    t.string   "event_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
