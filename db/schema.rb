@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115192959) do
+ActiveRecord::Schema.define(:version => 20130120184505) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -162,24 +162,35 @@ ActiveRecord::Schema.define(:version => 20130115192959) do
 
   add_index "permissions", ["parent_id"], :name => "index_permissions_on_parent_id"
 
+  create_table "point_rulesets", :force => true do |t|
+    t.integer  "parent_id"
+    t.float    "points_per_win"
+    t.float    "points_per_loss"
+    t.float    "point_decay"
+    t.string   "type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "parent_type"
+  end
+
+  add_index "point_rulesets", ["parent_id"], :name => "index_point_rulesets_on_parent_id"
+
   create_table "points", :force => true do |t|
-    t.integer  "count"
     t.integer  "account_id"
     t.integer  "event_id"
     t.string   "event_desc"
     t.string   "event_type"
-    t.string   "game_hash"
     t.integer  "registration_id"
     t.boolean  "enabled"
     t.integer  "match_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.float    "count"
   end
 
   add_index "points", ["account_id"], :name => "index_points_on_account_id"
   add_index "points", ["event_id"], :name => "index_points_on_event_id"
   add_index "points", ["event_type"], :name => "index_points_on_event_type"
-  add_index "points", ["game_hash"], :name => "index_points_on_game_hash"
   add_index "points", ["match_id"], :name => "index_points_on_match_id"
 
   create_table "registrations", :force => true do |t|
@@ -230,6 +241,8 @@ ActiveRecord::Schema.define(:version => 20130115192959) do
     t.integer  "max_board_size"
     t.integer  "min_board_size"
     t.integer  "node_limit"
+    t.float    "points_per_win"
+    t.float    "points_per_loss"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end

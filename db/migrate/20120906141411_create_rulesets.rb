@@ -33,6 +33,8 @@ class CreateRulesets < ActiveRecord::Migration
       t.integer  :max_board_size
       t.integer  :min_board_size
       t.integer  :node_limit
+      t.float    :points_per_win
+      t.float    :points_per_loss
 
       t.timestamps
     end

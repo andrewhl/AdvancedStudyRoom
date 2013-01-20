@@ -17,13 +17,7 @@
 #
 
 class Point < ActiveRecord::Base
-  attr_accessible :account_id,
-                  :count,
-                  :event_desc,
-                  :event_type,
-                  :event_id,
-                  :registration_id,
-                  :match_id
+  attr_protected
 
   belongs_to :registration
   belongs_to :account

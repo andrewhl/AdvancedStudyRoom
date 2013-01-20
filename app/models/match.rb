@@ -47,6 +47,60 @@ class Match < ActiveRecord::Base
   scope :untagged, where("tagged = ?", false) # confirmed has no tag
   scope :tagged_and_valid, where("valid_game = ? and tagged = ?", true, true)
 
+  def players
+    [white_player, black_player]
+  end
+
+  def players_by_result
+    winner = players.select { |player| player.id == winner_id }[0]
+    loser = players.select { |player| player.id != winner_id }[0]
+    [winner, loser]
+  end
+
+  # get all the
+  def similar_games tagged=true
+
+    # assumes the game is tagged
+    if tagged
+      current_matches = Match.tagged.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
+    else # if tagged parameter is false
+      current_matches = Match.all.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
+    end
+
+    matches = compile_matches(current_matches)
+  end
+
+  def similar_and_valid_games
+    current_matches = Match.tagged_and_valid.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
+
+    matches = compile_matches(current_matches)
+  end
+
+  # NOTE: compile_matches seems to do the same thing as same_players. Not sure what its O(n) profile is
+  def compile_matches current_matches
+    matches = current_matches.select { |match| match.black_player_id == black_player_id and match.white_player_id == white_player_id }
+    matches += current_matches.select { |match| match.black_player_id == white_player_id and match.white_player_id == black_player_id }
+    matches
+  end
+
+  def division_points event_id
+    return nil if points.empty?
+    points.select { |point| point.event_id == point.division.event_id }
+  end
+
+  # get all the games for this month with the same black and white players
+  # will only find tagged games by default
+  # def same_players tagged=true
+  #   games = current_games(tagged)
+  #   games.select do |game|
+  #     checked_players = Set[game.white_player, game.black_player]
+  #     own_players = Set[white_player, black_player]
+  #     checked_players.subset? own_players
+  #   end
+  #   games
+  # end
+
+  # check if this game has a valid tag
   def has_valid_tag?
 
     event = division.event
@@ -58,7 +112,6 @@ class Match < ActiveRecord::Base
     if comments.nil?
       return valid_tag
     end
-
 
     tags.each do |tag|
 
@@ -92,7 +145,9 @@ class Match < ActiveRecord::Base
   def is_valid?
     division_ruleset = self.division.division_ruleset
 
-    # binding.pry if division_ruleset.parent_id.nil?
+    binding.pry if division_ruleset.nil?
+    binding.pry if division_ruleset.parent.nil?
+    binding.pry if division_ruleset.parent.parent.nil?
 
     tier_ruleset = division_ruleset.parent
     event_ruleset = tier_ruleset.parent
@@ -269,17 +324,4 @@ class Match < ActiveRecord::Base
     end
   end
 
-  def similar_games tagged=true
-
-    # assumes the game is tagged
-    if tagged
-      current_matches = Match.tagged.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
-    else # if tagged parameter is false
-      current_matches = Match.all.select { |match| match.datetime_completed.year == Time.now.year and match.datetime_completed.month == Time.now.month}
-    end
-
-    matches = current_matches.select { |match| match.black_player_id == black_player_id and match.white_player_id == white_player_id }
-    matches += current_matches.select { |match| match.black_player_id == white_player_id and match.white_player_id == black_player_id }
-    matches
-  end
 end

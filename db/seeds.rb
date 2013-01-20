@@ -35,8 +35,11 @@ if Ruleset.find_by_name("KGS Default").nil?
                  max_handi: 9,
                  games_per_player: 2,
                  games_per_opponent: 2,
+                 points_per_win: 2.0,
+                 points_per_loss: 1.0,
                  canonical: true)
 end
+
 
 # Create the seed Event (ASR League), if it doesn't exist
 
@@ -49,7 +52,7 @@ unless @event = Event.find_by_name("ASR League")
 end
 
 unless Tag.find_by_phrase("ASR League")
-  Tag.create(:phrase => "ASR League", :event_id => @event.id, :event_type => "League")
+  Tag.create(:phrase => "ASR League", :event_id => @event.id, :event_type => "League", :node_limit => 100)
 end
 
 if @event.tiers.empty?
@@ -61,6 +64,8 @@ if @event.tiers.empty?
   end
 end
 
+
+
 # Create all the divisions, and give them a division_index (relative position inside tier, 1 is top, 2 is below that, etc.)
 def division_create tier, count
   count.times do |n|
@@ -71,8 +76,10 @@ def division_create tier, count
                     :minimum_players => 2,
                     :maximum_players => 200,
                     :event_id => @event.id)
-      @division_ruleset = new_division.create_division_ruleset(:parent_id => @tier_ruleset.id)
+      @division_ruleset = new_division.create_division_ruleset!(:parent_id => tier.ruleset.id)
     end
+
+
   end
 end
 
@@ -113,6 +120,18 @@ all_users = {"Alpha 1" => alpha,
              "Delta 1" => delta}
 
 @divisions = @event.divisions
+
+puts "Creating division point rulesets..."
+@divisions.each do |division|
+  if division.point_ruleset.nil?
+    puts "Creating point ruleset for #{division.name}..."
+    @point_ruleset = PointRuleset.create(:parent_id => division.id,
+                  :points_per_win => 2.0,
+                  :points_per_loss => 1.0,
+                  :point_decay => 0.5,
+                  :parent_type => "Division")
+  end
+end
 
 puts "Going through users..."
 index = 0

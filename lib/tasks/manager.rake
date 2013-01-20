@@ -62,9 +62,12 @@ namespace :manager do
   desc "Calculate points for all events"
   task :calculate_points => :environment do
 
+    puts "Calculating points..."
     events = Event.all
     events.each do |event|
+      puts "Calculating #{event.name}..."
       event.divisions.each do |division|
+        puts "Calculating #{division.name}..."
         calculator = PointCalculator.new(division)
         calculator.calculate
       end
@@ -77,6 +80,7 @@ namespace :manager do
     events = Event.all
     events.each do |event|
       event.divisions.each do |division|
+        puts "Calculating #{division.name}..."
         validator = Validator.new(division)
         validator.validate_games
       end
@@ -90,6 +94,7 @@ namespace :manager do
     events.each do |event|
       next if event.tags.empty?
       event.divisions.each do |division|
+        puts "Calculating #{division.name}..."
         validator = Validator.new(division)
         validator.tag_games
       end

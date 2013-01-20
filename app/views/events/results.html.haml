@@ -42,9 +42,11 @@
         %th Player
         - @division.registrations.each do |col_player|
           %th= col_player.handle
+        %th Points
       - @division.registrations.each do |row_player|
         %tr
           %td= row_player.handle
+          %td= row_player.points_this_month
           - @division.registrations.each do |col_player|
             - if col_player == row_player
               %td

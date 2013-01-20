@@ -78,4 +78,12 @@ class Registration < ActiveRecord::Base
     matches
   end
 
+  def total_points
+    self.points.map { |point| point.count }.inject(:+)
+  end
+
+  def points_this_month
+    points = self.points.select { |point| point.created_at.month == Time.now.month }
+    points.map { |point| point.count }.inject(:+)
+  end
 end

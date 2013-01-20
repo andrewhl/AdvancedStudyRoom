@@ -34,8 +34,6 @@ class Division < ActiveRecord::Base
                   :event_id,
                   :use_custom_name
 
-  scope :ranked, order("division_index ASC")
-  scope :valid_matches, lambda { matches.where("valid_game = TRUE") }
 
   validate :less_than_max_players
   validate :greater_than_min_players
@@ -45,9 +43,14 @@ class Division < ActiveRecord::Base
   has_many :registrations
   has_many :matches
   has_one :division_ruleset, :dependent => :destroy
+  # has_one :point_ruleset, :dependent => :destroy
+  has_one :point_ruleset, :class_name => 'PointRuleset', :as => :parent, :dependent => :destroy
 
   belongs_to :tier
   belongs_to :event
+
+  scope :ranked, order("division_index ASC")
+
 
   accepts_nested_attributes_for :division_ruleset, allow_destroy: true
 
@@ -65,6 +68,10 @@ class Division < ActiveRecord::Base
 
   def ruleset?
     !division_ruleset.nil?
+  end
+
+  def valid_matches
+    matches.where("valid_game = ?", true)
   end
 
   private
