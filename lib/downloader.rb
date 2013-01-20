@@ -201,7 +201,8 @@ class Downloader
     ginfo = game.current_node.properties
 
     # kosach-TestPlay09-2.sgf
-    binding.pry if game.white_player == "kosach"
+    # binding.pry if game.white_player == "kosach"
+    binding.pry if sgf == "temp/kosach-TestPlay09-2.sgf"
 
     # collect all the comments in the sgf file
     game.each_with_index do |node, index|
