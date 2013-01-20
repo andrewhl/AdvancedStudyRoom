@@ -35,6 +35,9 @@ class Downloader
             # skip this step if for some reason this game's comments already exist
             next if game.comments.any?
 
+            # skip this step if the game has no comments
+            next if game_comments.nil?
+
             process_comments(game, game_comments)
 
           end
@@ -202,7 +205,7 @@ class Downloader
 
     # kosach-TestPlay09-2.sgf
     # binding.pry if game.white_player == "kosach"
-    binding.pry if sgf == "temp/kosach-TestPlay09-2.sgf"
+    # binding.pry if sgf == "temp/kosach-TestPlay09-2.sgf"
 
     # collect all the comments in the sgf file
     game.each_with_index do |node, index|
