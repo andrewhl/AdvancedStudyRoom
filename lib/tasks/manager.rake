@@ -10,8 +10,8 @@ namespace :manager do
     events = Event.all #Event.find_by_name("ASR League")
 
     events.each do |event|
-      # [Registration.find_by_handle("affytaffy")].each do |registration|
-      event.registrations.each do |registration|
+      [Registration.find_by_handle("kosach")].each do |registration|
+      # event.registrations.each do |registration|
 
         time_before = Time.now
         delay = 3
