@@ -40,9 +40,9 @@
     %table.table.table-condensed.table-bordered.table-hover
       %tr
         %th Player
+        %th Points
         - @division.registrations.each do |col_player|
           %th= col_player.handle
-        %th Points
       - @division.registrations.each do |row_player|
         %tr
           %td= row_player.handle
