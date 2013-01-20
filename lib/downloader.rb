@@ -199,7 +199,9 @@ class Downloader
     comment_group_number = 0
 
     ginfo = game.current_node.properties
-    binding.pry
+
+    # kosach-TestPlay09-2.sgf
+    binding.pry if game.white_player == "kosach"
 
     # collect all the comments in the sgf file
     game.each_with_index do |node, index|
