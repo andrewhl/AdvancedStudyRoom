@@ -198,6 +198,8 @@ class Downloader
     unprocessed_comments = []
     comment_group_number = 0
 
+    binding.pry
+
     # collect all the comments in the sgf file
     game.each_with_index do |node, index|
       next unless node.properties["C"]
