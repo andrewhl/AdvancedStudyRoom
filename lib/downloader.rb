@@ -198,6 +198,7 @@ class Downloader
     unprocessed_comments = []
     comment_group_number = 0
 
+    ginfo = game.current_node.properties
     binding.pry
 
     # collect all the comments in the sgf file
