@@ -9,8 +9,8 @@
 
 
 
-      .btn-group.pull-right
-        - if current_user
+      - if current_user
+        .btn-group.pull-right
           %a.btn.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
             %i.icon-user
             = current_user.email
@@ -23,54 +23,11 @@
               = link_to "Log Out", logout_path, id: "logout"
 
 
-        - else
-          = link_to "Sign Up", signup_path
-          or
-          = link_to "Log In", login_path
-
-      .nav-collapse
-        %ul.nav
-          %li.dropdown
-            %a{:href => "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}}
-              Messages
-              %span.badge.badge-info
-                100
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                %a{:href => "#"}
-                  Message 1
-              %li
-                %a{:href => "#"}
-                  Another message
-              %li
-                %a{:href => "#"}
-                  Something else message
-              %li.divider
-                %a{:href => "#"}
-              %li
-                %a{:href => "#"}
-                  Older messages...
-
-          %li.dropdown
-            %a{:href => "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}}
-              Settings
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                %a{:href => "#"}
-                  Personal Info
-              %li
-                %a{:href => "#"}
-                  Preferences
-              %li
-                %a{:href => "#"}
-                  Alerts
-              %li
-                %a{:href => "#", :class => "cookie-delete"}
-                  Delete Cookies
-
+      - else
+        %ul.nav.pull-right
           %li
-            %a{:href => "#"}
-              Help
+            = link_to "Sign Up", signup_path
+          %li.divider-vertical
+          %li
+            = link_to "Log In", login_path
 

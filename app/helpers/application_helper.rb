@@ -38,11 +38,18 @@ module ApplicationHelper
     end
   end
 
-  def sortable(column, title = nil)
+  def sortable(column, title = nil, *args)
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction = sort_direction == "asc" ? "desc" : "asc"
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
+  end
+
+  def division_sortable(column, title = nil, division_id = nil)
+    title ||= column.titleize
+    css_class = column == sort_column ? "current #{sort_direction}" : nil
+    direction = sort_direction == "asc" ? "desc" : "asc"
+    link_to title, {:sort => column, :direction => direction, :division => division_id}, {:class => css_class}
   end
 
 end

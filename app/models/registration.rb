@@ -46,6 +46,10 @@ class Registration < ActiveRecord::Base
     current_matches.where("valid_game = ?", true)
   end
 
+  def tagged_matches
+    current_matches.where("tagged = ?", true)
+  end
+
   def valid_and_tagged_matches
     valid_matches.where("tagged = ?", true)
   end

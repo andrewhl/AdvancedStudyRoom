@@ -21,16 +21,16 @@
   - if @division.registrations.count > 30
     %table.table.table-condensed.table-bordered.table-hover
       %tr
-        %th Player
+        %th
+          = link_to division_sortable "handle", "Player", @division.id
         %th Points
         %th Wins/Losses
-      - @division.registrations.each do |player|
+      - @division.registrations.order(sort_column + ' ' + sort_direction).each do |player|
         %tr
           %td= player.handle
           %td= player.points_this_month
           %td
             - games = player.valid_and_tagged_matches
-            / - binding.pry
             - games.each do |game|
               - if game.winner_id == player.id
                 = link_to game.url do
@@ -40,17 +40,20 @@
                   %i.icon-circle-blank
 
   - else
-    %table.table.table-condensed.table-bordered.table-hover
+    %table.table.table-condensed.table-bordered.table-hover.wide-table
       %tr
-        %th Player
+        %th= link_to division_sortable "handle", "Player", @division.id
         %th Points
-        - @division.registrations.each do |col_player|
-          %th= col_player.handle
-      - @division.registrations.each do |row_player|
+        - @division.registrations.order(sort_column + ' ' + sort_direction).each do |col_player|
+          %th
+            %span
+              %span
+                %span= col_player.handle
+      - @division.registrations.order(sort_column + ' ' + sort_direction).each do |row_player|
         %tr
           %td= row_player.handle
           %td= row_player.points_this_month
-          - @division.registrations.each do |col_player|
+          - @division.registrations.order(sort_column + ' ' + sort_direction).each do |col_player|
             - if col_player == row_player
               %td
                 %i.icon-remove

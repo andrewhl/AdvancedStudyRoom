@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_filter :find_event, only: [:show, :manage, :update, :destroy, :results, :tags]
+  helper_method :sort_column, :sort_direction
 
   add_breadcrumb "Events", "/events", except: [:tournaments, :leagues]
   add_breadcrumb "Tournaments", "/tournaments", only: [:tournaments]
@@ -92,7 +93,7 @@ class EventsController < ApplicationController
       params[:division] ||= @tiers.first.divisions.ranked.first.id
     end
 
-    @divisions = Division.all.select { |division| division.tier.event == @event }
+    @divisions = Division.where("event_id = ?", @event.id)
     @division = Division.find(params[:division])
 
     # get current matches for this division
@@ -102,8 +103,8 @@ class EventsController < ApplicationController
     # @tiers.divisions.select { |division| division.name == params[:division] }
 
     # Default values for the page sorting.
-    params[:sort] ||= "points"
-    params[:direction] ||= "desc"
+    params[:sort] ||= "handle"
+    params[:direction] ||= "asc"
   end
 
   def tags
@@ -141,6 +142,14 @@ class EventsController < ApplicationController
 
     def find_event
       @event = Event.find(params[:id])
+    end
+
+    def sort_column
+      Registration.column_names.include?(params[:sort]) ? params[:sort] : "handle"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end

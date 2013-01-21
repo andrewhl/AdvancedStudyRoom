@@ -3,7 +3,7 @@
     %a
       = image_tag "member_ph.png", :class => "member-box-avatar"
     %span
-      %strong User
+      %strong= (can? :manage, :all) ? "Admin" : "User"
       %br
       = current_user.email
       %br
@@ -46,25 +46,26 @@
         %a{:href => "#"}
           %i.icon-group
           Leader Board
-      %li.nav-header Admin Pages
-      %li
-        = link_to new_ruleset_path do
-          %i.icon-check
-          Define Rulesets
-      %li
-        = link_to rulesets_path do
-          %i.icon-cog
-          Manage Rulesets
-      %li
-        = link_to new_event_path do
-          %i.icon-plus
-          Create Event
-      %li
-        = link_to events_path do
-          %i.icon-tasks
-          View Events
-      %li
-        = link_to new_tag_path do
-          %i.icon-bullhorn
-          Create Tags
+      - if can? :manage, :all
+        %li.nav-header Admin Pages
+        %li
+          = link_to new_ruleset_path do
+            %i.icon-check
+            Define Rulesets
+        %li
+          = link_to rulesets_path do
+            %i.icon-cog
+            Manage Rulesets
+        %li
+          = link_to new_event_path do
+            %i.icon-plus
+            Create Event
+        %li
+          = link_to events_path do
+            %i.icon-tasks
+            View Events
+        %li
+          = link_to new_tag_path do
+            %i.icon-bullhorn
+            Create Tags
 

@@ -1,10 +1,45 @@
 body
   margin-top: 60px
 
-.navbar-inner
-  .container-fluid
-    padding-top: 10px
-
 .division_select
   select[multiple="multiple"]
     height: 250px
+
+.wide-table
+  th > span
+    position: relative
+  th > span > span
+    /* Must remove span from normal flow in order to keep columns from widening */
+    position: absolute
+    left: -5px
+    white-space: nowrap
+    -moz-transform: rotate(-70deg) skewX(20deg)
+    -o-transform: rotate(-70deg) skewX(20deg)
+    -webkit-transform: rotate(-70deg) skewX(20deg)
+    transform: rotate(-70deg) skewX(20deg)
+    -moz-transform-origin: 0% 0%
+    -o-transform-origin: 0% 0%
+    -webkit-transform-origin: 0% 0%
+    // border: 1px solid
+    padding: 9px
+    height: 23px
+    width: 80px
+    /* Illustrate where it's at with color */
+    // background-color: #E5ECF9
+    /* If one wants centered text, this is the place to reset it */
+    /* From a design point of view it might not be desirable */
+    text-align: center
+
+  /* CSS filter for Safari */
+  @media screen and (-webkit-min-device-pixel-ratio: 0)
+    th > span > span
+      top: 0
+
+  th > span > span > span
+    /* Rotate the text back, so it will be easier to read */
+    -moz-transform: skewX(-20deg)
+    -ms-transform: skewX(-20deg)
+    -o-transform: skewX(-20deg)
+    -webkit-transform: skewX(-20deg)
+    transform: skewX(-20deg)
+
