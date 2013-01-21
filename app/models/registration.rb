@@ -93,6 +93,11 @@ class Registration < ActiveRecord::Base
   def points_this_month
     return 0 if self.points.empty?
     points = self.points.select { |point| point.created_at.month == Time.now.month }
-    points.map { |point| point.count }.inject(:+)
+    points_array = points.map { |point| point.count }
+    if points_array.nil?
+      return 0
+    else
+      points_array.inject(:+)
+    end
   end
 end
