@@ -4,7 +4,9 @@ class PointCalculator
     @division = division
     @registrations = division.registrations
     # division.valid_matches already filters out any games played over the ruleset game limit
-    @matches = division.valid_matches # checks for tagged games by default
+    # @matches = division.valid_matches # checks for tagged games by default
+    reg = Registration.find_by_handle("ufo")
+    @matches = reg.valid_and_tagged_matches
     @ruleset = division.point_ruleset
 
   end
@@ -13,6 +15,7 @@ class PointCalculator
     @matches.each do |match|
       puts "Calculating #{match}..."
       next unless match.tagged
+      # binding.pry
       if match.points.empty?
         give_points_to match.players_by_result, match
       end
@@ -44,12 +47,14 @@ class PointCalculator
 
   def give_points_to players, match
 
+    # binding.pry
+
     winner, loser = players[0], players[1]
     match_info = calculate_match_position(match)
     match_position, match_count = match_info[0], match_info[1]
 
-    winner_points = calculate_point_decay(@ruleset.points_per_win, @ruleset.point_decay, match_count, match_position)
-    loser_points = calculate_point_decay(@ruleset.points_per_loss, @ruleset.point_decay, match_count, match_position)
+    winner_points = calculate_point_decay(@ruleset.points_per_win, @ruleset.point_decay, match_count, match_position, match)
+    loser_points = calculate_point_decay(@ruleset.points_per_loss, @ruleset.point_decay, match_count, match_position, match)
 
 
     winner.points.create(:count => winner_points,
@@ -64,13 +69,13 @@ class PointCalculator
                         :event_type => loser.event.event_type,
                         :match_id => match.id,
                         :registration_id => loser.id)
-
-
   end
 
-  def calculate_point_decay point_value, decay, match_count, match_position
+  def calculate_point_decay point_value, decay, match_count, match_position, match
     new_point_value, points = point_value, []
     # binding.pry if match_count == 2 and point_value == 1 and match_position == 2
+
+    # binding.pry if match.id == 82
     count = 1
     while count <= match_count
       if count == 1
@@ -87,6 +92,7 @@ class PointCalculator
   end
 
   def calculate_match_position match
+    # binding.pry if match.id == 82
     matches = match.similar_and_valid_games
     match_position = matches.index(match) + 1
     [match_position, matches.length]
