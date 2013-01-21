@@ -129,7 +129,7 @@ puts "Creating division point rulesets..."
                   :points_per_win => 2.0,
                   :points_per_loss => 1.0,
                   :point_decay => 0.5,
-                  :points_per_game => 0.5,
+                  :points_for_game => 0.5,
                   :parent_type => "Division")
   end
 end
