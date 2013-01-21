@@ -33,13 +33,13 @@ class Registration < ActiveRecord::Base
 
   def own_matches
     matches = Match.where("black_player_id = ? or white_player_id = ?", id, id)
-    matches.order("created_at")
+    matches.order("datetime_completed")
   end
 
   def current_matches
     matches = own_matches
     matches.select { |m| m.created_at.month == Time.now.month }
-    matches.order("created_at")
+    matches.order("datetime_completed")
   end
 
   def valid_matches

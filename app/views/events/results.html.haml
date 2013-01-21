@@ -27,15 +27,16 @@
         %tr
           %td= player.handle
           %td
-            - won_games = @matches.select { |game| (player.id == game.winner_id) }.sort_by { |g| g.created_at }
-            - lost_games = @matches.select { |game| (player.id == game.loser_id) }.sort_by { |g| g.created_at }
+            - games = player.valid_and_tagged_matches
+            / - binding.pry
+            - games.each do |game|
+              - if game.winner_id == player.id
+                = link_to game.url do
+                  %i.icon-circle
+              - else
+                = link_to game.url do
+                  %i.icon-circle-blank
 
-            - won_games.each do |game|
-              = link_to game.url do
-                %i.icon-circle
-            - lost_games.each do |game|
-              = link_to game.url do
-                %i.icon-circle-blank
   - else
     %table.table.table-condensed.table-bordered.table-hover
       %tr
@@ -55,7 +56,7 @@
               %td
                 / - binding.pry
                 - games = []
-                - games = @matches.select { |game| (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and (col_player.id == game.black_player_id or col_player.id == game.white_player_id) }.sort_by { |g| g.created_at }
+                - games = @matches.select { |game| (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and (col_player.id == game.black_player_id or col_player.id == game.white_player_id) }.sort_by { |g| g.datetime_completed }
 
                 - games.each do |game|
                   - if game.winner_id == row_player.id

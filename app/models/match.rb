@@ -41,11 +41,11 @@ class Match < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :points
 
-  scope :valid_games, where("valid_game = ?", true).order("created_at")
-  scope :tagged, where("tagged = ?", true).order("created_at") # confirmed has tag
-  scope :unchecked, lambda { where("tagged = NULL").order("created_at") } # not checked for tags
-  scope :untagged, where("tagged = ?", false).order("created_at") # confirmed has no tag
-  scope :tagged_and_valid, where("valid_game = ? and tagged = ?", true, true).order("created_at")
+  scope :valid_games, where("valid_game = ?", true).order("datetime_completed")
+  scope :tagged, where("tagged = ?", true).order("datetime_completed") # confirmed has tag
+  scope :unchecked, lambda { where("tagged = NULL").order("datetime_completed") } # not checked for tags
+  scope :untagged, where("tagged = ?", false).order("datetime_completed") # confirmed has no tag
+  scope :tagged_and_valid, where("valid_game = ? and tagged = ?", true, true).order("datetime_completed")
 
   def players
     [white_player, black_player]
@@ -80,7 +80,7 @@ class Match < ActiveRecord::Base
   def compile_matches current_matches
     matches = current_matches.select { |match| match.black_player_id == black_player_id and match.white_player_id == white_player_id }
     matches += current_matches.select { |match| match.black_player_id == white_player_id and match.white_player_id == black_player_id }
-    matches.sort_by { |match| match.created_at }
+    matches.sort_by { |match| match.datetime_completed }
   end
 
   def division_points event_id
