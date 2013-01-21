@@ -53,7 +53,7 @@ class Match < ActiveRecord::Base
 
   def players_by_result
     winner = players.select { |player| player.id == winner_id }[0]
-    loser = players.select { |player| player.id != winner_id }[0]
+    loser = players.select { |player| player.id == loser_id }[0]
     [winner, loser]
   end
 

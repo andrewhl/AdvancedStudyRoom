@@ -1,7 +1,7 @@
 class CreatePoints < ActiveRecord::Migration
   def change
     create_table :points do |t|
-      t.integer :count
+      t.float   :count
       t.integer :account_id
       t.integer :event_id
       t.string  :event_desc

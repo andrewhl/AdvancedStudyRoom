@@ -27,8 +27,8 @@
         %tr
           %td= player.handle
           %td
-            - won_games = @matches.select { |game| (player.id == game.black_player_id or player.id == game.white_player_id) and player.id == game.winner_id }
-            - lost_games = @matches.select { |game| (player.id == game.black_player_id or player.id == game.white_player_id) and player.id != game.winner_id }
+            - won_games = @matches.select { |game| (player.id == game.winner_id) }.sort_by { |g| g.created_at }
+            - lost_games = @matches.select { |game| (player.id == game.loser_id) }.sort_by { |g| g.created_at }
 
             - won_games.each do |game|
               = link_to game.url do
@@ -53,15 +53,18 @@
                 %i.icon-remove
             - else
               %td
-                - won_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and col_player.id == game.winner_id }
-                - lost_games = @matches.select { |game| (col_player.id == game.black_player_id or col_player.id == game.white_player_id) and (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and col_player.id != game.winner_id }
+                / - binding.pry
+                - games = []
+                - games = @matches.select { |game| (row_player.id == game.black_player_id or row_player.id == game.white_player_id) and (col_player.id == game.black_player_id or col_player.id == game.white_player_id) }.sort_by { |g| g.created_at }
 
-                - won_games.each do |game|
-                  = link_to game.url do
-                    %i.icon-circle
-                - lost_games.each do |game|
-                  = link_to game.url do
-                    %i.icon-circle-blank
+                - games.each do |game|
+                  - if game.winner_id == row_player.id
+                    = link_to game.url do
+                      %i.icon-circle
+                  - else
+                    = link_to game.url do
+                      %i.icon-circle-blank
+
                 / - col_player.match_results(true, true, row_player.id).each do |win|
                 / %span W
                 / - col_player.match_results(true, false, row_player.id).each do |loss|

@@ -136,9 +136,13 @@ class Downloader
     when "W"
       winner_name = white_player_name
       winner_id = white_player_id
+      loser_name = black_player_name
+      loser_id = black_player_id
     when "B"
       winner_name = black_player_name
       winner_id = black_player_id
+      loser_name = white_player_name
+      loser_id = white_player_id
     end
 
     win_info = result[1]
@@ -176,6 +180,8 @@ class Downloader
       "white_player_id" => white_player_id,
       "winner_id" => winner_id,
       "winner_name" => winner_name,
+      "loser_id" => loser_id,
+      "loser_name" => loser_name,
       "board_size" => board_size,
       "division_id" => division_id,
       "url" => url

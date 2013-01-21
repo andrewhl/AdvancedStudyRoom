@@ -97,7 +97,7 @@ class EventsController < ApplicationController
 
     # get current matches for this division
 
-    @matches = @division.matches.select { |item| item.created_at.month == Time.now.month }
+    @matches = @division.valid_and_tagged_matches.select { |item| item.created_at.month == Time.now.month }
 
     # @tiers.divisions.select { |division| division.name == params[:division] }
 

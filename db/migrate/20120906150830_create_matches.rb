@@ -20,10 +20,13 @@ class CreateMatches < ActiveRecord::Migration
       t.integer  :division_id
       t.string   :winner_name
       t.integer  :winner_id
+      t.string   :loser_name
+      t.integer  :loser_id
       t.integer  :board_size
       t.boolean  :valid_game
       t.boolean  :tagged
       t.string   :url
+
 
       t.timestamps
     end
@@ -34,5 +37,6 @@ class CreateMatches < ActiveRecord::Migration
     add_index :matches, :white_player_id
     add_index :matches, :division_id
     add_index :matches, :winner_id
+    add_index :matches, :loser_id
   end
 end

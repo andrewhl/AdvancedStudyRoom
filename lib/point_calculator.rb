@@ -54,7 +54,7 @@ class PointCalculator
     match_position, match_count = match_info[0], match_info[1]
 
     winner_points = calculate_point_decay(@ruleset.points_per_win, @ruleset.point_decay, match_count, match_position, match)
-    loser_points = calculate_point_decay(@ruleset.points_per_loss, @ruleset.point_decay, match_count, match_position, match)
+    # loser_points = calculate_point_decay(@ruleset.points_per_loss, @ruleset.point_decay, match_count, match_position, match)
 
 
     winner.points.create(:count => winner_points,
@@ -63,7 +63,7 @@ class PointCalculator
                          :event_type => winner.event.event_type,
                          :match_id => match.id,
                          :registration_id => winner.id)
-    loser.points.create(:count => loser_points,
+    loser.points.create(:count => @ruleset.points_for_game,
                         :account_id => loser.account.id,
                         :event_id => loser.event.id,
                         :event_type => loser.event.event_type,
@@ -74,6 +74,12 @@ class PointCalculator
   def calculate_point_decay point_value, decay, match_count, match_position, match
     new_point_value, points = point_value, []
     # binding.pry if match_count == 2 and point_value == 1 and match_position == 2
+
+    # 2/1 then 1/.5 if he won the first, 1.5/.5 if he lost the first
+
+    # Award 0.5 points to both players for every game, regardless
+    # [13-01-20 9:23:39 PM] Graham Lamburn: Award 1 for the first win, and (* decay) for each subsequent _win_
+    # [13-01-20 9:23:50 PM] Graham Lamburn: That way, the decay is tied to wins, not games
 
     # binding.pry if match.id == 82
     count = 1

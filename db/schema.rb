@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120184505) do
+ActiveRecord::Schema.define(:version => 20130121022521) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -138,6 +138,8 @@ ActiveRecord::Schema.define(:version => 20130120184505) do
     t.integer  "division_id"
     t.string   "winner_name"
     t.integer  "winner_id"
+    t.string   "loser_name"
+    t.integer  "loser_id"
     t.integer  "board_size"
     t.boolean  "valid_game"
     t.boolean  "tagged"
@@ -148,6 +150,7 @@ ActiveRecord::Schema.define(:version => 20130120184505) do
   add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
   add_index "matches", ["black_player_name"], :name => "index_matches_on_black_player_name"
   add_index "matches", ["division_id"], :name => "index_matches_on_division_id"
+  add_index "matches", ["loser_id"], :name => "index_matches_on_loser_id"
   add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
   add_index "matches", ["white_player_name"], :name => "index_matches_on_white_player_name"
   add_index "matches", ["winner_id"], :name => "index_matches_on_winner_id"
@@ -164,18 +167,20 @@ ActiveRecord::Schema.define(:version => 20130120184505) do
 
   create_table "point_rulesets", :force => true do |t|
     t.integer  "parent_id"
+    t.string   "parent_type"
     t.float    "points_per_win"
     t.float    "points_per_loss"
     t.float    "point_decay"
     t.string   "type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.string   "parent_type"
+    t.float    "points_for_game"
   end
 
   add_index "point_rulesets", ["parent_id"], :name => "index_point_rulesets_on_parent_id"
 
   create_table "points", :force => true do |t|
+    t.float    "count"
     t.integer  "account_id"
     t.integer  "event_id"
     t.string   "event_desc"
@@ -185,7 +190,6 @@ ActiveRecord::Schema.define(:version => 20130120184505) do
     t.integer  "match_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.float    "count"
   end
 
   add_index "points", ["account_id"], :name => "index_points_on_account_id"

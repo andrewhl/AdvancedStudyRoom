@@ -71,7 +71,11 @@ class Division < ActiveRecord::Base
   end
 
   def valid_matches
-    matches.where("valid_game = ?", true)
+    matches.where("valid_game = ?", true).order("created_at")
+  end
+
+  def valid_and_tagged_matches
+    matches.where("valid_game = ? and tagged = ?", true, true).order("created_at")
   end
 
   private
