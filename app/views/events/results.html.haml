@@ -22,6 +22,7 @@
     %table.table.table-condensed.table-bordered.table-hover
       %tr
         %th Player
+        %th Points
         %th Wins/Losses
       - @division.registrations.each do |player|
         %tr
@@ -47,7 +48,7 @@
       - @division.registrations.each do |row_player|
         %tr
           %td= row_player.handle
-          %td= row_player.points_this_month
+          %td= row_player.points.any? ? row_player.points_this_month : 0
           - @division.registrations.each do |col_player|
             - if col_player == row_player
               %td
