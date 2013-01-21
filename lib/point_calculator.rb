@@ -4,8 +4,8 @@ class PointCalculator
     @division = division
     @registrations = division.registrations
     # division.valid_matches already filters out any games played over the ruleset game limit
-    # @matches = division.valid_matches # checks for tagged games by default
-    reg = Registration.find_by_handle("ufo")
+    @matches = division.valid_matches # checks for tagged games by default
+    # reg = Registration.find_by_handle("ufo")
     @matches = reg.valid_and_tagged_matches
     @ruleset = division.point_ruleset
 
