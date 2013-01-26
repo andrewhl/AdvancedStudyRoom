@@ -123,7 +123,8 @@ class EventsController < ApplicationController
       format.js do
         event = Event.find(params[:id])
         event.validate_games
-        render :manage, flash[:success] = "Matches validated."
+        flash[:success] = "Matches validated."
+        render :manage
       end
     end
   end
@@ -132,8 +133,9 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.js do
         event = Event.find(params[:id])
-        event.tag_games
-        render :manage, flash[:success] = "Matches tagged."
+        event.tag_games(true)
+        flash[:success] = "Matches tagged."
+        render :manage
       end
     end
   end

@@ -102,7 +102,6 @@ class Match < ActiveRecord::Base
 
   # check if this game has a valid tag
   def has_valid_tag?
-
     event = division.event
     registrations = event.registrations
     tags = event.tags
@@ -114,13 +113,13 @@ class Match < ActiveRecord::Base
     end
 
     tags.each do |tag|
-
       node_limit ||= tag.node_limit
       phrase = Regexp.new(tag.phrase, true)
 
       comments.each do |comment|
+
         # ensure the comment is made by someone in the event
-        next unless registrations.find_by_handle(comment.handle)
+        next unless registrations.find_by_handle(comment.handle.downcase)
 
         comment_node = comment.node_number + 1
         return valid_tag = true if phrase =~ comment.comment and (comment_node <= tag.node_limit)
