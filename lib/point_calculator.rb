@@ -69,7 +69,7 @@ class PointCalculator
     # loser_points = calculate_point_decay(@ruleset.points_per_loss, @ruleset.point_decay, match_count, match_position, match)
 
 
-    winner.points.create(:count => winner_points,
+    winner.points.create(:count => winner_points + @ruleset.points_for_game,
                          :account_id => winner.account.id,
                          :event_id => winner.event.id,
                          :event_type => winner.event.event_type,
