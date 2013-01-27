@@ -22,6 +22,18 @@ class PointCalculator
     end
   end
 
+  def points_this_month registration
+    return 0 if registration.points.empty?
+    points = registration.points.select { |point| point.created_at.month == Time.now.month }
+    points.map { |point| point.count }.inject(:+)
+  end
+
+  def update_registration registration
+    points = points_this_month(registration)
+    registration.points_this_month = points
+    registration.save
+  end
+
   # def deserves_points? match
   #   match.points.any? ? false : true
   # end

@@ -70,6 +70,10 @@ namespace :manager do
         puts "Calculating #{division.name}..."
         calculator = PointCalculator.new(division)
         calculator.calculate
+
+        division.registrations.each do |registration|
+          calculator.update_registration(registration)
+        end
       end
     end
   end

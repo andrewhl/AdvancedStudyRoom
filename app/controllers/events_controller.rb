@@ -103,8 +103,8 @@ class EventsController < ApplicationController
     # @tiers.divisions.select { |division| division.name == params[:division] }
 
     # Default values for the page sorting.
-    params[:sort] ||= "handle"
-    params[:direction] ||= "asc"
+    params[:sort] ||= "points_this_month"
+    params[:direction] ||= "desc"
   end
 
   def tags
@@ -147,7 +147,7 @@ class EventsController < ApplicationController
     end
 
     def sort_column
-      Registration.column_names.include?(params[:sort]) ? params[:sort] : "handle"
+      Registration.column_names.include?(params[:sort]) ? params[:sort] : "points_this_month"
     end
 
     def sort_direction

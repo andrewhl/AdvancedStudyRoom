@@ -23,7 +23,8 @@
       %tr
         %th
           = link_to division_sortable "handle", "Player", @division.id
-        %th Points
+        %th
+          = link_to division_sortable "points_this_month", "Points", @division.id
         %th Wins/Losses
       - @division.registrations.order(sort_column + ' ' + sort_direction).each do |player|
         %tr
@@ -43,7 +44,7 @@
     %table.table.table-condensed.table-bordered.table-hover.wide-table
       %tr
         %th= link_to division_sortable "handle", "Player", @division.id
-        %th Points
+        %th= link_to division_sortable "points_this_month", "Points", @division.id
         - @division.registrations.order(sort_column + ' ' + sort_direction).each do |col_player|
           %th
             %span
