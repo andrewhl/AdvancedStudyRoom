@@ -1,0 +1,14 @@
+---
+applications:
+  .:
+    name: asr
+    framework:
+      name: rails3
+      info:
+        mem: 256M
+        description: Rails Application
+        exec: 
+    infra: aws
+    url: http://advancedstudyroom.rs.af.cm/
+    mem: 2G
+    instances: 1

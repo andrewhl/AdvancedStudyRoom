@@ -37,7 +37,9 @@ class Account < ActiveRecord::Base
   belongs_to :division
 
   validates_presence_of :handle, :rank
-  validates_uniqueness_of :handle
+  # validates :handle, :uniqueness => { :scope => :server }
+
+
 
   def event_points *event_id
     if event_id

@@ -38,6 +38,11 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :accounts, allow_destroy: true
 
+  def handle_is_unique?(handle, server_id)
+    server = Server.find_by_id(server_id)
+    server.accounts.where("handle = ?", handle).empty?
+  end
+
   def joined_event? event_id
     accounts.any? do |account|
       account.registrations.any? { |reg| reg.event && reg.event.id == event_id }
