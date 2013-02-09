@@ -52,10 +52,10 @@ group :test, :development do
   gem 'better_errors'
   # gem 'binding_of_caller'
   gem 'sqlite3'
-  gem 'pry'
-  gem 'pry-nav'
-  gem 'pry-rescue'
-  gem 'pry-stack_explorer'
+  # gem 'pry'
+  # gem 'pry-nav'
+  # gem 'pry-rescue'
+  # gem 'pry-stack_explorer'
   gem 'annotate', ">=2.5.0"
   gem "factory_girl_rails", "~> 3.0"
   gem 'cucumber-rails', :require => false
