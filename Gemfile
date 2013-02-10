@@ -8,7 +8,6 @@ gem 'SgfParser'
 gem 'rubyzip', :require => 'zip/zip'
 gem 'client_side_validations'
 gem 'libv8', '~> 3.11.8'
-gem 'newrelic_rpm'
 gem 'cancan'
 
 # Bundle edge Rails instead:
@@ -34,28 +33,28 @@ end
 
 group :test do
   gem 'rb-fsevent' #, '~> 0.9.1'
-  gem 'rspec-rails'
+  gem "rspec-rails", "~> 2.0"
   gem 'capybara'
-  gem 'shoulda'
-  gem 'shoulda-context'
-  gem 'shoulda-matchers'
+  # gem 'shoulda'
+  # gem 'shoulda-context'
+  # gem 'shoulda-matchers'
   # gem 'guard'
   gem 'growl'
   # gem 'spork'
-  gem 'guard-pow'
-  gem 'guard-rspec'
-  gem 'guard-spork'
+  # gem 'guard-pow'
+  # gem 'guard-rspec'
+  # gem 'guard-spork'
   gem 'database_cleaner'
 end
 
 group :test, :development do
   gem 'better_errors'
-  # gem 'binding_of_caller'
+  gem 'binding_of_caller'
   gem 'sqlite3'
-  # gem 'pry'
-  # gem 'pry-nav'
-  # gem 'pry-rescue'
-  # gem 'pry-stack_explorer'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
   gem 'annotate', ">=2.5.0"
   gem "factory_girl_rails", "~> 3.0"
   gem 'cucumber-rails', :require => false

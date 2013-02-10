@@ -1,16 +1,26 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'pow' do
-  watch('.powrc')
-  watch('.powenv')
-  watch('.rvmrc')
-  watch('Gemfile')
-  watch('Gemfile.lock')
+# guard 'pow' do
+#   watch('.powrc')
+#   watch('.powenv')
+#   watch('.rvmrc')
+#   watch('Gemfile')
+#   watch('Gemfile.lock')
+#   watch('config/application.rb')
+#   watch('config/environment.rb')
+#   watch(%r{^config/environments/.*\.rb$})
+#   watch(%r{^config/initializers/.*\.rb$})
+# end
+
+guard 'spork', :cucumber => false, :test_unit => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
-  watch(%r{^config/environments/.*\.rb$})
-  watch(%r{^config/initializers/.*\.rb$})
+  watch('config/environments/test.rb')
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('Gemfile')
+  watch('Gemfile.lock')
+  watch('spec/spec_helper.rb') { :rspec }
 end
 
 guard 'rspec', :version => 2 do
@@ -28,16 +38,3 @@ guard 'rspec', :version => 2 do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
-
-guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch(%r{^config/environments/.+\.rb$})
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('Gemfile')
-  watch('Gemfile.lock')
-  watch('spec/spec_helper.rb') { :rspec }
-  watch('test/test_helper.rb') { :test_unit }
-  watch(%r{features/support/}) { :cucumber }
-end
-
