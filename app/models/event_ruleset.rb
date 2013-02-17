@@ -4,13 +4,6 @@
 #
 #  id                    :integer          not null, primary key
 #  name                  :string(255)
-#  allowed_rengo         :boolean
-#  allowed_teaching      :boolean
-#  allowed_review        :boolean
-#  allowed_free          :boolean
-#  allowed_rated         :boolean
-#  allowed_simul         :boolean
-#  allowed_demonstration :boolean
 #  main_time_min         :float
 #  main_time_max         :float
 #  overtime_required     :boolean
@@ -41,6 +34,9 @@
 #  handicap_required     :boolean
 #  max_board_size        :integer
 #  min_board_size        :integer
+#  node_limit            :integer
+#  points_per_win        :float
+#  points_per_loss       :float
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #

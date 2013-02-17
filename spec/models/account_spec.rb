@@ -25,34 +25,37 @@
 
 require 'spec_helper'
 
-describe User do
+describe Account do
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    @account = FactoryGirl.create(:account)
   end
 
   describe "authentication" do
     it "should create a new instance given a valid attribute" do
-      # user = FactoryGirl.create(:user)
-      @user.should be_valid
+      @account.should be_valid
     end
 
-    it "should not create a new instance given an invalid attribute" do
-      user = FactoryGirl.build(:user, :email => "foo@")
-      user.should_not be_valid
+    it "should not create a new instance without a handle or a rank" do
+      account = Account.create()
+      account.should_not be_valid
     end
 
-    it "should not allow multiple users with the same username" do
-      user2 = FactoryGirl.build(:user, :email => "test@test.com").should_not be_valid
+    it "should not create a new instance without a rank" do
+      account = Account.create(:handle => "test")
+      account.should_not be_valid
     end
 
-  end
+    it "should not create a new instance without a handle" do
+      account = Account.create(:rank => 4)
+      account.should_not be_valid
+    end
 
-  describe "admin users" do
-    subject(:admin) { FactoryGirl.create(:admin) }
-
-    it { should be_valid }
-
+    it "should allow multiple users with the same username (in different servers)" do
+      account2 = FactoryGirl.create(:account)
+      # user2.should be_valid
+      Account.count.should == 2
+    end
 
   end
 

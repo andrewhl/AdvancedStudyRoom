@@ -6,9 +6,10 @@
 #  phrase     :string(255)
 #  league_id  :integer
 #  event_id   :integer
+#  node_limit :integer
+#  event_type :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  node_limit :integer
 #
 
 require 'test_helper'

@@ -33,7 +33,6 @@ end
 
 group :test do
   gem 'rb-fsevent' #, '~> 0.9.1'
-  gem "rspec-rails", "~> 2.0"
   gem 'capybara'
   # gem 'shoulda'
   # gem 'shoulda-context'
@@ -48,6 +47,7 @@ group :test do
 end
 
 group :test, :development do
+  gem "rspec-rails", "~> 2.0"
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sqlite3'

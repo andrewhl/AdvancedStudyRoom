@@ -22,6 +22,8 @@
 #  division_id        :integer
 #  winner_name        :string(255)
 #  winner_id          :integer
+#  loser_name         :string(255)
+#  loser_id           :integer
 #  board_size         :integer
 #  valid_game         :boolean
 #  tagged             :boolean

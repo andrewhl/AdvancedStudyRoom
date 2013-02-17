@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :user do
+    username "johndoe"
     first_name "John"
     last_name "Doe"
     email "johndoe@example.com"
@@ -12,6 +13,11 @@ FactoryGirl.define do
     user
   end
 
+  factory :account do
+    handle "kabradarf"
+    rank 4
+  end
+
   sequence :email do |n|
     "person-#{n}@example.com"
   end
@@ -21,6 +27,7 @@ FactoryGirl.define do
   end
 
   factory :admin, :class => User do
+    username "admin"
     first_name "Admin"
     email "admin@admin.com"
     password "foobar"
