@@ -141,14 +141,16 @@ class Match < ActiveRecord::Base
 
   end
 
-
+  # TODO: Add test for games_per_player
+  # TODO: Add test for games_per_opponent
+  # TODO: Add tests for points
 
   def is_valid?
     division_ruleset = self.division.division_ruleset
 
-    binding.pry if division_ruleset.nil?
-    binding.pry if division_ruleset.parent.nil?
-    binding.pry if division_ruleset.parent.parent.nil?
+    # binding.pry if division_ruleset.nil?
+    # binding.pry if division_ruleset.parent.nil?
+    # binding.pry if division_ruleset.parent.parent.nil?
 
     tier_ruleset = division_ruleset.parent
     event_ruleset = tier_ruleset.parent

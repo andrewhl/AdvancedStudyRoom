@@ -120,6 +120,7 @@ class Ruleset < ActiveRecord::Base
       raise TypeError, "Must be a boolean value." unless args[0] == true or args[0] == false
 
       if args[0] == true
+        binding.pry
         permissions.find_by_perm(mthd) || permissions.create(:perm => mthd, :parent_id => id)
       else
         permissions.find_by_perm(mthd).destroy unless permissions.find_by_perm(mthd).nil?

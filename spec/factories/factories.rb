@@ -35,15 +35,15 @@ FactoryGirl.define do
     admin true
   end
 
-  factory :ruleset, :class => Ruleset do
+  factory :ruleset do
     name "KGS Default"
-    allowed_rengo false
-    allowed_teaching false
-    allowed_review false
-    allowed_free true
-    allowed_rated true
-    allowed_simul true
-    allowed_demonstration false
+    # allowed_rengo false
+    # allowed_teaching false
+    # allowed_review false
+    # allowed_free true
+    # allowed_rated true
+    # allowed_simul true
+    # allowed_demonstration false
     main_time_min 300.0
     main_time_max 2700.0
     overtime_required true
@@ -65,43 +65,47 @@ FactoryGirl.define do
     max_handi 5
     min_handi 0
     handicap_required false
+  
+    factory :event_ruleset, :class => EventRuleset do
+      name "Event Ruleset"
+    end
+  
+    factory :tier_ruleset, :class => TierRuleset do
+      name "Tier Ruleset"
+    end
+
+    factory :empty_division_ruleset, :class => DivisionRuleset do
+      name "Empty Division Ruleset"
+    end
+
+    factory :division_ruleset, :class => DivisionRuleset do
+      name "Division Ruleset"
+      main_time_min 300.0
+      main_time_max 2700.0
+      overtime_required true
+      jovertime_allowed true
+      covertime_allowed true
+      jot_min_periods 5
+      jot_max_periods 30
+      jot_min_period_length 60.0
+      jot_max_period_length 300.0
+      cot_min_stones 25
+      cot_max_stones 25
+      cot_max_time 300.0
+      cot_min_time 300.0
+      games_per_player 2
+      games_per_opponent 1
+      max_komi 6.5
+      min_komi 5.5
+      max_handi 5
+      min_handi 0
+      handicap_required false
+    end
+
   end
 
-  factory :event_ruleset, :class => EventRuleset do
-    name "Event Ruleset"
-  end
 
-  factory :tier_ruleset, :class => TierRuleset do
-    name "Tier Ruleset"
-  end
 
-  factory :empty_division_ruleset, :class => DivisionRuleset do
-    name "Empty Division Ruleset"
-  end
-
-  factory :division_ruleset, :class => DivisionRuleset do
-    name "Division Ruleset"
-    main_time_min 300.0
-    main_time_max 2700.0
-    overtime_required true
-    jovertime_allowed true
-    covertime_allowed true
-    jot_min_periods 5
-    jot_max_periods 30
-    jot_min_period_length 60.0
-    jot_max_period_length 300.0
-    cot_min_stones 25
-    cot_max_stones 25
-    cot_max_time 300.0
-    cot_min_time 300.0
-    games_per_player 2
-    games_per_opponent 1
-    max_komi 6.5
-    min_komi 5.5
-    max_handi 5
-    min_handi 0
-    handicap_required false
-  end
 
   factory :match, :class => Match do
     datetime_completed "#{Time.now.strftime("%Y-%m-%d %T")}"

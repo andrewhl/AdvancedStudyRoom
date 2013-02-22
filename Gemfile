@@ -32,13 +32,10 @@ group :assets do
 end
 
 group :test do
-  gem 'rb-fsevent' #, '~> 0.9.1'
-  gem 'capybara'
   # gem 'shoulda'
   # gem 'shoulda-context'
   # gem 'shoulda-matchers'
   # gem 'guard'
-  gem 'growl'
   # gem 'spork'
   # gem 'guard-pow'
   # gem 'guard-rspec'
@@ -47,6 +44,13 @@ group :test do
 end
 
 group :test, :development do
+  gem 'rb-inotify', '~> 0.8.8', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+  gem 'growl'
+  gem 'capybara'
+  gem 'guard-rspec'
+
   gem "rspec-rails", "~> 2.0"
   gem 'better_errors'
   gem 'binding_of_caller'
