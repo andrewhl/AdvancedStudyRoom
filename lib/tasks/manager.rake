@@ -1,10 +1,10 @@
-['downloader', 'validator', 'scraper', 'point_calculator'].each { |x| require x }
+['extractor', 'validator', 'scraper', 'point_calculator'].each { |x| require x }
 
 namespace :manager do
   desc "Download games"
   task :download => :environment do
 
-    downloader = Downloader.new
+
     scraper = Scraper.new
     time = Time.now
     events = Event.all #Event.find_by_name("ASR League")
@@ -12,6 +12,9 @@ namespace :manager do
     events.each do |event|
       # [Registration.find_by_handle("kosach")].each do |registration|
       event.registrations.each do |registration|
+
+        extractor = Extractor.new filepath: "./lib/games/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip", 
+                                    handle: "#{registration.handle}"
 
         time_before = Time.now
         delay = 3
@@ -30,7 +33,7 @@ namespace :manager do
           end
         end
         unless has_games == false
-          downloader.download_games("./lib/games/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip", "#{registration.handle}")
+          extractor.extract_games
 
           # Delete zip file
           FileUtils.remove_entry("./lib/games/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip")
