@@ -13,7 +13,8 @@ namespace :manager do
       # [Registration.find_by_handle("kosach")].each do |registration|
       event.registrations.each do |registration|
 
-        extractor = Extractor.new filepath: "./lib/games/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip", 
+        extractor = Extractor.new source_path: "./lib/games/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip",
+                                    target_path: "./temp/"
                                     handle: "#{registration.handle}"
 
         time_before = Time.now

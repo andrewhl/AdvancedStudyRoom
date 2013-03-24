@@ -1,61 +1,87 @@
 ['net/http', 'pry', 'open-uri', 'zip/zip', 'sgf', 'fileutils', 'digest/md5'].each { |x| require x }
 
 
+
 class Extractor
 
+  attr_reader :target
+
   def initialize(args)
-    @filepath = args[:filepath]
+    @source   = args[:source_path]
+    @target   = args[:target_path]
     @handle   = args[:handle]
+  end
+
+  def extract_and_clean
+    extract_games
+    delete_temp_game_files
   end
 
   def extract_games
 
     # downloads games, converts to sgf, saves them, then saves comments
-    Zip::ZipFile.open(@filepath) do |zip_file|
+    Zip::ZipFile.open(@source) do |zip_file|
       zip_file.each do |f|
-
 
         # Review games match the regex: ^\w+-\d+\.sgf|^\w+\.sgf, (e.g. username-#.sgf or just username.sgf)
         # These games should not be counted
 
         next if not File.basename(f.to_s).scan(/^\w+-\d+\.sgf|^\w+\.sgf/).empty?
 
+        f_path = File.join(@target, File.basename(f.to_s))
         # binding.pry
-        f_path = File.join("temp", File.basename(f.to_s))
         FileUtils.mkdir_p(File.dirname(f_path))
         zip_file.extract(f, f_path) unless File.exists?(f_path)
 
 
-        game = convert_sgf_to_game(f_path.to_s, @handle)
-
-        # binding.pry if game != "Invalid"
-        puts game, File.basename(f.to_s)
-        unless game == "Invalid"
-          # binding.pry if File.basename(f.to_s) == "ricopanda-affytaffy.sgf"
-          game_comments = get_comments(f_path.to_s, game.game_digest)
-
-          # return "Invalid game" unless game.has_valid_tag game_comments
-
-          # binding.pry if game != "Invalid"
-          if game.save
-
-            # skip this step if for some reason this game's comments already exist
-            next if game.comments.any?
-
-            # skip this step if the game has no comments
-            next if game_comments.nil?
-
-            process_comments(game, game_comments)
-
-          end
-        end
-
-        FileUtils.remove_entry(f_path)
       end
     end
   end
 
+  def delete_temp_game_files
+    Dir.foreach(@target) do |item|
+      next if item == '.' or item == '..'
+      FileUtils.remove_entry(File.join(@target,item))
+    end
+  end
 
+end
+
+class Converter
+
+  def initialize(args)
+    @folderpath = args[:folder_path]
+
+  end
+
+
+  def save_games(game)
+
+    game = convert_sgf_to_game(f_path.to_s, @handle)
+
+      # binding.pry if game != "Invalid"
+      puts game, File.basename(f.to_s)
+      unless game == "Invalid"
+        # binding.pry if File.basename(f.to_s) == "ricopanda-affytaffy.sgf"
+        game_comments = get_comments(f_path.to_s, game.game_digest)
+
+        # return "Invalid game" unless game.has_valid_tag game_comments
+
+        # binding.pry if game != "Invalid"
+        # if game.save
+
+        #   # skip this step if for some reason this game's comments already exist
+        #   next if game.comments.any?
+
+        #   # skip this step if the game has no comments
+        #   next if game_comments.nil?
+
+        #   process_comments(game, game_comments)
+
+        # end
+      end
+
+  end
 
   def convert_sgf_to_game file, username
 
