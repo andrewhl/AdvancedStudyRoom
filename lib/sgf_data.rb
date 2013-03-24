@@ -4,28 +4,35 @@ module ASR
 
   class SGFData
 
+    attr_reader :valid_game, :data
+
     def initialize(args)
       @filepath = args[:file_path]
-      @parser = SGF::Parser.new
       @game_info = {}
+      @valid_game = true
 
       get_file_contents
     end
 
-    def game_type
-      @game_info["GM"].to_i
+    def data
+      {
+        rules: rules,
+        board_size: board_size,
+        komi: komi,
+        time_limit: time_limit,
+        overtime: overtime,
+        black_player: black_player,
+        white_player: white_player,
+        white_rank: white_rank,
+        black_rank: nil,
+        date_of_game: date_of_game,
+        result: result
+      }
     end
 
-    def file_format
-      @game_info["FF"].to_i
-    end
-
-    def encode_type
-      @game_info["CA"]
-    end
-
-    def application
-      @game_info["AP"]
+    def clean_data
+      preparer = ASR::SGFPreparer.new sgf: self
+      data.merge(preparer.data)
     end
 
     def rules
@@ -78,7 +85,8 @@ module ASR
     private
 
       def get_file_contents
-        tree = @parser.parse(@filepath)
+        parser = SGF::Parser.new
+        tree = parser.parse(@filepath)
         game = tree.games.first
         @game_info = game.current_node.properties
       end
