@@ -1,4 +1,4 @@
-['net/http', 'pry', 'open-uri', 'zip/zip', 'sgf', 'fileutils', 'digest/md5'].each { |x| require x }
+['sgf_preparer', 'net/http', 'pry', 'open-uri', 'zip/zip', 'sgf', 'fileutils', 'digest/md5'].each { |x| require x }
 
 module ASR
 
@@ -24,7 +24,8 @@ module ASR
         black_player: black_player,
         white_player: white_player,
         white_rank: white_rank,
-        black_rank: nil,
+        black_rank: black_rank,
+        handicap: handicap,
         date_of_game: date_of_game,
         result: result
       }
@@ -68,9 +69,7 @@ module ASR
     end
 
     def black_rank
-      # bug in parser, this method isn't implemented
-      # TODO: Submit pull request for this to be implemented
-      raise NotImplementedError
+      @game_info["BR"]
     end
 
     def date_of_game
@@ -79,6 +78,10 @@ module ASR
 
     def result
       @game_info["RE"]
+    end
+
+    def handicap
+      @game_info["HA"]
     end
 
 

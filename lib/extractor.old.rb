@@ -85,6 +85,29 @@ class Converter
 
   def convert_sgf_to_game file, username
 
+    parser = SGF::Parser.new
+    tree = parser.parse(file)
+    game = tree.games.first
+
+    # Only converts games that contain the ASR tag in the first 30 moves
+
+    ginfo = game.current_node.properties
+
+
+    # date_time = game.date
+    ruleset = game.rules
+    board_size = ginfo["SZ"]
+    # komi = game.komi.to_f
+
+    # if the game is a demonstration game, game.black_player or game.white_player
+    # will raise an SGF:NoIdentityError
+
+    if ginfo["PB"].nil? or ginfo["PW"].nil?
+      return "Invalid"
+    end
+
+    black_player_name = game.black_player
+    white_player_name = game.white_player
 
     # Find the registration that matches the black and white player names.
 
@@ -117,6 +140,32 @@ class Converter
 
     main_time = ginfo["TM"]
 
+
+    # Board size
+    board_size = ginfo["SZ"].to_i
+
+    if ginfo["OT"].nil?
+      ot_type = "None"
+      ot_main = 0
+      ot_stones = 0
+    else
+      overtime = ginfo["OT"].split(" ")
+
+
+
+      # Type of overtime, e.g. byo-yomi, Canadian
+      ot_type = overtime[1]
+
+      # Overtime main time/periods and number of stones (e.g., 10 periods, 15 stones, or 300 seconds, 25 stones)
+      ot_settings = overtime[0].split("x")
+
+      # Always an integer; whether it represents seconds or number of periods is determined by ot_type
+      ot_main = ot_settings[0]
+
+      # Always just the number of stones per period/seconds
+      ot_stones = ot_settings[1]
+    end
+
     winner = result[0]
 
     case winner
@@ -134,7 +183,9 @@ class Converter
 
     win_info = result[1]
 
-
+    # handicap
+    handicap = 0
+    handicap = ginfo["HA"] unless !ginfo["HA"]
 
     # game digest == sgf file name (which will be unique), and the game date
 

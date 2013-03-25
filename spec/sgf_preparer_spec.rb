@@ -45,13 +45,8 @@ describe ASR::SGFPreparer do
       prepared_sgf.data[:time_limit].should == 1500
     end
 
-    it "should display overtime" do
-    end
-
-    it "should display black player name" do
-    end
-
-    it "should display white player name" do
+    it "should display overtime type" do
+      prepared_sgf.data[:overtime][:ot_type].should == "byo-yomi"
     end
 
     it "should display white player rank" do

@@ -68,8 +68,8 @@ describe ASR::SGFData do
       sgf_data.white_rank.should == "3k"
     end
 
-    it "should display black player rank" do
-      pending
+    it "should display nil if no black player rank" do
+      sgf_data.black_rank.should == nil
     end
 
     it "should display date of game" do
@@ -80,13 +80,34 @@ describe ASR::SGFData do
       sgf_data.result.should == "B+Resign"
     end
 
+    it "should display nil for empty values" do
+      sgf_data.black_rank.should == nil
+    end
+
+
   end
 
   describe "data preparation" do
 
-    it "should clean the data" do
-      pending
+    it "should return a hash" do
+      sgf_data.clean_data.should be_an_instance_of(Hash)
     end
+
+    it "should list the winner" do
+      sgf_data.clean_data[:result][:winner].should == "B"
+    end
+
+    it "should list the win info" do
+      sgf_data.clean_data[:result][:win_info].should == "Resign"
+    end
+
+    it "should lowercase the white player name" do
+      sgf_data.clean_data[:white_player].should == "drgoplayer"
+    end
+
+
+
   end
+
 
 end
