@@ -1,9 +1,9 @@
 ['spec_helper', 'extractor', 'pry'].each { |x| require x }
 
-describe Converter do
+describe SGFConverter do
 
   subject(:converter) {
-    Converter.new folderpath: "/temp"
+    ASR::Converter.new folderpath: "/temp"
   }
 
 

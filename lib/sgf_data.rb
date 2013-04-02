@@ -4,17 +4,36 @@ module ASR
 
   class SGFData
 
-    attr_reader :valid_game, :data
+    attr_reader :valid_game, :data, :game_info
+
+    NAME_TO_SGF_CODE = {
+      rules: "RU",
+      board_size: "SZ",
+      komi: "KM",
+      time_limit: "TM",
+      overtime: "OT",
+      black_player: "PB",
+      white_player: "WR",
+      black_rank: "BR",
+      date_of_game: "DT",
+      result: "RE",
+      handicap: "HA"
+    }
 
     def initialize(args)
       @filepath = args[:file_path]
-      @game_info = {}
+      @game_info ||= {}
       @valid_game = true
 
       get_file_contents
     end
 
+    def self.valid_game
+      return @valid_game
+    end
+
     def data
+      @data ||=
       {
         rules: rules,
         board_size: board_size,
@@ -31,59 +50,19 @@ module ASR
       }
     end
 
+    def method_missing method
+      @game_info[NAME_TO_SGF_CODE[method]]
+    end
+
     def clean_data
       preparer = ASR::SGFPreparer.new sgf: self
       data.merge(preparer.data)
     end
 
-    def rules
-      @game_info["RU"]
+    def clean_data!
+      preparer = ASR::SGFPreparer.new sgf: self
+      @data = data.merge(preparer.data)
     end
-
-    def board_size
-      @game_info["SZ"]
-    end
-
-    def komi
-      @game_info["KM"]
-    end
-
-    def time_limit
-      @game_info["TM"]
-    end
-
-    def overtime
-      @game_info["OT"]
-    end
-
-    def black_player
-      @game_info["PB"]
-    end
-
-    def white_player
-      @game_info["PW"]
-    end
-
-    def white_rank
-      @game_info["WR"]
-    end
-
-    def black_rank
-      @game_info["BR"]
-    end
-
-    def date_of_game
-      @game_info["DT"]
-    end
-
-    def result
-      @game_info["RE"]
-    end
-
-    def handicap
-      @game_info["HA"]
-    end
-
 
     private
 
