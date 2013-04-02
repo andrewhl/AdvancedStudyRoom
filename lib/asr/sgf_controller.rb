@@ -1,3 +1,5 @@
+require 'sgf_data'
+
 module ASR
 
   class SGFController

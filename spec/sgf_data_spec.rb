@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'sgf_data'
 require 'pry'
 
 describe ASR::SGFData do
