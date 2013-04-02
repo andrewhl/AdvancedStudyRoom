@@ -14,7 +14,7 @@ namespace :manager do
       event.registrations.each do |registration|
 
         extractor = Extractor.new source_path: "./lib/games/#{registration.handle}-#{Time.now.year}-#{Time.now.month}.zip",
-                                    target_path: "./temp/"
+                                    target_path: "./temp/",
                                     handle: "#{registration.handle}"
 
         time_before = Time.now

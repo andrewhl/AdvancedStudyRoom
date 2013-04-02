@@ -17,9 +17,11 @@ AdvancedStudyRoom::Application.routes.draw do
   # get '/events/manage/:id(.:format)', to: 'events#manage', as: 'event_manage'
 
 
-  if Event.first
-    match 'results', to: 'events#results', :id => Event.first.id
-  end
+  # TODO: This fails when trying to run rake db:setup because the 'events' table does
+  # not yet exists.
+  # if Event.first
+  #   match 'results', to: 'events#results', :id => Event.first.id
+  # end
   
   get 'tags', to: 'tags#new'
 
