@@ -14,8 +14,6 @@
 #  j_ot_max_period_length :float
 #  c_ot_min_time          :float
 #  c_ot_max_time          :float
-#  points_per_win         :float
-#  points_per_loss        :float
 #  min_komi               :float
 #  max_komi               :float
 #  j_ot_max_periods       :integer
@@ -27,7 +25,6 @@
 #  min_board_size         :integer
 #  max_board_size         :integer
 #  node_limit             :integer
-#  matches_per_opponent   :integer
 #  rulesetable_id         :integer
 #  rulesetable_type       :string(255)
 #  created_at             :datetime         not null

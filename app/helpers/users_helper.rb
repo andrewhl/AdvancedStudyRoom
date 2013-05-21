@@ -10,7 +10,7 @@ module UsersHelper
   end
 
   def can_join_events?(user)
-    user.registrations.count < Event.count
+    user.registrations.active.count < Event.count
   end
 
 end

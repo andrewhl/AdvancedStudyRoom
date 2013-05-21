@@ -11,10 +11,10 @@
       %th Division
       %th Account Handle
       %th Server
-      - if @user.registrations.any?
+      - if @user.registrations.active.any?
         %th
   %tbody
-    - @user.registrations.each do |reg|
+    - @user.registrations.active.each do |reg|
       %tr
         %td= link_to_results(reg.event.name, reg)
         %td= link_to_results(reg.division.try(:name) || 'Pending...', reg)
@@ -40,7 +40,7 @@
         %td= account.server.name
         %td= account.rank ? Utilities.format_rank(account.rank) : "Pending..."
         %td= account.handle
-        %td= account.registrations.count
+        %td= account.registrations.active.count
         - if current_user.admin?
           %td
             = link_to 'Edit', edit_user_account_path(@user, account), class: 'btn btn-mini'

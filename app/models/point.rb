@@ -5,12 +5,14 @@
 #  id              :integer          not null, primary key
 #  count           :float
 #  account_id      :integer
+#  registration_id :integer
 #  event_id        :integer
 #  match_id        :integer
 #  event_desc      :string(255)
 #  event_type      :string(255)
-#  disabled        :boolean          default(FALSE), not null
 #  disabled_reason :string(255)
+#  disabled        :boolean          default(FALSE), not null
+#  awarded_at      :datetime
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

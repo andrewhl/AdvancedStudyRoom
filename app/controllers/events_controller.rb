@@ -74,7 +74,8 @@ class EventsController < ApplicationController
   def join
     account = current_user.accounts.where(server_id: @event.server_id).first
     if account
-      account.registrations.create(account_id: account.id, event_id: @event.id)
+      registration = account.registrations.find_or_create_by_event_id(@event.id)
+      registration.update_attributes({active: true}, without_protection: true)
       redirect_to profile_path, flash: {success: "You have join #{@event.name}, you will be assigned to a division soon"}
     else
       redirect_to new_user_account_path(current_user),
@@ -84,7 +85,7 @@ class EventsController < ApplicationController
 
   def quit
     reg = current_user.registrations.where(event_id: @event.id).first
-    if reg && !reg.update_attributes(active: false, division_id: nil)
+    if reg && !reg.update_attributes({active: false, division_id: nil}, without_protection: true)
       flash[:error] = 'There was an error while deleting your registration'
     end
     redirect_to profile_path
