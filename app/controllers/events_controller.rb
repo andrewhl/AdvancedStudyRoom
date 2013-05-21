@@ -84,7 +84,9 @@ class EventsController < ApplicationController
 
   def quit
     reg = current_user.registrations.where(event_id: @event.id).first
-    flash[:error] = 'There was an error while deleting your registration' if reg && !reg.destroy
+    if reg && !reg.update_attributes(active: false, division_id: nil)
+      flash[:error] = 'There was an error while deleting your registration'
+    end
     redirect_to profile_path
   end
 
