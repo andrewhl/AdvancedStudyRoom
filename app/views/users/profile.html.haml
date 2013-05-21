@@ -37,7 +37,7 @@
     - @user.accounts.each do |account|
       %tr
         %td= account.server.name
-        %td= Utilities.format_rank account.rank
+        %td= account.rank ? Utilities.format_rank(account.rank) : "Pending..."
         %td= account.handle
         %td= account.registrations.count
         - if current_user.admin?

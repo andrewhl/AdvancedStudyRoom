@@ -30,7 +30,6 @@ class Account < ActiveRecord::Base
   validates :server_id, presence: true
   validate  :unique_servers_per_user
 
-
   def event_points *event_id
     if event_id
       self.points.where(:event_id => event_id)
