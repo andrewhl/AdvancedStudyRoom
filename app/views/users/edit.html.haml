@@ -1,0 +1,8 @@
+%h2 Edit User
+
+= simple_form_for @user, validate: true do |f|
+  = f.input :username
+  = f.input :email
+
+  .form-actions
+    = f.submit "Edit", class: 'btn btn-primary'

@@ -1,0 +1,27 @@
+.row-fluid
+  .span6
+    .control-group
+      %label.control-label
+        Name (Optional -- Will Use Tier + Index by Default)
+      .controls
+        = f.text_field :name
+
+    .control-group
+      %label.control-label
+        Division Numeral (e.g., 1)
+      .controls
+        = f.number_field :index
+
+  .span6
+    .control-group
+      %label.control-label
+        Minimum Players
+      .controls
+        = f.number_field :minimum_players
+
+    .control-group
+      %label.control-label
+        Maximum Players
+      .controls
+        = f.number_field :maximum_players
+

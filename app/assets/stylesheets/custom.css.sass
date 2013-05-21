@@ -1,0 +1,90 @@
+@import "colors"
+
+body
+  margin-top: 60px
+
+.form-horizontal .form-actions
+  background: 0
+  border-top: 0
+
+.division_select
+  select[multiple="multiple"]
+    height: 250px
+
+.wide-table
+  th > span
+    position: relative
+  th > span > span
+    /* Must remove span from normal flow in order to keep columns from widening */
+    position: absolute
+    left: -5px
+    white-space: nowrap
+    -moz-transform: rotate(-70deg) skewX(20deg)
+    -o-transform: rotate(-70deg) skewX(20deg)
+    -webkit-transform: rotate(-70deg) skewX(20deg)
+    transform: rotate(-70deg) skewX(20deg)
+    -moz-transform-origin: 0% 0%
+    -o-transform-origin: 0% 0%
+    -webkit-transform-origin: 0% 0%
+    // border: 1px solid
+    padding: 9px
+    height: 23px
+    width: 80px
+    /* Illustrate where it's at with color */
+    // background-color: #E5ECF9
+    /* If one wants centered text, this is the place to reset it */
+    /* From a design point of view it might not be desirable */
+    text-align: center
+
+  /* CSS filter for Safari */
+  @media screen and (-webkit-min-device-pixel-ratio: 0)
+    th > span > span
+      top: 0
+
+  th > span > span > span
+    /* Rotate the text back, so it will be easier to read */
+    -moz-transform: skewX(-20deg)
+    -ms-transform: skewX(-20deg)
+    -o-transform: skewX(-20deg)
+    -webkit-transform: skewX(-20deg)
+    transform: skewX(-20deg)
+
+
+.divisions_nav
+  position: relative
+  .btn
+    position: absolute
+    right: 0
+
+.results-table
+  td
+    text-align: center
+    width: 25px
+    &.not-centered
+      text-align: left
+.divisions_nav + .wide-table
+  margin-top: 140px
+
+
+#event-show
+  h3
+    margin-top: 60px
+    &:first-child
+      margin-top: 10px
+
+  .table
+    td.actions
+      width: 140px
+
+  .table.div-by-tier
+    th:first-child
+      width: 240px
+
+.icon-exchange
+  color: $default_blue
+  position: relative
+  float: right
+  right: 10px
+
+.dark-cell
+  background: #F5F5F5

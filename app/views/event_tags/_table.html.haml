@@ -1,0 +1,24 @@
+
+%table.table.table-condensed.table-bordered.table-hover
+  %thead
+    %tr
+      %th Phrase
+      %th Move Limit
+      %th Actions
+
+  %tbody
+    - if tags.empty?
+      %tr
+        %td{colspan: 3}
+          There are not tags. Please
+          = link_to 'add one.', new_event_tag_path(event)
+
+    - tags.each do |tag|
+      %tr
+        %td= tag.phrase
+        %td= number_with_delimiter(tag.node_limit)
+        %td.actions
+          = link_to 'Edit', edit_event_tag_path(event, tag), class: 'btn btn-small'
+          = link_to 'Delete', event_tag_path(event, tag), class: 'btn btn-small',
+              method: :delete,
+              confirm: 'Are you sure you want to delete this tag?'

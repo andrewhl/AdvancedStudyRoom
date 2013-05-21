@@ -1,0 +1,58 @@
+- @title << "#{@registration.handle}'s matches (#{@registration.division.name})"
+
+= link_to "Download Matches", download_registration_matches_path(@registration), method: :post, class: "btn btn-primary"
+%table.table.table-condensed.table-bordered.table-hover.wide-table
+  %thead
+    %tr
+      %th Id
+      %th Completed
+      %th Type
+      %th Komi
+      %th Win Info
+      %th Main Time
+      %th OT Type
+      %th OT Stones / Periods
+      %th OT Time
+      %th Black Player
+      %th White Player
+      %th Handicap
+      %th Winner
+      %th Board Size
+      %th Tags
+      %th Valid/Tagged
+      %th Buttons
+
+  %tbody
+    - if @matches.empty?
+      %tr
+        %td{colspan: 20} No matches
+
+
+    - @matches.each do |match|
+      %tr
+        %td= match.id
+        %td= match.completed_at.strftime("%Y-%m-%d")
+        %td= match.match_type
+        %td= match.komi
+        %td= match.win_info
+        %td= match.main_time_control
+        %td= match.ot_type
+        %td= match.ot_stones_periods
+        %td= match.ot_time_control
+        %td= match.black_player.handle
+        %td= match.white_player.handle
+        %td= match.handicap
+        %td= match.winner.handle
+        %td= match.board_size
+        %td= match.tags
+        %td= "#{match.valid_match} / #{match.tagged}"
+        %td
+          = link_to validate_match_path(match), method: :post, class: "btn btn-primary btn-mini" do
+            %i.icon-magic
+          %br
+          = link_to check_match_tags_path(match), method: :post, class: "btn btn-success btn-mini" do
+            %i.icon-tags
+
+
+
+

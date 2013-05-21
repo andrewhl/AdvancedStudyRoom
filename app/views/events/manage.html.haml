@@ -1,0 +1,44 @@
+%h1= @event.name
+
+%h4
+  = link_to "Edit the current event ruleset", edit_ruleset_path(@event)
+
+- if @event.tiers.empty?
+  %h4 This event has no tiers. Please create one.
+- else
+
+  %h3 Tiers
+  %table.table.table-condensed.table-bordered.table-hover
+    %tr
+      %th Name
+      %th Position
+      %th Ruleset
+      %th Tier Settings
+      %th Delete Tier
+
+    - @event.tiers.ranked.each do |tier|
+      %tr
+        %td
+          = tier.name
+        %td
+          = tier.index
+        %td
+          - if tier.ruleset.present?
+            = link_to "Edit Ruleset", edit_ruleset_path(tier.ruleset)
+          - else
+            Edit Ruleset
+        %td
+          = link_to "Edit", edit_tier_path(tier)
+        %td
+          = link_to "Delete", event_tier_path(@event, tier), :method => :delete
+
+%h4 Create Tiers
+
+= render "tier_form", :locals => {:event => @event, :tier => @tier}
+
+%hr
+
+%h3 Divisions (by Tier)
+
+= render "divisions", :event => @event
+

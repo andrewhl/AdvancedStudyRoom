@@ -1,0 +1,49 @@
+- @body_id = 'dashboard'
+- @title << @user.email
+
+%h2 My events:
+= link_to 'Join an Event', leagues_path, class: 'btn',
+  disabled: !can_join_events?(@user)
+%table.table.table-condensed.table-hover.table-bordered
+  %thead
+    %tr
+      %th Event
+      %th Division
+      %th Account Handle
+      %th Server
+      %th
+  %tbody
+    - @user.registrations.each do |reg|
+      %tr
+        %td= link_to_results(reg.event.name, reg)
+        %td= link_to_results(reg.division.try(:name) || 'Pending...', reg)
+        %td= reg.account.handle
+        %td= reg.account.server.name
+        %td= link_to 'Quit', quit_event_path(reg.event), class: 'btn btn-mini btn-danger',
+              method: :delete, confirm: 'Are you sure you want to quit this event?'
+
+
+%h2 My server accounts:
+%table.table.table-condensed.table-hover.table-bordered
+  %thead
+    %tr
+      %th Server
+      %th Rank
+      %th Handle
+      %th Events Joined
+      - if current_user.admin?
+        %th Actions
+  %tbody
+    - @user.accounts.each do |account|
+      %tr
+        %td= account.server.name
+        %td= Utilities.format_rank account.rank
+        %td= account.handle
+        %td= account.registrations.count
+        - if current_user.admin?
+          %td
+            = link_to 'Edit', edit_user_account_path(@user, account), class: 'btn btn-mini'
+            = link_to 'Delete', user_account_path(@user, account), method: :delete, class: 'btn btn-mini btn-danger',
+              confirm: 'Are you sure you want to delete your account? All your matches will be lost.'
+
+

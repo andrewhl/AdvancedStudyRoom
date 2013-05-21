@@ -1,0 +1,12 @@
+- flash.each do |type, message|
+  .alert{:class => "#{twitterized_type(type)}"}
+    %button{:class => "close", :data => {:dismiss => "alert"}}
+      x
+    - if type == :error && (flash[:error].kind_of?(ActiveModel::Errors))
+      The following errors occurred:
+      %br
+      - message.messages.each do |key, value|
+        = "#{key} #{value}"
+        %br
+    - else
+      = message

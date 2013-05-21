@@ -1,0 +1,44 @@
+%h2 Manage registrations
+%h3 Unassigned Players
+
+// Display all players who have not been assigned to a division.
+
+%table.table.table-condensed.table-bordered.table-hover
+  %tr
+    %th Name
+
+  - if @unassigned_players.nil?
+    %td
+      No players are currently unassigned.
+  - else
+    - @unassigned_players.each do |unassigned_player|
+      %tr
+        %td= unassigned_player.handle
+
+.event_registration_form
+  = render "event_registrations_form", :unassigned_players => @unassigned_players, :divisions => @divisions
+
+- if @event.tiers.empty?
+  %h3
+    This event has no tiers.
+    = link_to "Please create them.", manage_event_path(@event)
+- else
+  - @event.tiers.ranked.each do |tier|
+    %h3= tier.name
+    - if tier.divisions.empty?
+      This tier has no divisions.
+      = link_to "Please create them.", manage_event_path(@event)
+    - else
+      - tier.divisions.ranked.each do |division|
+        %h4= tier.name + " " + division.index.to_s
+        %table.table.table-condensed.table-bordered.table-hover
+          %tr
+            %th Player Name
+            %th Player Rank
+            %th Remove
+          - division.registrations.each do |reg|
+            %tr{:class => "registration_#{reg.id}"}
+              %td= reg.handle
+              %td Coming Soon
+              %td
+                = link_to "Remove", remove_event_registration_path(@event, reg), :method => "put"

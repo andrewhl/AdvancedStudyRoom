@@ -1,0 +1,69 @@
+- @body_id = 'event-show'
+- @title << "#{@event.name} overview"
+
+%h3
+  Tag phrases
+  .clearfix.pull-right
+    = link_to 'Add Tag', new_event_tag_path(@event), class: 'btn'
+= render 'event_tags/table', tags: @event.tags, event: @event
+
+
+%h3
+  Tiers
+  .clearfix.pull-right
+    = link_to 'Add Tier', manage_event_path(@event), class: 'btn'
+%table.table.table-condensed.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Position
+      %th Participants
+      %th Ruleset
+      %th Actions
+  %tbody
+    - if @event.tiers.empty?
+      %td{colspan: 5}
+        This event has no tiers.
+        = link_to 'Please create one', manage_event_path(@event)
+    - @event.tiers.ranked.each do |tier|
+      %tr
+        %td= tier.name
+        %td= tier.index
+        %td= tier.registrations.count
+        %td
+          - if tier.ruleset.present?
+            = link_to 'Edit Ruleset', edit_ruleset_path(tier.ruleset)
+          - else
+            Edit Ruleset
+        %td.actions
+          = link_to 'Edit', edit_tier_path(tier), class: 'btn btn-small'
+          = link_to 'Delete', event_tier_path(@event, tier), class: 'btn btn-small',
+            method: :delete,
+            confirm: 'Are you sure you want to delete this tier? All divisions will be deleted too.'
+
+
+%h3 Divisions by Tier
+- @event.tiers.ranked.each do |tier|
+  %table.table.table-condensed.table-bordered.table-hover.div-by-tier
+    %thead
+      %tr
+        %th= "#{tier.name} Divisions"
+        %th Participants
+        %th Edit
+        %th Delete
+    %tbody
+      - if tier.divisions.empty?
+        %tr
+          %td{colspan: 4}
+            This tier has no divisions.
+            = link_to "Please create them.", manage_event_path(@event)
+
+      - tier.divisions.ranked.each do |division|
+        %tr
+          %td= division.name
+          %td= division.registrations.count
+          %td= link_to "Edit", edit_division_path(division)
+          %td= link_to "Delete", division_path(division), :method => :delete
+
+
+

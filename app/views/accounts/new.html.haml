@@ -1,0 +1,12 @@
+- @title << "New #{@account.user.username}'s account"
+
+= simple_form_for [@account.user, @account], validate: true, html: {class: 'form-horizontal'} do |f|
+
+  = f.input :server_id, collection: available_user_servers(@account),
+      selected: @account.server_id
+  = f.input :handle
+  = f.input :rank, collection: rank_options_for_select
+
+  .form-actions
+    = f.submit 'Create', class: 'btn btn-primary'
+    = link_to 'Cancel', :back, class: 'btn'

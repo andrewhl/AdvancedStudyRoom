@@ -1,0 +1,8 @@
+%h1 Edit Tier
+
+= form_for @tier, :html => {:class => "form-horizontal"} do |f|
+  = render "events/tier_fields", :f => f
+
+  .control-group
+    .controls
+      = f.submit :submit

@@ -1,0 +1,9 @@
+%h1
+  = "Edit #{@ruleset.rulesetable_type} Ruleset"
+
+= form_for @ruleset, :html => {:class => "form-horizontal"} do |f|
+  = render "events/ruleset_fields", :b => f
+
+  .control-group
+    .controls
+      = f.submit "Update", class: "btn"

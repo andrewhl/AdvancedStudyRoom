@@ -1,0 +1,39 @@
+.sidebar-nav
+  .well{:style => "padding: 8px 0;"}
+    %ul.nav.nav-list
+      - if current_user
+        %li.nav-header
+          Your Pages
+
+        %li{class: active_class_for('users#show')}
+          = link_to profile_path do
+            %i.icon-home
+            My Profile
+
+      %li.nav-header
+        Main
+      %li
+        = link_to leagues_path do
+          %i.icon-flag
+          Leagues
+      %li
+        = link_to results_path do
+          %i.icon-star
+          Results
+
+      - if can? :manage, :all
+        %li.nav-header
+          Admin
+        %li
+          = link_to events_path do
+            %i.icon-tasks
+            Events
+        %li
+          = link_to rulesets_path do
+            %i.icon-cog
+            Rulesets
+        %li
+          = link_to users_path do
+            %i.icon-user
+            Users
+

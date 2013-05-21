@@ -1,0 +1,35 @@
+- @title << 'Leagues'
+
+- if @leagues.empty?
+  .alert.alert-info
+    Sorry, there are currently no leagues.
+
+- else
+  %table.table.table-condensed.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Participants
+        %th Server
+        %th Results
+        %th
+    %tbody
+      - @leagues.each do |event|
+        %tr
+          %td= event.name
+          %td= event.registrations.count
+          %td= event.server.name
+          %td= link_to "View Results", results_event_path(event)
+          %td
+            - if current_user
+              - reg = current_user.registrations.where(event_id: event.id).first
+              - if reg
+                = link_to 'Quit', quit_event_path(event), class: 'btn btn-danger btn-mini',
+                  method: :delete, confirm: 'Are you sure you want to quit the league?'
+              - else
+                = link_to 'Join!', join_event_path(event), class: 'btn btn-primary btn-mini',
+                  method: :post
+            - else
+              = link_to 'Signup to Join', signup_path, class: 'btn btn-mini btn-primary'
+
+

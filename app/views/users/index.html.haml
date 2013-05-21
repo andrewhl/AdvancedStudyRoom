@@ -1,0 +1,17 @@
+%h2 All Users
+
+%table.table.table-condensed.table-bordered.table-hover
+  %thead
+    %tr
+      %th Username
+      %th Admin?
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.username
+        %td
+          - if user.admin?
+            = link_to "De-Admin", toggle_admin_path(user), method: :post, class: "btn btn-inverse btn-small", disabled: current_user == user
+          - else
+            = link_to "Make Admin", toggle_admin_path(user), method: :post, class: "btn btn-primary btn-small"
+
