@@ -11,7 +11,8 @@
       %th Division
       %th Account Handle
       %th Server
-      %th
+      - if @user.registrations.any?
+        %th
   %tbody
     - @user.registrations.each do |reg|
       %tr
