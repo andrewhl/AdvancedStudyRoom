@@ -4,7 +4,7 @@ class CreateRegistrations < ActiveRecord::Migration
       t.integer :account_id
       t.integer :event_id
       t.integer :division_id
-      t.float   :points_this_month
+      t.float   :points_this_month, :float, null: false, default: 0
       t.boolean :active, null: false, default: true
 
       t.timestamps
