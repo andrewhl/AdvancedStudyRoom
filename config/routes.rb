@@ -54,7 +54,7 @@ AdvancedStudyRoom::Application.routes.draw do
   match 'about', to: 'pages#about'
   resources :pages
 
-  root to: "pages#home"
+  root to: "events#leagues"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
