@@ -1,6 +1,7 @@
 - @title << "#{@registration.handle}'s matches (#{@registration.division.name})"
 
-= link_to "Download Matches", download_registration_matches_path(@registration), method: :post, class: "btn btn-primary"
+- if can? :manage, :matches
+  = link_to "Download Matches", download_registration_matches_path(@registration), method: :post, class: "btn btn-primary"
 %table.table.table-condensed.table-bordered.table-hover.wide-table
   %thead
     %tr
