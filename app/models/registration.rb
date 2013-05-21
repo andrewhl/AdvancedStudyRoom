@@ -22,6 +22,8 @@ class Registration < ActiveRecord::Base
 
   has_many :points
 
+  scope :active, where(active: true)
+
   attr_accessible :account_id,
                   :division_id,
                   :event_id,
