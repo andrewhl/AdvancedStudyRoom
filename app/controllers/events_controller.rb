@@ -76,7 +76,7 @@ class EventsController < ApplicationController
     if account
       registration = account.registrations.find_or_create_by_event_id(@event.id)
       registration.update_attributes({active: true}, without_protection: true)
-      redirect_to profile_path, flash: {success: "You have join #{@event.name}, you will be assigned to a division soon"}
+      redirect_to profile_path, flash: {success: "You have joined #{@event.name}, you will be assigned to a division soon"}
     else
       redirect_to new_user_account_path(current_user),
         flash: {error: "Please create an account on the #{@event.server.name} server first"}
