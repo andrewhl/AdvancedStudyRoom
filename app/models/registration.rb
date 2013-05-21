@@ -6,10 +6,10 @@
 #  account_id        :integer
 #  event_id          :integer
 #  division_id       :integer
-#  points_this_month :float
 #  active            :boolean          default(TRUE), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  points_this_month :float            default(0.0), not null
 #
 
 class Registration < ActiveRecord::Base
@@ -21,6 +21,8 @@ class Registration < ActiveRecord::Base
   has_one :server, through: :account
 
   has_many :points
+
+  scope :active, where(active: true)
 
   attr_accessible :account_id,
                   :division_id,

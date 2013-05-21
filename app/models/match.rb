@@ -15,6 +15,7 @@
 #  validation_errors :string(255)
 #  valid_match       :boolean
 #  tagged            :boolean
+#  has_points        :boolean          default(FALSE), not null
 #  ot_stones_periods :integer
 #  black_player_id   :integer
 #  white_player_id   :integer
