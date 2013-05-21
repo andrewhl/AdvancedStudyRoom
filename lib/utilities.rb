@@ -1,6 +1,7 @@
 module Utilities
 
   def self.format_rank(rank)
+    return "?" unless rank
     r = rank.to_i
     if r > 0
       suffix = 'd'

@@ -6,6 +6,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer  :server_id
       t.integer  :rank
       t.boolean  :active, null: false, default: true
+      t.float    :total_points, default: 0, null: false
 
       t.timestamps
     end
