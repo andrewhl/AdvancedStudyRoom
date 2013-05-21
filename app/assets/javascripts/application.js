@@ -15,4 +15,6 @@
 //= require twitter/bootstrap
 //= require rails.validations
 //= require rails.validations.simple_form
+//= require markitup
+//= require markitup/sets/xbbcode/set
 //= require_tree .

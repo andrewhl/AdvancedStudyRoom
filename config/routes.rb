@@ -7,6 +7,9 @@ AdvancedStudyRoom::Application.routes.draw do
   get  'logout',            to: 'sessions#destroy',   as: 'logout'
   post 'toggle_admin/:id',  to: 'users#toggle_admin', as: 'toggle_admin'
 
+  get 'test', to: 'pages#test'
+
+
   get 'profile',        to: 'users#profile'
   resources :users do
     get  :profile,      on: :member

@@ -21,6 +21,8 @@ gem 'airbrake',                 '~> 3.1.0'
 gem 'newrelic_rpm',             '~> 3.6.2'
 gem 'mechanize',                '~> 2.6.0', :require => false
 
+gem "markitup-rails",           "~> 1.1.0"
+
 group :production do
   gem 'pg',                     '~> 0.15.0'
 end
