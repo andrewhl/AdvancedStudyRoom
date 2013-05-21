@@ -26,12 +26,6 @@ unless kgs_server = Server.find_by_name('KGS')
     without_protection: true)
 end
 
-
-unless Server.exists?(name: 'Kaya')
-  puts 'Creating Kaya server...'
-  Server.create(name: 'Kaya')
-end
-
 #
 # RULESET ATTRS
 #
