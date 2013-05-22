@@ -4,9 +4,11 @@
   = link_to "New Post", new_post_path, class: "btn btn-primary"
 
 - @posts.each do |post|
-  - if can? :post, Post
-    %h3= link_to "#{post.title}", edit_post_path(post)
-  - else
-    %h3= post.title
-  %h4= post.date.strftime('%d-%m-%Y')
-  %p= markdown_to_html(post.html)
+  .box
+    - if can? :post, Post
+      = button_to "Delete Post", post, method: :delete, class: "btn btn-danger btn-small right"
+      %h3= link_to "#{post.title}", edit_post_path(post)
+    - else
+      %h3= post.title
+    %h4= post.date.strftime('%d-%m-%Y')
+    = markdown_to_html(post.html)
