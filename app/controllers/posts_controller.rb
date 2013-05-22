@@ -28,4 +28,10 @@ class PostsController < ApplicationController
     @post.update_attributes(params[:post])
     redirect_to :posts, flash: {success: "Your post has been updated."}
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to :posts, flash: {success: "Your post has been destroyed."}
+  end
 end
