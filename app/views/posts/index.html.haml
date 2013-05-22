@@ -1,5 +1,8 @@
 %h2 Posts
 
+- if can? :post, Post
+  = link_to "New Post", new_post_path, class: "btn btn-primary"
+
 - @posts.each do |post|
   - if can? :post, Post
     %h3= link_to "#{post.title}", edit_post_path(post)
