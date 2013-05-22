@@ -25,6 +25,7 @@
 
 # Ignore Editor files
 *.sublime-workspace
+.c9revisions
 
 # Ignore config files
 config/database.yml
