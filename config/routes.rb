@@ -1,11 +1,17 @@
 AdvancedStudyRoom::Application.routes.draw do
 
+  resources :posts
+
+
   get  'signup',            to: 'users#signup',       as: 'signup'
   post 'signup',            to: 'users#process_signup'
   get  'login',             to: 'sessions#new',       as: 'login'
   post 'login',             to: 'sessions#create'
   get  'logout',            to: 'sessions#destroy',   as: 'logout'
   post 'toggle_admin/:id',  to: 'users#toggle_admin', as: 'toggle_admin'
+
+  get 'test', to: 'pages#test'
+
 
   get 'profile',        to: 'users#profile'
   resources :users do
