@@ -2,7 +2,7 @@ require 'yaml'
 require 'config_reader'
 
 namespace :db do
-   
+
   desc "Create a full back of the database"
   task :backup do
     cr = ConfigReader.new
@@ -23,10 +23,14 @@ namespace :db do
     uname = db[:username]
     args << "-U #{uname}" if uname
     pword = db[:password]
-    args << "-W #{pword}" if pword
+    ENV['PGPASSWORD'] = pword if pword
 
-    args << "#{db[:database]}"    
-    `pg_dump -Fc #{args.join(" ")} | gzip -9 -c > #{db}.gz`
+    asr = cr.config[:asr]
+    target = asr[:db_backups] || File.join(cr.root_path, 'tmp')
+    target = File.join(target, "#{db[:database]}.gz")
+
+    args << "#{db[:database]}"
+    `pg_dump -Fc #{args.join(" ")} | gzip -9 -c > #{target}`
   end
-   
+
 end
