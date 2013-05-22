@@ -1,7 +1,7 @@
 AdvancedStudyRoom::Application.routes.draw do
 
   resources :posts
-
+  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
   get  'signup',            to: 'users#signup',       as: 'signup'
   post 'signup',            to: 'users#process_signup'
@@ -60,7 +60,7 @@ AdvancedStudyRoom::Application.routes.draw do
   match 'about', to: 'pages#about'
   resources :pages
 
-  root to: "events#leagues"
+  root to: "pages#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

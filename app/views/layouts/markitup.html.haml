@@ -1,0 +1,13 @@
+!!!
+%html
+%head
+  %meta{charset: 'utf-8'}
+  = stylesheet_link_tag 'application', media: 'all'
+
+%body.markitup-preview
+  .container-fluid
+    .row-fluid
+      .span2
+      .span10
+        .row-fluid
+          = yield
