@@ -17,6 +17,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(params[:post])
-    redirect_to :posts
+    redirect_to :posts, flash: {success: "Your post has been created."}
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update_attributes(params[:post])
+    redirect_to :posts, flash: {success: "Your post has been updated."}
   end
 end

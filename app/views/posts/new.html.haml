@@ -2,14 +2,10 @@
 
 = errors_summary(@post) if @post.errors.any?
 
-%h3 Step 1: Create the ASR Login
-%p
-  Note: This account is just for logging in to the ASR website.
-
 = simple_form_for @post, validate: true do |f|
+  = f.input :title
   = f.input :date
   = f.input :html
-  = f.input :title
 
   .form-actions
     = f.submit "Create Post", class: 'btn btn-primary'
