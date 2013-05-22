@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails',                    '3.2.13'
 gem 'haml',                     '~> 4.0.2'
-gem 'pg',                     '~> 0.15.0'
+gem 'pg',                       '~> 0.15.0'
 
 gem 'cancan',                   '~> 1.6.9'
 gem 'bcrypt-ruby',              '~> 3.0.0'
