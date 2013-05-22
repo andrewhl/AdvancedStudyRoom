@@ -6,6 +6,7 @@ namespace :vlad do
     vlad:update
     vlad:bundle:install
     vlad:migrate
+    vlad:whenever:update_crontab
     vlad:start_app
     vlad:cleanup
     vlad:airbrake
