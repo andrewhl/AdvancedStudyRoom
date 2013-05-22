@@ -1,5 +1,8 @@
 AdvancedStudyRoom::Application.routes.draw do
 
+  resources :posts
+
+
   get  'signup',            to: 'users#signup',       as: 'signup'
   post 'signup',            to: 'users#process_signup'
   get  'login',             to: 'sessions#new',       as: 'login'

@@ -1,0 +1,7 @@
+%h2 Posts
+
+- @posts.each do |post|
+
+  %h3= post.title
+  %h4= post.date.strftime('%d-%m-%Y')
+  %p= post.html
