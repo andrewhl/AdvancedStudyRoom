@@ -30,7 +30,7 @@ namespace :db do
     desc "Create a full backup of the database"
     task :full do
       db = config_reader.config[:db]
-      if db[:adapter] != 'postgres'
+      if db[:adapter] != 'postgresql'
         $stderr << 'db:backup is only available for Postgresql databases'
         exit 1
       end
