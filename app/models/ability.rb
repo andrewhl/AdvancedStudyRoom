@@ -25,9 +25,11 @@ class Ability
     def define_member
       can :profile, User, id: @user.id
       can [:join, :quit], Event
+      can [:index], Post
     end
 
     def define_visitor
+      can [:index], Post
       can [:signup, :process_signup], User
       can [:leagues], Event
     end

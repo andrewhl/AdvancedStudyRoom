@@ -1,13 +1,22 @@
 {
-  "folders":
-  [
-    {
-      "path": "./app"
-    },
-    {
-      "path": ".",
-      "folder_exclude_patterns": ["app", "script", "tmp", ".zeus.sock"],
-      "file_exclude_patterns": [".swp"]
-    }
-  ]
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				".swp"
+			],
+			"folder_exclude_patterns":
+			[
+				"app",
+				"script",
+				"tmp",
+				".zeus.sock"
+			],
+			"path": "/Users/andrew/Projects/ASR"
+		},
+		{
+			"path": "app"
+		}
+	]
 }

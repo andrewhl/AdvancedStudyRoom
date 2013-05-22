@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130119042058) do
+ActiveRecord::Schema.define(:version => 20130521165039) do
 
   create_table "accounts", :force => true do |t|
     t.string   "handle"
@@ -154,6 +154,15 @@ ActiveRecord::Schema.define(:version => 20130119042058) do
   add_index "points", ["event_id"], :name => "index_points_on_event_id"
   add_index "points", ["match_id"], :name => "index_points_on_match_id"
   add_index "points", ["registration_id"], :name => "index_points_on_registration_id"
+
+  create_table "posts", :force => true do |t|
+    t.text     "html"
+    t.integer  "user_id"
+    t.datetime "date"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "registrations", :force => true do |t|
     t.integer  "account_id"
