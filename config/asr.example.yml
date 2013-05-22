@@ -1,11 +1,12 @@
 development:
-  errbit_app: 42dea4ac8920b8a4cf6d9061bb6902da
-  errbit_js:  2d95aa543b493d3ea87334d043992458
-  analytics:  UA-12345678-5
-  db_backups: /tmp/backups
+  errbit_app:   42dea4ac8920b8a4cf6d9061bb6902da
+  errbit_js:    2d95aa543b493d3ea87334d043992458
+  analytics:    UA-12345678-5
+  db_backups:   /tmp/backups
+  db_rollback:  7
 
 production:
-  errbit_app: d9ad57bdf6b462f89e02b9a5634b9018
-  errbit_js:  f1c8f5c57ef44dac4fe276735c4bb41b
-  analytics:  UA-12345678-5
-  db_backups: /var/data/backups
+  errbit_app:   d9ad57bdf6b462f89e02b9a5634b9018
+  errbit_js:    f1c8f5c57ef44dac4fe276735c4bb41b
+  analytics:    UA-12345678-5
+  db_backups:   /var/data/backups
