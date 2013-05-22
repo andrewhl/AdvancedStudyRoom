@@ -13,7 +13,8 @@
 				"tmp",
 				".zeus.sock"
 			],
-			"path": "/Users/andrew/Projects/ASR"
+			"name": "ASR",
+			"path": "."
 		},
 		{
 			"path": "app"
