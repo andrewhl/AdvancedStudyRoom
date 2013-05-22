@@ -28,6 +28,7 @@
 .c9revisions
 
 # Ignore config files
+config/asr.yml
 config/database.yml
 config/newrelic.yml
 
