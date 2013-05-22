@@ -17,6 +17,7 @@ gem 'SgfParser',                '~> 2.0.0'
 gem 'rubyzip',                  '~> 0.9.9', :require => 'zip/zip'
 gem 'kgs_scraper',              '~> 0.1.3', :git => 'git@bitbucket.org:ahlavats/kgs_scraper.git'
 
+gem 'whenever',                 '~> 0.8.2', :require => false
 gem 'airbrake',                 '~> 3.1.0'
 gem 'newrelic_rpm',             '~> 3.6.2'
 gem 'mechanize',                '~> 2.6.0', :require => false
