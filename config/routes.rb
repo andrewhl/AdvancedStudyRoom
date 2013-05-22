@@ -1,7 +1,7 @@
 AdvancedStudyRoom::Application.routes.draw do
 
   resources :posts
-
+  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
   get  'signup',            to: 'users#signup',       as: 'signup'
   post 'signup',            to: 'users#process_signup'
