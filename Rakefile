@@ -10,6 +10,7 @@ begin
   require 'vlad'
   require 'vlad/assets'
   require 'vlad/airbrake'
+  require 'vlad/whenever'
   require './config/recipes/deploy'
 
   Vlad.load scm: :git

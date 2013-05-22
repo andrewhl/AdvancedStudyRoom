@@ -6,6 +6,7 @@ set :revision, "origin/master"
 
 set :shared_paths, {
   'assets'              => 'public/assets',
+  'config/asr.yml'      => 'config/asr.yml',
   'config/database.yml' => 'config/database.yml',
   'config/newrelic.yml' => 'config/newrelic.yml',
   'log'                 => 'log',
