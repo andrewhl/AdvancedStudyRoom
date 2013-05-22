@@ -4,4 +4,4 @@
 
   %h3= link_to "#{post.title}", edit_post_path(post)
   %h4= post.date.strftime('%d-%m-%Y')
-  %p= convert_to_html(post.html)
+  %p= markdown_to_html(post.html)
