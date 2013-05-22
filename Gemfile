@@ -6,6 +6,7 @@ gem 'pg',                       '~> 0.15.0'
 
 gem 'cancan',                   '~> 1.6.9'
 gem 'bcrypt-ruby',              '~> 3.0.0'
+gem 'devise',                   '~> 3.0.0.rc'
 
 gem 'jquery-rails',             '~> 2.2.1'
 gem 'less-rails',               '~> 2.3.2'
