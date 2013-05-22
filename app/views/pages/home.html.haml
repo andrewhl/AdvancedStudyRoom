@@ -1,2 +1,8 @@
 - @body_class << 'home'
 - @title << 'Welcome to the Advanced Study Room'
+
+- @posts.each do |post|
+  .box
+    %h3= post.title
+    %h4= post.date.strftime('%d-%m-%Y')
+    = markdown_to_html(post.html)
