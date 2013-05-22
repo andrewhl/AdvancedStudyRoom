@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails',                    '3.2.13'
 gem 'haml',                     '~> 4.0.2'
+gem 'pg',                     '~> 0.15.0'
 
 gem 'cancan',                   '~> 1.6.9'
 gem 'bcrypt-ruby',              '~> 3.0.0'
@@ -21,10 +22,6 @@ gem 'whenever',                 '~> 0.8.2', :require => false
 gem 'airbrake',                 '~> 3.1.0'
 gem 'newrelic_rpm',             '~> 3.6.2'
 gem 'mechanize',                '~> 2.6.0', :require => false
-
-group :production do
-  gem 'pg',                     '~> 0.15.0'
-end
 
 group :assets do
   gem 'sass-rails',             '~> 3.2.3'
