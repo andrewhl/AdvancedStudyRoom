@@ -10,6 +10,6 @@
  *
  *= require_self
  *= require markitup/skins/markitup/style
- *= require markitup/sets/xbbcode/style
+ *= require markitup/sets/markdown/style
  *= require_tree .
 */
