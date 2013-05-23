@@ -39,6 +39,12 @@ class ConfigReader
 
     def load_yaml(*args)
       config = YAML.load_file(File.join(root_path, *args))
-      config[env].symbolize_keys
+      symbolize_keys!(config[env])
+    end
+
+    def symbolize_keys!(hash)
+      hash.symbolize_keys!
+      hash.values.select{ |v| v.is_a?(Hash) }.each{ |h| symbolize_keys!(h) }
+      hash
     end
 end
