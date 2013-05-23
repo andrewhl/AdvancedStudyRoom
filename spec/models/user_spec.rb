@@ -20,7 +20,7 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.build(:user)
   end
 
   describe "authentication" do
@@ -34,7 +34,8 @@ describe User do
       user.should_not be_valid
     end
 
-    it "should not allow multiple users with the same username" do
+    it "should not allow multiple users with the same email" do
+      @user.save
       user2 = FactoryGirl.build(:user, :email => "test@test.com").should_not be_valid
     end
 
@@ -42,10 +43,7 @@ describe User do
 
   describe "admin users" do
     subject(:admin) { FactoryGirl.create(:admin) }
-
     it { should be_valid }
-
-
   end
 
 end
