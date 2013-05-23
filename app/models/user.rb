@@ -2,15 +2,15 @@
 #
 # Table name: users
 #
-#  id                  :integer          not null, primary key
-#  admin               :boolean          default(FALSE), not null
+#  id                     :integer          not null, primary key
+#  admin                  :boolean          default(FALSE), not null
 #  email                  :string(255)      default(""), not null
-#  username            :string(255)
-#  password_digest     :string(255)
-#  first_name          :string(255)
-#  last_name           :string(255)
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  username               :string(255)
+#  password_digest        :string(255)
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -31,7 +31,10 @@
 #
 
 class User < ActiveRecord::Base
-  has_secure_password
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :lockable, :token_authenticatable
 
   has_many :accounts, validate: true, autosave: true, dependent: :destroy
   has_many :awards
@@ -39,10 +42,13 @@ class User < ActiveRecord::Base
   has_many :registrations, through: :accounts
   has_many :servers, through: :accounts
 
-  attr_accessible :username,
+  attr_accessor   :login
+  attr_accessible :login,
+                  :username,
                   :email,
                   :password,
                   :password_confirmation,
+                  :remember_me,
                   :first_name,
                   :last_name,
                   :accounts_attributes
@@ -62,5 +68,24 @@ class User < ActiveRecord::Base
 
   def joined_event? event_id
     events.exists?(id: event_id)
+  end
+
+  alias_method :'dev_valid_password?', :'valid_password?'
+  def valid_password?(password)
+    if self[:password_digest].present?
+      return BCrypt::Password.new(self[:password_digest]) == password
+    end
+    dev_valid_password(password)
+  end
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).
+      where(["lower(username) = :login OR lower(email) = :login", {login: login.downcase}]).
+      first
+    else
+      where(conditions).first
+    end
   end
 end
