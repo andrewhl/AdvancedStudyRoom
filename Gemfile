@@ -20,6 +20,7 @@ gem 'kgs_scraper',              '~> 0.1.3', :git => 'git@bitbucket.org:ahlavats/
 
 gem 'whenever',                 '~> 0.8.2', :require => false
 gem 'backup',                   '~> 3.4.0'
+gem 'dropbox-sdk',              '~> 1.5.1'
 gem 'airbrake',                 '~> 3.1.0'
 gem 'newrelic_rpm',             '~> 3.6.2'
 gem 'mechanize',                '~> 2.6.0', :require => false

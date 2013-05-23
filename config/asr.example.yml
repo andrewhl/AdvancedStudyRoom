@@ -12,12 +12,13 @@ development: &defaults
   analytics:        UA-12345678-5
 
   # ==> DB Backup Configuration
-  # Configuration used by the rake db:backpu task
-  # Target directory for backup files
-  db_backups:       /tmp/backups
-  # Number of database backups to preserve
-  db_rollback:      7
-
+  # Configuration used by the rake db:backup task
+  db_backup:
+    path:           /
+    keep:           25
+    key:            700ccebbce97b25
+    secret:         5b402e2327c958c
+ 
   # ==> Notifications Configuration
   # Sender's email for the app notifications.
   # Notifications are sent to the site users.
@@ -37,6 +38,7 @@ development: &defaults
   # ==> Mailers Configuration
   # SMTP settings for the mailers
   smtp:
+    domain:         advancedstudyroom.com
     address:        mail.advancedstudyroom.com
     port:           25
     username:       alerts@advancedstudyroom.com
