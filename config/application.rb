@@ -57,6 +57,15 @@ module AdvancedStudyRoom
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => ENV['ASR_SMTP_ADDRESS'],
+      :port                 => ENV['ASR_SMTP_PORT'],
+      :user_name            => ENV['ASR_SMTP_USERNAME'],
+      :password             => ENV['ASR_SMTP_PASSWORD'],
+      :authentication       => ENV['ASR_SMTP_AUTH'],
+      :enable_starttls_auto => ENV['ASR_SMTP_STARTTLS_AUTO'] }
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
