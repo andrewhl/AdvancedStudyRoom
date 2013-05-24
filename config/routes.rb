@@ -60,6 +60,10 @@ AdvancedStudyRoom::Application.routes.draw do
   match 'about', to: 'pages#about'
   resources :pages
 
+  match '/', to: 'pages#home'
+
+  match ':permalink', to: 'pages#show'
+
   root to: "pages#home"
 
   # The priority is based upon order of creation:
