@@ -18,10 +18,33 @@ class ConfigReader
     File.join(File.dirname(__FILE__), '..')
   end
 
+  def asr_env_hash
+    fill_env_hash(config[:asr])
+  end
+
   private
+
+    def fill_env_hash(config_src, target = {}, prefix = nil)
+      prefix.concat('_') if prefix && !prefix.end_with?('_')
+      config_src.each do |key, value|
+        suffix = key.to_s.upcase
+        if value.is_a?(Hash)
+          fill_env_hash(value, target, suffix)
+        else
+          target["ASR_#{prefix}#{suffix}"] = value
+        end
+      end
+      target
+    end
 
     def load_yaml(*args)
       config = YAML.load_file(File.join(root_path, *args))
-      config[env].symbolize_keys
+      symbolize_keys!(config[env])
+    end
+
+    def symbolize_keys!(hash)
+      hash.symbolize_keys!
+      hash.values.select{ |v| v.is_a?(Hash) }.each{ |h| symbolize_keys!(h) }
+      hash
     end
 end

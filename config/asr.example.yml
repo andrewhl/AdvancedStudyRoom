@@ -1,12 +1,51 @@
-development:
-  errbit_app:   42dea4ac8920b8a4cf6d9061bb6902da
-  errbit_js:    2d95aa543b493d3ea87334d043992458
-  analytics:    UA-12345678-5
-  db_backups:   /tmp/backups
-  db_rollback:  7
+# This file cotains the project settings for a server
+# or development environment
+development: &defaults
+  # ==> Errbit Configuration
+  # Errbit host and API keys for the application and
+  # javascript
+  errbit_host:      errbit.advancedstudyroom.com
+  errbit_app:       42dea4ac8920b8a4cf6d9061bb6902da
+  errbit_js:        2d95aa543b493d3ea87334d043992458
+
+  # ==> Google Analytics Configuration
+  analytics:        UA-12345678-5
+
+  # ==> DB Backup Configuration
+  # Configuration used by the rake db:backup task
+  db_backup:
+    path:           /
+    keep:           25
+    key:            700ccebbce97b25
+    secret:         5b402e2327c958c
+ 
+  # ==> Notifications Configuration
+  # Sender's email for the app notifications.
+  # Notifications are sent to the site users.
+  # i.e. email verifications, , etc.
+  notif_sender:     support@advancedstudyroom.com
+
+  # ==> Alerts Configuration
+  # Recipient's email for the app alerts
+  # In a development environment all notifications/alerts
+  # will be sent to this email address.
+  alerts_recipient: arturo@advancedstudyroom.com
+  # Sender's email for the app alerts
+  # Alerts are sent to the site admins.
+  # i.e. new registrations
+  alerts_sender:    alerts@advancedstudyroom.com
+
+  # ==> Mailers Configuration
+  # SMTP settings for the mailers
+  smtp:
+    domain:         advancedstudyroom.com
+    address:        mail.advancedstudyroom.com
+    port:           25
+    username:       alerts@advancedstudyroom.com
+    password:       abcdefg123456
+    auth:           plain
+    starttls_auto:  true
+
 
 production:
-  errbit_app:   d9ad57bdf6b462f89e02b9a5634b9018
-  errbit_js:    f1c8f5c57ef44dac4fe276735c4bb41b
-  analytics:    UA-12345678-5
-  db_backups:   /var/data/backups
+  <<: *defaults
