@@ -57,7 +57,7 @@ describe User do
   end
 
   describe "admin users" do
-    subject(:admin) { FactoryGirl.create(:admin) }
+    subject(:admin) { FactoryGirl.create(:user, admin: true) }
     it { should be_valid }
   end
 

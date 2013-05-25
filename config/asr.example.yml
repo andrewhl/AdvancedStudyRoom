@@ -44,6 +44,10 @@ development: &defaults
     auth:           plain
     starttls_auto:  true
 
+test:
+  <<: *defaults
+  db_backups:       /tmp/backups/test
+  db_rollback:      1
 
 production:
   <<: *defaults
