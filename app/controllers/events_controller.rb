@@ -88,7 +88,7 @@ class EventsController < ApplicationController
     if reg && !reg.update_attributes({active: false, division_id: nil}, without_protection: true)
       flash[:error] = 'There was an error while deleting your registration'
     end
-    redirect_to profile_path
+    redirect_to profile_path, flash: {success: "You have been removed from this event."}
   end
 
   def tag_games

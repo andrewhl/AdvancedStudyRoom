@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   load_and_authorize_resource
   before_filter :authorize, except: [:signup, :process_signup]
-
   before_filter :build_user, only: [:new, :signup]
+  before_filter :initialize_params
 
   def profile
     @user = User.find(current_user.id, include: {accounts: [:server, :registrations]})
@@ -70,6 +70,11 @@ class UsersController < ApplicationController
     def build_user
       @user = User.new
       @user.accounts.build
+    end
+
+    def initialize_params
+      params[:sort] ||= "handle"
+      params[:direction] ||= "desc"
     end
 
 end

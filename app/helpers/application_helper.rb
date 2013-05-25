@@ -3,10 +3,10 @@ module ApplicationHelper
   def twitterized_type(type)
     case type
       when :success then "alert-success"
-      when :alert then "warning"
-      when :notice then "info"
-      when :error then "alert-error"
-      when :info then "alert-info"
+      when :notice  then "info"
+      when :alert   then "warning"
+      when :error   then "alert-error"
+      when :info    then "alert-info"
       else
         type.to_s
     end
@@ -36,7 +36,14 @@ module ApplicationHelper
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction = sort_direction == "asc" ? "desc" : "asc"
-    link_to title, {:sort => column, :direction => direction}, {:class => css_class}
+    link_to title, {:sort => column, :direction => direction, :"#{args[0]}_id" => }, {:class => css_class}
+  end
+
+  def division_sortable(column, title = nil, division_id = nil)
+    title ||= column.titleize
+    css_class = column == sort_column ? "current #{sort_direction}" : nil
+    direction = sort_direction == "asc" ? "desc" : "asc"
+    link_to title, {:sort => column, :direction => direction, :division_id => division_id}, {:class => css_class}
   end
 
   def rank_options_for_select(selected = nil)
@@ -51,6 +58,46 @@ module ApplicationHelper
     link_to url do
       content_tag :i, "", class: "icon-#{icon}"
     end
+  end
+
+
+  class TableSorter
+    def initialize(args)
+      @sort_direction = args[:sort_direction] || "asc"
+      @sort_column    = args[:sort_column]    || "id"
+      @table          = arsg[:table].constantize
+    end
+
+    def sortable(args)
+      column           = args[:column]
+      title            = args[:title] || nil
+      scope_table      = args[:scope_table] || nil
+      scope_table_name = paramaterize(scope_table) || "scope_table"
+
+      title ||= column.titleize
+      link_to title, {:sort => column, :direction => direction, :"#{scope_table_name}" => scope_table}, {:class => css_class(column)}
+    end
+
+    def sort_column
+      @table.column_names.include?(params[:sort]) ? params[:sort] : @sort_column
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : @sort_direction
+    end
+
+    private
+      def paramaterize(table)
+        table.class.name.downcase
+      end
+
+      def css_class(column)
+        column == sort_column ? "current #{sort_direction}" : nil
+      end
+
+      def direction
+        sort_direction == "asc" ? "desc" : "asc"
+      end
   end
 
 end

@@ -22,8 +22,8 @@
   - if @division.registrations.count > 30
     %table.table.table-condensed.table-bordered.table-hover.results-table
       %tr
-        %th= link_to division_sortable 'handle', 'Player', @division.id
-        %th= link_to division_sortable 'points_this_month', 'Points', @division.id
+        %th= link_to @sorter.sortable {sort_column: 'handle', title: 'Player', scope_table: "division", scope_table_id: @division.id}
+        %th= link_to @sorter.sortable {sort_column: 'points_this_month', title: 'Points', scope_table: "division", scope_table_id: @division.id}
         %th Wins/Losses
       - @division.registrations.order("#{sort_column} #{sort_direction}").each do |reg|
         %tr
