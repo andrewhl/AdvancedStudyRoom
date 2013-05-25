@@ -27,7 +27,7 @@ class RegistrationsController < ApplicationController
   end
 
   def index
-    @registrations = @event.registrations
+    @registrations = @event.registrations.active
     puts "test"
     @divisions = @event.tiers.collect { |t| t.divisions }.flatten
 
