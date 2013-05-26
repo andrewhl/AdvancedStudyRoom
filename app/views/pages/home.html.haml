@@ -1,9 +1,9 @@
 - @body_class << 'home'
 - @title << 'Welcome to the Advanced Study Room'
 
-%h2 Hi! We're in beta. Spot a bug? Help us out!
+%h3 Hi! We're in beta. Spot a bug? Help us out!
 %p
-  = link_to "Report Bug", "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open", class: "btn btn-warning btn-large"
+  = link_to "Report Bug", "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open", class: "btn btn-warning"
 
 - if @posts
   - @posts.each do |post|

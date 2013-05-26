@@ -1,8 +1,8 @@
 - @title << "Results for #{@event.name} - #{Time.now.strftime("%B")}"
 
-%h2 Hi! We're in beta. Spot a bug? Help us out!
+%h3 Hi! We're in beta. Spot a bug? Help us out!
 %p
-  = link_to "Report Bug", "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open", class: "btn btn-warning btn-large"
+  = link_to "Report Bug", "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open", class: "btn btn-warning"
 %hr
 
 - if @event.divisions.empty?
