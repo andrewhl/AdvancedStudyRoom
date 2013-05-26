@@ -80,7 +80,7 @@ class EventsController < ApplicationController
 
   def join
     account = current_user.accounts.where(server_id: @event.server_id).first
-    account = @user.accounts.where(server_id: @event.server_id).first
+    account = current_user.accounts.where(server_id: @event.server_id).first
     if account
       registration = account.registrations.find_or_create_by_event_id(@event.id)
       registration.update_attributes({active: true}, without_protection: true)
