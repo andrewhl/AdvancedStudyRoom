@@ -31,6 +31,7 @@ AdvancedStudyRoom::Application.routes.draw do
     member do
       get     :results
       get     :manage
+      get     :overview
       post    :join
       delete  :quit
     end

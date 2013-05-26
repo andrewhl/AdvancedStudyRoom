@@ -13,6 +13,12 @@ class EventsController < ApplicationController
     @event = Event.find(
       params[:id],
       include: [:tags, {tiers: [:registrations, :divisions]}])
+    @ruleset = @event.ruleset
+    @excepted_columns = [:id, :created_at, :updated_at, :rulesetable_type, :rulesetable_id, :name]
+  end
+
+  def edit
+    @event = Event.find(params[:id])
   end
 
   def manage

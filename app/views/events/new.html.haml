@@ -1,37 +1,17 @@
 %h1 Events (League months, tournaments, etc.)
 
-/ To do: write a dropdown select box that lists all the available event types, with a value of their corresponding ID. Build the event as an associated object belonging to that event type.
+/ TODO: write a dropdown select box that lists all the available event types, with a value of their corresponding ID. Build the event as an associated object belonging to that event type.
 
-= form_for @event, :html => {:class => "form-horizontal"} do |f|
+= simple_form_for @event, :html => {:class => "form-horizontal"} do |f|
 
-  .control-group
-    %label.control-label
-      Server
-    .controls
-      = f.select(:server_id, options_from_collection_for_select(@servers, :id, :name))
-    %label.control-label
-      Canonical Ruleset
-    .controls
-      = f.select(:ruleset_id, options_from_collection_for_select(@rulesets, :id, :name))
+  = f.input :server_id, collection: @servers, default: 1
+  = f.input :ruleset_id, collection: @rulesets, default: 1
+  = f.input :name
+  = f.input :event_type, collection: ["League", "Tournament"], default: 1, label: "Event Type"
 
-  .control-group
-    %label.control-label
-      Event Name
-    .controls
-      = f.text_field :name
+  = f.simple_fields_for :accounts do |af|
+    = af.input :phrase, label: "Define a Tag Phrase"
 
-  .control-group
-    %label.control-label
-      Event Type
-    .controls
-      = f.select(:event_type, ["League", "Tournament"])
-
-  = f.fields_for(@tag) do |b|
-    .control-group
-      %label.control-label
-        Define a Tag Phrase
-      .controls
-        = b.text_field :phrase
 
   .accordion#accordion1
     .accordion-group

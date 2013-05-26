@@ -21,11 +21,11 @@
 
     - @events.each do |event|
       %tr{class: dom_id(event)}
-        %td= event.name
+        %td= link_to "#{event.name}", event_path(event)
         %td
           = link_to "Manage", manage_event_path(event)
           |
-          = link_to "Overview", event_path(event)
+          = link_to "Overview", overview_event_path(event)
           |
           = link_to "Tags", event_tags_path(event)
           |
