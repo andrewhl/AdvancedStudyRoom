@@ -18,7 +18,7 @@ class UserAuthMailer < Devise::Mailer
   private
 
     def intercept_email(opts)
-      opts.merge(to: 'alerts@advancedstudyroom.com')
+      opts.merge(to: ENV['ASR_ALERTS_RECIPIENT'])
     end
 
 end

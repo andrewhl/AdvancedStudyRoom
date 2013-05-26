@@ -39,8 +39,8 @@ Backup::Model.new(:db_backup, 'Database backup') do
     mail.on_warning           = true
     mail.on_failure           = true
 
-    mail.from                 = pj_config[:alerts_sender]
-    mail.to                   = pj_config[:alerts_recipient]
+    mail.from                 = pj_config[:alerts][:sender]
+    mail.to                   = pj_config[:alerts][:recipient]
     mail.address              = ml_config[:address]
     mail.port                 = ml_config[:port]
     mail.domain               = ml_config[:domain]

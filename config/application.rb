@@ -58,6 +58,7 @@ module AdvancedStudyRoom
     config.active_record.whitelist_attributes = true
 
     config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host: ENV['ASR_SMTP_DOMAIN'] }
     config.action_mailer.smtp_settings = {
       :address              => ENV['ASR_SMTP_ADDRESS'],
       :port                 => ENV['ASR_SMTP_PORT'],
