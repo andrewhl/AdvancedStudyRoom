@@ -16,7 +16,7 @@
     %tbody
       - @leagues.each do |event|
         %tr
-          %td= event.name
+          %td= link_to "#{event.name}", event_path(event)
           %td= event.registrations.active.count
           %td= event.server.name
           %td= link_to "View Results", results_event_path(event)
