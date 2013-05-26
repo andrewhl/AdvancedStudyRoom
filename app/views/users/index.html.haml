@@ -5,8 +5,8 @@
 %table.table.table-condensed.table-bordered.table-hover
   %thead
     %tr
-      %th= link_to "Username", @sorter.sortable(sort: "username", params: params)
-      %th= link_to "Admin?", @sorter.sortable(sort: "admin", params: params)
+      %th= sortable("username", "Username")
+      %th= sortable("admin", "Admin?")
       %th Registered?
   %tbody
     - @users.each do |user|

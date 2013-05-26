@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   before_filter :authorize, except: [:signup, :process_signup]
   before_filter :build_user, only: [:new, :signup]
-  before_filter :initialize_table_sorter
+  # before_filter :initialize_table_sorter
   before_filter :initialize_params
 
   def profile
@@ -73,17 +73,20 @@ class UsersController < ApplicationController
       @user.accounts.build
     end
 
-    def initialize_table_sorter
-      @sorter = ApplicationHelper::TableSorter.new(
-        sort_direction: params[:direction] || "desc",
-        sort_column:    params[:sort] || "username",
-        table: "User"
-        )
-    end
-
+    # def initialize_table_sorter
+    #   @sorter = ApplicationHelper::TableSorter.new(
+    #     sort_direction: params[:direction] || "desc",
+    #     sort_column:    params[:sort] || "username",
+    #     table: "User"
+    #     )
+    # end
     def initialize_params
-      params[:sort]      ||= @sorter.sort_column
-      params[:direction] ||= @sorter.sort_direction
+      params[:sort]      ||= "username"
+      params[:direction] ||= "desc"
     end
+    # def initialize_params
+    #   params[:sort]      ||= @sorter.sort_column
+    #   params[:direction] ||= @sorter.sort_direction
+    # end
 
 end

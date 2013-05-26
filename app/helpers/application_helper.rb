@@ -36,15 +36,15 @@ module ApplicationHelper
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction = sort_direction == "asc" ? "desc" : "asc"
-    link_to title, {:sort => column, :direction => direction, :"division" => division}, {:class => css_class}
+    link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
 
-  # def division_sortable(column, title = nil, division_id = nil)
-  #   title ||= column.titleize
-  #   css_class = column == sort_column ? "current #{sort_direction}" : nil
-  #   direction = sort_direction == "asc" ? "desc" : "asc"
-  #   link_to title, {:sort => column, :direction => direction, :division_id => division_id}, {:class => css_class}
-  # end
+  def division_sortable(column, title = nil, division_id = nil)
+    title ||= column.titleize
+    css_class = column == sort_column ? "current #{sort_direction}" : nil
+    direction = sort_direction == "asc" ? "desc" : "asc"
+    link_to title, {:sort => column, :direction => direction, :division_id => division_id}, {:class => css_class}
+  end
 
   def rank_options_for_select(selected = nil)
     ranks = []

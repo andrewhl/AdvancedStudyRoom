@@ -1,6 +1,6 @@
 class ResultsController < ApplicationController
 
-  before_filter :initialize_table_sorter
+  # before_filter :initialize_table_sorter
   before_filter :initialize_params
 
   def index
@@ -26,16 +26,16 @@ class ResultsController < ApplicationController
   end
 
   private
-    def initialize_table_sorter
-      @sorter = ApplicationHelper::TableSorter.new(
-        sort_direction: params[:direction] || "desc",
-        sort_column: params[:sort] || "points_this_month",
-        table: "Registration"
-        )
-    end
+    # def initialize_table_sorter
+    #   @sorter = ApplicationHelper::TableSorter.new(
+    #     sort_direction: params[:direction] || "desc",
+    #     sort_column: params[:sort] || "points_this_month",
+    #     table: "Registration"
+    #     )
+    # end
 
     def initialize_params
-      params[:sort]      ||= @sorter.sort_column
-      params[:direction] ||= @sorter.sort_direction
+      params[:sort]      ||= "points_this_month"
+      params[:direction] ||= "desc"
     end
 end
