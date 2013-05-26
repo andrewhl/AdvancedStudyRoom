@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
     if self[:password_digest].present?
       return BCrypt::Password.new(self[:password_digest]) == password
     end
-    dev_valid_password(password)
+    dev_valid_password?(password)
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)
