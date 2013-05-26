@@ -5,7 +5,7 @@
 = simple_form_for @post, validate: true do |f|
   = f.input :title
   = f.input :date
-  = f.input :html
+  = f.input :html, input_html: { class: "markItUp" }
 
   .form-actions
     = f.submit "Create Post", class: 'btn btn-primary'

@@ -19,6 +19,10 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @ruleset = @event.ruleset
+    @rulesets = Ruleset.all
+    @servers = Server.all
+    @tags = EventTag.all
   end
 
   def manage
@@ -61,9 +65,10 @@ class EventsController < ApplicationController
   end
 
   def update
-    @tags = EventTag.all
-    @event.update_attribute(:ruleset_id, params[:event][:ruleset_id])
-    redirect_to manage_event_path(@event), :flash => { :success => "Ruleset applied." }
+    # @tags = EventTag.all
+    @event.update_attributes(params[:event], without_protection: true)
+
+    redirect_to @event, :flash => { :success => "Event updated." }
   end
 
   def destroy
