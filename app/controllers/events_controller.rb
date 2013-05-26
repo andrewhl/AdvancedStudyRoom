@@ -72,14 +72,16 @@ class EventsController < ApplicationController
   end
 
   def join_other
-    reg = Registration.find(params[:registration_id])
-    reg.update_attributes({active: true}, without_protection: true)
-    redirect_to reg.account.user,
-      flash: {success: "You have registered #{reg.account.handle} to #{@event.name}"}
+    @event = Event.find(params[:id])
+    account = Account.find(params[:account_id])
+
+    registration = account.registrations.find_or_create_by_event_id(@event.id)
+    registration.update_attributes({active: true}, without_protection: true)
+    redirect_to registration.account.user,
+      flash: {success: "You have registered #{registration.account.handle} to #{@event.name}"}
   end
 
   def join
-    account = current_user.accounts.where(server_id: @event.server_id).first
     account = current_user.accounts.where(server_id: @event.server_id).first
     if account
       registration = account.registrations.find_or_create_by_event_id(@event.id)

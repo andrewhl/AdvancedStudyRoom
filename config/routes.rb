@@ -10,8 +10,8 @@ AdvancedStudyRoom::Application.routes.draw do
   get  'logout',            to: 'sessions#destroy',   as: 'logout'
   post 'toggle_admin/:id',  to: 'users#toggle_admin', as: 'toggle_admin'
 
-  delete 'events/:id/registrations/:registration_id/quit',     to: 'events#quit', as: 'event_registration_quit'
-  post 'events/:id/registrations/:registration_id/join_other', to: 'events#join_other', as: 'join_other'
+  delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
+  post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
 
   get 'rules',              to: 'pages#rules'
   get 'faq',                to: 'pages#faq'
