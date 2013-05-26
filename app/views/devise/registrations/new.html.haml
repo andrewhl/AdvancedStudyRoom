@@ -1,0 +1,28 @@
+%h2 Sign Up
+
+= errors_summary(@user) if @user.errors.any?
+
+%h3 Step 1: Make an ASR Login
+%p Note: This account is just for logging in to the ASR website.
+
+= simple_form_for resource, as: resource_name, url: registration_path(resource_name), validate: true do |f|
+  = f.error_notification
+
+  = f.input :username, autofocus: true
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+
+  %hr
+
+  %h3 Step 2: Add your KGS account.
+  %p To get started, specify your account on KGS.
+
+  = f.simple_fields_for :accounts do |af|
+    = af.input :server_id, as: :hidden, input_html: {value: Server.find_by_name("KGS").id}
+    = af.input :handle
+
+  .form-actions
+    = f.submit "Sign Up", class: 'btn btn-primary'
+
+= render "devise/shared/links"
