@@ -36,15 +36,15 @@ module ApplicationHelper
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
     direction = sort_direction == "asc" ? "desc" : "asc"
-    link_to title, {:sort => column, :direction => direction, :"#{args[0]}_id" => }, {:class => css_class}
+    link_to title, {:sort => column, :direction => direction, :"division" => division}, {:class => css_class}
   end
 
-  def division_sortable(column, title = nil, division_id = nil)
-    title ||= column.titleize
-    css_class = column == sort_column ? "current #{sort_direction}" : nil
-    direction = sort_direction == "asc" ? "desc" : "asc"
-    link_to title, {:sort => column, :direction => direction, :division_id => division_id}, {:class => css_class}
-  end
+  # def division_sortable(column, title = nil, division_id = nil)
+  #   title ||= column.titleize
+  #   css_class = column == sort_column ? "current #{sort_direction}" : nil
+  #   direction = sort_direction == "asc" ? "desc" : "asc"
+  #   link_to title, {:sort => column, :direction => direction, :division_id => division_id}, {:class => css_class}
+  # end
 
   def rank_options_for_select(selected = nil)
     ranks = []
@@ -62,28 +62,30 @@ module ApplicationHelper
 
 
   class TableSorter
+
+    attr_accessor :direction, :column
+
     def initialize(args)
-      @sort_direction = args[:sort_direction] || "asc"
-      @sort_column    = args[:sort_column]    || "id"
-      @table          = arsg[:table].constantize
+      @direction = args[:direction] || "desc"
+      @column    = args[:column]    || "id"
+      @table     = args[:table].constantize
     end
 
     def sortable(args)
       column           = args[:column]
-      title            = args[:title] || nil
       scope_table      = args[:scope_table] || nil
+      @direction       = args[:params][:direction]
       scope_table_name = paramaterize(scope_table) || "scope_table"
 
-      title ||= column.titleize
-      link_to title, {:sort => column, :direction => direction, :"#{scope_table_name}" => scope_table}, {:class => css_class(column)}
+      {:sort => column, :direction => check_direction, :"#{scope_table_name}" => scope_table, :class => css_class(column)}
     end
 
     def sort_column
-      @table.column_names.include?(params[:sort]) ? params[:sort] : @sort_column
+      @table.column_names.include?(@column) ? @column : "id"
     end
 
     def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : @sort_direction
+      %w[asc desc].include?(@direction) ? @direction : "desc"
     end
 
     private
@@ -95,7 +97,7 @@ module ApplicationHelper
         column == sort_column ? "current #{sort_direction}" : nil
       end
 
-      def direction
+      def check_direction
         sort_direction == "asc" ? "desc" : "asc"
       end
   end

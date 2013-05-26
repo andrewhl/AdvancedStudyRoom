@@ -5,13 +5,13 @@
 %table.table.table-condensed.table-bordered.table-hover
   %thead
     %tr
-      %th Username
-      %th Admin?
+      %th= link_to "Username", @sorter.sortable(sort: "username", params: params)
+      %th= link_to "Admin?", @sorter.sortable(sort: "admin", params: params)
       %th Registered?
   %tbody
     - @users.each do |user|
       %tr
-        %td= sortable(user.username)
+        %td= user.username
         %td
           - if user.admin?
             = link_to "De-Admin", toggle_admin_path(user), method: :post, class: "btn btn-inverse btn-small", disabled: current_user == user

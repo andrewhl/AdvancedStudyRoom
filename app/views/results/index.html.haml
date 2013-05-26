@@ -22,10 +22,10 @@
   - if @division.registrations.count > 30
     %table.table.table-condensed.table-bordered.table-hover.results-table
       %tr
-        %th= link_to @sorter.sortable {sort_column: 'handle', title: 'Player', scope_table: "division", scope_table_id: @division.id}
-        %th= link_to @sorter.sortable {sort_column: 'points_this_month', title: 'Points', scope_table: "division", scope_table_id: @division.id}
+        %th= link_to "Handle", @sorter.sortable(column: 'handle', division_id: @division.id, params: params)
+        %th= link_to "Points", @sorter.sortable(column: 'points_this_month', division_id: @division.id, params: params)
         %th Wins/Losses
-      - @division.registrations.order("#{sort_column} #{sort_direction}").each do |reg|
+      - @division.registrations.order(@sorter.sort_column + ' ' + @sorter.sort_direction).each do |reg|
         %tr
           %td.not-centered= reg.handle
           %td= reg.points_this_month
@@ -36,21 +36,21 @@
   - else
     %table.table.table-condensed.table-bordered.table-hover.wide-table.results-table
       %tr
-        %th= link_to division_sortable "handle", "Player", @division.id
-        %th= link_to division_sortable "points_this_month", "Points", @division.id
-        - @division.registrations.order(sort_column + ' ' + sort_direction).each do |col_player|
+        %th= link_to "Handle", @sorter.sortable(column: 'handle', division_id: @division.id, params: params), @division.id
+        %th= link_to "Points", @sorter.sortable(column: 'points_this_month', division_id: @division.id, params: params), @division.id
+        - @division.registrations.order(@sorter.sort_column + ' ' + @sorter.sort_direction).each do |col_player|
           %th
             %span
               %span
                 %span= col_player.handle
-      - @division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |row_player, row_i|
+      - @division.registrations.order(@sorter.sort_column + ' ' + @sorter.sort_direction).each_with_index do |row_player, row_i|
         %tr
           %td.not-centered
             = row_player.handle
             - if can? :read, :matches
               = icon_link_to(registration_matches_path(row_player), :exchange)
           %td.not-centered= row_player.points_this_month
-          - @division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |col_player, col_i|
+          - @division.registrations.order(@sorter.sort_column + ' ' + @sorter.sort_direction).each_with_index do |col_player, col_i|
             - if col_player == row_player
               %td.cross.result{class: "column-#{col_i} row-#{row_i}"}
                 %i.icon-remove
