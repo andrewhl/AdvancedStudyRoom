@@ -5,7 +5,7 @@
   = f.input :server_id, collection: @servers, default: 1
   = f.input :ruleset_id, collection: @rulesets, default: 1
   = f.input :name
-  = f.input :description
+  = f.input :description, input_html: { class: "markItUp" }
   = f.input :event_type, collection: ["League", "Tournament"], default: 1, label: "Event Type"
 
   .actions

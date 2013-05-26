@@ -28,7 +28,7 @@
     #tab1.tab-pane.active
       %p
         - if @event.description
-          = @event.description
+          = markdown_to_html(@event.description)
         - else
           This event has no description.
     #tab2.tab-pane
