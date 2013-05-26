@@ -61,10 +61,18 @@ class User < ActiveRecord::Base
               uniqueness: {case_sensitive: false},
               format: { with: /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i,
                         message: 'is an invalid email' }
-  validates :username,  presence: true, 
+  validates :username,  presence: true,
                         uniqueness: {case_sensitive: false}
   validates :password, confirmation: true, unless: Proc.new { |u| u.password.blank? }
 
+  def registered_for_anything?
+    if registrations.any?
+      registrations.any? { |r| r.active? }
+    else
+      false
+    end
+
+  end
 
   def joined_event? event_id
     events.exists?(id: event_id)

@@ -2,9 +2,10 @@ class UsersController < ApplicationController
 
   load_and_authorize_resource
   before_filter :authorize
+  before_filter :initialize_params
 
   def index
-    @users = User.all
+    @users = User.order("#{params[:sort]} #{params[:direction]}")
   end
 
   def new
@@ -52,5 +53,12 @@ class UsersController < ApplicationController
       render :index
     end
   end
+
+  private
+
+    def initialize_params
+      params[:sort]      ||= "username"
+      params[:direction] ||= "desc"
+    end
 
 end

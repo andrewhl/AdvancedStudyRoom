@@ -25,7 +25,7 @@
         %th= link_to division_sortable 'handle', 'Player', @division.id
         %th= link_to division_sortable 'points_this_month', 'Points', @division.id
         %th Wins/Losses
-      - @division.registrations.order("#{sort_column} #{sort_direction}").each do |reg|
+      - @division.registrations.order(sort_column + ' ' + sort_direction).each do |reg|
         %tr
           %td.not-centered= reg.handle
           %td= reg.points_this_month
