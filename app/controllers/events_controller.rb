@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   load_and_authorize_resource
-  before_filter :authorize, except: [:leagues]
+  before_filter :authorize, except: [:leagues, :show]
 
   before_filter :find_event, only: [:manage, :update, :destroy, :join, :quit, :results]
 
