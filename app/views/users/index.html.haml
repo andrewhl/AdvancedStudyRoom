@@ -18,6 +18,6 @@
           - else
             = link_to "Make Admin", toggle_admin_path(user), method: :post, class: "btn btn-primary btn-small"
         %td
-          = user.registrations.any? ? "Yes" : "No"
+          = user.registered_for_anything? ? "Yes" : "No"
 
 
