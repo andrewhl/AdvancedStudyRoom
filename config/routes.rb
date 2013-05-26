@@ -1,11 +1,11 @@
 AdvancedStudyRoom::Application.routes.draw do
 
-  devise_for :users, path_names: {sign_in: :login, sign_out: :logout, registration: :sign_up} do
+  devise_for :users, controllers: {registrations: :signup} do
     get  'login',     to: 'devise/sessions#new',        as: 'login'
     post 'login',     to: 'devise/sessions#create'
     get  'logout',    to: 'devise/sessions#destroy',    as: 'logout'
-    get  'signup',    to: 'devise/registrations#new',   as: 'signup'
-    post 'signup',    to: 'devise/registrations#create'
+    get  'signup',    to: 'signup#new',                 as: 'signup'
+    post 'signup',    to: 'signup#create'
   end
 
   resources :posts

@@ -1,11 +1,11 @@
 %h2 Sign Up
 
-= errors_summary(@user) if @user.errors.any?
+= errors_summary(resource) if resource.errors.any?
 
 %h3 Step 1: Make an ASR Login
 %p Note: This account is just for logging in to the ASR website.
 
-= simple_form_for resource, as: resource_name, url: registration_path(resource_name), validate: true do |f|
+= simple_form_for resource, as: resource_name, url: signup_path, validate: true do |f|
   = f.error_notification
 
   = f.input :username, autofocus: true
