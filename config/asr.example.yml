@@ -4,9 +4,10 @@ development: &defaults
   # ==> Errbit Configuration
   # Errbit host and API keys for the application and
   # javascript
-  errbit_host:      errbit.advancedstudyroom.com
-  errbit_app:       42dea4ac8920b8a4cf6d9061bb6902da
-  errbit_js:        2d95aa543b493d3ea87334d043992458
+  errbit:
+    host:           errbit.advancedstudyroom.com
+    app:            42dea4ac8920b8a4cf6d9061bb6902da
+    js:             2d95aa543b493d3ea87334d043992458
 
   # ==> Google Analytics Configuration
   analytics:        UA-12345678-5
