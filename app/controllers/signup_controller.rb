@@ -15,7 +15,7 @@ class SignupController < Devise::RegistrationsController
       sign_in @user
       return redirect_to profile_path, flash: {info: 'Thank you for signing up!'}
     end
-    render :signup
+    render :new
   end
 
   private

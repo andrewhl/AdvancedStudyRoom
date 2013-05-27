@@ -67,6 +67,7 @@ module AdvancedStudyRoom
       :password             => ENV['ASR_SMTP_PASSWORD'],
       :authentication       => ENV['ASR_SMTP_AUTH'],
       :enable_starttls_auto => ENV['ASR_SMTP_STARTTLS_AUTO'] == 'true' }
+    # TODO: Add mail interceptor unless Rails.env.production?
 
     # Enable the asset pipeline
     config.assets.enabled = true
