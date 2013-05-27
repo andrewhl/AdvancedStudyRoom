@@ -62,10 +62,11 @@ module AdvancedStudyRoom
     config.action_mailer.smtp_settings = {
       :address              => ENV['ASR_SMTP_ADDRESS'],
       :port                 => ENV['ASR_SMTP_PORT'],
+      :domain               => ENV['ASR_SMTP_DOMAIN'],
       :user_name            => ENV['ASR_SMTP_USERNAME'],
       :password             => ENV['ASR_SMTP_PASSWORD'],
       :authentication       => ENV['ASR_SMTP_AUTH'],
-      :enable_starttls_auto => ENV['ASR_SMTP_STARTTLS_AUTO'] }
+      :enable_starttls_auto => ENV['ASR_SMTP_STARTTLS_AUTO'] == 'true' }
 
     # Enable the asset pipeline
     config.assets.enabled = true
