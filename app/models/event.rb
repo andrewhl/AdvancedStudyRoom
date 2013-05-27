@@ -2,12 +2,13 @@
 #
 # Table name: events
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  event_type :string(255)
-#  server_id  :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  event_type  :string(255)
+#  server_id   :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
 #
 
 
