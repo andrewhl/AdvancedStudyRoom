@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :title
+
+  scope :pages, where(post_type: :page)
 end
