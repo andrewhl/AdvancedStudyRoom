@@ -38,10 +38,11 @@ class AddDeviseToUsers < ActiveRecord::Migration
     remove_column :users, :password_reset_flag
     remove_column :users, :last_signed_in
 
+    require 'securerandom'
     User.all.each do |user|
       t = Time.now
       user.update_attributes({
-        confirmation_token: 'a63298d3127d6e68febc2520fda77',
+        confirmation_token: SecureRandom.uuid,
         confirmed_at: t,
         confirmation_sent_at: t }, without_protection: true)
     end
