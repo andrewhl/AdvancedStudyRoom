@@ -29,6 +29,11 @@ describe SignupController do
       post 'create', user: @user_attrs
       expect(response).to redirect_to(profile_path)
     end
+
+    it "renders the form if the signup fails" do
+      post 'create', user: @user_attrs.merge(password: 'abc1234', password_confirmation: '4321cba')
+      response.should render_template(:new)
+    end
   end
 
 end
