@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   load_and_authorize_resource
-  before_filter :authorize, except: [:leagues]
+  before_filter :authorize, except: [:leagues, :show]
 
   before_filter :find_event, only: [:manage, :update, :destroy, :join, :quit, :results]
 
@@ -13,6 +13,16 @@ class EventsController < ApplicationController
     @event = Event.find(
       params[:id],
       include: [:tags, {tiers: [:registrations, :divisions]}])
+    @ruleset = @event.ruleset
+    @excepted_columns = [:id, :created_at, :updated_at, :rulesetable_type, :rulesetable_id, :name]
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    @ruleset = @event.ruleset
+    @rulesets = Ruleset.all
+    @servers = Server.all
+    @tags = EventTag.all
   end
 
   def manage
@@ -55,9 +65,10 @@ class EventsController < ApplicationController
   end
 
   def update
-    @tags = EventTag.all
-    @event.update_attribute(:ruleset_id, params[:event][:ruleset_id])
-    redirect_to manage_event_path(@event), :flash => { :success => "Ruleset applied." }
+    # @tags = EventTag.all
+    @event.update_attributes(params[:event], without_protection: true)
+
+    redirect_to @event, :flash => { :success => "Event updated." }
   end
 
   def destroy

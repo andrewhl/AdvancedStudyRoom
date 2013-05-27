@@ -2,6 +2,9 @@
 	"folders":
 	[
 		{
+			"path": "app"
+		},
+		{
 			"file_exclude_patterns":
 			[
 				".swp"
@@ -14,10 +17,7 @@
 				".zeus.sock"
 			],
 			"name": "ASR",
-			"path": "."
-		},
-		{
-			"path": "app"
+			"path": "/Users/andrew/Projects/ASR"
 		}
 	]
 }
