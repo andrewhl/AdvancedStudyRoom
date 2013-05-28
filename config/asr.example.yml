@@ -26,14 +26,15 @@ development: &defaults
   notif_sender:     support@advancedstudyroom.com
 
   # ==> Alerts Configuration
-  # Recipient's email for the app alerts
-  # In a development environment all notifications/alerts
-  # will be sent to this email address.
-  alerts_recipient: arturo@advancedstudyroom.com
-  # Sender's email for the app alerts
-  # Alerts are sent to the site admins.
-  # i.e. new registrations
-  alerts_sender:    alerts@advancedstudyroom.com
+  alerts:
+    # Recipient's email for the app alerts
+    # In a development environment all notifications/alerts
+    # will be sent to this email address.
+    recipient: arturo@advancedstudyroom.com
+    # Sender's email for the app alerts
+    # Alerts are sent to the site admins.
+    # i.e. new registrations
+    sender:    alerts@advancedstudyroom.com
 
   # ==> Mailers Configuration
   # SMTP settings for the mailers
@@ -46,6 +47,11 @@ development: &defaults
     auth:           plain
     starttls_auto:  true
 
+test:
+  <<: *defaults
+  db_backup:
+    key:            shouldnotbevalid
+    secret:         shouldnotbevalid
 
 production:
   <<: *defaults
