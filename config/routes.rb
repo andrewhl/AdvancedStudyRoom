@@ -1,13 +1,16 @@
 AdvancedStudyRoom::Application.routes.draw do
 
+  devise_for :users, controllers: {registrations: :signup} do
+    get  'login',     to: 'devise/sessions#new',        as: 'login'
+    post 'login',     to: 'devise/sessions#create'
+    get  'logout',    to: 'devise/sessions#destroy',    as: 'logout'
+    get  'signup',    to: 'signup#new',                 as: 'signup'
+    post 'signup',    to: 'signup#create'
+  end
+
   resources :posts
   mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
-  get  'signup',            to: 'users#signup',       as: 'signup'
-  post 'signup',            to: 'users#process_signup'
-  get  'login',             to: 'sessions#new',       as: 'login'
-  post 'login',             to: 'sessions#create'
-  get  'logout',            to: 'sessions#destroy',   as: 'logout'
   post 'toggle_admin/:id',  to: 'users#toggle_admin', as: 'toggle_admin'
 
   delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'

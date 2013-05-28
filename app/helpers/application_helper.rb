@@ -25,7 +25,7 @@ module ApplicationHelper
     content_tag :div, class: "alert alert-error" do
       content_tag(:h3, "Please fix the following errors:") +
       content_tag(:ul) do
-        instance.errors.full_messages.collect do |msg|
+        instance.errors.full_messages.uniq.collect do |msg|
           content_tag(:li, msg)
         end.join.html_safe
       end
