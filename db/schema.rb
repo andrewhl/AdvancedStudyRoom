@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527224935) do
+ActiveRecord::Schema.define(:version => 20130529010210) do
 
   create_table "accounts", :force => true do |t|
     t.string   "handle"
@@ -111,6 +111,17 @@ ActiveRecord::Schema.define(:version => 20130527224935) do
   add_index "matches", ["loser_id"], :name => "index_matches_on_loser_id"
   add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
   add_index "matches", ["winner_id"], :name => "index_matches_on_winner_id"
+
+  create_table "pages", :force => true do |t|
+    t.datetime "date"
+    t.integer  "user_id"
+    t.text     "html",       :limit => 255
+    t.string   "title"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "sort_order"
+    t.string   "permalink"
+  end
 
   create_table "permissions", :force => true do |t|
     t.string   "perm"

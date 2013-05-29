@@ -8,20 +8,17 @@ AdvancedStudyRoom::Application.routes.draw do
     post 'signup',    to: 'signup#create'
   end
 
-  resources :posts
-  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
+  resources :posts, :pages
 
-  post 'toggle_admin/:id',  to: 'users#toggle_admin', as: 'toggle_admin'
+  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
   delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
   post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
 
-  get 'rules',              to: 'pages#rules'
-  get 'faq',                to: 'pages#faq'
-
   get 'profile',        to: 'users#profile'
   resources :users do
     get  :profile,      on: :member
+    post :toggle_admin, on: :member
     resources :accounts
   end
 
@@ -64,7 +61,6 @@ AdvancedStudyRoom::Application.routes.draw do
     get 'ruleset', to: 'tiers#ruleset'
   end
 
-  match 'about', to: 'pages#about'
   resources :pages
 
   match '/', to: 'pages#home'

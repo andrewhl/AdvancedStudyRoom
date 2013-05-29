@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def pages
+    pages = []
+    Page.all.each do |page|
+      pages << {title: page.title, path: page.path}
+    end
+    pages
+  end
+
   def twitterized_type(type)
     case type
       when :success then "alert-success"
