@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
   def create
     if @page = Page.create(params[:page], without_protection: true)
-      return redirect_to @page
+      return redirect_to @page.path
     end
     render :new
   end
