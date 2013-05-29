@@ -17,4 +17,7 @@
 //= require rails.validations.simple_form
 //= require markitup
 //= require markitup/sets/markdown/set
+//= require_self
 //= require_tree .
+
+window.ASR = {};

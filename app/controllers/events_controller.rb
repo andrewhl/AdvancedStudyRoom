@@ -14,7 +14,6 @@ class EventsController < ApplicationController
       params[:id],
       include: [:tags, {tiers: [:registrations, :divisions]}])
     @ruleset = @event.ruleset
-    @excepted_columns = [:id, :created_at, :updated_at, :rulesetable_type, :rulesetable_id, :name]
   end
 
   def edit

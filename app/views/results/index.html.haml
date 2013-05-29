@@ -23,7 +23,10 @@
         %li{class: active_tab_for(div)}
           = link_to div.name, {division_id: div.id}
 
-  - if @division.registrations.count > 30
+  - if @division.registrations.count == 0
+    .well
+      %p There are no players assigned to this division yet.
+  - elsif @division.registrations.count > 30
     %table.table.table-condensed.table-bordered.table-hover.results-table
       %tr
         %th= link_to division_sortable 'handle', 'Player', @division.id

@@ -2,15 +2,14 @@
 #
 # Table name: accounts
 #
-#  id           :integer          not null, primary key
-#  handle       :string(255)
-#  user_id      :integer
-#  server_id    :integer
-#  rank         :integer
-#  active       :boolean          default(TRUE), not null
-#  total_points :float            default(0.0), not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id         :integer          not null, primary key
+#  handle     :string(255)
+#  user_id    :integer
+#  server_id  :integer
+#  rank       :integer
+#  active     :boolean          default(TRUE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Account < ActiveRecord::Base

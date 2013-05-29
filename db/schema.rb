@@ -18,10 +18,9 @@ ActiveRecord::Schema.define(:version => 20130529010210) do
     t.integer  "user_id"
     t.integer  "server_id"
     t.integer  "rank"
-    t.boolean  "active",       :default => true, :null => false
-    t.float    "total_points", :default => 0.0,  :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "active",     :default => true, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "accounts", ["active"], :name => "index_accounts_on_active"
@@ -180,11 +179,10 @@ ActiveRecord::Schema.define(:version => 20130529010210) do
     t.integer  "account_id"
     t.integer  "event_id"
     t.integer  "division_id"
-    t.float    "points_this_month", :default => 0.0,  :null => false
-    t.float    "float",             :default => 0.0,  :null => false
     t.boolean  "active",            :default => true, :null => false
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.float    "points_this_month", :default => 0.0,  :null => false
   end
 
   add_index "registrations", ["account_id"], :name => "index_registrations_on_account_id"
