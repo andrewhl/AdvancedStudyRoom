@@ -8,7 +8,8 @@ unless User.exists?(admin: true)
     { first_name: 'admin',
       username: 'admin',
       email: 'admin@test.com',
-      password: 'admin',
+      password: 'admin1',
+      password_confirmation: 'admin1',
       admin: true },
     without_protection: true)
 end

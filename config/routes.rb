@@ -1,24 +1,24 @@
 AdvancedStudyRoom::Application.routes.draw do
 
-  resources :posts
-  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
+  devise_for :users, controllers: {registrations: :signup} do
+    get  'login',     to: 'devise/sessions#new',        as: 'login'
+    post 'login',     to: 'devise/sessions#create'
+    get  'logout',    to: 'devise/sessions#destroy',    as: 'logout'
+    get  'signup',    to: 'signup#new',                 as: 'signup'
+    post 'signup',    to: 'signup#create'
+  end
 
-  get  'signup',            to: 'users#signup',       as: 'signup'
-  post 'signup',            to: 'users#process_signup'
-  get  'login',             to: 'sessions#new',       as: 'login'
-  post 'login',             to: 'sessions#create'
-  get  'logout',            to: 'sessions#destroy',   as: 'logout'
-  post 'toggle_admin/:id',  to: 'users#toggle_admin', as: 'toggle_admin'
+  resources :posts, :pages
+
+  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
   delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
   post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
 
-  get 'rules',              to: 'pages#rules'
-  get 'faq',                to: 'pages#faq'
-
   get 'profile',        to: 'users#profile'
   resources :users do
     get  :profile,      on: :member
+    post :toggle_admin, on: :member
     resources :accounts
   end
 
@@ -61,8 +61,11 @@ AdvancedStudyRoom::Application.routes.draw do
     get 'ruleset', to: 'tiers#ruleset'
   end
 
-  match 'about', to: 'pages#about'
   resources :pages
+
+  match '/', to: 'pages#home'
+
+  match ':permalink', to: 'pages#show'
 
   root to: "pages#home"
 

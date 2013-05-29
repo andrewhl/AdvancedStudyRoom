@@ -26,14 +26,6 @@ class ResultsController < ApplicationController
   end
 
   private
-    # def initialize_table_sorter
-    #   @sorter = ApplicationHelper::TableSorter.new(
-    #     sort_direction: params[:direction] || "desc",
-    #     sort_column: params[:sort] || "points_this_month",
-    #     table: "Registration"
-    #     )
-    # end
-
     def initialize_params
       params[:sort]      ||= "points_this_month"
       params[:direction] ||= "desc"
