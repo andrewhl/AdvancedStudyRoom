@@ -23,6 +23,7 @@ class Event < ActiveRecord::Base
   has_many :divisions, through: :tiers, order: '"tiers"."index" ASC, "divisions"."index" ASC'
   has_many :points, dependent: :destroy
   has_many :registrations, dependent: :destroy
+  has_many :matches, through: :divisions
   has_many :tags, class_name: 'EventTag', dependent: :destroy, order: 'phrase ASC'
   has_many :tiers, dependent: :destroy, order: '"tiers"."index" ASC'
 
@@ -57,14 +58,6 @@ class Event < ActiveRecord::Base
 
   def player_count
     registrations.count
-  end
-
-  def matches
-    matches = []
-    divisions.each do |division|
-      matches << division.matches
-    end
-    matches.flatten
   end
 
   def validate_matches!

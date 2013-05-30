@@ -59,6 +59,10 @@ class RegistrationsController < ApplicationController
     # @divisions = @event.tiers.collect { |t| t.divisions }
   end
 
+  def matches
+    @registration = Registration.find(params[:id])
+  end
+
   def remove
     @registration = Registration.find(params[:id])
     @registration.division_id = nil

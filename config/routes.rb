@@ -26,7 +26,8 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'no_events',      to: 'results#no_events'
 
   resources :events do
-    get       :results, to: 'results#index'
+    get :results, to: 'results#index'
+    get :matches, on: :member
 
     member do
       get     :results
@@ -40,11 +41,11 @@ AdvancedStudyRoom::Application.routes.draw do
     resources :tags, controller: 'event_tags'
     resources :registrations do
       put :update, on: :collection
+      get :matches, on: :member
       put :remove, on: :member
     end
   end
 
-  get   'registrations/:registration_id/matches',           to: "matches#index",    as: "registration_matches"
   post  'registrations/:registration_id/matches/download',  to: "matches#download", as: "download_registration_matches"
   post  'matches/:id/validate',   to: "matches#validate",   as: "validate_match"
   post  'matches/:id/check_tags', to: "matches#check_tags", as: "check_match_tags"

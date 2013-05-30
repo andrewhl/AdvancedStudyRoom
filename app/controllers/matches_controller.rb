@@ -37,6 +37,10 @@ class MatchesController < ApplicationController
     redirect_to :back, flash: {success: "Yay"}
   end
 
+  def matches
+    @event = Event.find(params[:id])
+  end
+
   private
     def find_registration
       @registration = Registration.find(params[:registration_id])
