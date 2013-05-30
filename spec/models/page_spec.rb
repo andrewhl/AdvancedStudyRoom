@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id         :integer          not null, primary key
+#  date       :datetime
+#  user_id    :integer
+#  html       :text(255)
+#  title      :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  sort_order :integer
+#  permalink  :string(255)
+#
+
 require 'spec_helper'
 
 describe Page do

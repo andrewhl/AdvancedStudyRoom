@@ -7,7 +7,19 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    permalink = params[:permalink]
+    if permalink.blank?
+      @post = Post.find(params[:id])
+    else
+      @post = Post.where(permalink: permalink).first
+    end
+
+    if @post.present?
+      render :show
+    else
+      redirect_to :root, flash: {alert: "Post not found."}
+      # render '404', status: :not_found
+    end
   end
 
   def edit

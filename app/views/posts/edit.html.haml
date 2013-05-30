@@ -2,7 +2,9 @@
 
 = simple_form_for @post, validate: true do |f|
   = f.input :title
+  = f.input :permalink
   = f.input :html
+
 
   .form-actions
     = f.submit "Edit", class: 'btn btn-primary'
