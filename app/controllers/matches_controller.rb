@@ -6,8 +6,7 @@ class MatchesController < ApplicationController
   before_filter :find_registration, only: [:download]
 
   def index
-    @matches = Match.where("black_player_id = ? OR white_player_id = ?", params[:registration_id], params[:registration_id])
-    @registration = Registration.find(params[:registration_id])
+    @matches = Match.all
   end
 
   def download

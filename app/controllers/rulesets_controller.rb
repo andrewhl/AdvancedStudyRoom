@@ -18,6 +18,11 @@ class RulesetsController < ApplicationController
     redirect_to :new_ruleset, :flash => {:success => "Your ruleset has been successfully created."}
   end
 
+  def show
+    @ruleset = Ruleset.find(params[:id])
+    @event = Event.where("rulesetable_id = ?", @ruleset.id).first
+  end
+
   def edit
     @ruleset = Ruleset.find(params[:id])
   end

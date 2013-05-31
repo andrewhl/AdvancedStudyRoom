@@ -1,0 +1,35 @@
+- @title << 'Ruleset'
+
+%table.table.table-condensed.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th OT Required?
+      %th Jp OT?
+      %th Ca OT?
+      %th JOT Min Periods
+      %th JOT Max Periods
+      %th JOT Min Length
+      %th JOT Max Length
+      %th COT Min Stones
+      %th COT Max Stones
+      %th Min Handicap
+      %th Max Handicap
+  %tbody
+    %tr
+      %td= @ruleset.name
+      %td= yes_no(@ruleset.overtime_required)
+      %td= yes_no(@ruleset.j_ot_allowed)
+      %td= yes_no(@ruleset.c_ot_allowed)
+      %td= @ruleset.j_ot_min_periods
+      %td= @ruleset.j_ot_max_periods
+      %td= @ruleset.j_ot_min_period_length
+      %td= @ruleset.j_ot_max_period_length
+      %td= @ruleset.c_ot_min_stones
+      %td= @ruleset.c_ot_max_stones
+      %td= @ruleset.min_handicap
+      %td= @ruleset.max_handicap
+
+%h2 Belongs to:
+
+= link_to "Edit Ruleset", edit_ruleset_path(@ruleset), class: "btn btn-primary"

@@ -23,7 +23,7 @@
   %tbody
     - @rulesets.each do |ruleset|
       %tr
-        %td= ruleset.name
+        %td= link_to "#{ruleset.name}", ruleset
         %td= yes_no(ruleset.overtime_required)
         %td= yes_no(ruleset.j_ot_allowed)
         %td= yes_no(ruleset.c_ot_allowed)
