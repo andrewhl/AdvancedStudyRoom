@@ -62,7 +62,7 @@ module ASR
       end
 
       def check_result(data)
-        !data[:result].nil?
+        !data[:result].nil? && data[:result][:win_info].to_s.strip != ''
       end
 
       def check_is_player_in_game(data)
