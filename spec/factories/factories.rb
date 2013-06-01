@@ -64,11 +64,6 @@ FactoryGirl.define do
     digest { Time.now.to_s }
   end
 
-  factory :match_tag do
-    node 5
-    phrase "#ASR"
-  end
-
   factory :event do
     ruleset
     name "ASR League"

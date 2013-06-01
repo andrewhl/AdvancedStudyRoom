@@ -2,9 +2,7 @@
 
 FactoryGirl.define do
   factory :match_tag do
-    node 1
-    match_id 1
-    phrase "MyString"
-    handle "MyString"
+    node 5
+    phrase "#ASR"
   end
 end
