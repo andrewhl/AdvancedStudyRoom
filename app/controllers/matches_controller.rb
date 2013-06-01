@@ -9,15 +9,6 @@ class MatchesController < ApplicationController
     @matches = Match.all
   end
 
-  def download
-    registration = Registration.find(params[:registration_id])
-    server = registration.server
-    sgf_importer = ASR::SGFImporter.new(server: server, ignore_case: true)
-    matches = sgf_importer.import_matches(handle: registration.handle)
-    matches.each(&:save)
-    redirect_to registration_matches_path(registration), flash: {success: "Your matches have been downloaded."}
-  end
-
   def validate
     match = Match.find(params[:id])
     division = match.division

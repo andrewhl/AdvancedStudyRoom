@@ -10,7 +10,7 @@ describe ASR::SGFValidator do
 
     before(:each) do
       @division = FactoryGirl.create(:division)
-      @wp_registration = FactoryGirl.create(:registration, handle: 'drgoplayer', division: @division)
+      @wp_registration = FactoryGirl.create(:registration, handle: 'DrGoPlayer', division: @division)
       @bp_registration = FactoryGirl.create(:registration, handle: 'kabradarf', division: @division)
     end
 

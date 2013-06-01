@@ -27,23 +27,24 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'no_events',      to: 'results#no_events'
 
   resources :events do
-    get :results, to: 'results#index'
-    get :matches, on: :member
+    get :results,   to: 'results#index'
 
     member do
-      get     :results
-      get     :manage
-      get     :overview
+      get     :download_matches
       post    :join
+      get     :manage
+      get     :matches
+      get     :overview
       delete  :quit
+      get     :results
     end
 
     resources :tiers
     resources :tags, controller: 'event_tags'
     resources :registrations do
-      put :update, on: :collection
+      put :update,  on: :collection
       get :matches, on: :member
-      put :remove, on: :member
+      put :remove,  on: :member
     end
   end
 

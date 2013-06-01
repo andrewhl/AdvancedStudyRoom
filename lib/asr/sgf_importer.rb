@@ -140,7 +140,7 @@ module ASR
       end
 
       def scraper_class
-        @scraper_class ||= "ASR::Scrapers::#{server.scraper_class_name}".constantize
+        @scraper_class ||= server.scraper_class_name.constantize
       end
 
       def scraper_target_path

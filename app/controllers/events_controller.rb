@@ -128,6 +128,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def download_matches
+    return unless Rails.env.development?
+    event = Event.find(params[:id], include: [:registrations])
+    sgf_importer = ASR::SGFImporter.new(server: event.server, ignore_case: true)
+    event.registrations.each do |reg|
+      matches = sgf_importer.import_matches(handle: reg.handle)
+      matches.each(&:save)
+    end
+    redirect_to matches_event_path(event), flash: {success: 'Event matches were downloaded'}
+  end
+
   private
 
     def find_event
