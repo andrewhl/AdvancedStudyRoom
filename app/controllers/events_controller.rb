@@ -133,11 +133,10 @@ class EventsController < ApplicationController
     event = Event.find(params[:id], include: [:registrations])
     sgf_importer = ASR::SGFImporter.new(server: event.server, ignore_case: true)
     event.registrations.each do |reg|
-      binding.pry
       matches = sgf_importer.import_matches(handle: reg.handle)
       matches.each(&:save)
     end
-    redirect_to event_matches_path(event), flash: {success: 'Event matches were downloaded'}
+    redirect_to matches_event_path(event), flash: {success: 'Event matches were downloaded'}
   end
 
   private
