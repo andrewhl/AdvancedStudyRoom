@@ -49,23 +49,23 @@ class Ruleset < ActiveRecord::Base
 
   validates_presence_of :name
   validates_length_of   :main_time_min, minimum: 0, allow_blank: true
-  validates :main_time_min, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :main_time_max, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :j_ot_min_period_length, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :j_ot_max_period_length, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :c_ot_min_time, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :c_ot_max_time, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :min_komi, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :max_komi, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :j_ot_max_periods, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :j_ot_min_periods, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :c_ot_min_stones, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :c_ot_max_stones, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :min_handicap, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :max_handicap, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :min_board_size, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :max_board_size, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
-  validates :node_limit, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
+  validates :main_time_min, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
+  validates :main_time_max, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
+  validates :j_ot_min_period_length, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
+  validates :j_ot_max_period_length, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
+  validates :c_ot_min_time, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
+  validates :c_ot_max_time, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
+  validates :min_komi, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
+  validates :max_komi, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
+  validates :j_ot_max_periods, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+  validates :j_ot_min_periods, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+  validates :c_ot_min_stones, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+  validates :c_ot_max_stones, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+  validates :min_handicap, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+  validates :max_handicap, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+  validates :min_board_size, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+  validates :max_board_size, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
+  validates :node_limit, numericality: {only_integer: true, greater_than_or_equal_to: 0}, allow_blank: true
 
   def rules
     non_rules = [:id, :updated_at, :created_at, :name, :rulesetable_id, :rulesetable_type]
