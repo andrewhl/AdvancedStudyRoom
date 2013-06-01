@@ -59,10 +59,15 @@ FactoryGirl.define do
     main_time_control 2400.0
     black_player
     white_player
+    match_tag
     handicap 0
     digest { Time.now.to_s }
   end
 
+  factory :match_tag do
+    node 5
+    phrase "#ASR"
+  end
 
   factory :event do
     ruleset

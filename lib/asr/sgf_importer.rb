@@ -62,7 +62,8 @@ module ASR
                   Match.where(digest: match_digest(sgf_data)).exists?
 
           match = build_match(sgf_data: sgf_data, white_player: w_player, black_player: b_player)
-          build_match_comments(match, sgf_data)
+          match.comments = build_match_comments(match, sgf_data)
+          match.tags = build_match_tags(match, match_comments)
           match
         end.compact
       end
@@ -96,9 +97,23 @@ module ASR
       end
 
       def build_match_comments(match, sgf_data)
-        sgf_data.comments.each do |comment|
-          match.comments.build(comment)
+        sgf_data.comments.collect do |comment|
+          Comment.new(comment)
         end
+      end
+
+      def build_match_tags(match, match_comments)
+        match_comments.collect do |comment|
+          next unless match_tag = get_match_tag(comment.comment)
+          MatchTag.new(
+            handle:   comment.handle,
+            node:     comment.node_number,
+            phrase:   match_tag)
+        end.compact
+      end
+
+      def get_match_tag(comment)
+        comment.scan(/\#\w+/).first
       end
 
       def match_digest(sgf_data)

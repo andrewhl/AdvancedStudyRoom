@@ -68,6 +68,7 @@ class Match < ActiveRecord::Base
   has_one :event, through: :black_player
   has_many :comments, :autosave => true, :dependent => :destroy
   has_many :points
+  has_many :tags, class_name: "MatchTag"
 
   scope :unvalidated, where('valid_match IS NULL')
   scope :valid_matches, where("valid_match = ?", true).order("completed_at")
@@ -107,7 +108,6 @@ class Match < ActiveRecord::Base
     return nil if points.empty?
     points.select { |point| point.event_id == point.division.event_id }
   end
-
 
   def check_tags!
     event_tags = event.tags.collect { |tag| tag.phrase }

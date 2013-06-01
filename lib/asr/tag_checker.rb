@@ -2,25 +2,27 @@ module ASR
 
   class TagChecker
 
-    def initialize(event)
-      @event = event
-
-      @event_tags = get_event_tags
+    def initialize(event_tags)
+      @tag_phrases = format_tags(event_tags)
     end
 
-    def tagged?(match)
-      match_tags = get_match_tags(match)
-      match_tags.select { |tag| @event_tags.include?(tag) }.any?
+    def tagged?(match_tags, node_limit)
+      match_tags.select do |tag|
+        @tag_phrases.include?(format_phrase(tag.phrase)) &&
+        tag.node <= node_limit
+      end.any?
     end
 
     private
 
-      def get_event_tags
-        @event.tags.collect { |tag| tag.phrase.downcase }
+      def format_tags(tags)
+        tags.collect do |tag|
+          format_phrase(tag.phrase)
+        end
       end
 
-      def get_match_tags(match)
-        match.tags.split(",").collect { |m| m.strip.downcase }
+      def format_phrase(phrase)
+        phrase.scan(/\w+/).first.downcase.strip
       end
 
   end

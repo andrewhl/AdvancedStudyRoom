@@ -42,7 +42,7 @@ module ASR
         black_rank:   black_rank,
         date_of_game: get(:date_of_game),
         handicap:     handicap,
-        match_type:    get(:match_type),
+        match_type:   get(:match_type),
         result:       result,
         comments:     comments,
         tags:         tags,
