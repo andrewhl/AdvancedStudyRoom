@@ -55,11 +55,11 @@ module ASR
     end
 
     def black_player
-      get(:black_player).downcase
+      get(:black_player)
     end
 
     def white_player
-      get(:white_player).downcase
+      get(:white_player)
     end
 
     def white_rank
