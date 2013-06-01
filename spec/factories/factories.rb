@@ -61,11 +61,31 @@ FactoryGirl.define do
     white_player
     handicap 0
     digest { Time.now.to_s }
+
+    factory :match_with_tags do
+      ignore do
+        tags_count 1
+      end
+
+      after(:build) do |m, ev|
+        FactoryGirl.build_list(:match_tag, ev.tags_count, match: m)
+      end
+    end
+  end
+
+  factory :match_tag do
+    node 5
+    phrase { '#' + Faker::HipsterIpsum.word }
   end
 
   factory :event do
     ruleset
     name "ASR League"
+  end
+
+  factory :event_tag do
+    phrase { '#' + Faker::HipsterIpsum.word }
+    event
   end
 
   factory :tier do
