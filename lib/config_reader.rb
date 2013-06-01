@@ -8,7 +8,7 @@ class ConfigReader
   attr_accessor :env
 
   def initialize(args = {})
-    @env ||= args[:env] || ENV['RAILS_ENV'] || 'production'
+    @env ||= args[:env] || ENV['RAILS_ENV'] || 'development'
     @config = {
       asr: load_yaml('config', 'asr.yml'),
       db: load_yaml('config', 'database.yml')}
