@@ -63,7 +63,7 @@ module ASR
 
           match = build_match(sgf_data: sgf_data, white_player: w_player, black_player: b_player)
           match.comments = build_match_comments(match, sgf_data)
-          match.tags = build_match_tags(match, match_comments)
+          match.tags = build_match_tags(match, match.comments)
           match
         end.compact
       end
