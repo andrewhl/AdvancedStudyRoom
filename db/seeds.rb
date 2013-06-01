@@ -23,7 +23,7 @@ unless kgs_server = Server.find_by_name('KGS')
   kgs_server = Server.create(
     { name: 'KGS',
       url: 'www.gokgs.com',
-      scraper_class_name: 'KgsScraper'},
+      scraper_class_name: 'KgsScraper::Scraper'},
     without_protection: true)
 end
 

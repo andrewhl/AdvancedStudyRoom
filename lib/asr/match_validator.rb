@@ -101,5 +101,11 @@ module ASR
         !handi_bool || match.handicap > 0
       end
 
+      # TODO: Quick & dirty fix to make the validator pass with a node_limit in the
+      # rules
+      def node_limit(_, __)
+        true
+      end
+
   end
 end
