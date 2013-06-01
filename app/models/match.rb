@@ -32,6 +32,28 @@
 #  updated_at        :datetime         not null
 #
 
+#  filename          :string(255)
+#  win_info          :string(255)
+#  match_type        :string(255)
+#  ot_type           :string(255)
+#  black_player_name :string(255)
+#  white_player_name :string(255)
+#  ot_stones_periods :integer
+#  board_size        :integer
+#  handicap          :integer
+#  komi              :float
+#  main_time_control :float
+#  ot_time_control   :float
+#  completed_at      :datetime
+
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+#  black_player_id   :integer
+#  white_player_id   :integer
+#  winner_id         :integer
+#  loser_id          :integer
+
 class Match < ActiveRecord::Base
   attr_protected
 
@@ -46,6 +68,7 @@ class Match < ActiveRecord::Base
   has_one :event, through: :black_player
   has_many :comments, :autosave => true, :dependent => :destroy
   has_many :points
+  has_many :tags, class_name: "MatchTag"
 
   scope :unvalidated, where('valid_match IS NULL')
   scope :valid_matches, where("valid_match = ?", true).order("completed_at")
@@ -85,7 +108,6 @@ class Match < ActiveRecord::Base
     return nil if points.empty?
     points.select { |point| point.event_id == point.division.event_id }
   end
-
 
   def check_tags!
     event_tags = event.tags.collect { |tag| tag.phrase }

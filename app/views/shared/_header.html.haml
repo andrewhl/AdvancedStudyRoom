@@ -9,8 +9,9 @@
 
       .nav-collapse
         %ul.nav
-          %li
-            = link_to "FAQ", faq_path
+          - pages.each do |page|
+            %li
+              = link_to "#{page[:title]}", page[:path]
         - if current_user
           .btn-group.pull-right
             %a.btn.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}

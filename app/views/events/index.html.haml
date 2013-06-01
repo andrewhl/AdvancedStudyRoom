@@ -21,15 +21,17 @@
 
     - @events.each do |event|
       %tr{class: dom_id(event)}
-        %td= event.name
+        %td= link_to "#{event.name}", event_path(event)
         %td
           = link_to "Manage", manage_event_path(event)
           |
-          = link_to "Overview", event_path(event)
+          = link_to "Overview", overview_event_path(event)
           |
           = link_to "Tags", event_tags_path(event)
           |
           = link_to "Results", results_event_path(event)
+          |
+          = link_to "Edit", edit_event_path(event)
         %td= link_to "Assign", event_registrations_path(event)
         %td= event.player_count
         %td= event.ruleset ? event.ruleset.name : "No ruleset"

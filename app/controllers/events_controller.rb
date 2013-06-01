@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   load_and_authorize_resource
-  before_filter :authorize, except: [:leagues]
+  before_filter :authorize, except: [:leagues, :show]
 
   before_filter :find_event, only: [:manage, :update, :destroy, :join, :quit, :results]
 
@@ -13,6 +13,15 @@ class EventsController < ApplicationController
     @event = Event.find(
       params[:id],
       include: [:tags, {tiers: [:registrations, :divisions]}])
+    @ruleset = @event.ruleset
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    @ruleset = @event.ruleset
+    @rulesets = Ruleset.all
+    @servers = Server.all
+    @tags = EventTag.all
   end
 
   def manage
@@ -55,9 +64,10 @@ class EventsController < ApplicationController
   end
 
   def update
-    @tags = EventTag.all
-    @event.update_attribute(:ruleset_id, params[:event][:ruleset_id])
-    redirect_to manage_event_path(@event), :flash => { :success => "Ruleset applied." }
+    # @tags = EventTag.all
+    @event.update_attributes(params[:event], without_protection: true)
+
+    redirect_to @event, :flash => { :success => "Event updated." }
   end
 
   def destroy
@@ -71,12 +81,23 @@ class EventsController < ApplicationController
     @leagues = Event.leagues
   end
 
+  def join_other
+    @event = Event.find(params[:id])
+    account = Account.find(params[:account_id])
+
+    registration = account.registrations.find_or_create_by_event_id(@event.id)
+    registration.update_attributes({active: true}, without_protection: true)
+    redirect_to registration.account.user,
+      flash: {success: "You have registered #{registration.account.handle} to #{@event.name}"}
+  end
+
   def join
     account = current_user.accounts.where(server_id: @event.server_id).first
     if account
       registration = account.registrations.find_or_create_by_event_id(@event.id)
       registration.update_attributes({active: true}, without_protection: true)
-      redirect_to profile_path, flash: {success: "You have joined #{@event.name}, you will be assigned to a division soon"}
+      redirect_to profile_path,
+        flash: {success: "You have joined #{@event.name}, you will be assigned to a division soon"}
     else
       redirect_to new_user_account_path(current_user),
         flash: {error: "Please create an account on the #{@event.server.name} server first"}
@@ -84,11 +105,16 @@ class EventsController < ApplicationController
   end
 
   def quit
-    reg = current_user.registrations.where(event_id: @event.id).first
+    reg = Registration.find(params[:registration_id])
+    # reg = @user.registrations.where(event_id: @event.id).first
     if reg && !reg.update_attributes({active: false, division_id: nil}, without_protection: true)
       flash[:error] = 'There was an error while deleting your registration'
     end
-    redirect_to profile_path
+    if current_user.admin?
+      redirect_to reg.account.user, flash: {success: "This user has been removed from this event."}
+    else
+      redirect_to profile_path, flash: {success: "You have been removed from this event."}
+    end
   end
 
   def tag_games
@@ -100,6 +126,17 @@ class EventsController < ApplicationController
         render :manage
       end
     end
+  end
+
+  def download_matches
+    return unless Rails.env.development?
+    event = Event.find(params[:id], include: [:registrations])
+    sgf_importer = ASR::SGFImporter.new(server: event.server, ignore_case: true)
+    event.registrations.each do |reg|
+      matches = sgf_importer.import_matches(handle: reg.handle)
+      matches.each(&:save)
+    end
+    redirect_to matches_event_path(event), flash: {success: 'Event matches were downloaded'}
   end
 
   private

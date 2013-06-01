@@ -11,11 +11,18 @@
             My Profile
 
       %li.nav-header
+        Leagues
+      - Event.all.each do |event|
+        %li
+          = link_to event_path(event) do
+            %i.icon-flag
+            = event.name
+      %li.nav-header
         Main
       %li
         = link_to leagues_path do
           %i.icon-flag
-          Leagues
+          All Leagues
       %li
         = link_to results_path do
           %i.icon-star
@@ -40,4 +47,8 @@
           = link_to posts_path do
             %i.icon-edit
             Posts
+        %li
+          = link_to pages_path do
+            %i.icon-edit
+            Pages
 

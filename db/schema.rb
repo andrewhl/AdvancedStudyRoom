@@ -11,17 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130521165039) do
+ActiveRecord::Schema.define(:version => 20130601031014) do
 
   create_table "accounts", :force => true do |t|
     t.string   "handle"
     t.integer  "user_id"
     t.integer  "server_id"
     t.integer  "rank"
-    t.boolean  "active",       :default => true, :null => false
-    t.float    "total_points", :default => 0.0,  :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "active",     :default => true, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "accounts", ["active"], :name => "index_accounts_on_active"
@@ -69,11 +68,25 @@ ActiveRecord::Schema.define(:version => 20130521165039) do
     t.string   "name"
     t.string   "event_type"
     t.integer  "server_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
+  end
+
+  add_index "events", ["server_id"], :name => "index_events_on_server_id"
+
+  create_table "match_tags", :force => true do |t|
+    t.integer  "node"
+    t.integer  "match_id"
+    t.integer  "comment_id"
+    t.string   "phrase"
+    t.string   "handle"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "events", ["server_id"], :name => "index_events_on_server_id"
+  add_index "match_tags", ["handle"], :name => "index_match_tags_on_handle"
+  add_index "match_tags", ["match_id"], :name => "index_match_tags_on_match_id"
 
   create_table "matches", :force => true do |t|
     t.string   "match_type"
@@ -110,6 +123,17 @@ ActiveRecord::Schema.define(:version => 20130521165039) do
   add_index "matches", ["loser_id"], :name => "index_matches_on_loser_id"
   add_index "matches", ["white_player_id"], :name => "index_matches_on_white_player_id"
   add_index "matches", ["winner_id"], :name => "index_matches_on_winner_id"
+
+  create_table "pages", :force => true do |t|
+    t.datetime "date"
+    t.integer  "user_id"
+    t.text     "html"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "sort_order"
+    t.string   "permalink"
+  end
 
   create_table "permissions", :force => true do |t|
     t.string   "perm"
@@ -162,17 +186,17 @@ ActiveRecord::Schema.define(:version => 20130521165039) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "permalink"
   end
 
   create_table "registrations", :force => true do |t|
     t.integer  "account_id"
     t.integer  "event_id"
     t.integer  "division_id"
-    t.float    "points_this_month", :default => 0.0,  :null => false
-    t.float    "float",             :default => 0.0,  :null => false
     t.boolean  "active",            :default => true, :null => false
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.float    "points_this_month", :default => 0.0,  :null => false
   end
 
   add_index "registrations", ["account_id"], :name => "index_registrations_on_account_id"
@@ -229,16 +253,37 @@ ActiveRecord::Schema.define(:version => 20130521165039) do
   add_index "tiers", ["index"], :name => "index_tiers_on_index"
 
   create_table "users", :force => true do |t|
-    t.boolean  "admin",               :default => false, :null => false
-    t.string   "email"
+    t.boolean  "admin",                  :default => false, :null => false
+    t.string   "email",                  :default => "",    :null => false
     t.string   "username"
     t.string   "password_digest"
-    t.boolean  "password_reset_flag"
-    t.datetime "last_signed_in"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.string   "authentication_token"
   end
+
+  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
 end

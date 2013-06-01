@@ -6,17 +6,7 @@ class MatchesController < ApplicationController
   before_filter :find_registration, only: [:download]
 
   def index
-    @matches = Match.where("black_player_id = ? OR white_player_id = ?", params[:registration_id], params[:registration_id])
-    @registration = Registration.find(params[:registration_id])
-  end
-
-  def download
-    registration = Registration.find(params[:registration_id])
-    server = registration.server
-    sgf_importer = ASR::SGFImporter.new(server: server, ignore_case: true)
-    matches = sgf_importer.import_matches(handle: registration.handle)
-    matches.each(&:save)
-    redirect_to registration_matches_path(registration), flash: {success: "Your matches have been downloaded."}
+    @matches = Match.all
   end
 
   def validate
@@ -35,6 +25,10 @@ class MatchesController < ApplicationController
     match.update_attribute(:tagged, tag_checker.tagged?(match))
 
     redirect_to :back, flash: {success: "Yay"}
+  end
+
+  def matches
+    @event = Event.find(params[:id])
   end
 
   private

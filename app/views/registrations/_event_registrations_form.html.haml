@@ -6,6 +6,10 @@
     %h4 Unassigned Players / Waiting List
     = select_tag("registration_id", options_from_collection_for_select(@unassigned_players, "id", :handle), :multiple => true)
 
+    .division_select
+      = select_tag("division_id", options_from_collection_for_select(@divisions, "id", "name"))
+      = submit_tag "submit", class: "btn"
+
 
     - @divisions.each do |division|
 
@@ -16,6 +20,3 @@
         = select_tag("registration_id", options_from_collection_for_select(division.registrations, "id", :handle), :multiple => true)
       // display a dropdown list containing the names of each division
 
-.division_select
-  = select_tag("division_id", options_from_collection_for_select(@divisions, "id", "name"))
-  = submit_tag "submit", class: "btn"

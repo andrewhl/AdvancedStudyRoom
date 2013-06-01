@@ -27,7 +27,8 @@ class RegistrationsController < ApplicationController
   end
 
   def index
-    @registrations = @event.registrations
+    @registrations = @event.registrations.active
+    @registrations = @registrations.sort { |a,b| a.handle <=> b.handle }
     puts "test"
     @divisions = @event.tiers.collect { |t| t.divisions }.flatten
 
@@ -57,6 +58,10 @@ class RegistrationsController < ApplicationController
     end
 
     # @divisions = @event.tiers.collect { |t| t.divisions }
+  end
+
+  def matches
+    @registration = Registration.find(params[:id])
   end
 
   def remove

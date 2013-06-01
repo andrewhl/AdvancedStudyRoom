@@ -1,7 +1,7 @@
 %h1 Rulesets
 
-= form_for @ruleset, :html => {:class => "form-horizontal"} do |f|
-  = render "events/ruleset_fields", :b => f
+= simple_form_for @ruleset, validate: true, :html => {:class => "form-horizontal"} do |f|
+  = render "fields", :b => f
 
   .actions
     = f.submit "Submit", class: "btn"

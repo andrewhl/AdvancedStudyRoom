@@ -4,9 +4,10 @@ development: &defaults
   # ==> Errbit Configuration
   # Errbit host and API keys for the application and
   # javascript
-  errbit_host:      errbit.advancedstudyroom.com
-  errbit_app:       42dea4ac8920b8a4cf6d9061bb6902da
-  errbit_js:        2d95aa543b493d3ea87334d043992458
+  errbit:
+    host:           errbit.advancedstudyroom.com
+    app:            42dea4ac8920b8a4cf6d9061bb6902da
+    js:             2d95aa543b493d3ea87334d043992458
 
   # ==> Google Analytics Configuration
   analytics:        UA-12345678-5
@@ -26,14 +27,15 @@ development: &defaults
   notif_sender:     support@advancedstudyroom.com
 
   # ==> Alerts Configuration
-  # Recipient's email for the app alerts
-  # In a development environment all notifications/alerts
-  # will be sent to this email address.
-  alerts_recipient: arturo@advancedstudyroom.com
-  # Sender's email for the app alerts
-  # Alerts are sent to the site admins.
-  # i.e. new registrations
-  alerts_sender:    alerts@advancedstudyroom.com
+  alerts:
+    # Recipient's email for the app alerts
+    # In a development environment all notifications/alerts
+    # will be sent to this email address.
+    recipient: arturo@advancedstudyroom.com
+    # Sender's email for the app alerts
+    # Alerts are sent to the site admins.
+    # i.e. new registrations
+    sender:    alerts@advancedstudyroom.com
 
   # ==> Mailers Configuration
   # SMTP settings for the mailers
@@ -46,6 +48,11 @@ development: &defaults
     auth:           plain
     starttls_auto:  true
 
+test:
+  <<: *defaults
+  db_backup:
+    key:            shouldnotbevalid
+    secret:         shouldnotbevalid
 
 production:
   <<: *defaults

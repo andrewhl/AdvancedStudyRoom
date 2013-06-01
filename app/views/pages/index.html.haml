@@ -1,0 +1,30 @@
+- @title << "Pages"
+
+%table.table.table-condensed.table-bordered.table-hover
+  %thead
+    %tr
+      %th Title
+      %th Date
+      %th Sort Order
+      %th Permalink
+      %th Edit
+      %th Delete
+
+  %tbody
+    - if @pages.empty?
+      %tr
+        %td{colspan: 8}
+          There are no pages yet.
+          = link_to 'Please create one', new_page_path
+
+    - @pages.each do |page|
+      %tr{class: dom_id(page)}
+        %td= link_to "#{page.title}", page.path
+        %td= page.date.strftime("%d-%m-%Y")
+        %td= page.sort_order.to_s
+        %td= page.permalink
+        %td= link_to "Edit", edit_page_path(page)
+        %td= link_to "Delete", page_path(page), method: :delete, remote: true,
+              confirm: 'Are you sure? This action cannot be undone!'
+
+= link_to "Add new page", new_page_path, class: "btn btn-primary"

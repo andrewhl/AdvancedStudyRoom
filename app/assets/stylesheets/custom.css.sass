@@ -106,3 +106,12 @@ body
   background: #FAFAFA
   h3
     margin-top: 0
+
+
+// Fix for simple_forms checkbox wrapper - a checkbox class is added to the
+// label. The :label symbol should be removed from the config
+// config.generate_additional_classes_for. An issue was submitted to simple_forms
+// https://github.com/plataformatec/simple_form/issues/809
+div.checkbox label.checkbox
+  padding-left: 0
+

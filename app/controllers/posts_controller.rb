@@ -1,13 +1,25 @@
 class PostsController < ApplicationController
 
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:show]
 
   def index
     @posts = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
+    permalink_or_id = params[:id]
+    if permalink_or_id =~ /^\d+$/
+      @post = Post.find(params[:id])
+    else
+      @post = Post.where(permalink: permalink_or_id).first
+    end
+
+    if @post.present?
+      render :show
+    else
+      redirect_to :root, flash: {alert: "Post not found."}
+      # render '404', status: :not_found
+    end
   end
 
   def edit

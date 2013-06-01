@@ -58,13 +58,16 @@ module AdvancedStudyRoom
     config.active_record.whitelist_attributes = true
 
     config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host: ENV['ASR_SMTP_DOMAIN'] }
     config.action_mailer.smtp_settings = {
       :address              => ENV['ASR_SMTP_ADDRESS'],
       :port                 => ENV['ASR_SMTP_PORT'],
+      :domain               => ENV['ASR_SMTP_DOMAIN'],
       :user_name            => ENV['ASR_SMTP_USERNAME'],
       :password             => ENV['ASR_SMTP_PASSWORD'],
       :authentication       => ENV['ASR_SMTP_AUTH'],
-      :enable_starttls_auto => ENV['ASR_SMTP_STARTTLS_AUTO'] }
+      :enable_starttls_auto => ENV['ASR_SMTP_STARTTLS_AUTO'] == 'true' }
+    # TODO: Add mail interceptor unless Rails.env.production?
 
     # Enable the asset pipeline
     config.assets.enabled = true

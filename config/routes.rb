@@ -1,21 +1,25 @@
 AdvancedStudyRoom::Application.routes.draw do
 
+  devise_for :users, controllers: {registrations: :signup} do
+    get  'login',     to: 'devise/sessions#new',        as: 'login'
+    post 'login',     to: 'devise/sessions#create'
+    get  'logout',    to: 'devise/sessions#destroy',    as: 'logout'
+    get  'signup',    to: 'signup#new',                 as: 'signup'
+    post 'signup',    to: 'signup#create'
+  end
+
+  resources :pages
   resources :posts
+
   mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 
-  get  'signup',            to: 'users#signup',       as: 'signup'
-  post 'signup',            to: 'users#process_signup'
-  get  'login',             to: 'sessions#new',       as: 'login'
-  post 'login',             to: 'sessions#create'
-  get  'logout',            to: 'sessions#destroy',   as: 'logout'
-  post 'toggle_admin/:id',  to: 'users#toggle_admin', as: 'toggle_admin'
-
-  get 'rules',              to: 'pages#rules'
-  get 'faq',                to: 'pages#faq'
+  delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
+  post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
 
   get 'profile',        to: 'users#profile'
   resources :users do
     get  :profile,      on: :member
+    post :toggle_admin, on: :member
     resources :accounts
   end
 
@@ -23,24 +27,27 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'no_events',      to: 'results#no_events'
 
   resources :events do
-    get       :results, to: 'results#index'
+    get :results,   to: 'results#index'
 
     member do
-      get     :results
-      get     :manage
+      get     :download_matches
       post    :join
+      get     :manage
+      get     :matches
+      get     :overview
       delete  :quit
+      get     :results
     end
 
     resources :tiers
     resources :tags, controller: 'event_tags'
     resources :registrations do
-      put :update, on: :collection
-      put :remove, on: :member
+      put :update,  on: :collection
+      get :matches, on: :member
+      put :remove,  on: :member
     end
   end
 
-  get   'registrations/:registration_id/matches',           to: "matches#index",    as: "registration_matches"
   post  'registrations/:registration_id/matches/download',  to: "matches#download", as: "download_registration_matches"
   post  'matches/:id/validate',   to: "matches#validate",   as: "validate_match"
   post  'matches/:id/check_tags', to: "matches#check_tags", as: "check_match_tags"
@@ -57,8 +64,11 @@ AdvancedStudyRoom::Application.routes.draw do
     get 'ruleset', to: 'tiers#ruleset'
   end
 
-  match 'about', to: 'pages#about'
   resources :pages
+
+  match '/', to: 'pages#home'
+
+  match ':permalink', to: 'pages#show'
 
   root to: "pages#home"
 

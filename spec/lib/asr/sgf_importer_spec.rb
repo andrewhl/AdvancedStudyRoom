@@ -7,7 +7,7 @@ describe ASR::SGFImporter do
     division = FactoryGirl.create(:division)
 
     wp = FactoryGirl.create(:registration, division: division)
-    wp.account.update_attributes({ server: server, handle: 'drgoplayer' }, without_protection: true)
+    wp.account.update_attributes({ server: server, handle: 'DrGoPlayer' }, without_protection: true)
     bp = FactoryGirl.create(:registration, division: division)
     bp.account.update_attributes({ server: server, handle: 'kabradarf' }, without_protection: true)
 

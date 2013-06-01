@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
 
+  # before_filter :initialize_table_sorter
   before_filter :initialize_params
 
   def index
@@ -10,7 +11,7 @@ class ResultsController < ApplicationController
       params[:division_id] ||= tiers.first.divisions.alphabetical.first.id
     end
 
-    @division = @event.divisions.find(params[:division_id], include: {registrations: :account})
+    @division = Division.find(params[:division_id], include: {registrations: :account})
 
     match_finder = ASR::MatchFinder.new
     @matches = match_finder.by_division(@division).tagged.valid.with_points
@@ -26,8 +27,7 @@ class ResultsController < ApplicationController
 
   private
     def initialize_params
-      params[:sort] ||= "points_this_month"
+      params[:sort]      ||= "points_this_month"
       params[:direction] ||= "desc"
     end
-
 end

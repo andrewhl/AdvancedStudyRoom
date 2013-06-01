@@ -2,6 +2,9 @@
 	"folders":
 	[
 		{
+			"path": "app"
+		},
+		{
 			"file_exclude_patterns":
 			[
 				".swp"
@@ -15,9 +18,6 @@
 			],
 			"name": "ASR",
 			"path": "."
-		},
-		{
-			"path": "app"
 		}
 	]
 }

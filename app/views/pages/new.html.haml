@@ -1,0 +1,13 @@
+- @title << "New Page"
+
+= errors_summary(@page) if @page.errors.any?
+
+= simple_form_for @page, validate: true do |f|
+  = f.input :title
+  = f.input :date
+  = f.input :sort_order
+  = f.input :permalink
+  = f.input :html, input_html: { class: "markItUp" }
+
+  .form-actions
+    = f.submit "Create Page", class: 'btn btn-primary'

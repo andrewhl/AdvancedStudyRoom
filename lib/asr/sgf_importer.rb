@@ -62,7 +62,8 @@ module ASR
                   Match.where(digest: match_digest(sgf_data)).exists?
 
           match = build_match(sgf_data: sgf_data, white_player: w_player, black_player: b_player)
-          build_match_comments(match, sgf_data)
+          match.comments = build_match_comments(match, sgf_data)
+          match.tags = build_match_tags(match, match.comments)
           match
         end.compact
       end
@@ -91,14 +92,27 @@ module ASR
           ot_time_control:    sgf_data.overtime[:main],
           white_player_name:  sgf_data.white_player,
           black_player_name:  sgf_data.black_player,
-          tags:               sgf_data.tags,
           filename:           sgf_data.filename })
       end
 
       def build_match_comments(match, sgf_data)
-        sgf_data.comments.each do |comment|
-          match.comments.build(comment)
+        sgf_data.comments.collect do |comment|
+          Comment.new(comment)
         end
+      end
+
+      def build_match_tags(match, match_comments)
+        match_comments.collect do |comment|
+          next unless match_tag = get_match_tag(comment.comment)
+          MatchTag.new(
+            handle:   comment.handle,
+            node:     comment.node_number,
+            phrase:   match_tag)
+        end.compact
+      end
+
+      def get_match_tag(comment)
+        comment.scan(/\#\w+/).first
       end
 
       def match_digest(sgf_data)
@@ -125,7 +139,7 @@ module ASR
       end
 
       def scraper_class
-        @scraper_class ||= "ASR::Scrapers::#{server.scraper_class_name}".constantize
+        @scraper_class ||= server.scraper_class_name.constantize
       end
 
       def scraper_target_path

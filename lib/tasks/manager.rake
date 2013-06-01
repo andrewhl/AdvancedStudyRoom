@@ -78,11 +78,12 @@ namespace :manager do
       logger.started('TAGS')
 
       Event.all.each do |event|
-        tag_checker = ASR::TagChecker.new(event)
+        tag_checker = ASR::TagChecker.new(event.tags)
         Match.unchecked.by_event(event).each do |match|
           logger.w "Checking...#{match.digest}"
 
-          is_tagged = tag_checker.tagged?(match)
+          node_limit = match.division.rules[:node_limit]
+          is_tagged = tag_checker.tagged?(match.tags, node_limit)
           match.update_attribute(:tagged, is_tagged)
 
           logger.wl is_tagged.to_s.upcase

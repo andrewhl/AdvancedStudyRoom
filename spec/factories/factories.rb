@@ -1,4 +1,13 @@
 FactoryGirl.define do
+
+  sequence :email do |n|
+    "person-#{n}@example.com"
+  end
+
+  sequence :name do |n|
+    "Person #{n}"
+  end
+
   factory :user do
     username "johndoe"
     first_name "John"
@@ -19,22 +28,6 @@ FactoryGirl.define do
     rank { Random.rand(-30..9) }
   end
 
-  sequence :email do |n|
-    "person-#{n}@example.com"
-  end
-
-  sequence :name do |n|
-    "Person #{n}"
-  end
-
-  factory :admin, :class => User do
-    username "admin"
-    first_name "Admin"
-    email "admin@admin.com"
-    password "foobar"
-    password_confirmation "foobar"
-    admin true
-  end
 
   factory :ruleset do
     name "KGS Default"
@@ -68,17 +61,31 @@ FactoryGirl.define do
     white_player
     handicap 0
     digest { Time.now.to_s }
+
+    factory :match_with_tags do
+      ignore do
+        tags_count 1
+      end
+
+      after(:build) do |m, ev|
+        FactoryGirl.build_list(:match_tag, ev.tags_count, match: m)
+      end
+    end
   end
 
-  factory :second_match, :class => Match do
-    completed_at "#{Time.now.strftime("%Y-%m-%d %T")}"
-    black_player
-    white_player
+  factory :match_tag do
+    node 5
+    phrase { '#' + Faker::HipsterIpsum.word }
   end
 
   factory :event do
     ruleset
     name "ASR League"
+  end
+
+  factory :event_tag do
+    phrase { '#' + Faker::HipsterIpsum.word }
+    event
   end
 
   factory :tier do
@@ -89,7 +96,6 @@ FactoryGirl.define do
       name "Beta"
     end
   end
-
 
   factory :division do
     tier

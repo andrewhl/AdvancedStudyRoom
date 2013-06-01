@@ -14,8 +14,16 @@ class RulesetsController < ApplicationController
 
   def create
     @ruleset = Ruleset.new(params[:ruleset])
-    @ruleset.save
-    redirect_to :new_ruleset, :flash => {:success => "Your ruleset has been successfully created."}
+    if @ruleset.save
+      redirect_to @ruleset, :flash => {:success => "Your ruleset has been successfully created."}
+    else
+      render :new
+    end
+  end
+
+  def show
+    @ruleset = Ruleset.find(params[:id])
+    @event = Event.where("rulesetable_id = ?", @ruleset.id).first
   end
 
   def edit
@@ -23,9 +31,11 @@ class RulesetsController < ApplicationController
   end
 
   def update
-    ruleset = Ruleset.find(params[:id])
-    ruleset.update_attributes(params[:ruleset])
-    redirect_to :edit_ruleset, :flash => {:success => "The ruleset has been updated."}
+    @ruleset = Ruleset.find(params[:id])
+    if @ruleset.update_attributes(params[:ruleset])
+      flash[:success] = "The ruleset has been updated."
+    end
+    render :edit
   end
 
   def destroy

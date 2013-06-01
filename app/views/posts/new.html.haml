@@ -1,11 +1,12 @@
-%h2 New Post
+- @title << "New Post"
 
 = errors_summary(@post) if @post.errors.any?
 
 = simple_form_for @post, validate: true do |f|
   = f.input :title
   = f.input :date
-  = f.input :html
+  = f.input :permalink
+  = f.input :html, input_html: { class: "markItUp" }
 
   .form-actions
     = f.submit "Create Post", class: 'btn btn-primary'

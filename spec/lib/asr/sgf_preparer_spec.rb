@@ -83,17 +83,6 @@ describe ASR::SGFPreparer do
 
     context "players" do
 
-      it "should downcase black player" do
-        prepared_sgf.game_info["PB"] = "kabradarf"
-        prepared_sgf.data[:black_player].should == "kabradarf"
-      end
-
-
-      it "should downcase white player" do
-        prepared_sgf.game_info["PW"] = "DrGoPlayer"
-        prepared_sgf.data[:white_player].should == "drgoplayer"
-      end
-
       it "should display handicap as integer" do
         prepared_sgf.game_info["HA"] = "0"
         prepared_sgf.data[:handicap].should == 0

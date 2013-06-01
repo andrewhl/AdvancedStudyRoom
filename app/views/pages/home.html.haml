@@ -1,8 +1,13 @@
 - @body_class << 'home'
 - @title << 'Welcome to the Advanced Study Room'
 
-- @posts.each do |post|
-  .box
-    %h3= post.title
-    %h4= post.date.strftime('%d-%m-%Y')
-    = markdown_to_html(post.html)
+%h3 Hi! We're in beta. Spot a bug? Help us out!
+%p
+  = link_to "Report Bug", "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open", class: "btn btn-warning"
+
+- if @posts
+  - @posts.each do |post|
+    .box
+      %h3= post.title
+      %h4= post.date.strftime('%d-%m-%Y')
+      = markdown_to_html(post.html)

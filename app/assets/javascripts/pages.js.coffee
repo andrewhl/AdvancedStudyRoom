@@ -3,4 +3,4 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $("textarea").markItUp mySettings
+  $(".markItUp").markItUp mySettings
