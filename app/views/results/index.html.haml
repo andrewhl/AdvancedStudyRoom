@@ -43,6 +43,7 @@
   - else
     %table.table.table-condensed.table-bordered.table-hover.wide-table.results-table
       %tr
+        %th.centered #
         %th= link_to division_sortable "handle", "Player", @division.id
         %th= link_to division_sortable "points_this_month", "Points", @division.id
         - @division.registrations.order(sort_column + ' ' + sort_direction).each do |col_player|
@@ -52,6 +53,7 @@
                 %span= col_player.handle
       - @division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |row_player, row_i|
         %tr
+          %td= row_i + 1
           %td.not-centered
             = row_player.handle
             - if can? :read, :matches
