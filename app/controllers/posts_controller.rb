@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def show
     permalink_or_id = params[:id]
-    if permalink_or_id =~ /\d+/
+    if permalink_or_id =~ /^\d+$/
       @post = Post.find(params[:id])
     else
       @post = Post.where(permalink: permalink_or_id).first
