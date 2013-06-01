@@ -29,10 +29,6 @@ module ASR
 
     private
 
-      def node_limit
-        true
-      end
-
       def main_time_max(main_time_max, match)
         match.main_time_control <= main_time_max
       end
