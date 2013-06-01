@@ -28,7 +28,7 @@ class RegistrationsController < ApplicationController
 
   def index
     @registrations = @event.registrations.active
-    @registrations = @registrations.sort { |a,b| a.handle <=> b.handle }
+    @registrations = @registrations.sort { |a,b| a.handle.downcase <=> b.handle.downcase }
     puts "test"
     @divisions = @event.tiers.collect { |t| t.divisions }.flatten
 
