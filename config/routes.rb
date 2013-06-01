@@ -8,8 +8,8 @@ AdvancedStudyRoom::Application.routes.draw do
     post 'signup',    to: 'signup#create'
   end
 
-  match 'posts/:permalink', to: 'posts#show'
-  resources :posts, :pages
+  resources :pages
+  resources :posts
 
   mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
 

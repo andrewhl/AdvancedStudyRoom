@@ -1,17 +1,17 @@
 class PostsController < ApplicationController
 
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:show]
 
   def index
     @posts = Post.all
   end
 
   def show
-    permalink = params[:permalink]
-    if permalink.blank?
+    permalink_or_id = params[:id]
+    if permalink_or_id =~ /\d+/
       @post = Post.find(params[:id])
     else
-      @post = Post.where(permalink: permalink).first
+      @post = Post.where(permalink: permalink_or_id).first
     end
 
     if @post.present?

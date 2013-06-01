@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   validates_format_of :permalink, with: /^[\w\-]+$/, message: "Only alphanumeric characters, underscores, hyphens and spaces are allowed."
 
   def path
-    "/#{permalink}"
+    "/posts/#{permalink}"
   end
 
   private
