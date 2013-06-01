@@ -47,7 +47,8 @@ ruleset_attrs = {
   c_ot_max_time: 300,
   c_ot_min_time: 300,
   min_handicap: 0,
-  max_handicap: 0}
+  max_handicap: 0,
+  node_limit: 100}
 
 #
 # ASR LEAGUE EVENT
