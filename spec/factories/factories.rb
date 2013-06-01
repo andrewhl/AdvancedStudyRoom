@@ -59,7 +59,6 @@ FactoryGirl.define do
     main_time_control 2400.0
     black_player
     white_player
-    match_tag
     handicap 0
     digest { Time.now.to_s }
   end
@@ -77,7 +76,6 @@ FactoryGirl.define do
       name "Beta"
     end
   end
-
 
   factory :division do
     tier

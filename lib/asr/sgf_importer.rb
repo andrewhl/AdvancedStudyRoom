@@ -92,7 +92,6 @@ module ASR
           ot_time_control:    sgf_data.overtime[:main],
           white_player_name:  sgf_data.white_player,
           black_player_name:  sgf_data.black_player,
-          tags:               sgf_data.tags,
           filename:           sgf_data.filename })
       end
 
