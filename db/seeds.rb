@@ -73,7 +73,7 @@ unless asr_league_event.point_ruleset.present?
       points_per_loss: 1.0,
       point_decay: 0.5,
       max_matches_per_opponent: 2,
-      min_points_per_match: 0.5)
+      min_points_per_match: 0)
 end
 
 #

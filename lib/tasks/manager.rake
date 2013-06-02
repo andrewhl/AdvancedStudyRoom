@@ -8,7 +8,7 @@ namespace :manager do
       logger.started('IMPORT')
 
       server = Server.where(name: 'KGS').first
-      importer = ASR::SGFImporter.new(server: server)
+      importer = ASR::SGFImporter.new(server: server, ignore_case: true)
       regs = Registration.
                 where('registrations.active = ? AND accounts.server_id = ?', true, server.id).
                 includes(:account)
