@@ -4,7 +4,8 @@ module ASR
 
     def initialize args
       @points_per_win             = args[:points_per_win] || 0
-      @point_decay                = args[:point_decay] || 0
+      @win_decay                  = args[:win_decay] || 0
+      @loss_decay                 = args[:loss_decay] || 0
       @min_points_per_match       = args[:min_points_per_match] || 0
       @points_per_loss            = args[:points_per_loss] || 0
       @max_matches_per_opponent   = args[:max_matches_per_opponent] || 0
@@ -22,11 +23,11 @@ module ASR
       end
 
       def winner_points(match, position)
-        @min_points_per_match + @points_per_win * (@point_decay ** position)
+        @min_points_per_match + @points_per_win * (@win_decay ** position)
       end
 
       def loser_points(match, position)
-        @min_points_per_match + @points_per_loss * (@point_decay ** position)
+        @min_points_per_match + @points_per_loss * (@loss_decay ** position)
       end
 
   end

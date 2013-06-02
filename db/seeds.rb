@@ -71,7 +71,8 @@ unless asr_league_event.point_ruleset.present?
   asr_league_event.create_point_ruleset(
       points_per_win: 2.0,
       points_per_loss: 1.0,
-      point_decay: 0.5,
+      win_decay: 0.5,
+      loss_decay: 0.5,
       max_matches_per_opponent: 2,
       min_points_per_match: 0)
 end
