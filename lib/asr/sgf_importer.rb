@@ -55,8 +55,8 @@ module ASR
 
       def build_matches(sgf_data_list)
         sgf_data_list.collect do |sgf_data|
-          w_player = Registration.find_by_handle_and_server_id(sgf_data.white_player, server.id, @ignore_case)
-          b_player = Registration.find_by_handle_and_server_id(sgf_data.black_player, server.id, @ignore_case)
+          w_player = Registration.find_by_handle_and_server_id(sgf_data.white_player, server.id, ignore_case: @ignore_case)
+          b_player = Registration.find_by_handle_and_server_id(sgf_data.black_player, server.id, ignore_case: @ignore_case)
 
           next if w_player.nil? || b_player.nil? ||
                   Match.where(digest: match_digest(sgf_data)).exists?
