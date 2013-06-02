@@ -22,11 +22,11 @@ module ASR
       end
 
       def winner_points(match, position)
-        @min_points_per_match + @points_per_win * ( (@point_decay ** (position)))
+        @min_points_per_match + @points_per_win * (@point_decay ** position)
       end
 
       def loser_points(match, position)
-        @min_points_per_match
+        @min_points_per_match + @points_per_loss * (@point_decay ** position)
       end
 
   end
