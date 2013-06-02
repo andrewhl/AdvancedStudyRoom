@@ -20,11 +20,6 @@ module ASR
       valid
     end
 
-    def self.filter_invalid(sgf_data_list, handle, ignore_case = false)
-      validator = ASR::SGFValidator.new handle: handle, ignore_case: ignore_case
-      sgf_data_list.select { |sgf_data| validator.validate(sgf_data) }
-    end
-
     private
 
       def handle_clause
