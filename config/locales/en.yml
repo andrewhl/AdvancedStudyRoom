@@ -20,4 +20,5 @@ en:
         c_ot_max_stones:        "Canadian max. overtime stones"
         min_handicap:           "Minimum handicap"
         max_handicap:           "Maximum handicap"
+        node_limit:             "Say tag by this move"
 
