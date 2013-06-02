@@ -39,7 +39,7 @@ ruleset_attrs = {
   j_ot_allowed: true,
   c_ot_allowed: true,
   j_ot_min_periods: 5,
-  j_ot_max_periods: 60,
+  j_ot_max_periods: 100,
   j_ot_min_period_length: 5,
   j_ot_max_period_length: 300,
   c_ot_min_stones: 25,

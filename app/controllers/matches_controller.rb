@@ -21,8 +21,9 @@ class MatchesController < ApplicationController
 
   def check_tags
     match = Match.find(params[:id])
-    tag_checker = ASR::TagChecker.new(match.event)
-    match.update_attribute(:tagged, tag_checker.tagged?(match))
+    event = match.event
+    tag_checker = ASR::TagChecker.new(event.tags)
+    match.update_attribute(:tagged, tag_checker.tagged?(match.tags, event.ruleset.node_limit))
 
     redirect_to :back, flash: {success: "Yay"}
   end
