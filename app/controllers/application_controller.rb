@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       format.html do
         flash[:error] = "You are not authorized to access this page"
         flash[:error] << " || #{ex.subject} || #{ex.action}" if Rails.env.development?
-        redirect_to login_path
+        redirect_to current_user ? root_path : login_path
       end
       format.json do
         render text: 'Not Authorized', status: :forbidden
