@@ -2,7 +2,7 @@
 
 = simple_form_for @tag, url: admin_tag_path(@tag), validate: true, html: {class: 'form-horizontal'} do |f|
 
-  = f.input :phrase, autofocus: true
+  = f.input :phrase
   = f.input :node_limit, label: 'Move Limit'
 
   .form-actions

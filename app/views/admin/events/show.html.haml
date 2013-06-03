@@ -13,11 +13,14 @@
     = link_to 'Edit Ruleset', edit_admin_event_ruleset_path(@event), class: 'btn'
 = render 'admin/rulesets/table', ruleset: @event.ruleset
 
-%h2 Tiers
+%h2
+  Tiers
+  .clearfix.pull-right
+    = link_to 'Add Tier', new_admin_event_tier_path(@event), class: 'btn'
+
 - if @event.tiers.empty?
   = error_alert() { 'This event has no tiers. Please create one.' }
 
-= link_to 'Add Tier', new_admin_event_tier_path(@event), class: 'btn'
 %table.table.table-condensed.table-bordered.table-hover
   %thead
     %tr
