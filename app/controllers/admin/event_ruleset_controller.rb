@@ -10,7 +10,6 @@ class Admin::EventRulesetController < ApplicationController
   end
 
   def edit
-    add_breadcrumb 'Edit'
   end
 
   def update
@@ -33,6 +32,7 @@ class Admin::EventRulesetController < ApplicationController
       add_breadcrumb 'Events', admin_events_path
       add_breadcrumb @event.name, admin_event_path(@event)
       add_breadcrumb 'Ruleset', admin_event_ruleset_path(@event)
+      add_breadcrumb 'Edit', :edit if %W(edit update).include? params[:action]
     end
 
 end
