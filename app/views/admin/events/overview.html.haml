@@ -5,7 +5,7 @@
   Tag phrases
   .clearfix.pull-right
     = link_to 'Add Tag', new_event_tag_path(@event), class: 'btn'
-= render 'event_tags/table', tags: @event.tags, event: @event
+= render 'event_tags/table', event: @event
 
 
 %h3

@@ -3,5 +3,5 @@
 .clearfix
   = link_to 'Add Tag', new_admin_event_tag_path(@event), class: 'btn btn-primary pull-right'
 
-= render 'table', tags: @tags, event: @event
+= render 'table', tags: @event.tags, event: @event
 

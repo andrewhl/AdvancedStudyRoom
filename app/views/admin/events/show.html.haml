@@ -4,7 +4,7 @@
   Tags
   .clearfix.pull-right
     = link_to 'Add Tag', new_admin_event_tag_path(@event), class: 'btn'
-= render 'admin/event_tags/table', tags: @event.tags, event: @event
+= render 'admin/event_tags/table', event: @event
 
 
 %h2

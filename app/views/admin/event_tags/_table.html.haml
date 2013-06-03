@@ -7,13 +7,13 @@
       %th Actions
 
   %tbody
-    - if tags.empty?
+    - if event.tags.empty?
       %tr
         %td{colspan: 3}
           There are not tags. Please
           = link_to 'add one.', new_admin_event_tag_path(event)
 
-    - tags.each do |tag|
+    - event.tags.each do |tag|
       %tr
         %td= tag.phrase
         %td= number_with_delimiter(tag.node_limit)
