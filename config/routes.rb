@@ -41,7 +41,7 @@ AdvancedStudyRoom::Application.routes.draw do
   post 'registrations/:registration_id/matches/download',  to: "matches#download", as: "download_registration_matches"
   post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
   delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
-  resources :events, only: [:index] do
+  resources :events, only: [:index, :show] do
     member do
       get     :results, to: 'results#index'
       post    :join
