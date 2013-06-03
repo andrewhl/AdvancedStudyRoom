@@ -67,10 +67,14 @@ class Registration < ActiveRecord::Base
     self.points.map { |point| point.count }.inject(:+)
   end
 
-  def self.find_by_handle_and_server_id(handle, server_id)
+  def self.find_by_handle_and_server_id(handle, server_id, options = {})
+    opts = { ignore_case: false }.merge(options)
+    query = opts[:ignore_case] ?
+              'accounts.handle = ? AND servers.id = ?' :
+              'LOWER(accounts.handle) = LOWER(?) AND servers.id = ?'
     Registration.
       includes(account: [:server]).
-      where('accounts.handle = ? AND servers.id = ?', handle, server_id).
+      where(query, handle.downcase, server_id).
       first
   end
 
