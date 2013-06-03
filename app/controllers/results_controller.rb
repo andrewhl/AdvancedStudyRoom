@@ -11,7 +11,8 @@ class ResultsController < ApplicationController
       params[:division_id] ||= tiers.first.divisions.alphabetical.first.id
     end
 
-    @division = Division.find(params[:division_id], include: {registrations: :account})
+    @division = Division.find(params[:division_id], include: {registrations: :account, matches: nil})
+    @game_percentage = calculate_matches_percentage(@division)
 
     match_finder = ASR::MatchFinder.new
     @matches = match_finder.by_division(@division).tagged.valid.with_points
@@ -30,4 +31,14 @@ class ResultsController < ApplicationController
       params[:sort]      ||= "points_this_month"
       params[:direction] ||= "desc"
     end
+
+    def calculate_matches_percentage(division)
+      x = division.registrations.count.to_f
+      y = division.point_rules[:max_matches_per_opponent].to_f
+      max_possible_matches = ((x ** 2 - x) / 2) * y
+
+      div_matches = division.matches.count.to_f
+      ((div_matches / max_possible_matches) * 100).to_s[0..2]
+    end
+
 end
