@@ -1,4 +1,4 @@
-class DivisionsController < ApplicationController
+class Admin::DivisionsController < ApplicationController
 
   load_and_authorize_resource
   before_filter :authorize

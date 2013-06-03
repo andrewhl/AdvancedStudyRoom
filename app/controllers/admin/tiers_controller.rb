@@ -1,4 +1,4 @@
-class TiersController < ApplicationController
+class Admin::TiersController < ApplicationController
 
   load_and_authorize_resource
   before_filter :authorize

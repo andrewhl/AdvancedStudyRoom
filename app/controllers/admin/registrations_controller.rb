@@ -1,4 +1,4 @@
-class RegistrationsController < ApplicationController
+class Admin::RegistrationsController < ApplicationController
 
   load_and_authorize_resource
   before_filter :authorize

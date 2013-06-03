@@ -1,4 +1,4 @@
-class EventTagsController < ApplicationController
+class Admin::EventTagsController < ApplicationController
 
   load_and_authorize_resource
   before_filter :authorize

@@ -1,0 +1,4 @@
+- @title << "#{@event.name} Ruleset"
+
+= link_to 'Edit Ruleset', edit_admin_event_ruleset_path(@ruleset), class: 'btn btn-primary'
+= render 'admin/rulesets/table', ruleset: @ruleset

@@ -37,7 +37,7 @@
           %td.not-centered
             = reg.handle
             - if can? :read, :matches
-              = icon_link_to(matches_event_registration_path(@event, reg), :exchange)
+              = icon_link_to(matches_admin_event_registration_path(@event, reg), :exchange)
           %td= reg.points_this_month
           %td
             - get_matches_for_reg(@matches, reg).each do |match|
@@ -60,7 +60,7 @@
           %td.not-centered
             = row_player.handle
             - if can? :read, :matches
-              = icon_link_to(matches_event_registration_path(@event, row_player), :exchange)
+              = icon_link_to(matches_admin_event_registration_path(@event, row_player), :exchange)
           %td.not-centered= row_player.points_this_month
           - @division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |col_player, col_i|
             - if col_player == row_player

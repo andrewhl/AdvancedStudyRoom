@@ -1,4 +1,4 @@
-class RulesetsController < ApplicationController
+class Admin::RulesetsController < ApplicationController
 
   load_and_authorize_resource
   before_filter :authorize
