@@ -35,10 +35,8 @@ class MatchesController < ApplicationController
   def download
     server = Server.where(name: 'KGS').first
     importer = ASR::SGFImporter.new(server: server, ignore_case: true)
-
     matches = importer.import_matches(handle: @registration.account.handle)
     matches.each(&:save)
-
     redirect_to :back, flash: {success: "Matches downloaded"}
   end
 

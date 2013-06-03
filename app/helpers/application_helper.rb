@@ -20,6 +20,12 @@ module ApplicationHelper
     end
   end
 
+  def error_alert(&block)
+    content_tag :div, class: 'alert alert-error' do
+      yield block
+    end
+  end
+
   def breadcrumbs?
     @show_breadcrumbs
   end
@@ -68,6 +74,10 @@ module ApplicationHelper
     end
   end
 
+  def yes_no(value)
+    value ? 'Yes' : 'No'
+  end
+
 
   class TableSorter
 
@@ -97,6 +107,7 @@ module ApplicationHelper
     end
 
     private
+
       def paramaterize(table)
         table.class.name.downcase
       end
