@@ -64,13 +64,6 @@ class Division < ActiveRecord::Base
     rule_merger.rules
   end
 
-  def validate_matches!
-    validator = MatchValidator.new(rules)
-    matches.each do |m|
-      m.update_attribute(:valid_match, validator.valid?(m))
-    end
-  end
-
   private
 
     def players_within_range
