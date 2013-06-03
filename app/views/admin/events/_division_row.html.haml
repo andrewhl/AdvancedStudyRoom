@@ -1,0 +1,12 @@
+- if div.blank?
+  %td{colspan: 3}
+    This tier has no divisions. Please create one.
+- else
+  %td= "#{div.index}. #{div.name}"
+  %td= div.registrations.count
+  %td
+    %ul.inline
+      %li= link_to 'Edit', edit_admin_division_path(div)
+      %li= link_to 'Edit Ruleset', edit_admin_division_ruleset_path(div)
+      %li= link_to 'Delete', admin_division_path(div),
+            method: :delete, confirm: 'Are you sure you want to delete this division?'

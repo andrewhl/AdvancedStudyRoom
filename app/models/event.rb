@@ -60,20 +60,4 @@ class Event < ActiveRecord::Base
     registrations.count
   end
 
-  def validate_matches!
-    divisions.each(&:validate_matches!)
-  end
-
-  def tag_games force=false
-
-    matches.each do |match|
-      unless force
-        next unless match.tagged.nil?
-      end
-
-      match.update_attribute(:tagged, match.has_valid_tag?)
-    end
-  end
-
-
 end

@@ -41,7 +41,7 @@ AdvancedStudyRoom::Application.routes.draw do
   post 'registrations/:registration_id/matches/download',  to: "matches#download", as: "download_registration_matches"
   post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
   delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
-  resources :events do
+  resources :events, only: [:index] do
     member do
       get     :results, to: 'results#index'
       post    :join
@@ -63,7 +63,7 @@ AdvancedStudyRoom::Application.routes.draw do
 
   namespace :admin do
     resources :events do
-      resources :tags, controller: 'event_tags'
+      resources :tags, shallow: true, controller: 'event_tags'
       # Note the singular on 'resource', this generates routes a different
       # set of routes, use rake routes for more info.
       resource :ruleset, controller: 'event_ruleset', only: [:show, :edit, :update]
