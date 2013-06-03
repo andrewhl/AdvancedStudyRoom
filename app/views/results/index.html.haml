@@ -11,6 +11,10 @@
     = link_to "Please create them.", manage_event_path(@event)
 
 - else
+  %p
+    Percentage of total games played:
+    = @game_percentage
+    \%
   .divisions_nav
     - if current_user.nil?
       = link_to 'Join The League', signup_path, class: 'btn btn-primary'
