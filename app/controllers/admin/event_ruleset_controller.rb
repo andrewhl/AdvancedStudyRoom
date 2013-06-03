@@ -1,9 +1,8 @@
 class Admin::EventRulesetController < ApplicationController
 
-  # load_and_authorize_resource
-  # authorize_resource
-  before_filter :authorize
-  before_filter :find_event_and_ruleset
+  load_and_authorize_resource :event
+  load_and_authorize_resource :ruleset, through: :event, singleton: true
+
   before_filter :add_breadcrumbs
 
   def show
@@ -14,18 +13,14 @@ class Admin::EventRulesetController < ApplicationController
 
   def update
     if @ruleset.update_attributes(params[:ruleset])
-      redirect_to action: :show, flash: {success: 'The ruleset has been updated'}
+      redirect_to admin_event_ruleset_path(@event),
+        flash: {success: 'The ruleset has been updated'}
     else
       render :edit
     end
   end
 
   private
-
-    def find_event_and_ruleset
-      @event = Event.find(params[:event_id], include: :ruleset)
-      @ruleset = @event.ruleset
-    end
 
     def add_breadcrumbs
       @show_breadcrumbs = true
