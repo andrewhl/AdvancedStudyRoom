@@ -1,5 +1,11 @@
 AdvancedStudyRoom::Application.routes.draw do
 
+  #
+  # Devise
+  #
+
+  # TODO: Remove dups and generate more readable routes for devise.
+  # Look at the devise routes from the 'rake routes' list.
   devise_for :users, controllers: {registrations: :signup} do
     get  'login',     to: 'devise/sessions#new',        as: 'login'
     post 'login',     to: 'devise/sessions#create'
@@ -8,14 +14,11 @@ AdvancedStudyRoom::Application.routes.draw do
     post 'signup',    to: 'signup#create'
   end
 
-  resources :pages
-  resources :posts
+  #
+  # Users (Public)
+  #
 
-  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
-
-  delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
-  post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
-
+  # TODO: Move admin routes and, cleanup public routes
   get 'profile',        to: 'users#profile'
   resources :users do
     get  :profile,      on: :member
@@ -23,53 +26,71 @@ AdvancedStudyRoom::Application.routes.draw do
     resources :accounts
   end
 
+  #
+  # Results
+  #
+
   get 'results',        to: 'results#main_event'
   get 'no_events',      to: 'results#no_events'
 
+  #
+  # Events (Public)
+  #
+
+  get  'leagues', to: 'events#leagues'
+  post 'registrations/:registration_id/matches/download',  to: "matches#download", as: "download_registration_matches"
+  post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
+  delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
   resources :events do
-    get :results,   to: 'results#index'
-
     member do
-      get     :download_matches
+      get     :results, to: 'results#index'
       post    :join
-      get     :manage
-      get     :matches
-      get     :overview
       delete  :quit
-      get     :results
-    end
-
-    resources :tiers
-    resources :tags, controller: 'event_tags'
-    resources :registrations do
-      put :update,  on: :collection
-      get :matches, on: :member
-      put :remove,  on: :member
     end
   end
 
-  post  'registrations/:registration_id/matches/download',  to: "matches#download", as: "download_registration_matches"
+  #
+  # Matches
+  #
+
+  # TODO: Move whole matches controller to Admin, where it makes sense.
   post  'matches/:id/validate',   to: "matches#validate",   as: "validate_match"
   post  'matches/:id/check_tags', to: "matches#check_tags", as: "check_match_tags"
-  get   'leagues',        to: 'events#leagues'
 
-  put   'validate_games', to: 'events#validate_games'
-  put   'tag_games',      to: 'events#tag_games'
+  #
+  # Admin
+  #
 
-  resources :rulesets,
-            :divisions
-
-  resources :tiers do
-    resources :divisions
-    get 'ruleset', to: 'tiers#ruleset'
+  namespace :admin do
+    resources :events do
+      resources :tags, controller: 'event_tags'
+      # Note the singular on 'resource', this generates routes a different
+      # set of routes, use rake routes for more info.
+      resource :ruleset, controller: 'event_ruleset', only: [:show, :edit, :update]
+      # Shallow gives us a convenience path to create new tiers for an event
+      # and list the tiers of an event, but short paths to edit, update and delete them
+      resources :tiers, shallow: true, controller: 'event_tiers' do
+        resource :ruleset, controller: 'tier_ruleset', only: [:show, :edit, :update]
+        resource :division, controller: 'event_divisions', only: [:new, :create]
+      end
+      resources :registrations do
+        put :update,  on: :collection
+        get :matches, on: :member
+        put :remove,  on: :member
+      end
+    end
+    # With this route and the one nested under tiers, we make a custom shallow resource
+    resources :divisions, controller: 'event_divisions', except: [:new, :create] do
+      resource :ruleset, controller: 'division_ruleset', only: [:show, :edit, :update]
+    end
   end
 
+
+  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
   resources :pages
-
-  match '/', to: 'pages#home'
-
-  match ':permalink', to: 'pages#show'
-
+  resources :posts
+  get '/',          to: 'pages#home'
+  get ':permalink', to: 'pages#show'
   root to: "pages#home"
 
   # The priority is based upon order of creation:
