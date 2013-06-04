@@ -28,6 +28,7 @@
 %h2
   Tiers
   .clearfix.pull-right
+    = link_to 'Assign Players', admin_event_registrations_path(@event), class: 'btn'
     = link_to 'Add Tier', new_admin_event_tier_path(@event), class: 'btn'
 
 - if @event.tiers.empty?
@@ -36,6 +37,7 @@
 %table.table.table-condensed.table-bordered.table-hover
   %thead
     %tr
+      %th Position
       %th Name
       %th Actions
       %th Division
@@ -44,9 +46,11 @@
   %tbody
     - @event.tiers.each do |tier|
       %tr
-        %td{rowspan: tier.divisions.count}
-          = link_to "#{tier.index}. #{tier.name}", admin_tier_path(tier)
-        %td{rowspan: tier.divisions.count}
+        %td.middle{rowspan: tier.divisions.count}
+          = tier.index
+        %td.middle{rowspan: tier.divisions.count}
+          = link_to tier.display_name, admin_tier_path(tier)
+        %td.middle{rowspan: tier.divisions.count}
           %ul.inline
             %li= link_to 'Edit', edit_admin_tier_path(tier)
             %li= link_to 'Edit Ruleset', edit_admin_tier_ruleset_path(tier.ruleset)
