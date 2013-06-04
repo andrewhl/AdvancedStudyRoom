@@ -2,7 +2,6 @@ class Admin::EventRegistrationsController < ApplicationController
 
   load_and_authorize_resource :event, only: [:index, :assign, :new, :create]
   load_and_authorize_resource :registration, through: :event, parent: false
-
   before_filter :add_breadcrumbs
 
   def index

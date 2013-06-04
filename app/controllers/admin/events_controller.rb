@@ -1,7 +1,6 @@
 class Admin::EventsController < ApplicationController
 
   load_and_authorize_resource :event
-
   before_filter :add_breadcrumbs
 
   def index

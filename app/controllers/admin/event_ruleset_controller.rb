@@ -2,7 +2,6 @@ class Admin::EventRulesetController < ApplicationController
 
   load_and_authorize_resource :event
   load_and_authorize_resource :ruleset, through: :event, singleton: true
-
   before_filter :add_breadcrumbs
 
   def edit

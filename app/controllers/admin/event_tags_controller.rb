@@ -2,7 +2,6 @@ class Admin::EventTagsController < ApplicationController
 
   load_and_authorize_resource :event, only: [:new, :create]
   load_and_authorize_resource :event_tag, shallow: true, through_association: :tags
-
   before_filter :add_breadcrumbs
 
   def new
