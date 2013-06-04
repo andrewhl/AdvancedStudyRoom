@@ -4,7 +4,7 @@
 
   = f.input :name
   = f.input :event_type, collection: ['League', 'Tournament'], default: 1, label: 'Event Type'
-  = f.input :server_id, collection: @servers, default: 1
+  = f.input :server_id, collection: Server.all, include_blank: false
   = f.input :description, input_html: { class: 'markItUp' }
 
   .form-actions

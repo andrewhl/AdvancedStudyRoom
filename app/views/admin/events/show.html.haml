@@ -1,6 +1,18 @@
 - @title << @event.name
 
 %h2
+  Details
+  .clearfix.pull-right
+    = link_to 'Edit', edit_admin_event_path(@event), class: 'btn'
+%dl.dl-horizontal
+  %dt Event Type
+  %dd= @event.event_type.to_s.titleize
+  %dt Server
+  %dd= @event.server.try(:name)
+  %dt Description
+  %dd= truncate(@event.description, length: 400)
+
+%h2
   Tags
   .clearfix.pull-right
     = link_to 'Add Tag', new_admin_event_tag_path(@event), class: 'btn'
