@@ -1,8 +1,10 @@
-%h1 Edit Tier
+- @title << 'Edit tier'
 
-= form_for @tier, :html => {:class => "form-horizontal"} do |f|
-  = render "events/tier_fields", :f => f
+= simple_form_for @tier, url: admin_tier_path(@tier), validate: true, html: {class: 'form-horizontal'} do |f|
 
-  .control-group
-    .controls
-      = f.submit :submit
+  = f.input :name
+  = f.input :index, label: 'Position'
+
+  .form-actions
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back', :back, class: 'btn'
