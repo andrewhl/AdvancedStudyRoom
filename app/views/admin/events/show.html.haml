@@ -52,10 +52,10 @@
           = link_to tier.display_name, admin_tier_path(tier)
         %td.middle{rowspan: tier.divisions.count}
           %ul.inline
-            %li= link_to 'Edit', edit_admin_tier_path(tier)
+            / %li= link_to 'Edit', edit_admin_tier_path(tier)
             %li= link_to 'Edit Ruleset', edit_admin_tier_ruleset_path(tier.ruleset)
-            %li= link_to 'Delete', admin_tier_path(tier),
-                  method: :delete, confirm: 'Are you sure you want to delete this tier?'
+            / %li= link_to 'Delete', admin_tier_path(tier),
+            /       method: :delete, confirm: 'Are you sure you want to delete this tier?'
         = render 'division_row', div: tier.divisions.first
       - tier.divisions[1, tier.divisions.size].each do |div|
         %tr

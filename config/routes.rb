@@ -63,7 +63,7 @@ AdvancedStudyRoom::Application.routes.draw do
 
   namespace :admin do
     resources :events do
-      resources :tags, shallow: true, controller: 'event_tags'
+      resources :tags, shallow: true, controller: 'event_tags', except: [:index]
       # Note the singular on 'resource', this generates routes a different
       # set of routes, use rake routes for more info.
       resource :ruleset, controller: 'event_ruleset', only: [:show, :edit, :update]
