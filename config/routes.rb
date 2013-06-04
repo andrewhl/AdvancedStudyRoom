@@ -80,7 +80,7 @@ AdvancedStudyRoom::Application.routes.draw do
     end
     # With this route and the one nested under tiers, we make a custom shallow resource
     resources :divisions, controller: 'event_divisions', only: [:edit, :update] do
-      resource :ruleset, controller: 'division_ruleset', only: [:edit, :update]
+      resource :ruleset, controller: 'division_rulesets', only: [:edit, :update]
     end
   end
 
