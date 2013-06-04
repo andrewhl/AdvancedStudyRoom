@@ -1,62 +1,68 @@
 - @title << @event.name
 
-%h2
-  Details
-  .clearfix.pull-right
-    = link_to 'Edit', edit_admin_event_path(@event), class: 'btn'
-%dl.dl-horizontal
-  %dt Event Type
-  %dd= @event.event_type.to_s.titleize
-  %dt Server
-  %dd= @event.server.try(:name)
-  %dt Description
-  %dd= truncate(@event.description, length: 400)
-
-%h2
-  Tags
-  .clearfix.pull-right
-    = link_to 'Add Tag', new_admin_event_tag_path(@event), class: 'btn'
-= render 'admin/event_tags/table', event: @event
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      %a{href: "#tab1", data: {toggle: "tab"}} Details
+    %li
+      %a{href: "#tab2", data: {toggle: "tab"}} Tags
+    %li
+      %a{href: "#tab3", data: {toggle: "tab"}} Ruleset
+    %li
+      %a{href: "#tab4", data: {toggle: "tab"}} Tiers
 
 
-%h2
-  Ruleset
-  .clearfix.pull-right
-    = link_to 'Edit Ruleset', edit_admin_event_ruleset_path(@event), class: 'btn'
-= render 'admin/rulesets/table', ruleset: @event.ruleset
+  .tab-content
+    #tab1.tab-pane.active
+      .clearfix.pull-right
+        = link_to 'Edit', edit_admin_event_path(@event), class: 'btn'
+      %dl.dl-horizontal
+        %dt Event Type
+        %dd= @event.event_type.to_s.titleize
+        %dt Server
+        %dd= @event.server.try(:name)
+        %dt Description
+        %dd= truncate(@event.description, length: 400)
 
-%h2
-  Tiers
-  .clearfix.pull-right
-    = link_to 'Assign Players', admin_event_registrations_path(@event), class: 'btn'
-    / = link_to 'Add Tier', new_admin_event_tier_path(@event), class: 'btn'
+    #tab2.tab-pane
+      .clearfix.pull-right
+        = link_to 'Add Tag', new_admin_event_tag_path(@event), class: 'btn'
+      = render 'admin/event_tags/table', event: @event
 
-- if @event.tiers.empty?
-  = error_alert() { 'This event has no tiers. Please create one.' }
+    #tab3.tab-pane
+      .clearfix.pull-right
+        = link_to 'Edit Ruleset', edit_admin_event_ruleset_path(@event), class: 'btn'
+      = render 'admin/rulesets/table', ruleset: @event.ruleset
 
-%table.table.table-condensed.table-bordered.table-hover
-  %thead
-    %tr
-      %th Position
-      %th Tier
-      %th Actions
-      %th Division
-      %th Players
-      %th Actions
-  %tbody
-    - @event.tiers.each do |tier|
-      %tr
-        %td.middle{rowspan: tier.divisions.count}
-          = tier.index
-        %td.middle{rowspan: tier.divisions.count}
-          = tier.display_name
-        %td.middle{rowspan: tier.divisions.count}
-          %ul.inline
-            %li= link_to 'Edit', edit_admin_tier_path(tier)
-            %li= link_to 'Edit Ruleset', edit_admin_tier_ruleset_path(tier.ruleset)
-            / %li= link_to 'Delete', admin_tier_path(tier),
-            /       method: :delete, confirm: 'Are you sure you want to delete this tier?'
-        = render 'division_row', div: tier.divisions.first
-      - tier.divisions[1, tier.divisions.size].each do |div|
-        %tr
-          = render 'division_row', div: div
+    #tab4.tab-pane
+      .clearfix.pull-right
+        = link_to 'Assign Players', admin_event_registrations_path(@event), class: 'btn'
+      - if @event.tiers.empty?
+        = error_alert() { 'This event has no tiers. Please create one.' }
+
+      %table.table.table-condensed.table-bordered.table-hover
+        %thead
+          %tr
+            %th Position
+            %th Tier
+            %th Actions
+            %th Division
+            %th Players
+            %th Actions
+        %tbody
+          - @event.tiers.each do |tier|
+            %tr
+              %td.middle{rowspan: tier.divisions.count}
+                = tier.index
+              %td.middle{rowspan: tier.divisions.count}
+                = tier.display_name
+              %td.middle{rowspan: tier.divisions.count}
+                %ul.inline
+                  %li= link_to 'Edit', edit_admin_tier_path(tier)
+                  %li= link_to 'Edit Ruleset', edit_admin_tier_ruleset_path(tier.ruleset)
+                  / %li= link_to 'Delete', admin_tier_path(tier),
+                  /       method: :delete, confirm: 'Are you sure you want to delete this tier?'
+              = render 'division_row', div: tier.divisions.first
+            - tier.divisions[1, tier.divisions.size].each do |div|
+              %tr
+                = render 'division_row', div: div
