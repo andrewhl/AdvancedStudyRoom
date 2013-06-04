@@ -66,11 +66,11 @@ AdvancedStudyRoom::Application.routes.draw do
       resources :tags, shallow: true, controller: 'event_tags', except: [:index]
       # Note the singular on 'resource', this generates routes a different
       # set of routes, use rake routes for more info.
-      resource :ruleset, controller: 'event_ruleset', only: [:edit, :update]
+      resource :ruleset, controller: 'event_rulesets', only: [:edit, :update]
       # Shallow gives us a convenience path to create new tiers for an event
       # and list the tiers of an event, but short paths to edit, update and delete them
       resources :tiers, shallow: true, controller: 'event_tiers', only: [:show, :edit, :update] do
-        resource :ruleset, controller: 'tier_ruleset', only: [:edit, :update]
+        resource :ruleset, controller: 'tier_rulesets', only: [:edit, :update]
         # Commented, until creation of division is implemented
         # resource :division, controller: 'event_divisions', only: [:new, :create]
       end
