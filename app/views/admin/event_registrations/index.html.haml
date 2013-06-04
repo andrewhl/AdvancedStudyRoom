@@ -1,0 +1,23 @@
+- @title << "#{@event.name} Registrations"
+
+%h2 Unassigned
+= render 'assign_form', event: @event, division: nil, registrations: @unassigned_players
+
+- if @event.tiers.empty?
+  = error_alert do
+    This event has no tiers.
+    = link_to 'Please create them.', new_admin_event_tier_path(@event)
+
+- @event.tiers.each do |tier|
+  %h2= tier.name
+
+  - if tier.divisions.empty?
+    = error_alert do
+      This tier has no divisions.
+      = link_to 'Please create them.', new_admin_tier_division_path(tier)
+
+  - tier.divisions.each do |division|
+    %h3= division.display_name
+
+    = render 'assign_form', event: @event, division: division,
+      registrations: @event.registrations.where(division_id: division.id)

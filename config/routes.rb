@@ -73,10 +73,8 @@ AdvancedStudyRoom::Application.routes.draw do
         resource :ruleset, controller: 'tier_ruleset', only: [:show, :edit, :update]
         resource :division, controller: 'event_divisions', only: [:new, :create]
       end
-      resources :registrations do
-        put :update,  on: :collection
-        get :matches, on: :member
-        put :remove,  on: :member
+      resources :registrations, shallow: true, controller: 'event_registrations' do
+        put :assign,  on: :collection
       end
     end
     # With this route and the one nested under tiers, we make a custom shallow resource
