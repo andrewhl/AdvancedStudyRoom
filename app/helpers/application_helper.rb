@@ -60,6 +60,10 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction, :division_id => division_id}, {:class => css_class}
   end
 
+  def rank_display(rank)
+    rank.presence || 'Pending...'
+  end
+
   def rank_options_for_select(selected = nil)
     ranks = []
     9.downto(-29).each do |n|

@@ -44,7 +44,7 @@ class Division < ActiveRecord::Base
   end
 
   def display_name
-    name.present? ? name : tier.name + " " + index.to_s
+    name.presence || "#{tier.try(:name)} #{index.to_s}"
   end
 
   def ruleset?

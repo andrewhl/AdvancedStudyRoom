@@ -118,10 +118,17 @@ div.checkbox label.checkbox
   padding-left: 0
 
 
-td ul.inline
-  margin-bottom: 0
-  li:before
-    content: '|\00a0\00a0\00a0'
-  li:first-child
-    &:before
-      content: ''
+td
+  &.middle
+    vertical-align: middle
+  
+  select,
+  ul.inline
+    margin-bottom: 0
+
+  ul.inline
+    li:before
+      content: '|\00a0\00a0\00a0'
+    li:first-child
+      &:before
+        content: ''
