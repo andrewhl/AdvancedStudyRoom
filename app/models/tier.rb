@@ -41,7 +41,7 @@ class Tier < ActiveRecord::Base
   scope :ranked, order('"tiers"."index" ASC')
 
   def display_name
-    name.presence || "#{tier.try(:name)} #{index.to_s}"
+    name.presence || "#{event.try(:name)} Tier #{index.to_s}"
   end
 
 end
