@@ -60,6 +60,6 @@ class Admin::EventRegistrationsController < ApplicationController
       event = @event || @registration.event
       add_breadcrumb 'Events', admin_events_path
       add_breadcrumb event.name, admin_event_path(event)
-      add_breadcrumb 'Registrations', admin_event_registrations_path(event)
+      add_breadcrumb 'Assign Players', admin_event_registrations_path(event)
     end
 end
