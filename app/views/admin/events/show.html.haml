@@ -29,7 +29,7 @@
   Tiers
   .clearfix.pull-right
     = link_to 'Assign Players', admin_event_registrations_path(@event), class: 'btn'
-    = link_to 'Add Tier', new_admin_event_tier_path(@event), class: 'btn'
+    / = link_to 'Add Tier', new_admin_event_tier_path(@event), class: 'btn'
 
 - if @event.tiers.empty?
   = error_alert() { 'This event has no tiers. Please create one.' }
@@ -38,7 +38,7 @@
   %thead
     %tr
       %th Position
-      %th Name
+      %th Tier
       %th Actions
       %th Division
       %th Players
@@ -49,10 +49,10 @@
         %td.middle{rowspan: tier.divisions.count}
           = tier.index
         %td.middle{rowspan: tier.divisions.count}
-          = link_to tier.display_name, admin_tier_path(tier)
+          = tier.display_name
         %td.middle{rowspan: tier.divisions.count}
           %ul.inline
-            / %li= link_to 'Edit', edit_admin_tier_path(tier)
+            %li= link_to 'Edit', edit_admin_tier_path(tier)
             %li= link_to 'Edit Ruleset', edit_admin_tier_ruleset_path(tier.ruleset)
             / %li= link_to 'Delete', admin_tier_path(tier),
             /       method: :delete, confirm: 'Are you sure you want to delete this tier?'

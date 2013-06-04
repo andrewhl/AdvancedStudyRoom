@@ -62,7 +62,7 @@ AdvancedStudyRoom::Application.routes.draw do
   #
 
   namespace :admin do
-    resources :events do
+    resources :events, only: [:index, :show, :edit, :update] do
       resources :tags, shallow: true, controller: 'event_tags', except: [:index]
       # Note the singular on 'resource', this generates routes a different
       # set of routes, use rake routes for more info.
@@ -71,9 +71,10 @@ AdvancedStudyRoom::Application.routes.draw do
       # and list the tiers of an event, but short paths to edit, update and delete them
       resources :tiers, shallow: true, controller: 'event_tiers', only: [:show, :edit, :update] do
         resource :ruleset, controller: 'tier_ruleset', only: [:edit, :update]
-        resource :division, controller: 'event_divisions', only: [:new, :create]
+        # Commented, until creation of division is implemented
+        # resource :division, controller: 'event_divisions', only: [:new, :create]
       end
-      resources :registrations, shallow: true, controller: 'event_registrations' do
+      resources :registrations, shallow: true, controller: 'event_registrations', only: [:index] do
         put :assign,  on: :collection
       end
     end

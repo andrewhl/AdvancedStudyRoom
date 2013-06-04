@@ -29,26 +29,26 @@ class Admin::EventRegistrationsController < ApplicationController
     redirect_to admin_event_registrations_path(@event)
   end
 
-  def new
-    # @registration = Registration.new
-    # @accounts = current_user.accounts
-  end
+  # def new
+  #   @registration = Registration.new
+  #   @accounts = current_user.accounts
+  # end
 
-  def create
-    # @registration = @event.registrations.build
-    # @registration.account_id = params[:registration][:registration][:account_id]
-    # account = Account.find(@registration.account_id)
-    # @registration.handle = account.handle.downcase # all registrations will be saved as lowercase
-    # @registration.display_name = account.display_name # the display name is the handle, but as the user entered it
-    # @registration.save
-    # redirect_to :leagues, :flash => {:success => "Event joined."}
-  end
+  # def create
+  #   @registration = @event.registrations.build
+  #   @registration.account_id = params[:registration][:registration][:account_id]
+  #   account = Account.find(@registration.account_id)
+  #   @registration.handle = account.handle.downcase # all registrations will be saved as lowercase
+  #   @registration.display_name = account.display_name # the display name is the handle, but as the user entered it
+  #   @registration.save
+  #   redirect_to :leagues, :flash => {:success => "Event joined."}
+  # end
 
-  def destroy
-    # registration = Registration.find(params[:id])
-    # registration.destroy
-    # redirect_to :leagues, :flash => {:info => "You have been removed from the event."}
-  end
+  # def destroy
+  #   registration = Registration.find(params[:id])
+  #   registration.destroy
+  #   redirect_to :leagues, :flash => {:info => "You have been removed from the event."}
+  # end
 
   def matches
   end
