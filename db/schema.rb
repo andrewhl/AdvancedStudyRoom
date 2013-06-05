@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601031014) do
+ActiveRecord::Schema.define(:version => 20130602164239) do
 
   create_table "accounts", :force => true do |t|
     t.string   "handle"
@@ -148,13 +148,14 @@ ActiveRecord::Schema.define(:version => 20130601031014) do
   create_table "point_rulesets", :force => true do |t|
     t.float    "points_per_win"
     t.float    "points_per_loss"
-    t.float    "point_decay"
     t.float    "min_points_per_match"
     t.integer  "max_matches_per_opponent"
     t.integer  "pointable_id"
     t.string   "pointable_type"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.float    "win_decay"
+    t.float    "loss_decay"
   end
 
   add_index "point_rulesets", ["pointable_type", "pointable_id"], :name => "index_point_rulesets_on_pointable_type_and_pointable_id"

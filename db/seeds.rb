@@ -23,7 +23,7 @@ unless kgs_server = Server.find_by_name('KGS')
   kgs_server = Server.create(
     { name: 'KGS',
       url: 'www.gokgs.com',
-      scraper_class_name: 'KgsScraper'},
+      scraper_class_name: 'KgsScraper::Scraper'},
     without_protection: true)
 end
 
@@ -39,7 +39,7 @@ ruleset_attrs = {
   j_ot_allowed: true,
   c_ot_allowed: true,
   j_ot_min_periods: 5,
-  j_ot_max_periods: 60,
+  j_ot_max_periods: 100,
   j_ot_min_period_length: 5,
   j_ot_max_period_length: 300,
   c_ot_min_stones: 25,
@@ -47,7 +47,8 @@ ruleset_attrs = {
   c_ot_max_time: 300,
   c_ot_min_time: 300,
   min_handicap: 0,
-  max_handicap: 0}
+  max_handicap: 0,
+  node_limit: 100}
 
 #
 # ASR LEAGUE EVENT
@@ -70,9 +71,10 @@ unless asr_league_event.point_ruleset.present?
   asr_league_event.create_point_ruleset(
       points_per_win: 2.0,
       points_per_loss: 1.0,
-      point_decay: 0.5,
+      win_decay: 0.5,
+      loss_decay: 0.5,
       max_matches_per_opponent: 2,
-      min_points_per_match: 0.5)
+      min_points_per_match: 0)
 end
 
 #

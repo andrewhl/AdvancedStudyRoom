@@ -20,11 +20,6 @@ module ASR
       valid
     end
 
-    def self.filter_invalid(sgf_data_list, handle, ignore_case = false)
-      validator = ASR::SGFValidator.new handle: handle, ignore_case: ignore_case
-      sgf_data_list.select { |sgf_data| validator.validate(sgf_data) }
-    end
-
     private
 
       def handle_clause
@@ -62,7 +57,7 @@ module ASR
       end
 
       def check_result(data)
-        !data[:result].nil?
+        !data[:result].nil? && data[:result][:win_info].to_s.strip != ''
       end
 
       def check_is_player_in_game(data)

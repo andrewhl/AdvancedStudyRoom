@@ -91,57 +91,57 @@ describe ASR::MatchValidator do
 
       it "should have fewer or equal to max japanese periods" do
         match.ot_type = Match::BYO_YOMI
-        match.ot_stones_periods = 4
+        match.ot_time_control = 4
         rule_checker.send(:j_ot_max_periods, 5, match).should be_true
-        match.ot_stones_periods = 5
+        match.ot_time_control = 5
         rule_checker.send(:j_ot_max_periods, 5, match).should be_true
       end
 
       it "should fail if greater than max japanese periods" do
         match.ot_type = Match::BYO_YOMI
-        match.ot_stones_periods = 6
+        match.ot_time_control = 6
         rule_checker.send(:j_ot_max_periods, 5, match).should be_false
       end
 
       it "should have greater or equal to min japanese periods" do
         match.ot_type = Match::BYO_YOMI
-        match.ot_stones_periods = 5
+        match.ot_time_control = 5
         rule_checker.send(:j_ot_min_periods, 5, match).should be_true
-        match.ot_stones_periods = 6
+        match.ot_time_control = 6
         rule_checker.send(:j_ot_min_periods, 5, match).should be_true
       end
 
       it "should fail if less than min japanese periods" do
         match.ot_type = Match::BYO_YOMI
-        match.ot_stones_periods = 4
+        match.ot_time_control = 4
         rule_checker.send(:j_ot_min_periods, 5, match).should be_false
       end
 
       it "should fail if less than min japanese period length" do
         match.ot_type = Match::BYO_YOMI
-        match.ot_time_control = 4
+        match.ot_stones_periods = 4
         rule_checker.send(:j_ot_min_period_length, 5, match).should be_false
       end
 
       it "should pass if greater than or equal to min japanese period length" do
         match.ot_type = Match::CANADIAN
-        match.ot_time_control = 10
+        match.ot_stones_periods = 10
         rule_checker.send(:j_ot_min_period_length, 10, match).should be_true
-        match.ot_time_control = 15
+        match.ot_stones_periods = 15
         rule_checker.send(:j_ot_min_period_length, 10, match).should be_true
       end
 
       it "should fail if greater than max japanese period length" do
         match.ot_type = Match::BYO_YOMI
-        match.ot_time_control = 15
+        match.ot_stones_periods = 15
         rule_checker.send(:j_ot_max_period_length, 10, match).should be_false
       end
 
       it "should pass if less than or equal to max japanese period length" do
         match.ot_type = Match::CANADIAN
-        match.ot_time_control = 10
+        match.ot_stones_periods = 10
         rule_checker.send(:j_ot_max_period_length, 10, match).should be_true
-        match.ot_time_control = 5
+        match.ot_stones_periods = 5
         rule_checker.send(:j_ot_max_period_length, 10, match).should be_true
       end
 

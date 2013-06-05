@@ -6,7 +6,7 @@ en:
     attributes:
       ruleset:
         overtime_required:      "Overtime required"
-        j_ot_allowed:           "Japanese overtime llowed"
+        j_ot_allowed:           "Japanese overtime allowed"
         c_ot_allowed:           "Canadian overtime allowed"
         main_time_min:          "Minimum time"
         main_time_max:          "Maximum time"
@@ -20,4 +20,5 @@ en:
         c_ot_max_stones:        "Canadian max. overtime stones"
         min_handicap:           "Minimum handicap"
         max_handicap:           "Maximum handicap"
+        node_limit:             "Say tag by this move"
 

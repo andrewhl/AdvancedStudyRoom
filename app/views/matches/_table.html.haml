@@ -45,7 +45,7 @@
         %td= match.winner.handle
         %td= match.board_size
         - if can? :manage, :matches
-          %td= match.tags
+          %td= match.tags.collect { |m| m.phrase }.compact.join(', ')
           %td= "#{match.valid_match} / #{match.tagged}"
           %td
             = link_to validate_match_path(match), method: :post, class: "btn btn-primary btn-mini" do

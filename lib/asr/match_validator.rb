@@ -50,19 +50,19 @@ module ASR
       end
 
       def j_ot_max_periods(j_ot_max_periods, match)
-        !match.byo_yomi? || match.ot_stones_periods <= j_ot_max_periods
+        !match.byo_yomi? || match.ot_time_control <= j_ot_max_periods
       end
 
       def j_ot_min_periods(j_ot_min_periods, match)
-        !match.byo_yomi? || match.ot_stones_periods >= j_ot_min_periods
+        !match.byo_yomi? || match.ot_time_control >= j_ot_min_periods
       end
 
       def j_ot_max_period_length(jot_max_period_len, match)
-        !match.byo_yomi? || match.ot_time_control <= jot_max_period_len
+        !match.byo_yomi? || match.ot_stones_periods <= jot_max_period_len
       end
 
       def j_ot_min_period_length(jot_min_period_len, match)
-        !match.byo_yomi? || match.ot_time_control >= jot_min_period_len
+        !match.byo_yomi? || match.ot_stones_periods >= jot_min_period_len
       end
 
       def c_ot_max_stones(c_ot_max_stones, match)
@@ -99,6 +99,12 @@ module ASR
 
       def handicap_required(handi_bool, match)
         !handi_bool || match.handicap > 0
+      end
+
+      # TODO: Quick & dirty fix to make the validator pass with a node_limit in the
+      # rules
+      def node_limit(_, __)
+        true
       end
 
   end
