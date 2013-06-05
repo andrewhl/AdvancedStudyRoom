@@ -39,7 +39,7 @@ class Admin::EventTagsController < ApplicationController
       event = @event || @event_tag.event
       add_breadcrumb 'Events', admin_events_path
       add_breadcrumb event.name, admin_event_path(event)
-      add_breadcrumb 'Add Tag', :add if %W(new create).include? params[:action]
+      add_breadcrumb 'Add Tag', :new if %W(new create).include? params[:action]
       add_breadcrumb 'Edit Tag', :edit if %W(edit update).include? params[:action]
     end
 

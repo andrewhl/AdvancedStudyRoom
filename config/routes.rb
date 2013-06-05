@@ -82,6 +82,9 @@ AdvancedStudyRoom::Application.routes.draw do
     resources :divisions, controller: 'event_divisions', only: [:edit, :update] do
       resource :ruleset, controller: 'division_rulesets', only: [:edit, :update]
     end
+    resources :users, only: [:index, :show, :edit, :update] do
+      resources :accounts, shallow: true, controller: 'user_accounts', except: [:index]
+    end
   end
 
 

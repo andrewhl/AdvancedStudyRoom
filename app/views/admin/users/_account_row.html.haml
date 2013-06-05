@@ -1,0 +1,10 @@
+- if account.blank?
+  %td{colspan: 3}
+    This user has no accounts.
+- else
+  %td= account.handle
+  %td
+    %ul.inline
+      %li= link_to 'Edit', edit_admin_account_path(account)
+      %li= link_to 'Delete', admin_account_path(account),
+            method: :delete, confirm: 'Are you sure you want to delete this account?'
