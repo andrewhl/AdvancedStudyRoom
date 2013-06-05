@@ -34,6 +34,3 @@
               %li= link_to 'Details', admin_match_path(match)
               %li= link_to 'Validate', validate_admin_match_path(match), method: :post
               %li= link_to 'Check Tags', check_tags_admin_match_path(match), method: :post
-
-.clearfix.pull-right
-  = will_paginate matches, renderer: BootstrapPagination::Rails

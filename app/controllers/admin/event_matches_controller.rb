@@ -1,6 +1,6 @@
 class Admin::EventMatchesController < ApplicationController
 
-  authorize_resource :event, only: [:index]
+  load_and_authorize_resource :event, only: [:index]
   load_and_authorize_resource :match, parent: false, through: :event, except: [:validate]
   before_filter :set_pagination, only: [:index]
   before_filter :add_breadcrumbs, except: [:validate, :check_tags]

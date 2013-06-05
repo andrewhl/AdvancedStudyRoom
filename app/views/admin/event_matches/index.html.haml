@@ -1,3 +1,6 @@
 - @title << 'Event matches'
 
 = render 'table', matches: @matches
+
+.clearfix.pull-right
+  = will_paginate @matches, renderer: BootstrapPagination::Rails

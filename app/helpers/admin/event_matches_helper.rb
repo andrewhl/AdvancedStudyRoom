@@ -1,6 +1,7 @@
 module Admin::EventMatchesHelper
 
   def link_to_order(label, column)
+    return label unless @pag
     dir = :asc
     is_current = @pag[:order] == column.to_s
     current_dir = @pag[:order_dir]

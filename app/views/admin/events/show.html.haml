@@ -3,19 +3,20 @@
 .tabbable
   %ul.nav.nav-tabs
     %li.active
-      %a{href: "#tab1", data: {toggle: "tab"}} Details
+      %a{href: '#details_tab', data: {toggle: 'tab'}} Details
     %li
-      %a{href: "#tab2", data: {toggle: "tab"}} Tags
+      %a{href: '#matches_tab', data: {toggle: 'tab'}} Matches
     %li
-      %a{href: "#tab3", data: {toggle: "tab"}} Ruleset
+      %a{href: '#tags_tab', data: {toggle: 'tab'}} Tags
     %li
-      %a{href: "#tab4", data: {toggle: "tab"}} Tiers
+      %a{href: '#ruleset_tab', data: {toggle: 'tab'}} Ruleset
+    %li
+      %a{href: '#tiers_tab', data: {toggle: 'tab'}} Tiers
 
 
   .tab-content
-    #tab1.tab-pane.active
-      .clearfix.pull-right
-        = link_to 'Edit Details', edit_admin_event_path(@event), class: 'btn'
+    #details_tab.tab-pane.active
+      = link_to 'Edit Details', edit_admin_event_path(@event), class: 'btn pull-right'
       %table.table.table-condensed.table-bordered.table-hover
         %tbody
           %tr
@@ -28,17 +29,25 @@
             %th Description
             %td= truncate(@event.description, length: 800)
 
-    #tab2.tab-pane
+    #matches_tab.tab-pane
+      = link_to 'Manage Matches', admin_event_matches_path(@event), class: 'btn pull-right'
+      %h3 Last 10 Matches
+      = render 'admin/event_matches/table', matches: @event.matches.order('completed_at desc').take(10)
+      %p.text-success
+        %strong Total:
+        #{@event.matches.count} matches
+
+    #tags_tab.tab-pane
       .clearfix.pull-right
         = link_to 'Add Tag', new_admin_event_tag_path(@event), class: 'btn'
       = render 'admin/event_tags/table', event: @event
 
-    #tab3.tab-pane
+    #ruleset_tab.tab-pane
       .clearfix.pull-right
         = link_to 'Edit Ruleset', edit_admin_event_ruleset_path(@event), class: 'btn'
       = render 'admin/rulesets/table', ruleset: @event.ruleset
 
-    #tab4.tab-pane
+    #tiers_tab.tab-pane
       .clearfix.pull-right
         = link_to 'Assign Players', admin_event_registrations_path(@event), class: 'btn'
       - if @event.tiers.empty?
