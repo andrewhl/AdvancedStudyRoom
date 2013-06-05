@@ -50,20 +50,15 @@ AdvancedStudyRoom::Application.routes.draw do
   end
 
   #
-  # Matches
-  #
-
-  # TODO: Move whole matches controller to Admin, where it makes sense.
-  post  'matches/:id/validate',   to: "matches#validate",   as: "validate_match"
-  post  'matches/:id/check_tags', to: "matches#check_tags", as: "check_match_tags"
-
-  #
   # Admin
   #
 
   namespace :admin do
     resources :events, only: [:index, :show, :edit, :update] do
-      resources :matches, controller: 'event_matches', shallow: true
+      resources :matches, controller: 'event_matches', shallow: true, only: [:index, :show] do
+        post :validate, on: :member
+        post :check_tags, on: :member
+      end
       resources :tags, shallow: true, controller: 'event_tags', except: [:index]
       # Note the singular on 'resource', this generates routes a different
       # set of routes, use rake routes for more info.

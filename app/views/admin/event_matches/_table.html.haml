@@ -3,8 +3,8 @@
     %tr
       %th= link_to_order('Date', :date)
       %th Division
-      %th= link_to_order('Black', :black)
       %th= link_to_order('White', :white)
+      %th= link_to_order('Black', :black)
       %th= link_to_order('Win Info', :win_info)
       %th Tags
       - if can? :manage, :matches
@@ -23,8 +23,8 @@
       %tr
         %td= match.completed_at.strftime('%Y-%m-%d')
         %td= match.division.display_name
-        %td= style_handle(match.black_player, match.winner_id)
         %td= style_handle(match.white_player, match.winner_id)
+        %td= style_handle(match.black_player, match.winner_id)
         %td= match.win_info
         %td= match.tags.collect { |m| m.phrase }.compact.join(', ')
         - if can? :manage, :matches
@@ -32,8 +32,8 @@
           %td
             %ul.inline
               %li= link_to 'Details', admin_match_path(match)
-              %li= link_to 'Validate', validate_match_path(match), method: :post
-              %li= link_to 'Check Tags', check_match_tags_path(match), method: :post
+              %li= link_to 'Validate', validate_admin_match_path(match), method: :post
+              %li= link_to 'Check Tags', check_tags_admin_match_path(match), method: :post
 
 .clearfix.pull-right
   = will_paginate matches, renderer: BootstrapPagination::Rails
