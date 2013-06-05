@@ -28,6 +28,11 @@ class Admin::EventRegistrationsController < ApplicationController
     redirect_to admin_event_registrations_path(@event)
   end
 
+  def deactivate
+    @registration.update_attribute(active: false)
+    redirect_to @registration.account.user, flash: {success: "The registration has been deactivated."}
+  end
+
   # def new
   #   @registration = Registration.new
   #   @accounts = current_user.accounts

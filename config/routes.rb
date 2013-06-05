@@ -72,6 +72,7 @@ AdvancedStudyRoom::Application.routes.draw do
       end
       resources :registrations, shallow: true, controller: 'event_registrations', only: [:index] do
         put :assign,  on: :collection
+        put :deactivate, on: :member
       end
     end
     # With this route and the one nested under tiers, we make a custom shallow resource
