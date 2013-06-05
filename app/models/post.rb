@@ -19,8 +19,9 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :permalink, :title, :html
   validates_uniqueness_of :title
-
   validates_format_of :permalink, with: /^[\w\-]+$/, message: "Only alphanumeric characters, underscores, hyphens and spaces are allowed."
+
+  default_scope order('date DESC')
 
   def path
     "/posts/#{permalink}"
