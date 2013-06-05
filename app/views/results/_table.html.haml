@@ -1,0 +1,29 @@
+%table.table.table-condensed.table-bordered.table-hover.wide-table.results-table
+  %thead
+    %tr
+      %th.centered #
+      %th= link_to division_sortable "handle", "Player", division.id
+      %th= link_to division_sortable "points_this_month", "Points", division.id
+      - division.registrations.order(sort_column + ' ' + sort_direction).each do |col_player|
+        %th
+          %span
+            %span
+              %span= col_player.handle
+
+  %tbody
+    - division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |row_player, row_i|
+      %tr
+        %td= row_i + 1
+        %td.not-centered
+          = row_player.handle
+          - if can? :read, :matches
+            = icon_link_to(matches_event_registration_path(event, row_player), :exchange)
+        %td.not-centered= row_player.points_this_month
+        - division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |col_player, col_i|
+          - if col_player == row_player
+            %td.cross.result{class: "column-#{col_i} row-#{row_i}"}
+              %i.icon-remove
+          - else
+            %td.result{class: "column-#{col_i} row-#{row_i}"}
+              - display_column_matches(matches, row_player, col_player).each do |match|
+                = icon_link_to match_url(match), (match.winner_id == row_player.id) ? :circle : :'circle-blank'
