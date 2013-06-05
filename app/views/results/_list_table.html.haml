@@ -12,8 +12,8 @@
         %td.centered= index + 1
         %td.not-centered
           = reg.handle
-          - if can? :read, :matches
-            = icon_link_to(matches_event_registration_path(event, reg), :exchange)
+          / - if can? :read, :matches
+          /   = icon_link_to(matches_event_registration_path(event, reg), :exchange)
         %td= reg.points_this_month
         %td
           - get_matches_for_reg(matches, reg).each do |match|
