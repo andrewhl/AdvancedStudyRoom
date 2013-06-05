@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
     def add_breadcrumbs
       @show_breadcrumbs = true
       add_breadcrumb 'Users', admin_users_path
-      add_breadcrumb @user.name, admin_user_path(@user) if @user
+      add_breadcrumb @user.username, admin_user_path(@user) if @user
       add_breadcrumb 'Add', :add if %W(new create).include? params[:action]
       add_breadcrumb 'Edit', :edit if %W(edit update).include? params[:action]
     end

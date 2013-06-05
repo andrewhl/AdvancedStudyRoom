@@ -1,7 +1,7 @@
 class Admin::UserAccountsController < ApplicationController
 
   load_and_authorize_resource :user, only: [:new, :create]
-  load_and_authorize_resource :account, shallow: true, through_association: :user
+  load_and_authorize_resource :account, shallow: true, through_association: :user, parent: false
   before_filter :add_breadcrumbs
 
   def new

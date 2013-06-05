@@ -1,0 +1,19 @@
+- @title << @account.handle
+
+%table.table.table-condensed.table-hover.table-bordered
+  %thead
+    %tr
+      %th Handle
+      %th Server
+      %th Rank
+      %th Active registrations
+      %th Actions
+  %tbody
+    %td= @account.handle
+    %td= @account.server.name
+    %td= @account.rank ? Utilities.format_rank(account.rank) : "Pending..."
+    %td= @account.registrations.active.count
+    %td
+      = link_to 'Edit', edit_admin_account_path(@account), class: 'btn btn-mini'
+      = link_to 'Delete', admin_account_path(@account), method: :delete, class: 'btn btn-mini btn-danger',
+        confirm: 'Are you sure you want to delete this account? All its matches will be lost.'
