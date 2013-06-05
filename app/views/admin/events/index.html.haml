@@ -25,6 +25,7 @@
         %td
           %ul.inline
             %li= link_to 'Manage', admin_event_path(event)
+            %li= link_to 'Matches', admin_event_matches_path(event)
             %li= link_to 'Edit Details', edit_admin_event_path(event)
             %li= link_to 'Edit Ruleset', edit_admin_event_ruleset_path(event)
             %li= link_to 'Assign Players', admin_event_registrations_path(event)

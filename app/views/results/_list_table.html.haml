@@ -1,0 +1,20 @@
+%table.table.table-condensed.table-bordered.table-hover.results-table
+  %thead
+    %tr
+      %th.centered #
+      %th= link_to division_sortable 'handle', 'Player', division.id
+      %th= link_to division_sortable 'points_this_month', 'Points', division.id
+      %th Wins/Losses
+
+  %tbody
+    - division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |reg, index|
+      %tr
+        %td.centered= index + 1
+        %td.not-centered
+          = reg.handle
+          / - if can? :read, :matches
+          /   = icon_link_to(matches_event_registration_path(event, reg), :exchange)
+        %td= reg.points_this_month
+        %td
+          - get_matches_for_reg(matches, reg).each do |match|
+            = icon_link_to match_url(match), (match.winner_id == reg.id) ? :circle : :'circle-blank'

@@ -31,46 +31,6 @@
     .well
       %p There are no players assigned to this division yet.
   - elsif @division.registrations.count > 30
-    %table.table.table-condensed.table-bordered.table-hover.results-table
-      %tr
-        %th= link_to division_sortable 'handle', 'Player', @division.id
-        %th= link_to division_sortable 'points_this_month', 'Points', @division.id
-        %th Wins/Losses
-      - @division.registrations.order(sort_column + ' ' + sort_direction).each do |reg|
-        %tr
-          %td.not-centered
-            = reg.handle
-            - if can? :read, :matches
-              = icon_link_to(matches_admin_event_registration_path(@event, reg), :exchange)
-          %td= reg.points_this_month
-          %td
-            - get_matches_for_reg(@matches, reg).each do |match|
-              = icon_link_to match_url(match), (match.winner_id == reg.id) ? :circle : :'circle-blank'
-
+    = render 'list_table', event: @event, division: @division, matches: @matches
   - else
-    %table.table.table-condensed.table-bordered.table-hover.wide-table.results-table
-      %tr
-        %th.centered #
-        %th= link_to division_sortable "handle", "Player", @division.id
-        %th= link_to division_sortable "points_this_month", "Points", @division.id
-        - @division.registrations.order(sort_column + ' ' + sort_direction).each do |col_player|
-          %th
-            %span
-              %span
-                %span= col_player.handle
-      - @division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |row_player, row_i|
-        %tr
-          %td= row_i + 1
-          %td.not-centered
-            = row_player.handle
-            - if can? :read, :matches
-              = icon_link_to(matches_admin_event_registration_path(@event, row_player), :exchange)
-          %td.not-centered= row_player.points_this_month
-          - @division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |col_player, col_i|
-            - if col_player == row_player
-              %td.cross.result{class: "column-#{col_i} row-#{row_i}"}
-                %i.icon-remove
-            - else
-              %td.result{class: "column-#{col_i} row-#{row_i}"}
-                - display_column_matches(@matches, row_player, col_player).each do |match|
-                  = icon_link_to match_url(match), (match.winner_id == row_player.id) ? :circle : :'circle-blank'
+    = render 'table', event: @event, division: @division, matches: @matches
