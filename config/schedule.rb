@@ -5,9 +5,5 @@ every 6.hours do
 end
 
 every :hour do
-    rake 'manager:import'
-    rake 'manager:validate'
-    rake 'manager:tags'
-    rake 'manager:points'
-    rake 'manager:points:total'
+    rake 'manager:all'
 end

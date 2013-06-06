@@ -1,6 +1,12 @@
 
 namespace :manager do
 
+  desc "Import, validate, tag and point matches"
+  task :all  => [:import, :validate, :tags, :points] do
+    Rake::Task['manager:points:total'].reenable
+    Rake::Task['manager:points:total'].invoke
+  end
+
   desc "Import matches from the servers"
   task :import => :environment do
 
