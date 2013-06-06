@@ -1,6 +1,0 @@
-- @title << "#{@registration.handle}'s matches"
-
-- if can? :manage, :matches
-  = link_to "Download Matches", download_registration_matches_path(@registration), method: :post, class: "btn btn-primary"
-
-= render "matches/table", matches: @registration.own_matches

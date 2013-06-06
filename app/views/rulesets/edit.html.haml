@@ -1,9 +1,0 @@
-%h1
-  = "Edit #{@ruleset.rulesetable_type} Ruleset"
-
-= simple_form_for @ruleset, validate: true, :html => {:class => "form-horizontal"} do |f|
-  = render "fields", :b => f
-
-  .control-group
-    .controls
-      = f.submit "Update", class: "btn"
