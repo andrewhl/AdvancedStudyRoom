@@ -23,7 +23,7 @@ class Ability
     end
 
     def define_member
-      can :profile, User, id: @user.id
+      can :show, User, id: @user.id
       can [:join, :quit, :show], Event
       can [:index], Post
     end

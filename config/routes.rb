@@ -15,16 +15,10 @@ AdvancedStudyRoom::Application.routes.draw do
   end
 
   #
-  # Users (Public)
+  # Users
   #
 
-  # TODO: Move admin routes and, cleanup public routes
-  get 'profile',        to: 'users#profile'
-  resources :users do
-    get  :profile,      on: :member
-    post :toggle_admin, on: :member
-    resources :accounts
-  end
+  get 'profile',        to: 'users#show'
 
   #
   # Results
@@ -34,19 +28,14 @@ AdvancedStudyRoom::Application.routes.draw do
   get 'no_events',      to: 'results#no_events'
 
   #
-  # Events (Public)
+  # Events
   #
 
   get  'leagues', to: 'events#leagues'
-  post 'registrations/:registration_id/matches/download',  to: "matches#download", as: "download_registration_matches"
-  post 'events/:id/accounts/:account_id/join_other',  to: 'events#join_other', as: 'join_other'
-  delete 'events/:id/registrations/:registration_id/quit', to: 'events#quit', as: 'event_registration_quit'
   resources :events, only: [:index, :show] do
     get     :results, to: 'results#index'
-    member do
-      post    :join
-      delete  :quit
-    end
+    post    :join, on: :member
+    delete  :quit, on: :member
   end
 
   #
