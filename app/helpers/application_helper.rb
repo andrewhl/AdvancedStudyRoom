@@ -21,7 +21,7 @@ module ApplicationHelper
   end
 
   def alert(type = :info, &block)
-    content_tag(:div, class: "alert #{twitterized_type(type)}") do
+    content_tag(:div, class: "alert #{twitterized_type(type)} clearfix") do
       capture_haml(&block)
     end
   end

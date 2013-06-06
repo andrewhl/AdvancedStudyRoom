@@ -14,8 +14,17 @@
 
 class MatchTag < ActiveRecord::Base
 
+  before_validation :format_phrase
+
   belongs_to :match
 
   attr_accessible :handle, :match_id, :node, :phrase
+
+  private
+
+    def format_phrase
+      tag_phrase = phrase.strip
+      self.phrase = '#' + tag_phrase unless tag_phrase =~ /^\#/
+    end
 
 end

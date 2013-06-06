@@ -35,7 +35,10 @@ class Admin::EventMatchesController < ApplicationController
     msg << (match.tagged == match.valid_match ? 'and' : 'but is')
     msg << 'NOT' unless match.tagged
     msg << 'properly tagged'
-    redirect_to admin_event_matches_path(event), flash: {success: msg.join(' ')}
+
+    redirect_url = admin_event_matches_path(event)
+    redirect_url = :back if params[:redirect] == 'back'
+    redirect_to redirect_url, flash: {success: msg.join(' ')}
   end
 
   private

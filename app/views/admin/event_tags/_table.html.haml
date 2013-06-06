@@ -1,4 +1,5 @@
 
+
 %table.table.table-condensed.table-bordered.table-hover
   %thead
     %tr
@@ -10,8 +11,9 @@
     - if event.tags.empty?
       %tr
         %td{colspan: 3}
-          There are not tags. Please
-          = link_to 'add one.', new_admin_event_tag_path(event)
+          %p.text-error
+            There are not tags. Please
+            = link_to 'add one.', new_admin_event_tag_path(event)
 
     - event.tags.each do |tag|
       %tr

@@ -6,6 +6,8 @@
     %ul
       - @match.all_errors.each do |e|
         %li= Ruleset.human_attribute_name(e.to_sym)
+    = link_to 'Process Match', validate_and_tag_admin_match_path(@match, redirect: :back), method: :post,
+      class: 'btn btn-warning btn-small'
 
 %h2
   Details
