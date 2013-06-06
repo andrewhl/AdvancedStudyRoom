@@ -7,8 +7,10 @@
 
 %h2 My events:
 
-= link_to 'Join an Event', leagues_path, class: 'btn btn-success',
-  disabled: !can_join_events?(@user)
+- if can_join_events?(@user)
+  = link_to 'Join an Event', leagues_path, class: 'btn btn-success'
+- else
+  = link_to 'Join an Event', leagues_path, class: 'btn', disabled: true
 
 %table.table.table-condensed.table-hover.table-bordered
   %thead
@@ -31,7 +33,7 @@
         %td= link_to_results(reg.division.try(:name) || 'Pending...', reg)
         %td= reg.account.handle
         %td= reg.account.server.name
-        %td= link_to 'Quit', event_registration_quit_path(reg.event, reg), class: 'btn btn-mini btn-danger',
+        %td= link_to 'Quit', quit_event_path(reg.event), class: 'btn btn-mini btn-danger',
               method: :delete, confirm: 'Are you sure you want to quit this event?'
 
 

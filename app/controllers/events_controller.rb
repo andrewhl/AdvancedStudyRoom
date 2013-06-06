@@ -29,12 +29,12 @@ class EventsController < ApplicationController
   end
 
   def quit
-    reg = current_user.registrations.find(params[:registration_id])
+    reg = current_user.registrations.where(event_id: params[:id]).first
     if reg && !reg.update_attributes({active: false}, without_protection: true)
       flash[:error] = 'There was an error while deleting your registration'
     end
 
-    redirect_to profile_path, flash: {success: "You have been removed from this event."}
+    redirect_to profile_path, flash: {success: "You have been removed from the event."}
   end
 
 end
