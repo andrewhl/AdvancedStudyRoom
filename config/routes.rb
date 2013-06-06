@@ -55,10 +55,9 @@ AdvancedStudyRoom::Application.routes.draw do
 
   namespace :admin do
     resources :events, only: [:index, :show, :edit, :update] do
-      resources :matches, controller: 'event_matches', shallow: true do
-        post :validate_and_tag, on: :member
-      end
-      resources :tags, shallow: true, controller: 'event_tags', except: [:index]
+      resources :tags, controller: 'event_tags', only: [:new, :create]
+
+      resources :matches, controller: 'event_matches', only: [:index, :new, :create]
       # Note the singular on 'resource', this generates routes a different
       # set of routes, use rake routes for more info.
       resource :ruleset, controller: 'event_rulesets', only: [:edit, :update]
@@ -74,10 +73,20 @@ AdvancedStudyRoom::Application.routes.draw do
         put :deactivate, on: :member
       end
     end
+
+    resources :matches, controller: 'event_matches', only: [:edit, :update, :destroy] do
+      post :validate_and_tag, on: :member
+      resource :tags, controller: 'match_tags', only: [:new, :create]
+    end
+
+    resources :event_tags, only: [:edit, :update, :destroy]
+    resources :match_tags, only: [:edit, :update, :destroy]
+
     # With this route and the one nested under tiers, we make a custom shallow resource
     resources :divisions, controller: 'event_divisions', only: [:edit, :update] do
       resource :ruleset, controller: 'division_rulesets', only: [:edit, :update]
     end
+
     resources :users, only: [:index, :show, :edit, :update] do
       resources :accounts, shallow: true, controller: 'user_accounts', except: [:index]
     end
