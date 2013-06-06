@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  date       :datetime
 #  user_id    :integer
-#  html       :text(255)
+#  html       :text
 #  title      :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
