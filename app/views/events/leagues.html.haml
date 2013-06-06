@@ -5,7 +5,7 @@
     Sorry, there are currently no leagues.
 
 - else
-  %table.table.table-condensed.table-bordered.table-hover
+  %table.table.table-condensed.table-bordered.table-hover.table-middle
     %thead
       %tr
         %th Name
@@ -19,7 +19,7 @@
           %td= link_to "#{event.name}", event_path(event)
           %td= event.registrations.active.count
           %td= event.server.name
-          %td= link_to "View Results", results_event_path(event)
+          %td= link_to "View Results", event_results_path(event)
           %td
             - if current_user
               - reg = current_user.registrations.active.where(event_id: event.id).first
@@ -27,9 +27,9 @@
                 = link_to 'Quit', event_registration_quit_path(event, reg), class: 'btn btn-danger btn-mini',
                   method: :delete, confirm: 'Are you sure you want to quit the league?'
               - else
-                = link_to 'Join!', join_event_path(event), class: 'btn btn-primary btn-mini',
+                = link_to 'Join!', join_event_path(event), class: 'btn btn-primary btn-success',
                   method: :post
             - else
-              = link_to 'Signup to Join', signup_path, class: 'btn btn-mini btn-primary'
+              = link_to 'Signup to Join', signup_path, class: 'btn btn-primary'
 
 
