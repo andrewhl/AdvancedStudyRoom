@@ -11,10 +11,6 @@
     = link_to "Please create them.", manage_event_path(@event)
 
 - else
-  %p
-    Percentage of total games played:
-    = @game_percentage
-    \%
   .divisions_nav
     - if current_user.nil?
       = link_to 'Join The League', signup_path, class: 'btn btn-primary'
@@ -27,6 +23,13 @@
         %li{class: active_tab_for(div)}
           = link_to div.name, {division_id: div.id}
 
+  .total-games-progress
+    / %span Total games played:
+    .progress.progress-success.progress-striped
+      .bar{style: "width: #{@game_percentage.to_f}%"}
+        #{@game_percentage.to_f} %
+      %span Total games played
+
   - if @division.registrations.count == 0
     .well
       %p There are no players assigned to this division yet.
@@ -34,3 +37,4 @@
     = render 'list_table', event: @event, division: @division, matches: @matches
   - else
     = render 'table', event: @event, division: @division, matches: @matches
+

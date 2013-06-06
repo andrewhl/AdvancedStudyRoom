@@ -44,7 +44,7 @@ class Division < ActiveRecord::Base
   end
 
   def display_name
-    name.present? ? name : tier.name + " " + index.to_s
+    name.presence || "#{tier.try(:name)} #{index.to_s}"
   end
 
   def ruleset?
@@ -67,13 +67,6 @@ class Division < ActiveRecord::Base
   def point_rules
     rule_merger = ASR::RuleMerger.new(event.point_ruleset, tier.point_ruleset, point_ruleset)
     rule_merger.rules
-  end
-
-  def validate_matches!
-    validator = MatchValidator.new(rules)
-    matches.each do |m|
-      m.update_attribute(:valid_match, validator.valid?(m))
-    end
   end
 
   private

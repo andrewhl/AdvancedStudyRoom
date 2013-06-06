@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
   has_many :accounts, through: :registrations
   has_many :divisions, through: :tiers, order: '"tiers"."index" ASC, "divisions"."index" ASC'
   has_many :points, dependent: :destroy
-  has_many :registrations, dependent: :destroy
+  has_many :registrations, include: :account, dependent: :destroy, order: 'LOWER("accounts"."handle") ASC'
   has_many :matches, through: :divisions
   has_many :tags, class_name: 'EventTag', dependent: :destroy, order: 'phrase ASC'
   has_many :tiers, dependent: :destroy, order: '"tiers"."index" ASC'
@@ -59,21 +59,5 @@ class Event < ActiveRecord::Base
   def player_count
     registrations.count
   end
-
-  def validate_matches!
-    divisions.each(&:validate_matches!)
-  end
-
-  def tag_games force=false
-
-    matches.each do |match|
-      unless force
-        next unless match.tagged.nil?
-      end
-
-      match.update_attribute(:tagged, match.has_valid_tag?)
-    end
-  end
-
 
 end

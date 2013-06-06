@@ -42,6 +42,9 @@ class User < ActiveRecord::Base
   has_many :registrations, through: :accounts
   has_many :servers, through: :accounts
 
+  scope :admins, where(admin: true)
+  scope :normal, where(admin: false)
+
   attr_accessor   :login
   attr_accessible :login,
                   :username,

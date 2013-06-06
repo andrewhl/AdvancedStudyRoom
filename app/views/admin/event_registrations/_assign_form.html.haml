@@ -1,0 +1,26 @@
+= form_tag assign_admin_event_registrations_path(event), method: :put do |f|
+  %table.table.table-condensed.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Rank
+        %th Assign To
+    %tbody
+      - if registrations.blank?
+        %td{colspan: 3} 
+          %p.text-warning
+            No players
+
+      - registrations.each do |reg|
+        %tr
+          %td.middle= reg.handle
+          %td.middle= rank_display(reg.account.rank)
+          %td
+            = select_tag "registrations[#{reg.id}]", division_options(division),
+              include_blank: true
+
+  - unless registrations.blank?
+    .clearfix
+      = submit_tag "Save #{division.try(:display_name)} Changes",
+        {confirm: 'Are you sure you want to change the assignment of these players?',
+         class: 'btn btn-primary pull-right'}

@@ -1,0 +1,38 @@
+
+%dl.dl-horizontal.dl-small.pull-left
+  %dt= Match.human_attribute_name(:division)
+  %dd= match.division.name
+
+  %dt= Match.human_attribute_name(:white_player)
+  %dd= style_handle(match.white_player, match.winner_id)
+
+  %dt= Match.human_attribute_name(:black_player)
+  %dd= style_handle(match.black_player, match.winner_id)
+
+  %dt= Match.human_attribute_name(:valid_match)
+  %dd= yes_no(match.valid_match)
+
+  %dt= Match.human_attribute_name(:tagged)
+  %dd= yes_no(match.tagged)
+
+%dl.dl-horizontal.dl-small.pull-left
+  %dt= Match.human_attribute_name(:main_time_control)
+  %dd= match.main_time_control
+
+  %dt= Match.human_attribute_name(:ot_time_control)
+  %dd= match.ot_time_control
+
+  %dt= Match.human_attribute_name(:ot_type)
+  %dd= match.ot_type.to_s.titleize
+
+  %dt= Match.human_attribute_name(:ot_stones_periods)
+  %dd= match.ot_stones_periods
+
+  %dt= Match.human_attribute_name(:komi)
+  %dd= match.komi
+
+  %dt= Match.human_attribute_name(:board_size)
+  %dd= match.board_size
+
+  %dt= Match.human_attribute_name(:handicap)
+  %dd= match.handicap

@@ -2,23 +2,51 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  
+  actions:                          "Actions"
+
+  admin:
+    event_matches:
+      show:
+        valid_match:                "Yay! The match is valid and tagged"
+        rejected_match:             "The following properties are not valid:"
+
   activerecord:
     attributes:
       ruleset:
-        overtime_required:      "Overtime required"
-        j_ot_allowed:           "Japanese overtime allowed"
-        c_ot_allowed:           "Canadian overtime allowed"
-        main_time_min:          "Minimum time"
-        main_time_max:          "Maximum time"
-        j_ot_min_period_length: "Japanese min. overtime period length"
-        j_ot_max_period_length: "Japanese max. overtime period length"
-        c_ot_min_time:          "Canadian min. overtime"
-        c_ot_max_time:          "Canadian max. overtime"
-        j_ot_max_periods:       "Japanese max. overtime periods"
-        j_ot_min_periods:       "Japanese min. overtime periods"
-        c_ot_min_stones:        "Canadian min. overtime stones"
-        c_ot_max_stones:        "Canadian max. overtime stones"
-        min_handicap:           "Minimum handicap"
-        max_handicap:           "Maximum handicap"
-        node_limit:             "Say tag by this move"
+        overtime_required:          "Overtime required"
+        j_ot_allowed:               "Japanese overtime allowed"
+        c_ot_allowed:               "Canadian overtime allowed"
+        main_time_min:              "Minimum time"
+        main_time_max:              "Maximum time"
+        j_ot_min_period_length:     "Japanese min. overtime period length"
+        j_ot_max_period_length:     "Japanese max. overtime period length"
+        c_ot_min_time:              "Canadian min. overtime"
+        c_ot_max_time:              "Canadian max. overtime"
+        j_ot_max_periods:           "Japanese max. overtime periods"
+        j_ot_min_periods:           "Japanese min. overtime periods"
+        c_ot_min_stones:            "Canadian min. overtime stones"
+        c_ot_max_stones:            "Canadian max. overtime stones"
+        min_handicap:               "Minimum handicap"
+        max_handicap:               "Maximum handicap"
+        node_limit:                 "Say tag by this move"
+        tags:                       "Match tags"
+    
+      match:    
+        valid_match:                "Valid?"
+        tagged:                     "Tagged?"
+        division:                   "Division"
+        white_player:               "White player"
+        black_player:               "Black player"
+        ot_type:                    "Overtime type"
+        ot_stones_periods:          "Overtime periods"
+        komi:                       "Komi"
+        board_size:                 "Board size"
+        handicap:                   "Handicap"
+        main_time_control:          "Main time control"
+        ot_time_control:            "Overtime control"
 
+      match_tag:
+        phrase:                     "Phrase"
+        handle:                     "Player"
+        node:                       "Node #"

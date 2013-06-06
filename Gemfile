@@ -11,6 +11,11 @@ gem 'devise',                   '~> 3.0.0.rc'
 gem 'jquery-rails',             '~> 2.2.1'
 gem 'less-rails',               '~> 2.3.2'
 gem 'twitter-bootstrap-rails',  '~> 2.2.6'
+gem 'markitup-rails',           '~> 1.1.0'
+
+gem 'rdiscount',                '~> 2.0.7'
+gem 'will_paginate',            '~> 3.0'
+gem 'will_paginate-bootstrap',  '~> 0.2.2'
 gem 'simple_form',              '~> 2.1.0'
 gem 'client_side_validations',  '~> 3.2.5'
 gem 'client_side_validations-simple_form', '~> 2.1.0'
@@ -26,8 +31,6 @@ gem 'airbrake',                 '~> 3.1.0'
 gem 'newrelic_rpm',             '~> 3.6.2'
 gem 'mechanize',                '~> 2.6.0', :require => false
 
-gem "markitup-rails",           "~> 1.1.0"
-gem 'rdiscount',                '~> 2.0.7'
 
 group :assets do
   gem 'sass-rails',             '~> 3.2.3'

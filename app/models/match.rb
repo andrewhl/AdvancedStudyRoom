@@ -85,6 +85,10 @@ class Match < ActiveRecord::Base
     [white_player, black_player]
   end
 
+  def name
+    "#{white_player_name}-#{black_player_name}"
+  end
+
   def players_by_result
     winner = players.select { |player| player.id == winner_id }[0]
     loser = players.select { |player| player.id == loser_id }[0]
@@ -114,6 +118,16 @@ class Match < ActiveRecord::Base
     match_tags = tags.split(",")
 
     update_attribute(:tagged, (event_tags & tags).any?)
+  end
+
+  def accepted?
+    valid_match? && tagged?
+  end
+
+  def all_errors
+    errors = validation_errors.split(',').collect { |i| i.strip }
+    errors << :tags unless tagged?
+    errors
   end
 
   def self.build_digest(args)

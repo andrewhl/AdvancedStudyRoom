@@ -1,0 +1,61 @@
+- @title << @user.username
+
+%h2
+  User Details
+  = link_to 'Edit user', edit_admin_user_path(@user), class: 'btn pull-right'
+
+%table.table.table-condensed.table-hover.table-bordered
+  %thead
+    %tr
+      %th Email
+      %th Username
+      %th Admin?
+      %th Sign in count
+  %tbody
+    %td= @user.email
+    %td= @user.username
+    %td= yes_no @user.admin?
+    %td= @user.sign_in_count
+
+%h2
+  Events
+  / = link_to 'Add to Event', new_
+
+%table.table.table-condensed.table-hover.table-bordered
+  %thead
+    %tr
+      %th Event
+      %th Division
+      %th Account Handle
+      %th Server
+      %th Actions
+  %tbody
+    - @user.registrations.active.each do |reg|
+      %tr
+        %td= link_to_results(reg.event.name, reg)
+        %td= link_to_results(reg.division.try(:name) || 'Pending...', reg)
+        %td= link_to "#{reg.account.handle}", admin_account_path(reg.account)
+        %td= reg.account.server.name
+        %td= link_to 'Remove', deactivate_admin_registration_path(reg), method: :put, class: 'btn btn-mini btn-danger'
+
+%h2
+  Accounts
+%table.table.table-condensed.table-hover.table-bordered
+  %thead
+    %tr
+      %th Server
+      %th Rank
+      %th Handle
+      %th Events Joined
+      %th Actions
+  %tbody
+    - @user.accounts.each do |account|
+      %tr
+        %td= account.server.name
+        %td= account.rank ? Utilities.format_rank(account.rank) : "Pending..."
+        %td= link_to "#{account.handle}", admin_account_path(account)
+        %td= account.registrations.active.count
+        %td
+          = link_to 'Edit', edit_admin_account_path(account), class: 'btn btn-mini'
+          = link_to 'Delete', admin_account_path(account), method: :delete, class: 'btn btn-mini btn-danger',
+            confirm: 'Are you sure you want to delete your account? All your matches will be lost.'

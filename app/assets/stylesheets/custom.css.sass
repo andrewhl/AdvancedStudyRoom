@@ -51,6 +51,10 @@ body
     -webkit-transform: skewX(-20deg)
     transform: skewX(-20deg)
 
+.table-middle
+  td
+    vertical-align: middle
+
 
 .divisions_nav
   position: relative
@@ -66,9 +70,23 @@ body
     width: 25px
     &.not-centered
       text-align: left
-.divisions_nav + .wide-table
-  margin-top: 140px
+  &.wide-table
+    margin-top: 140px
 
+
+.total-games-progress
+  .progress
+    height: 30px
+    line-height: 30px
+  span
+    font-size: 12px
+    font-weight: bold
+    margin-left: 20px
+    text-transform: uppercase
+
+td
+  .text-info, .text-warning, .text-info
+    margin: 10px 20px
 
 #event-show
   h3
@@ -118,3 +136,32 @@ div.checkbox label.checkbox
   padding-left: 0
 
 
+td
+  &.middle
+    vertical-align: middle
+
+  select,
+  ul.inline
+    margin-bottom: 0
+
+  ul.inline
+    li:before
+      content: '|\00a0\00a0\00a0'
+    li:first-child
+      &:before
+        content: ''
+
+.dl-horizontal.dl-small
+  dt
+    width: 140px
+  dd
+    margin-left: 160px
+  &.pull-left
+    margin-left: 100px
+    &:first-child
+      margin-left: 0
+
+.tab-pane .btn
+  margin-bottom: 10px
+.fields
+  max-width: 450px

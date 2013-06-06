@@ -1,0 +1,25 @@
+- @title << 'Match Details'
+
+- unless @match.accepted?
+  = alert(:warning) do
+    = t '.rejected_match'
+    %ul
+      - @match.all_errors.each do |e|
+        %li= Ruleset.human_attribute_name(e.to_sym)
+    = link_to 'Process Match', validate_and_tag_admin_match_path(@match, redirect: :back), method: :post,
+      class: 'btn btn-warning btn-small'
+
+%h2
+  Details
+  .clearfix.pull-right
+    = link_to 'Edit Details', edit_admin_match_path(@match), class: 'btn'
+
+.clearfix
+  = render 'details', match: @match
+
+%h2
+  Tags
+  .clearfix.pull-right
+    = link_to 'Add Tag', new_admin_match_tag_path(@match), class: 'btn'
+
+= render 'admin/match_tags/table', match: @match

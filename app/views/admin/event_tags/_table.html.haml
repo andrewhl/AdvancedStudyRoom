@@ -1,0 +1,26 @@
+
+
+%table.table.table-condensed.table-bordered.table-hover
+  %thead
+    %tr
+      %th Phrase
+      %th Move Limit
+      %th Actions
+
+  %tbody
+    - if event.tags.empty?
+      %tr
+        %td{colspan: 3}
+          %p.text-warning
+            There are not tags. Please
+            = link_to 'add one.', new_admin_event_tag_path(event)
+
+    - event.tags.each do |tag|
+      %tr
+        %td= tag.phrase
+        %td= number_with_delimiter(tag.node_limit)
+        %td.actions
+          %ul.inline
+            %li= link_to 'Edit', edit_admin_event_tag_path(tag)
+            %li= link_to 'Delete', admin_event_tag_path(tag),
+                  method: :delete, confirm: 'Are you sure you want to delete this tag?'

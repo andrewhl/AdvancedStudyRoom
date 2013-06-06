@@ -1,0 +1,10 @@
+- @title << 'Add event tag'
+
+= simple_form_for @event_tag, url: admin_event_tags_path(@event), validate: true, html: {class: 'form-horizontal'} do |f|
+
+  = f.input :phrase, autofocus: true
+  = f.input :node_limit, label: 'Move Limit'
+
+  .form-actions
+    = f.submit 'Create', class: 'btn btn-primary'
+    = link_to 'Back', :back, class: 'btn'

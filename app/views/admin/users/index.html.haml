@@ -1,0 +1,44 @@
+- @title << "Users"
+
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      %a{href: "#tab1", data: {toggle: "tab"}} Admins
+    %li
+      %a{href: "#tab2", data: {toggle: "tab"}} Users
+
+  .tab-content
+    #tab1.tab-pane.active
+      = render "admin/users/table", users: @users.admins
+
+    #tab2.tab-pane
+      %table.table.table-condensed.table-bordered.table-hover
+        %thead
+          %tr
+            %th Username
+            %th Actions
+            %th Accounts
+            %th Actions
+
+        %tbody
+          - if @users.empty?
+            %tr
+              %td{colspan: 4}
+                %p.text-warning
+                  There are no users.
+
+          - @users.each do |user|
+            %tr
+              %td= link_to "#{user.username}", admin_user_path(user)
+              %td.actions
+                = link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-small'
+                = link_to 'Delete', admin_user_path(user), class: 'btn btn-small btn-danger',
+                    method: :delete,
+                    confirm: 'Are you sure you want to delete this user?'
+              - if user.accounts.empty?
+                %td{colspan: 2}
+                  %p.text-warning
+                    This user has no accounts.
+              - else
+                - user.accounts.each do |account|
+                  = render 'account_row', account: account

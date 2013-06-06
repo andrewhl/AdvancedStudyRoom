@@ -1,0 +1,27 @@
+
+%table.table.table-condensed.table-bordered.table-hover
+  %thead
+    %tr
+      %th= MatchTag.human_attribute_name(:phrase)
+      %th= MatchTag.human_attribute_name(:handle)
+      %th= MatchTag.human_attribute_name(:node)
+      %th= t 'actions'
+
+  %tbody
+    - if match.tags.empty?
+      %tr
+        %td{colspan: 4}
+          %p.text-warning
+            There are no tags yet, but you can 
+            = link_to 'add one.', new_admin_match_tag_path(match)
+
+    - match.tags.each do |tag|
+      %tr
+        %td= tag.phrase
+        %td= tag.handle
+        %td= tag.node.nil? ? '' : tag.node.to_i
+        %td.actions
+          %ul.inline
+            %li= link_to 'Edit', edit_admin_match_tag_path(tag)
+            %li= link_to 'Delete', admin_match_tag_path(tag),
+                  method: :delete, confirm: 'Are you sure you want to delete this tag?'

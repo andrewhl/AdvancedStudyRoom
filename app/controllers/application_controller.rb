@@ -3,9 +3,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |ex|
-    flash[:error] = "Access denied!"
-    flash[:error] << "#{ex.subject} || #{ex.action}" if Rails.env.development?
-    render 'pages/home', status: :forbidden
+    respond_to do |format|
+      format.html do
+        flash[:error] = "You are not authorized to access this page"
+        flash[:error] << " || #{ex.subject} || #{ex.action}" if Rails.env.development?
+        redirect_to current_user ? root_path : login_path
+      end
+      format.json do
+        render text: 'Not Authorized', status: :forbidden
+      end
+    end
   end
 
   def initialize

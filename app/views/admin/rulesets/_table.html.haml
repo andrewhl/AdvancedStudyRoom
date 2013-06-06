@@ -1,0 +1,8 @@
+%table.table.table-condensed.table-bordered.table-hover
+  %body
+    - ruleset.rules.select { |k,v| v.present? }.each do |k,v|
+      %tr
+        %td
+          %strong= I18n.t "activerecord.attributes.ruleset.#{k}"
+        %td
+          = v.kind_of?(TrueClass) || v.kind_of?(FalseClass) ? yes_no(v) : v

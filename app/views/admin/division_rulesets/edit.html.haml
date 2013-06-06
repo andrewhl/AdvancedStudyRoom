@@ -1,0 +1,7 @@
+- @title << 'Edit division ruleset'
+
+= simple_form_for @ruleset, url: admin_division_ruleset_path(@division), validate: true, html: {class: 'form-horizontal'} do |f|
+  = render 'admin/rulesets/fields', f: f
+  .form-actions
+    = f.submit 'Update', class: 'btn btn-primary'
+    = link_to 'Cancel', :back, class: 'btn'

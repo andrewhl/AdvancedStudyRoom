@@ -1,6 +1,0 @@
-%h3= @event.name
-
-%h4 Assign a tag
-= form_for @tags do |f|
-  = f.select(:event_id, options_from_collection_for_select(@tags, :id, :phrase))
-  = f.submit

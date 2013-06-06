@@ -1,0 +1,81 @@
+- @title << @event.name
+
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      %a{href: '#details_tab', data: {toggle: 'tab'}} Details
+    %li
+      %a{href: '#matches_tab', data: {toggle: 'tab'}} Matches
+    %li
+      %a{href: '#tags_tab', data: {toggle: 'tab'}} Tags
+    %li
+      %a{href: '#ruleset_tab', data: {toggle: 'tab'}} Ruleset
+    %li
+      %a{href: '#tiers_tab', data: {toggle: 'tab'}} Tiers
+
+
+  .tab-content
+    #details_tab.tab-pane.active
+      = link_to 'Edit Details', edit_admin_event_path(@event), class: 'btn pull-right'
+      %table.table.table-condensed.table-bordered.table-hover
+        %tbody
+          %tr
+            %th Event Type
+            %td= @event.event_type.to_s.titleize
+          %tr
+            %th Server
+            %td= @event.server.try(:name)
+          %tr
+            %th Description
+            %td= truncate(@event.description, length: 800)
+
+    #matches_tab.tab-pane
+      = link_to 'Manage Matches', admin_event_matches_path(@event), class: 'btn pull-right'
+      %h3 Last 10 Matches
+      = render 'admin/event_matches/table', matches: @event.matches.order('completed_at desc').take(10)
+      %p.text-success
+        %strong Total:
+        #{@event.matches.count} matches
+
+    #tags_tab.tab-pane
+      .clearfix.pull-right
+        = link_to 'Add Tag', new_admin_event_tag_path(@event), class: 'btn'
+      = render 'admin/event_tags/table', event: @event
+
+    #ruleset_tab.tab-pane
+      .clearfix.pull-right
+        = link_to 'Edit Ruleset', edit_admin_event_ruleset_path(@event), class: 'btn'
+      = render 'admin/rulesets/table', ruleset: @event.ruleset
+
+    #tiers_tab.tab-pane
+      .clearfix.pull-right
+        = link_to 'Assign Players', admin_event_registrations_path(@event), class: 'btn'
+      - if @event.tiers.empty?
+        = alert(:error) { 'This event has no tiers. Please create one.' }
+
+      %table.table.table-condensed.table-bordered.table-hover
+        %thead
+          %tr
+            %th Position
+            %th Tier
+            %th Actions
+            %th Division
+            %th Players
+            %th Actions
+        %tbody
+          - @event.tiers.each do |tier|
+            %tr
+              %td.middle{rowspan: tier.divisions.count}
+                = tier.index
+              %td.middle{rowspan: tier.divisions.count}
+                = tier.display_name
+              %td.middle{rowspan: tier.divisions.count}
+                %ul.inline
+                  %li= link_to 'Edit', edit_admin_tier_path(tier)
+                  %li= link_to 'Edit Ruleset', edit_admin_tier_ruleset_path(tier.ruleset)
+                  / %li= link_to 'Delete', admin_tier_path(tier),
+                  /       method: :delete, confirm: 'Are you sure you want to delete this tier?'
+              = render 'division_row', div: tier.divisions.first
+            - tier.divisions[1, tier.divisions.size].each do |div|
+              %tr
+                = render 'division_row', div: div

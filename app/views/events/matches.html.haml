@@ -1,7 +1,0 @@
-- @title << "Matches for #{@event.name}"
-
-- if Rails.env.development?
-  .clearfix
-    = link_to 'Download', download_matches_event_path(@event), class: 'btn btn-primary pull-right'
-
-= render "matches/table", matches: @event.matches

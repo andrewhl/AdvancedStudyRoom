@@ -14,8 +14,9 @@
     - if @pages.empty?
       %tr
         %td{colspan: 8}
-          There are no pages yet.
-          = link_to 'Please create one', new_page_path
+          %p.text-warning
+            There are no pages yet.
+            = link_to 'Please create one', new_page_path
 
     - @pages.each do |page|
       %tr{class: dom_id(page)}

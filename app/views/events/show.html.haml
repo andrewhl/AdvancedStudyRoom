@@ -12,16 +12,16 @@
     %li.pull-right
       .escape-style
         - if can? :manage, :events
-          = link_to "Edit Event", edit_event_path(@event), class: "btn btn-primary"
+          = link_to 'Edit Event', edit_admin_event_path(@event), class: 'btn btn-primary'
         - elsif current_user.nil?
-          = link_to "Sign up to join this event!", signup_path, class: "btn btn-primary"
+          = link_to 'Sign up to join this event!', signup_path, class: 'btn btn-primary'
         - elsif current_user
           - reg = current_user.registrations.active.where(event_id: @event.id).first
           - if reg
-            = link_to 'Quit', event_registration_quit_path(@event, reg), class: 'btn btn-danger btn-mini',
+            = link_to 'Quit', event_registration_quit_path(@event, reg), class: 'btn btn-danger',
               method: :delete, confirm: 'Are you sure you want to quit the league?'
           - else
-            = link_to 'Join!', join_event_path(@event), class: 'btn btn-primary btn-mini',
+            = link_to "Join #{@event.name}!", join_event_path(@event), class: 'btn btn-primary btn-success',
               method: :post
 
   .tab-content

@@ -12,11 +12,17 @@ module ApplicationHelper
     case type
       when :success then "alert-success"
       when :notice  then "info"
-      when :alert   then "warning"
+      when :alert   then "alert-warning"
       when :error   then "alert-error"
       when :info    then "alert-info"
       else
         type.to_s
+    end
+  end
+
+  def alert(type = :info, &block)
+    content_tag(:div, class: "alert #{twitterized_type(type)} clearfix") do
+      capture_haml(&block)
     end
   end
 
@@ -54,6 +60,10 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction, :division_id => division_id}, {:class => css_class}
   end
 
+  def rank_display(rank)
+    rank.presence || 'Pending...'
+  end
+
   def rank_options_for_select(selected = nil)
     ranks = []
     9.downto(-29).each do |n|
@@ -66,6 +76,10 @@ module ApplicationHelper
     link_to url do
       content_tag :i, "", class: "icon-#{icon}"
     end
+  end
+
+  def yes_no(value)
+    value ? 'Yes' : 'No'
   end
 
 
@@ -97,6 +111,7 @@ module ApplicationHelper
     end
 
     private
+
       def paramaterize(table)
         table.class.name.downcase
       end

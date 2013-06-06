@@ -1,0 +1,36 @@
+- @title << 'Events'
+
+%table.table.table-condensed.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Players
+      %th Type
+      %th Server
+      %th Actions
+
+  %tbody
+    - if @events.empty?
+      %tr
+        %td{colspan: 5}
+          %p.text-warning
+            There are no events yet.
+            = link_to 'Please create one', new_event_path
+
+    - @events.each do |event|
+      %tr
+        %td= link_to event.name, event_path(event)
+        %td= event.player_count
+        %td= event.event_type
+        %td= event.server.name
+        %td
+          %ul.inline
+            %li= link_to 'Manage', admin_event_path(event)
+            %li= link_to 'Matches', admin_event_matches_path(event)
+            %li= link_to 'Edit Details', edit_admin_event_path(event)
+            %li= link_to 'Edit Ruleset', edit_admin_event_ruleset_path(event)
+            %li= link_to 'Assign Players', admin_event_registrations_path(event)
+            %li= link_to 'Results', event_results_path(event)
+            / %li.pull-right
+            /   = link_to "Delete", event_path(event), method: :delete, remote: true,
+            /         confirm: 'Are you sure? This action cannot be undone!'
