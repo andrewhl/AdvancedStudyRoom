@@ -2,6 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  
+  actions:                          "Actions"
 
   admin:
     event_matches:
@@ -43,3 +45,8 @@ en:
         handicap:                   "Handicap"
         main_time_control:          "Main time control"
         ot_time_control:            "Overtime control"
+
+      match_tag:
+        phrase:                     "Phrase"
+        handle:                     "Player"
+        node:                       "Node #"

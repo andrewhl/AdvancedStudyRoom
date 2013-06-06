@@ -74,9 +74,9 @@ AdvancedStudyRoom::Application.routes.draw do
       end
     end
 
-    resources :matches, controller: 'event_matches', only: [:edit, :update, :destroy] do
+    resources :matches, controller: 'event_matches', only: [:show, :edit, :update, :destroy] do
       post :validate_and_tag, on: :member
-      resource :tags, controller: 'match_tags', only: [:new, :create]
+      resources :tags, controller: 'match_tags', only: [:new, :create]
     end
 
     resources :event_tags, only: [:edit, :update, :destroy]

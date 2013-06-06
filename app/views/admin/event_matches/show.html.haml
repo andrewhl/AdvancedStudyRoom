@@ -7,44 +7,17 @@
       - @match.all_errors.each do |e|
         %li= Ruleset.human_attribute_name(e.to_sym)
 
-.clearfix
-  = link_to 'Edit Details', edit_admin_match_path(@match), class: 'btn pull-right'
+%h2
+  Details
+  .clearfix.pull-right
+    = link_to 'Edit Details', edit_admin_match_path(@match), class: 'btn'
 
 .clearfix
-  %dl.dl-horizontal.dl-small.pull-left
-    %dt= Match.human_attribute_name(:division)
-    %dd= @match.division.name
+  = render 'details', match: @match
 
-    %dt= Match.human_attribute_name(:white_player)
-    %dd= style_handle(@match.white_player, @match.winner_id)
+%h2
+  Tags
+  .clearfix.pull-right
+    = link_to 'Add Tag', new_admin_match_tag_path(@match), class: 'btn'
 
-    %dt= Match.human_attribute_name(:black_player)
-    %dd= style_handle(@match.black_player, @match.winner_id)
-
-    %dt= Match.human_attribute_name(:valid_match)
-    %dd= yes_no(@match.valid_match)
-
-    %dt= Match.human_attribute_name(:tagged)
-    %dd= yes_no(@match.tagged)
-
-  %dl.dl-horizontal.dl-small.pull-left
-    %dt= Match.human_attribute_name(:main_time_control)
-    %dd= @match.main_time_control
-
-    %dt= Match.human_attribute_name(:ot_time_control)
-    %dd= @match.ot_time_control
-
-    %dt= Match.human_attribute_name(:ot_type)
-    %dd= @match.ot_type.to_s.titleize
-
-    %dt= Match.human_attribute_name(:ot_stones_periods)
-    %dd= @match.ot_stones_periods
-
-    %dt= Match.human_attribute_name(:komi)
-    %dd= @match.komi
-
-    %dt= Match.human_attribute_name(:board_size)
-    %dd= @match.board_size
-
-    %dt= Match.human_attribute_name(:handicap)
-    %dd= @match.handicap
+= render 'admin/match_tags/table', match: @match
