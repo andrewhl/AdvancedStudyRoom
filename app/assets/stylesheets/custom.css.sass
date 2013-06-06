@@ -133,12 +133,15 @@ td
       &:before
         content: ''
 
-.dl-horizontal
-  margin-right: 80px
+.dl-horizontal.dl-small
   dt
-    width: 100px
+    width: 140px
   dd
-    margin-left: 120px
+    margin-left: 160px
+  &.pull-left
+    margin-left: 100px
+    &:first-child
+      margin-left: 0
 
 .tab-pane .btn
   margin-bottom: 10px

@@ -28,9 +28,8 @@
         %td= match.win_info
         %td= match.tags.collect { |m| m.phrase }.compact.join(', ')
         - if can? :manage, :matches
-          %td= yes_no(match.valid_match && match.tagged)
+          %td= yes_no(match.accepted?)
           %td
             %ul.inline
               %li= link_to 'Details', admin_match_path(match)
-              %li= link_to 'Validate', validate_admin_match_path(match), method: :post
-              %li= link_to 'Check Tags', check_tags_admin_match_path(match), method: :post
+              %li= link_to 'Process', validate_and_tag_admin_match_path(match), method: :post

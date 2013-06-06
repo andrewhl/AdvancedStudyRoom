@@ -4,7 +4,7 @@
 = render 'assign_form', event: @event, division: nil, registrations: @unassigned_players
 
 - if @event.tiers.empty?
-  = error_alert do
+  = alert(:error) do
     This event has no tiers.
     = link_to 'Please create them.', new_admin_event_tier_path(@event)
 
@@ -12,7 +12,7 @@
   %h2= tier.name
 
   - if tier.divisions.empty?
-    = error_alert do
+    = alert(:error) do
       This tier has no divisions.
       = link_to 'Please create them.', new_admin_tier_division_path(tier)
 

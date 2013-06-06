@@ -1,9 +1,10 @@
 class Admin::EventMatchesController < ApplicationController
 
-  load_and_authorize_resource :event, only: [:index]
-  load_and_authorize_resource :match, parent: false, through: :event, except: [:validate]
+  before_filter :load_event, only: [:index]
+  before_filter :load_match, only: [:show, :edit, :update]
+
   before_filter :set_pagination, only: [:index]
-  before_filter :add_breadcrumbs, except: [:validate, :check_tags]
+  before_filter :add_breadcrumbs, except: [:validate_and_tag]
 
   def index
     @matches = @event.matches.
@@ -16,27 +17,38 @@ class Admin::EventMatchesController < ApplicationController
   def show
   end
 
-  def validate
-    match = Match.find(params[:id], include: :division)
+  def validate_and_tag
+    match = Match.find(params[:id], include: {division: nil, tags: nil, event: [:tags, :ruleset]})
+    event = match.event
+    authorize! :validate_and_tag, match
+
     validator = ASR::MatchValidator.new(match.division.rules)
     match.update_attribute(:valid_match, validator.valid?(match))
     match.update_attribute(:validation_errors, validator.errors.join(","))
-    msg = match.valid_match ? 'Match was validated and is valid' :
-                               'Match was validated and is NOT valid'
 
-    authorize! :validate, match
-    redirect_to admin_event_matches_path(match.event), flash: {success: msg}
-  end
-
-  def check_tags
-    match = Match.find(params[:id], include: {tags: nil, event: [:tags, :ruleset]})
-    event = match.event
     tag_checker = ASR::TagChecker.new(event.tags)
     match.update_attribute(:tagged, tag_checker.tagged?(match.tags, event.ruleset.node_limit))
-    redirect_to :back, flash: {success: 'Tags checked'}
+
+    msg = ['Match is']
+    msg << 'NOT' unless match.valid_match
+    msg << 'valid'
+    msg << (match.tagged == match.valid_match ? 'and' : 'but is')
+    msg << 'NOT' unless match.tagged
+    msg << 'properly tagged'
+    redirect_to admin_event_matches_path(event), flash: {success: msg.join(' ')}
   end
 
   private
+
+    def load_event
+      @event = Event.find(params[:event_id])
+      authorize! :manage, @event
+    end
+
+    def load_match
+      @match = Match.find(params[:id])
+      authorize! :show, @match
+    end
 
     def set_pagination
       @pag = {
@@ -66,6 +78,7 @@ class Admin::EventMatchesController < ApplicationController
       add_breadcrumb 'Events', admin_events_path
       add_breadcrumb event.name, admin_event_path(event)
       add_breadcrumb 'Matches', admin_event_matches_path(event)
+      add_breadcrumb @match.name, admin_match_path(@match) if %w(show).include? params[:action]
     end
 
 end

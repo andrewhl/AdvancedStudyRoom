@@ -12,7 +12,7 @@ module ApplicationHelper
     case type
       when :success then "alert-success"
       when :notice  then "info"
-      when :alert   then "warning"
+      when :alert   then "alert-warning"
       when :error   then "alert-error"
       when :info    then "alert-info"
       else
@@ -20,9 +20,9 @@ module ApplicationHelper
     end
   end
 
-  def error_alert(&block)
-    content_tag :div, class: 'alert alert-error' do
-      yield block
+  def alert(type = :info, &block)
+    content_tag(:div, class: "alert #{twitterized_type(type)}") do
+      capture_haml(&block)
     end
   end
 

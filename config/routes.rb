@@ -55,9 +55,8 @@ AdvancedStudyRoom::Application.routes.draw do
 
   namespace :admin do
     resources :events, only: [:index, :show, :edit, :update] do
-      resources :matches, controller: 'event_matches', shallow: true, only: [:index, :show] do
-        post :validate, on: :member
-        post :check_tags, on: :member
+      resources :matches, controller: 'event_matches', shallow: true do
+        post :validate_and_tag, on: :member
       end
       resources :tags, shallow: true, controller: 'event_tags', except: [:index]
       # Note the singular on 'resource', this generates routes a different
