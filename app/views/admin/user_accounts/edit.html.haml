@@ -4,7 +4,7 @@
 
   = f.input :handle
   = f.input :rank, collection: rank_options_for_select
-  = f.input :active
+  = f.input :active, wrapper: :checkbox
 
   .form-actions
     = f.submit 'Save', class: 'btn btn-primary'
