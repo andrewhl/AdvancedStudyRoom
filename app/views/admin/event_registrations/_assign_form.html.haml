@@ -7,7 +7,9 @@
         %th Assign To
     %tbody
       - if registrations.blank?
-        %td{colspan: 3} No players
+        %td{colspan: 3} 
+          %p.text-warning
+            No players
 
       - registrations.each do |reg|
         %tr

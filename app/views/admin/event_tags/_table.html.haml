@@ -11,7 +11,7 @@
     - if event.tags.empty?
       %tr
         %td{colspan: 3}
-          %p.text-error
+          %p.text-warning
             There are not tags. Please
             = link_to 'add one.', new_admin_event_tag_path(event)
 

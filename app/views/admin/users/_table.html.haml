@@ -8,7 +8,8 @@
     - if users.empty?
       %tr
         %td{colspan: 3}
-          There are no users.
+          %p.text-warning
+            There are no users.
 
     - users.each do |user|
       %tr

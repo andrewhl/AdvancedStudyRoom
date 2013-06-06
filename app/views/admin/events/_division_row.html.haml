@@ -1,6 +1,7 @@
 - if div.blank?
   %td{colspan: 3}
-    This tier has no divisions. Please create one.
+    %p.text-warning
+      This tier has no divisions. Please create one.
 - else
   %td= div.display_name
   %td= div.registrations.count

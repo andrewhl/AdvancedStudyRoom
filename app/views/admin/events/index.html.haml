@@ -13,8 +13,9 @@
     - if @events.empty?
       %tr
         %td{colspan: 5}
-          There are no events yet.
-          = link_to 'Please create one', new_event_path
+          %p.text-warning
+            There are no events yet.
+            = link_to 'Please create one', new_event_path
 
     - @events.each do |event|
       %tr

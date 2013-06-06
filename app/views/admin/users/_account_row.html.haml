@@ -1,6 +1,7 @@
 - if account.blank?
   %td{colspan: 3}
-    This user has no accounts.
+    %p.text-warning
+      This user has no accounts.
 - else
   %td= account.handle
   %td

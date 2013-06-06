@@ -14,10 +14,9 @@
   %tbody
     - if matches.empty?
       %tr
-        - if can? :manage, :matches
-          %td{colspan: 8} No matches
-        - else
-          %td{colspan: 6} No matches
+        %td{colspan: "#{can?(:manage, :matches) ? 8 : 6}"}
+          %p.text-warning
+            No matches
 
     - matches.each do |match|
       %tr
