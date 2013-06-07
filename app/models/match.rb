@@ -131,7 +131,7 @@ class Match < ActiveRecord::Base
   end
 
   def self.build_digest(args)
-    keys = [:white_handle, :black_handle, :completed_at, :win_info, :comment_count, :tag_count, :filename]
+    keys = [:white_handle, :black_handle, :completed_at, :win_info]
     args.assert_valid_keys(*keys)
     digest = keys.collect { |k| args[k].to_s.downcase }.join('-')
     Digest::SHA1.base64digest(digest)

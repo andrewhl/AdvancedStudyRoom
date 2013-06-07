@@ -58,15 +58,8 @@ module ASR
           w_player = Registration.find_by_handle_and_server_id(sgf_data.white_player, server.id, ignore_case: @ignore_case)
           b_player = Registration.find_by_handle_and_server_id(sgf_data.black_player, server.id, ignore_case: @ignore_case)
 
-          # next if w_player.nil? || b_player.nil? ||
-          #         Match.where(digest: match_digest(sgf_data)).exists?
-          # TODO: Uncomment the code abore, and delete the one below after the June 2013 ASR event
-          #       is over. This is required to avoid dups, because the match digest changed.
           next if w_player.nil? || b_player.nil? ||
-                  Match.where(
-                    'digest = ? OR digest = ?',
-                    match_digest(sgf_data),
-                    old_match_digest(sgf_data)).exists?
+                  Match.where(digest: match_digest(sgf_data)).exists?
 
           match = build_match(sgf_data: sgf_data, white_player: w_player, black_player: b_player)
           match.comments = build_match_comments(match, sgf_data)
@@ -127,25 +120,8 @@ module ASR
           white_handle:   sgf_data.white_player,
           black_handle:   sgf_data.black_player,
           completed_at:   sgf_data.date_of_game,
-          win_info:       sgf_data.result[:win_info],
-          comment_count:  sgf_data.comments.size,
-          tag_count:      sgf_data.tags.size,
-          filename:       sgf_data.filename)
+          win_info:       sgf_data.result[:win_info])
       end
-
-
-      # TODO: Remove this method and the logic that uses it, this is only kept
-      # to avoid dups on the ASR June 2013 league
-      def old_match_digest(sgf_data)
-        args = {
-          white_handle:   sgf_data.white_player,
-          black_handle:   sgf_data.black_player,
-          completed_at:   sgf_data.date_of_game,
-          win_info:       sgf_data.result[:win_info] }
-        digest = "#{args[:white_handle]}-#{args[:black_handle]}-#{args[:completed_at]}-#{args[:win_info]}"
-        Digest::SHA1.base64digest(digest)
-      end
-
 
       def match_winner(args)
         args[:sgf_data].result[:winner] == "W" ?
