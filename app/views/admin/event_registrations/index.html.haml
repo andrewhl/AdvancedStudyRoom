@@ -1,6 +1,6 @@
 - @title << 'Assign event players'
 
-%h2 Unassigned
+%h2 Unassigned (#{@unassigned_players.count})
 = render 'assign_form', event: @event, division: nil, registrations: @unassigned_players
 
 - if @event.tiers.empty?
@@ -9,7 +9,7 @@
     = link_to 'Please create them.', new_admin_event_tier_path(@event)
 
 - @event.tiers.each do |tier|
-  %h2= tier.name
+  %h2 #{tier.name} (#{tier.registrations.count})
 
   - if tier.divisions.empty?
     = alert(:error) do
@@ -17,7 +17,8 @@
       = link_to 'Please create them.', new_admin_tier_division_path(tier)
 
   - tier.divisions.each do |division|
-    %h3= division.display_name
+    - if tier.divisions.count > 1
+      %h3 #{division.display_name} (#{division.registrations.count})
 
     = render 'assign_form', event: @event, division: division,
       registrations: @event.registrations.where(division_id: division.id)
