@@ -3,7 +3,7 @@
 = simple_form_for @post, validate: true do |f|
   = f.input :title
   = f.input :permalink
-  = f.input :html
+  = f.input :html, input_html: { class: "markItUp" }
 
 
   .form-actions
