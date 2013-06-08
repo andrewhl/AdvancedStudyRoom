@@ -2,7 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  
+
   actions:                          "Actions"
 
   admin:
@@ -31,8 +31,15 @@ en:
         max_handicap:               "Maximum handicap"
         node_limit:                 "Say tag by this move"
         tags:                       "Match tags"
-    
-      match:    
+
+        points_per_win:             "Points per win"
+        points_per_loss:            "Points per loss"
+        min_points_per_match:       "Min. points per match"
+        max_matches_per_opponent:   "Max. number of matches playable per opponent"
+        win_decay:                  "Rate of win decay"
+        loss_decay:                 "Rate of loss decay"
+
+      match:
         valid_match:                "Valid?"
         tagged:                     "Tagged?"
         division:                   "Division"

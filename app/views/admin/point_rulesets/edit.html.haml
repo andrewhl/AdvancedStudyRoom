@@ -1,0 +1,7 @@
+- @title << 'Edit point ruleset'
+
+= simple_form_for @point_ruleset, url: admin_event_point_ruleset_path(@event), validate: true, html: {class: 'form-horizontal'} do |f|
+  = render 'admin/point_rulesets/fields', f: f
+  .form-actions
+    = f.submit 'Update', class: 'btn btn-primary'
+    = link_to 'Cancel', :back, class: 'btn'
