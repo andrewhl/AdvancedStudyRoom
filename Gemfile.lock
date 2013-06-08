@@ -1,9 +1,9 @@
 GIT
   remote: git@bitbucket.org:ahlavats/kgs_scraper.git
-  revision: c93c0d11ff347be1a2d2476a456b3430c901daad
-  tag: 0.1.4
+  revision: fc241d7b7129955ca47b1384d21e6384fc4cd35f
+  branch: master
   specs:
-    kgs_scraper (0.1.4)
+    kgs_scraper (0.1.5)
 
 GEM
   remote: https://rubygems.org/
