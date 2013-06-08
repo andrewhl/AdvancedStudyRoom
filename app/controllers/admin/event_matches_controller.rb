@@ -7,11 +7,12 @@ class Admin::EventMatchesController < ApplicationController
   before_filter :add_breadcrumbs, except: [:validate_and_tag]
 
   def index
-    @matches = @event.matches.
-                  order(matches_order).
-                  paginate(
-                    include: {division: nil, white_player: [:account], black_player: [:account], tags: nil},
-                    page: @pag[:page], per_page: @pag[:per_page])
+    query = params[:query]
+    @matches = @event.matches.order(matches_order).
+        paginate(
+          include: {division: nil, white_player: [:account], black_player: [:account], tags: nil},
+          page: @pag[:page], per_page: @pag[:per_page])
+    @matches = @matches.where('LOWER(black_player_name) LIKE LOWER(?) OR LOWER(white_player_name) LIKE LOWER(?)', query, query) if query.present?
   end
 
   def show

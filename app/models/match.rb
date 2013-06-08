@@ -136,4 +136,5 @@ class Match < ActiveRecord::Base
     digest = keys.collect { |k| args[k].to_s.downcase }.join('-')
     Digest::SHA1.base64digest(digest)
   end
+
 end

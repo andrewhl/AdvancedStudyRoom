@@ -31,7 +31,6 @@ gem 'airbrake',                 '~> 3.1.0'
 gem 'newrelic_rpm',             '~> 3.6.2'
 gem 'mechanize',                '~> 2.6.0', :require => false
 
-
 group :assets do
   gem 'sass-rails',             '~> 3.2.3'
   gem 'coffee-rails',           '~> 3.2.1'

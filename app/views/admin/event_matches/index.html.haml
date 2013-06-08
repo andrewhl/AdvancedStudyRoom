@@ -1,5 +1,10 @@
 - @title << 'Event matches'
 
+= form_tag admin_event_matches_path, method: :get do
+  %p
+    = text_field_tag :query, params[:query]
+    = submit_tag "Filter by handle", name: nil, class: "btn"
+
 = render 'table', matches: @matches
 
 .clearfix.pull-right
