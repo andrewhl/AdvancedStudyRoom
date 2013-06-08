@@ -125,7 +125,7 @@ class Match < ActiveRecord::Base
   end
 
   def all_errors
-    errors = validation_errors.split(',').collect { |i| i.strip }
+    errors = validation_errors.to_s.split(',').collect { |i| i.strip }
     errors << :tags unless tagged?
     errors
   end

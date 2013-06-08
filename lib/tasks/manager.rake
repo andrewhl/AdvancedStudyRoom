@@ -35,6 +35,32 @@ namespace :manager do
     end
   end
 
+  desc "Import matches for a single registration"
+  task :import_for, [:registration] => :environment do |t, args|
+
+    begin
+      logger.started('IMPORT')
+
+      server = Server.where(name: 'KGS').first
+      importer = ASR::SGFImporter.new(server: server, ignore_case: true)
+
+      handle = args[:registration]
+
+      logger.w "Processing #{handle}..."
+      started_at = Time.now.to_f
+
+      matches = importer.import_matches(handle: handle)
+      matches.each(&:save)
+
+      time = (Time.now.to_f - started_at).to_f.round(2)
+      logger.wl "#{matches.size} matches in #{time} seconds"
+
+    rescue Exception => exc
+      logger.error exc
+    ensure
+      logger.ended
+    end
+  end
 
   desc "Validate unvalidated matches"
   task :validate => :environment do
