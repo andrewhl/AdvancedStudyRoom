@@ -11,6 +11,8 @@
     %li
       %a{href: '#ruleset_tab', data: {toggle: 'tab'}} Ruleset
     %li
+      %a{href: '#point_ruleset_tab', data: {toggle: 'tab'}} Point Ruleset
+    %li
       %a{href: '#tiers_tab', data: {toggle: 'tab'}} Tiers
 
 
@@ -46,6 +48,11 @@
       .clearfix.pull-right
         = link_to 'Edit Ruleset', edit_admin_event_ruleset_path(@event), class: 'btn'
       = render 'admin/rulesets/table', ruleset: @event.ruleset
+
+    #point_ruleset_tab.tab-pane
+      .clearfix.pull-right
+        = link_to 'Edit Point Ruleset', edit_admin_event_point_ruleset_path(@event), class: 'btn'
+      = render 'admin/rulesets/table', ruleset: @event.point_ruleset
 
     #tiers_tab.tab-pane
       .clearfix.pull-right

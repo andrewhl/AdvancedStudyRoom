@@ -50,6 +50,7 @@ AdvancedStudyRoom::Application.routes.draw do
       # Note the singular on 'resource', this generates routes a different
       # set of routes, use rake routes for more info.
       resource :ruleset, controller: 'event_rulesets', only: [:edit, :update]
+      resource :point_ruleset, controller: 'point_rulesets', only: [:edit, :update]
       # Shallow gives us a convenience path to create new tiers for an event
       # and list the tiers of an event, but short paths to edit, update and delete them
       resources :tiers, shallow: true, controller: 'event_tiers', only: [:show, :edit, :update] do

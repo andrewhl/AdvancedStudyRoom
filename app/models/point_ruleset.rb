@@ -5,20 +5,22 @@
 #  id                       :integer          not null, primary key
 #  points_per_win           :float
 #  points_per_loss          :float
-#  point_decay              :float
 #  min_points_per_match     :float
 #  max_matches_per_opponent :integer
 #  pointable_id             :integer
 #  pointable_type           :string(255)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  win_decay                :float
+#  loss_decay               :float
 #
 
 # TODO: Make it polymorphic a la rulesetable style
 class PointRuleset < ActiveRecord::Base
   attr_accessible :points_per_win,
                   :points_per_loss,
-                  :point_decay,
+                  :win_decay,
+                  :loss_decay,
                   :pointable_type,
                   :pointable_id,
                   :max_matches_per_opponent,
