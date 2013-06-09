@@ -3,7 +3,7 @@ module ASR
 
     include Enumerable
 
-    attr_accessor :from, :to
+    attr_accessor :from, :to, :event
     attr_reader :matches
 
     def initialize(args = nil)
@@ -14,6 +14,7 @@ module ASR
         @from, @to = args[:from], args[:to]
         @matches = args[:matches]
       end
+      @event ||= args[:event]
       @matches ||= matches
     end
 
@@ -26,17 +27,18 @@ module ASR
     end
 
     def matches
-      # these are date strings, not times
-      start_date = @from.strftime("%Y-%m-%d")
-      end_date  = @to.strftime("%Y-%m-%d")
-      Match.where("completed_at <= ? AND completed_at >= ?", end_date, start_date).
-            order(:completed_at, :created_at)
+      Match.
+        joins(:black_player)
+        where(
+          "registrations.event_id = ? AND completed_at >= ? AND completed_at <= ?",
+          event.id, @from.strftime("%Y-%m-%d"), @to.strftime("%Y-%m-%d")).
+        order(:completed_at, :created_at)
     end
 
     def by_same_opponent(*players)
       # Assume you got registration ids
       player_ids = players   # Defaults to assume you passed an integer, meaning an ID
-      if players.first.is_a?(String) # If you pass a string, then it should be a handle
+      if players.first.is_a?(String) # If you pass a string, then it must be a handle
         player_ids = players.collect { |handle| Account.where(handle: handle).first.try(:id) }
       end
 
@@ -82,7 +84,11 @@ module ASR
     private
 
       def build(matches)
-        MatchFinder.new(matches: matches)
+        MatchFinder.new(
+          from: from,
+          to: to,
+          event: event,
+          matches: matches)
       end
 
   end

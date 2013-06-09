@@ -144,17 +144,20 @@ namespace :manager do
     begin
       logger.started 'POINTS'
 
-      finder = ASR::MatchFinder.new(from: Time.now.beginning_of_month, to: Time.now.end_of_month)
-      pm = ASR::PointManager.new(finder: finder)
 
       Event.all.each do |event|
         logger.wl "EVENT #{event.name}..."
 
+        finder = ASR::MatchFinder.new(
+          event: event,
+          from: Time.now.beginning_of_month,
+          to: Time.now.end_of_month)
+        point_manager = ASR::PointManager.new(finder: finder)
         event.registrations.each do |reg|
           logger.w "Calculating #{reg.handle}..."
 
           matches = finder.by_registration(reg).tagged.valid.without_points
-          points = pm.points_for(matches)
+          points = point_manager.points_for(matches)
           points.each(&:save)
           points.collect(&:match).each { |m| m.update_attribute(:has_points, true)}
 

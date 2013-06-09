@@ -1,25 +1,12 @@
 FactoryGirl.define do
 
-  sequence :email do |n|
-    "person-#{n}@example.com"
-  end
-
-  sequence :name do |n|
-    "Person #{n}"
-  end
-
   factory :user do
-    username "johndoe"
+    username { Faker::Internet.user_name }
     first_name "John"
     last_name "Doe"
-    email "johndoe@example.com"
+    email { Faker::Internet.email }
     password "foobar"
     password_confirmation "foobar"
-  end
-
-  factory :test_account do
-    handle "kabradarf"
-    user
   end
 
   factory :account do
@@ -27,7 +14,6 @@ FactoryGirl.define do
     handle { Faker::Internet.user_name }
     rank { Random.rand(-30..9) }
   end
-
 
   factory :ruleset do
     name "KGS Default"
@@ -112,13 +98,13 @@ FactoryGirl.define do
   factory :registration, :aliases => [:black_player, :white_player] do
     ignore do
       handle { Faker::Internet.user_name }
+      server
     end
 
-    account
     division
 
     after_build do |reg, ev|
-      reg.account.update_attribute :handle, ev.handle
+      reg.account = FactoryGirl.build(:account, handle: ev.handle, server: ev.server || FactoryGirl.build(:server))
     end
   end
 
