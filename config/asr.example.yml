@@ -15,9 +15,10 @@ development: &defaults
   # ==> DB Backup Configuration
   # Configuration used by the rake db:backup task
   db_backup:
-    path:           /
-    keep:           25
-    key:            700ccebbce97b25
+    enabled:        false
+    path:           /dev
+    keep:           7
+    key:            400ccebbce97b25
     secret:         5b402e2327c958c
  
   # ==> Notifications Configuration
@@ -54,5 +55,11 @@ test:
     key:            shouldnotbevalid
     secret:         shouldnotbevalid
 
+staging:
+  <<: *defaults
+
 production:
   <<: *defaults
+  db_backup:
+    enabled:        true
+    path:           /
