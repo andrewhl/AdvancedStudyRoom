@@ -14,7 +14,7 @@ class ResultsController < ApplicationController
     @division = Division.find(params[:division_id], include: {registrations: :account, matches: nil})
     @game_percentage = calculate_matches_percentage(@division)
 
-    match_finder = ASR::MatchFinder.new
+    match_finder = ASR::MatchFinder.new(event: @event)
     @matches = match_finder.by_division(@division).tagged.valid.with_points
   end
 
