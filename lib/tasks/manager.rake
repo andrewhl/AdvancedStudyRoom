@@ -144,7 +144,6 @@ namespace :manager do
     begin
       logger.started 'POINTS'
 
-
       Event.all.each do |event|
         logger.wl "EVENT #{event.name}..."
 
@@ -177,6 +176,8 @@ namespace :manager do
     desc 'Recount the points of all matches'
     task :redo => :environment do
 
+      # TODO: This is dangerous, it should destroy only the point
+      # from the matches that is recalculating
       Match.update_all(has_points: false)
       Point.destroy_all
       Rake::Task['manager:points'].reenable
@@ -191,8 +192,10 @@ namespace :manager do
 
         Event.all.each do |event|
           logger.wl "EVENT #{event.name}..."
+
           event.registrations.each do |reg|
             logger.w "Totalling #{reg.handle}..."
+
             total = reg.points.collect(&:count).inject(&:+) || 0
             reg.update_attribute(:points_this_month, total)
 
