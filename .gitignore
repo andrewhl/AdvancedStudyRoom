@@ -17,8 +17,9 @@
 # Ignore /temp folder
 /temp
 
-# Ignore /lib/games
+# Ignore other project files
 /lib/games
+/public/assets
 
 # Ignore db sqlite stuff
 /db/test.sqlite3-journal
