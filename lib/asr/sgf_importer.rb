@@ -32,7 +32,7 @@ module ASR
 
       def import_month_matches(handles, month, year)
         imported_matches = handles.collect do |handle|
-          sgf_files = scraper.scrape(handle: handle, month: month, year: year)
+          sgf_files = scraper.scrape_games(handle: handle, month: month, year: year)
           return [] unless sgf_files
 
           valid_sgf_data = collect_valid_sgf_data(sgf_files, handle)
@@ -135,6 +135,7 @@ module ASR
 
       def scraper
         domain = /(?:https?\:\/\/)?([^\/]+)/.match(server.url)[1] rescue server.url
+        domain = 'http://' + domain
         @scraper ||= scraper_class.new(domain: domain, target_path: scraper_target_path)
       end
 
