@@ -15,9 +15,10 @@ development: &defaults
   # ==> DB Backup Configuration
   # Configuration used by the rake db:backup task
   db_backup:
-    path:           /
-    keep:           25
-    key:            700ccebbce97b25
+    enabled:        false
+    path:           /dev
+    keep:           7
+    key:            400ccebbce97b25
     secret:         5b402e2327c958c
  
   # ==> Notifications Configuration
@@ -31,11 +32,11 @@ development: &defaults
     # Recipient's email for the app alerts
     # In a development environment all notifications/alerts
     # will be sent to this email address.
-    recipient: arturo@advancedstudyroom.com
+    recipient:      arturo@advancedstudyroom.com
     # Sender's email for the app alerts
     # Alerts are sent to the site admins.
     # i.e. new registrations
-    sender:    alerts@advancedstudyroom.com
+    sender:         alerts@advancedstudyroom.com
 
   # ==> Mailers Configuration
   # SMTP settings for the mailers
@@ -54,5 +55,11 @@ test:
     key:            shouldnotbevalid
     secret:         shouldnotbevalid
 
+staging:
+  <<: *defaults
+
 production:
   <<: *defaults
+  db_backup:
+    enabled:        true
+    path:           /
