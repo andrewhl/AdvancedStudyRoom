@@ -23,7 +23,7 @@ gem 'client_side_validations-simple_form', '~> 2.1.0'
 gem 'SgfParser',                '~> 2.0.0'
 gem 'rubyzip',                  '~> 0.9.9', :require => 'zip/zip'
 gem 'kgs_scraper',              '~> 0.2.0', :git => 'git@bitbucket.org:ahlavats/kgs_scraper.git',
-                                            :ref => '0966a69a262fc'
+                                            :ref => 'e22ac383aedf5e'
 
 gem 'whenever',                 '~> 0.8.2', :require => false
 gem 'backup',                   '~> 3.4.0'
