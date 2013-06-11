@@ -30,6 +30,9 @@
           %tr
             %th Description
             %td= truncate(@event.description, length: 800)
+          %tr
+            %th Prizes Description
+            %td= truncate(@event.prizes_description, length: 800)
 
     #matches_tab.tab-pane
       = link_to 'Manage Matches', admin_event_matches_path(@event), class: 'btn pull-right'

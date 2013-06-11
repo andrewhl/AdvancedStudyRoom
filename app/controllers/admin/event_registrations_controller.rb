@@ -5,7 +5,7 @@ class Admin::EventRegistrationsController < ApplicationController
   before_filter :add_breadcrumbs
 
   def index
-    @registrations = @event.registrations.active
+    @registrations = @event.registrations.active.order("division_id ASC")
     @unassigned_players = @registrations.where(division_id: nil)
   end
 

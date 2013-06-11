@@ -144,17 +144,19 @@ namespace :manager do
     begin
       logger.started 'POINTS'
 
-      finder = ASR::MatchFinder.new(from: Time.now.beginning_of_month, to: Time.now.end_of_month)
-      pm = ASR::PointManager.new(finder: finder)
-
       Event.all.each do |event|
         logger.wl "EVENT #{event.name}..."
 
+        finder = ASR::MatchFinder.new(
+          event: event,
+          from: Time.now.beginning_of_month,
+          to: Time.now.end_of_month)
+        point_manager = ASR::PointManager.new(finder: finder)
         event.registrations.each do |reg|
           logger.w "Calculating #{reg.handle}..."
 
           matches = finder.by_registration(reg).tagged.valid.without_points
-          points = pm.points_for(matches)
+          points = point_manager.points_for(matches)
           points.each(&:save)
           points.collect(&:match).each { |m| m.update_attribute(:has_points, true)}
 
@@ -174,6 +176,8 @@ namespace :manager do
     desc 'Recount the points of all matches'
     task :redo => :environment do
 
+      # TODO: This is dangerous, it should destroy only the point
+      # from the matches that is recalculating
       Match.update_all(has_points: false)
       Point.destroy_all
       Rake::Task['manager:points'].reenable
@@ -188,8 +192,10 @@ namespace :manager do
 
         Event.all.each do |event|
           logger.wl "EVENT #{event.name}..."
+
           event.registrations.each do |reg|
             logger.w "Totalling #{reg.handle}..."
+
             total = reg.points.collect(&:count).inject(&:+) || 0
             reg.update_attribute(:points_this_month, total)
 
@@ -223,22 +229,6 @@ namespace :manager do
       logger.ended
     end
   end
-
-  # desc "Perform all actions"
-  # task :all => :environment do
-  #   tasks = [:download, :tag_games, :validate_games, :calculate_points]
-
-  #   tasks.map { |task| Rake::Task["manager:" + task.to_s].reenable }
-  #   tasks.map { |task| Rake::Task["manager:" + task.to_s].invoke }
-  # end
-
-  # desc "Perform all validations (no download)"
-  # task :all_validations => :environment do
-  #   tasks = [:tag_games, :validate_games, :calculate_points]
-
-  #   tasks.map { |task| Rake::Task["manager:" + task.to_s].reenable }
-  #   tasks.map { |task| Rake::Task["manager:" + task.to_s].invoke }
-  # end
 
   private
 

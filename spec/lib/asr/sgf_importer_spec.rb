@@ -3,22 +3,18 @@ require 'spec_helper'
 describe ASR::SGFImporter do
 
   before(:each) do
-    server = FactoryGirl.create(:server)
-    division = FactoryGirl.create(:division)
-
-    wp = FactoryGirl.create(:registration, division: division)
-    wp.account.update_attributes({ server: server, handle: 'DrGoPlayer' }, without_protection: true)
-    bp = FactoryGirl.create(:registration, division: division)
-    bp.account.update_attributes({ server: server, handle: 'kabradarf' }, without_protection: true)
+    wp = FactoryGirl.create(:registration, handle: 'DrGoPlayer')
+    bp = FactoryGirl.create(
+      :registration, handle: 'kabradarf', division: wp.division, server: wp.account.server)
 
     target_path = "./tmp/#{Time.now.to_i}"
     f_path = copy_test_sgf(target_path, 'DrGoPlayer-kabradarf.sgf')
 
     now = Time.now
-    scraper = KgsScraper::Scraper.new(target_path: target_path, drgoplayermain: 'example.com')
+    scraper = KgsScraper.new(target_path: target_path, drgoplayermain: 'example.com')
     scraper.stubs(:scrape).with(handle: 'kabradarf', month: now.month, year: now.year).returns([f_path])
 
-    @importer = ASR::SGFImporter.new(scraper: scraper, server: server)
+    @importer = ASR::SGFImporter.new(scraper: scraper, server: wp.account.server)
   end
 
   describe "#import_matches" do

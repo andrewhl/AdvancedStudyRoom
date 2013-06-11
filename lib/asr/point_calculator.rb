@@ -23,11 +23,16 @@ module ASR
       end
 
       def winner_points(match, position)
-        @min_points_per_match + @points_per_win * (@win_decay ** position)
+        @min_points_per_match + @points_per_win * calculate_decay(@win_decay, position)
       end
 
       def loser_points(match, position)
-        @min_points_per_match + @points_per_loss * (@loss_decay ** position)
+        @min_points_per_match + @points_per_loss * calculate_decay(@loss_decay, position)
+      end
+
+      def calculate_decay(decay, position)
+        return 1 if decay.to_f.round(2) <= 0 # 1 is the same as no decay
+        (1 - decay) ** position
       end
 
   end

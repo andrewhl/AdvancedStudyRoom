@@ -6,9 +6,11 @@
     %li.active
       %a{href: "#tab1", data: {toggle: "tab"}} Description
     %li
-      %a{href: "#tab2", data: {toggle: "tab"}} Rules
+      %a{href: "#tab2", data: {toggle: "tab"}} Prizes
     %li
-      %a{href: "#tab3", data: {toggle: "tab"}} Players
+      %a{href: "#tab3", data: {toggle: "tab"}} Rules
+    %li
+      %a{href: "#tab4", data: {toggle: "tab"}} Players
     %li.pull-right
       .escape-style
         - if can? :manage, :events
@@ -32,6 +34,12 @@
         - else
           This event has no description.
     #tab2.tab-pane
+      %p
+        - if @event.prizes_description
+          = markdown_to_html(@event.prizes_description)
+        - else
+          This event has no prizes.
+    #tab3.tab-pane
       %table.table.table-condensed.table-bordered.table-hover
         - @ruleset.rules.select { |k,v| v.present? }.each do |k,v|
           %tr
@@ -40,7 +48,7 @@
               %td= v ? 'Yes' : 'No'
             -else
               %td= v
-    #tab3.tab-pane
+    #tab4.tab-pane
       %ul
         - @event.registrations.each do |reg|
           %li= reg.handle

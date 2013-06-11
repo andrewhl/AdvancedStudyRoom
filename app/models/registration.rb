@@ -74,7 +74,7 @@ class Registration < ActiveRecord::Base
 
     Registration.
       includes(account: [:server]).
-      where(query, handle.downcase, server_id).
+      where(query, handle, server_id).
       first
   end
 

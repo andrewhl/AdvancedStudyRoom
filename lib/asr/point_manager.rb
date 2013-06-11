@@ -48,7 +48,7 @@ module ASR
       end
 
       def match_position(match)
-        matches = @finder.by_same_opponent(match.black_player.id, match.white_player.id).tagged.valid
+        matches = @finder.by_same_result(winner_id: match.winner_id, loser_id: match.loser_id).tagged.valid
         matches.find_index { |m| m.id == match.id }
       end
 

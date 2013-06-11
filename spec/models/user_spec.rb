@@ -35,7 +35,7 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-    @user = FactoryGirl.build(:user)
+    @user = FactoryGirl.build(:user, :email => "test@test.com")
   end
 
   describe "authentication" do
