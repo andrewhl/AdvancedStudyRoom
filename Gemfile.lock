@@ -1,7 +1,7 @@
 GIT
   remote: git@bitbucket.org:ahlavats/kgs_scraper.git
   revision: e22ac383aedf5e2b61be1433108a07733b9bb096
-  ref: e22ac38
+  ref: e22ac383aedf5e
   specs:
     kgs_scraper (0.2.0)
 
