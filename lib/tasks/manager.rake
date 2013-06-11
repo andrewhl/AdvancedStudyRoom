@@ -230,22 +230,6 @@ namespace :manager do
     end
   end
 
-  # desc "Perform all actions"
-  # task :all => :environment do
-  #   tasks = [:download, :tag_games, :validate_games, :calculate_points]
-
-  #   tasks.map { |task| Rake::Task["manager:" + task.to_s].reenable }
-  #   tasks.map { |task| Rake::Task["manager:" + task.to_s].invoke }
-  # end
-
-  # desc "Perform all validations (no download)"
-  # task :all_validations => :environment do
-  #   tasks = [:tag_games, :validate_games, :calculate_points]
-
-  #   tasks.map { |task| Rake::Task["manager:" + task.to_s].reenable }
-  #   tasks.map { |task| Rake::Task["manager:" + task.to_s].invoke }
-  # end
-
   private
 
     def logger

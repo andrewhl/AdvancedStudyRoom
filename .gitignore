@@ -18,6 +18,7 @@
 /temp
 
 # Ignore other project files
+.kgs_scraper_last_run
 /lib/games
 /public/assets
 
