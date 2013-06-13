@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610025332) do
+ActiveRecord::Schema.define(:version => 20130613011457) do
 
   create_table "accounts", :force => true do |t|
     t.string   "handle"
@@ -190,6 +190,28 @@ ActiveRecord::Schema.define(:version => 20130610025332) do
     t.datetime "updated_at", :null => false
     t.string   "permalink"
   end
+
+  create_table "registration_group_types", :force => true do |t|
+    t.string   "name",        :limit => 100
+    t.string   "description"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "registration_groups", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "parent_id"
+    t.string   "registration_group_type_id"
+    t.string   "integer"
+    t.string   "name",                       :limit => 100
+    t.integer  "min_registrations"
+    t.integer  "max_registrations"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "registration_groups", ["event_id"], :name => "index_registration_groups_on_event_id"
+  add_index "registration_groups", ["parent_id"], :name => "index_registration_groups_on_parent_id"
 
   create_table "registrations", :force => true do |t|
     t.integer  "account_id"

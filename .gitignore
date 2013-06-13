@@ -37,3 +37,5 @@ config/newrelic.yml
 # Ignore OS Files
 .DS_Store
 .swp
+
+*.sql

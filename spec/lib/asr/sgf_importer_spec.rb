@@ -11,8 +11,8 @@ describe ASR::SGFImporter do
     f_path = copy_test_sgf(target_path, 'DrGoPlayer-kabradarf.sgf')
 
     now = Time.now
-    scraper = KgsScraper.new(target_path: target_path, drgoplayermain: 'example.com')
-    scraper.stubs(:scrape).with(handle: 'kabradarf', month: now.month, year: now.year).returns([f_path])
+    scraper = KgsScraper.new(target_path: target_path, domain: 'example.com')
+    scraper.stubs(:scrape_games).with(handle: 'kabradarf', month: now.month, year: now.year).returns([f_path])
 
     @importer = ASR::SGFImporter.new(scraper: scraper, server: wp.account.server)
   end
