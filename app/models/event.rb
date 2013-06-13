@@ -20,11 +20,14 @@ class Event < ActiveRecord::Base
   has_one :point_ruleset, as: :pointable, dependent: :destroy
 
   has_many :accounts, through: :registrations
+  # TODO: Remove the divisions
   has_many :divisions, through: :tiers, order: '"tiers"."index" ASC, "divisions"."index" ASC'
   has_many :points, dependent: :destroy
   has_many :registrations, include: :account, dependent: :destroy, order: 'LOWER("accounts"."handle") ASC'
   has_many :matches, through: :divisions
+  has_many :registration_groups
   has_many :tags, class_name: 'EventTag', dependent: :destroy, order: 'phrase ASC'
+  # TODO: Remove the tiers
   has_many :tiers, dependent: :destroy, order: '"tiers"."index" ASC'
 
   attr_accessible :ruleset_id,
