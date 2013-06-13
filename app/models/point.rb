@@ -6,10 +6,8 @@
 #  count           :float
 #  account_id      :integer
 #  registration_id :integer
-#  event_id        :integer
 #  match_id        :integer
 #  event_desc      :string(255)
-#  event_type      :string(255)
 #  disabled_reason :string(255)
 #  disabled        :boolean          default(FALSE), not null
 #  awarded_at      :datetime
@@ -22,11 +20,6 @@ class Point < ActiveRecord::Base
 
   belongs_to :registration
   belongs_to :account
-  belongs_to :event
   belongs_to :match
-
-  scope :league_points, where(:event_type => "League")
-  scope :tournament_points, where(:event_type => "Tournament")
-
 
 end

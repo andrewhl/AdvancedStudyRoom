@@ -2,13 +2,14 @@
 #
 # Table name: events
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  event_type  :string(255)
-#  server_id   :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  description :text
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  server_id          :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  description        :text
+#  prizes_description :text
+#  event_type_id      :integer
 #
 
 
@@ -18,6 +19,7 @@ class Event < ActiveRecord::Base
 
   has_one :ruleset, as: :rulesetable, dependent: :destroy
   has_one :point_ruleset, as: :pointable, dependent: :destroy
+  has_one :event_type
 
   has_many :accounts, through: :registrations
   # TODO: Remove the divisions
@@ -44,8 +46,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :registrations, allow_destroy: true
   accepts_nested_attributes_for :tags
 
-  scope :leagues, where(event_type: 'League')
-  scope :tournaments, where(event_type: 'Tournament')
+  scope :leagues, joins(:event_type).where("event_types.name = 'league'")
 
   def ruleset_id=(id)
     self.ruleset = Ruleset.find(id)

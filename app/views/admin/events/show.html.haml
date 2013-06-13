@@ -23,7 +23,7 @@
         %tbody
           %tr
             %th Event Type
-            %td= @event.event_type.to_s.titleize
+            %td= @event.event_type.name.titleize
           %tr
             %th Server
             %td= @event.server.try(:name)

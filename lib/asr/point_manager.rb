@@ -32,10 +32,7 @@ module ASR
           awarded_at: match.completed_at,
           account: registration.account,
           registration: registration,
-          match: match,
-          event: match.event,
-          event_type: match.event.event_type,
-          event_desc: nil)
+          match: match)
       end
 
       def count(match, position)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613021357) do
+ActiveRecord::Schema.define(:version => 20130613025512) do
 
   create_table "accounts", :force => true do |t|
     t.string   "handle"
@@ -173,10 +173,8 @@ ActiveRecord::Schema.define(:version => 20130613021357) do
     t.float    "count"
     t.integer  "account_id"
     t.integer  "registration_id"
-    t.integer  "event_id"
     t.integer  "match_id"
     t.string   "event_desc"
-    t.string   "event_type"
     t.string   "disabled_reason"
     t.boolean  "disabled",        :default => false, :null => false
     t.datetime "awarded_at"
@@ -185,7 +183,6 @@ ActiveRecord::Schema.define(:version => 20130613021357) do
   end
 
   add_index "points", ["account_id"], :name => "index_points_on_account_id"
-  add_index "points", ["event_id"], :name => "index_points_on_event_id"
   add_index "points", ["match_id"], :name => "index_points_on_match_id"
   add_index "points", ["registration_id"], :name => "index_points_on_registration_id"
 
