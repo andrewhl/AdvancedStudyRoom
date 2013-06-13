@@ -3,8 +3,7 @@ class CreateRegistrationGroups < ActiveRecord::Migration
     create_table :registration_groups do |t|
       t.integer :event_id
       t.integer :parent_id
-      t.string  :registration_group_type_id
-      t.string  :integer
+      t.integer :registration_group_type_id
       t.string  :name, limit: 100
       t.integer :min_registrations
       t.integer :max_registrations
