@@ -76,6 +76,7 @@ class Match < ActiveRecord::Base
   scope :unchecked, lambda { where("tagged IS NULL").order("completed_at") } # not checked for tags
   scope :untagged, where("tagged = ?", false).order("completed_at") # confirmed has no tag
   scope :tagged_and_valid, where("valid_match = ? and tagged = ?", true, true).order("completed_at")
+  scope :accepted, where("valid_match = true and tagged = true").order("completed_at")
   scope :by_event, lambda { |e| select('matches.*').joins(:black_player).where('registrations.event_id = ?', e.id) }
 
   CANADIAN = 'Canadian'

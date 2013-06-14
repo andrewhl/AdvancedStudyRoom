@@ -26,8 +26,8 @@
 
   .total-games-progress
     .progress.progress-success.progress-striped
-      .bar{style: "width: #{@game_percentage.to_f}%"}
-        #{@game_percentage.to_f} %
+      .bar{style: "width: #{matches_percentage(@division).to_f}%"}
+        #{matches_percentage(@division).to_f} %
       %span Total games played
 
   - if @division.registrations.count == 0
