@@ -1,7 +1,7 @@
 class ResultsController < ApplicationController
 
   before_filter :initialize_params
-  before_filter :load_event, :load_division
+  before_filter :load_event, :load_division, only: [:index]
 
   def index
     match_finder = ASR::MatchFinder.new(event: @event)
