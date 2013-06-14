@@ -2,7 +2,7 @@
 
 
 = alert(:info, class: 'bug-report') do
-%p
+  %p
     %strong Hi! We're in beta. Spot a bug? Help us out!
   = link_to "Report Bug", "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open", class: "btn btn-info"
 
@@ -25,7 +25,6 @@
           = link_to div.name, {division_id: div.id}
 
   .total-games-progress
-    / %span Total games played:
     .progress.progress-success.progress-striped
       .bar{style: "width: #{@game_percentage.to_f}%"}
         #{@game_percentage.to_f} %
