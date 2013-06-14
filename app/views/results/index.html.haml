@@ -24,17 +24,18 @@
         %li{class: active_tab_for(div)}
           = link_to div.name, {division_id: div.id}
 
-  .total-games-progress
-    .progress.progress-success.progress-striped
-      .bar{style: "width: #{matches_percentage(@division).to_f}%"}
-        #{matches_percentage(@division).to_f} %
-      %span Total games played
+  - cache [:results, @event, @division] do
+    .total-games-progress
+      .progress.progress-success.progress-striped
+        .bar{style: "width: #{matches_percentage(@division).to_f}%"}
+          #{matches_percentage(@division).to_f} %
+        %span Total games played
 
-  - if @division.registrations.count == 0
-    .well
-      %p There are no players assigned to this division yet.
-  - elsif @division.registrations.count > 30
-    = render 'list_table', event: @event, division: @division, matches: @matches
-  - else
-    = render 'table', event: @event, division: @division, matches: @matches
+    - if @division.registrations.count == 0
+      .well
+        %p There are no players assigned to this division yet.
+    - elsif @division.registrations.count > 30
+      = render 'list_table', event: @event, division: @division, matches: @matches
+    - else
+      = render 'table', event: @event, division: @division, matches: @matches
 
