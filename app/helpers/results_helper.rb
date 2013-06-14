@@ -1,7 +1,7 @@
 module ResultsHelper
 
   def active_tab_for(division)
-    division.id.to_i == params[:division_id].to_i ? 'active' : ''
+    division.id.to_i == @division.id.to_i ? 'active' : ''
   end
 
   def matches_percentage(division)
