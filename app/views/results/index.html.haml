@@ -1,9 +1,11 @@
 - @title << "Results for #{@event.name} - #{Time.now.strftime("%B")}"
 
-%h3 Hi! We're in beta. Spot a bug? Help us out!
-%p
-  = link_to "Report Bug", "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open", class: "btn btn-warning"
-%hr
+
+= alert(:info, class: 'bug-report') do
+  %p
+    %strong Hi! We're in beta. Spot a bug? Help us out!
+  = link_to "Report Bug", "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open",
+    class: "btn btn-info"
 
 - if @event.divisions.empty?
   .alert.alert-info
@@ -23,18 +25,18 @@
         %li{class: active_tab_for(div)}
           = link_to div.name, {division_id: div.id}
 
-  .total-games-progress
-    / %span Total games played:
-    .progress.progress-success.progress-striped
-      .bar{style: "width: #{@game_percentage.to_f}%"}
-        #{@game_percentage.to_f} %
-      %span Total games played
+  - cache [:results, @event, @division] do
+    .total-games-progress
+      .progress.progress-success.progress-striped
+        .bar{style: "width: #{matches_percentage(@division).to_f}%"}
+          #{matches_percentage(@division).to_f} %
+        %span Total games played
 
-  - if @division.registrations.count == 0
-    .well
-      %p There are no players assigned to this division yet.
-  - elsif @division.registrations.count > 30
-    = render 'list_table', event: @event, division: @division, matches: @matches
-  - else
-    = render 'table', event: @event, division: @division, matches: @matches
+    - if @division.registrations.count == 0
+      .well
+        %p There are no players assigned to this division yet.
+    - elsif @division.registrations.count > 30
+      = render 'list_table', event: @event, division: @division, matches: @matches
+    - else
+      = render 'table', event: @event, division: @division, matches: @matches
 

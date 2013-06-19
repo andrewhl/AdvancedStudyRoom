@@ -55,6 +55,11 @@ module ASR
       build(matches)
     end
 
+    def accepted
+      matches = @matches.where("matches.tagged = true AND matches.valid_match = true")
+      build(matches)
+    end
+
     def tagged
       matches = @matches.where("matches.tagged = ?", true)
       build(matches)

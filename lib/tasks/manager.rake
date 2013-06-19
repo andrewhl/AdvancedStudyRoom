@@ -31,6 +31,7 @@ namespace :manager do
     rescue Exception => exc
       logger.error exc
     ensure
+      touch_events
       logger.ended
     end
   end
@@ -58,6 +59,7 @@ namespace :manager do
     rescue Exception => exc
       logger.error exc
     ensure
+      touch_events
       logger.ended
     end
   end
@@ -88,6 +90,7 @@ namespace :manager do
     rescue Exception => exc
       logger.exception exc
     ensure
+      touch_events
       logger.ended
     end
   end
@@ -124,6 +127,7 @@ namespace :manager do
     rescue Exception => exc
       logger.exception exc
     ensure
+      touch_events
       logger.ended
     end
   end
@@ -166,6 +170,7 @@ namespace :manager do
     rescue Exception => exc
       logger.exception exc
     ensure
+      touch_events
       logger.ended
     end
   end
@@ -205,6 +210,7 @@ namespace :manager do
       rescue Exception => exc
         logger.exception exc
       ensure
+        touch_events
         logger.ended
       end
     end
@@ -226,6 +232,7 @@ namespace :manager do
     rescue Exception => exc
       logger.exception exc
     ensure
+      touch_events
       logger.ended
     end
   end
@@ -234,6 +241,12 @@ namespace :manager do
 
     def logger
       @logger ||= TaskLogger.new("#{Rails.root}/log/manager.log")
+    end
+
+    # Sledge hammer cache breaker. Refine it in the future
+    # once the rake tasks are per event
+    def touch_events
+      ActiveRecord::Base.connection.execute("UPDATE events SET updated_at = NOW()")
     end
 
 end
