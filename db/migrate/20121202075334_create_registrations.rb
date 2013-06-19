@@ -3,8 +3,8 @@ class CreateRegistrations < ActiveRecord::Migration
     create_table :registrations do |t|
       t.integer :account_id
       t.integer :event_id
-      t.integer :division_id
-      t.float   :points_this_month, :float, null: false, default: 0
+      t.integer :registration_group_id
+      t.float   :total_points, :float, null: false, default: 0
       t.boolean :active, null: false, default: true
 
       t.timestamps
@@ -12,7 +12,7 @@ class CreateRegistrations < ActiveRecord::Migration
 
     add_index :registrations, :account_id
     add_index :registrations, :event_id
-    add_index :registrations, :division_id
+    add_index :registrations, :registration_group_id
     add_index :registrations, :active
   end
 end

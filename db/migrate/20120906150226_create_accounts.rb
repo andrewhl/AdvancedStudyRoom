@@ -5,16 +5,13 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer  :user_id
       t.integer  :server_id
       t.integer  :rank
-      t.boolean  :active, null: false, default: true
-      t.float    :total_points, default: 0, null: false
+      t.boolean  :private, null: false, default: false
 
       t.timestamps
     end
 
     add_index :accounts, :user_id
-    add_index :accounts, :active
     add_index :accounts, :server_id
-    add_index :accounts, :handle
   end
 end
 

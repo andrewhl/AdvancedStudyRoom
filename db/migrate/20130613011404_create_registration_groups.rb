@@ -7,6 +7,7 @@ class CreateRegistrationGroups < ActiveRecord::Migration
       t.string  :name, limit: 100
       t.integer :min_registrations
       t.integer :max_registrations
+      t.integer :position, null: false, default: 1
 
       t.timestamps
     end

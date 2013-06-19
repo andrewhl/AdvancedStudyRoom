@@ -36,17 +36,6 @@ class Ruleset < ActiveRecord::Base
 
   belongs_to :rulesetable, polymorphic: true
 
-  has_many :permissions, :class_name => 'Permission', :as => :parent
-
-  RULES = [:allowed_rengo,
-         :allowed_teaching,
-         :allowed_review,
-         :allowed_free,
-         :allowed_rated,
-         :allowed_simul,
-         :allowed_demonstration,
-         :allowed_no_time_settings]
-
   validates_presence_of :name
   validates_length_of   :main_time_min, minimum: 0, allow_blank: true
   validates :main_time_min, numericality: {greater_than_or_equal_to: 0}, allow_blank: true
@@ -71,35 +60,5 @@ class Ruleset < ActiveRecord::Base
     non_rules = [:id, :updated_at, :created_at, :name, :rulesetable_id, :rulesetable_type]
     attributes.symbolize_keys.reject { |k,v| non_rules.include?(k) }
   end
-
-  # TODO: add validation that prevents ruleset from being saved if
-  # both jovertime and covertimer and false
-  # and overtime stones/period settings or control settings are enabled
-
-  # this hunky chunk of code checks the list of RULES above
-  # and if a missing method matches one of those rules
-  # either as method= or method?, it provides the appropriate logic
-
-  def method_missing sym, *args
-    mthd = sym.to_s[0..-2].to_sym
-    name = sym.to_s
-
-    super unless RULES.include?(mthd)
-
-    if name =~ /\?$/
-      !permissions.find_by_perm(mthd).nil?
-    elsif name =~ /=$/
-      raise TypeError, "Must be a boolean value." unless args[0] == true or args[0] == false
-
-      if args[0] == true
-        permissions.find_by_perm(mthd) || permissions.create(:perm => mthd, :parent_id => id)
-      else
-        permissions.find_by_perm(mthd).destroy unless permissions.find_by_perm(mthd).nil?
-      end
-    end
-
-  end
-
-
 
 end

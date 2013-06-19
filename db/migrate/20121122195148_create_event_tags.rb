@@ -1,8 +1,8 @@
 class CreateEventTags < ActiveRecord::Migration
   def change
     create_table :event_tags do |t|
-      t.string  :phrase
-      t.integer :event_id
+      t.string  :phrase, limit: 100
+      t.integer :event_id, null: false
       t.integer :node_limit
 
       t.timestamps

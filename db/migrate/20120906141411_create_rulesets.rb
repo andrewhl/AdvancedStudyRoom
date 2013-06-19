@@ -1,7 +1,7 @@
 class CreateRulesets < ActiveRecord::Migration
   def change
     create_table :rulesets do |t|
-      t.string     :name
+      t.string     :name, limit: 100
       t.boolean    :overtime_required
       t.boolean    :handicap_required
       t.boolean    :j_ot_allowed
@@ -14,8 +14,8 @@ class CreateRulesets < ActiveRecord::Migration
       t.float      :c_ot_max_time
       t.float      :min_komi
       t.float      :max_komi
-      t.integer    :j_ot_max_periods
       t.integer    :j_ot_min_periods
+      t.integer    :j_ot_max_periods
       t.integer    :c_ot_min_stones
       t.integer    :c_ot_max_stones
       t.integer    :min_handicap
@@ -28,8 +28,6 @@ class CreateRulesets < ActiveRecord::Migration
 
       t.timestamps
     end
-
-
 
   end
 end

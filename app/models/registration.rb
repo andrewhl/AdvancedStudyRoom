@@ -15,7 +15,7 @@
 class Registration < ActiveRecord::Base
 
   belongs_to :account
-  belongs_to :division
+  belongs_to :registration_group
   belongs_to :event
 
   has_one :server, through: :account
@@ -25,7 +25,7 @@ class Registration < ActiveRecord::Base
   scope :active, where(active: true)
 
   attr_accessible :account_id,
-                  :division_id,
+                  :registration_group_id,
                   :event_id,
                   :registration
 
