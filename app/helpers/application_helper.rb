@@ -20,8 +20,10 @@ module ApplicationHelper
     end
   end
 
-  def alert(type = :info, &block)
-    content_tag(:div, class: "alert #{twitterized_type(type)} clearfix") do
+  def alert(type = :info, options = {}, &block)
+    opts = options.merge(class: "alert #{twitterized_type(type)} clearfix")
+    opts[:class] += " #{options[:class]}"
+    content_tag(:div, opts) do
       capture_haml(&block)
     end
   end
