@@ -20,8 +20,11 @@ class Registration < ActiveRecord::Base
   belongs_to :event
 
   has_one :server, through: :account
+  has_one :user, through: :account
 
-  has_many :points
+  has_many :match_registrations
+  has_many :matches, through: :match_registrations
+  has_many :points, through: :match_registrations
 
   scope :active, where(active: true)
 

@@ -15,7 +15,6 @@
 #  updated_at               :datetime         not null
 #
 
-# TODO: Make it polymorphic a la rulesetable style
 class PointRuleset < ActiveRecord::Base
   attr_accessible :points_per_win,
                   :points_per_loss,
@@ -26,7 +25,7 @@ class PointRuleset < ActiveRecord::Base
                   :max_matches_per_opponent,
                   :min_points_per_match
 
-  belongs_to :parent, :polymorphic => true
+  belongs_to :point_rulesetable, :polymorphic => true
 
   def rules
     non_rules = [:id, :updated_at, :created_at, :name, :pointable_id, :pointable_type]

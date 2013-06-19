@@ -14,5 +14,8 @@
 #
 
 class MatchRegistration < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :match
+
+  has_one :registration
+  has_one :point, as: :pointable, dependent: :destroy, autosave: true
 end

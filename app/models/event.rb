@@ -20,21 +20,18 @@
 class Event < ActiveRecord::Base
 
   belongs_to :server
+  belongs_to :event_type
 
-  has_one :ruleset, as: :rulesetable, dependent: :destroy
-  has_one :point_ruleset, as: :pointable, dependent: :destroy
+  has_one :ruleset, as: :rulesetable, dependent: :destroy, autosave: true
+  has_one :point_ruleset, as: :point_rulesetable, dependent: :destroy, autosave: true
   has_one :event_type
 
   has_many :accounts, through: :registrations
-  # TODO: Remove the divisions
-  has_many :divisions, through: :tiers, order: '"tiers"."index" ASC, "divisions"."index" ASC'
-  has_many :points, dependent: :destroy
+  has_many :registration_groups, order: '"registration_groups"."index" ASC'
   has_many :registrations, include: :account, dependent: :destroy, order: 'LOWER("accounts"."handle") ASC'
-  has_many :matches, through: :divisions
+  has_many :matches, through: :registration_groups
   has_many :registration_groups
   has_many :tags, class_name: 'EventTag', dependent: :destroy, order: 'phrase ASC'
-  # TODO: Remove the tiers
-  has_many :tiers, dependent: :destroy, order: '"tiers"."index" ASC'
 
   attr_accessible :ruleset_id,
                   :name,
@@ -45,7 +42,7 @@ class Event < ActiveRecord::Base
                   :locked
                   :ruleset_attributes
 
-  accepts_nested_attributes_for :tiers, allow_destroy: true
+  accepts_nested_attributes_for :registration_groups, allow_destroy: true
   accepts_nested_attributes_for :ruleset, allow_destroy: true
   accepts_nested_attributes_for :registrations, allow_destroy: true
   accepts_nested_attributes_for :tags

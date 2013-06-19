@@ -19,8 +19,6 @@
 class Point < ActiveRecord::Base
   attr_protected
 
-  belongs_to :registration
   belongs_to :account
-  belongs_to :match
-
+  belongs_to :pointable, polymorphic: true
 end

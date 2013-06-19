@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20130619030524) do
 
   add_index "match_comments", ["match_id"], :name => "index_match_comments_on_match_id"
 
-  create_table "match_data", :force => true do |t|
+  create_table "match_details", :force => true do |t|
     t.integer  "match_id"
     t.integer  "ot_stones_periods"
     t.integer  "board_size"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20130619030524) do
     t.datetime "updated_at",                       :null => false
   end
 
-  add_index "match_data", ["match_id"], :name => "index_match_data_on_match_id"
+  add_index "match_details", ["match_id"], :name => "index_match_details_on_match_id"
 
   create_table "match_registrations", :force => true do |t|
     t.integer  "match_id"

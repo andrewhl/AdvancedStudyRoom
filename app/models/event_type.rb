@@ -10,7 +10,9 @@
 #
 
 class EventType < ActiveRecord::Base
+  has_many :events
+
   attr_accessible :description, :name
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 end
