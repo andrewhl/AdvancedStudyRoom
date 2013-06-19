@@ -3,14 +3,14 @@
 # Table name: pages
 #
 #  id         :integer          not null, primary key
-#  date       :datetime
 #  user_id    :integer
-#  html       :text
+#  sort_order :integer          default(0), not null
+#  date       :datetime
+#  body       :text
 #  title      :string(255)
+#  permalink  :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  sort_order :integer
-#  permalink  :string(255)
 #
 
 class Page < ActiveRecord::Base

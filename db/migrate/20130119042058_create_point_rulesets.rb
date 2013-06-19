@@ -13,7 +13,7 @@ class CreatePointRulesets < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :point_rulesets, [:point_rulesetable_type, :point_rulesetable_id]
+    add_index :point_rulesets, [:point_rulesetable_type, :point_rulesetable_id], name: "point_rulesets_on_point_rulesetable"
 
   end
 end

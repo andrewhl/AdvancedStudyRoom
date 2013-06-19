@@ -2,14 +2,15 @@
 #
 # Table name: registrations
 #
-#  id                :integer          not null, primary key
-#  account_id        :integer
-#  event_id          :integer
-#  division_id       :integer
-#  active            :boolean          default(TRUE), not null
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  points_this_month :float            default(0.0), not null
+#  id                    :integer          not null, primary key
+#  account_id            :integer
+#  event_id              :integer
+#  registration_group_id :integer
+#  total_points          :float            default(0.0), not null
+#  float                 :float            default(0.0), not null
+#  active                :boolean          default(TRUE), not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #
 
 class Registration < ActiveRecord::Base

@@ -3,11 +3,11 @@
 # Table name: servers
 #
 #  id                 :integer          not null, primary key
-#  name               :string(255)
+#  name               :string(100)
 #  url                :string(255)
+#  scraper_class_name :string(100)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  scraper_class_name :string(255)
 #
 
 class Server < ActiveRecord::Base

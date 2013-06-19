@@ -3,8 +3,8 @@
 # Table name: event_tags
 #
 #  id         :integer          not null, primary key
-#  phrase     :string(255)
-#  event_id   :integer
+#  phrase     :string(100)
+#  event_id   :integer          not null
 #  node_limit :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

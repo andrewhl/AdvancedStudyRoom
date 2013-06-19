@@ -5,14 +5,14 @@
 #  id                       :integer          not null, primary key
 #  points_per_win           :float
 #  points_per_loss          :float
-#  min_points_per_match     :float
-#  max_matches_per_opponent :integer
-#  pointable_id             :integer
-#  pointable_type           :string(255)
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
 #  win_decay                :float
 #  loss_decay               :float
+#  min_points_per_match     :float
+#  max_matches_per_opponent :integer
+#  point_rulesetable_id     :integer
+#  point_rulesetable_type   :string(255)
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
 #
 
 # TODO: Make it polymorphic a la rulesetable style

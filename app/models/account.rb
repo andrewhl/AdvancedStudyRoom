@@ -7,7 +7,7 @@
 #  user_id    :integer
 #  server_id  :integer
 #  rank       :integer
-#  active     :boolean          default(TRUE), not null
+#  private    :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -18,7 +18,6 @@ class Account < ActiveRecord::Base
   belongs_to :user
 
   has_many :events, through: :registrations
-  has_many :points
   has_many :registrations, dependent: :destroy
 
   attr_accessible :handle,

@@ -3,13 +3,17 @@
 # Table name: events
 #
 #  id                 :integer          not null, primary key
-#  name               :string(255)
-#  server_id          :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  name               :string(100)
 #  description        :text
 #  prizes_description :text
 #  event_type_id      :integer
+#  server_id          :integer
+#  starts_at          :datetime
+#  ends_at            :datetime
+#  opens_at           :datetime
+#  closes_at          :datetime
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
 

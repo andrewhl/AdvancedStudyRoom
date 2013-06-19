@@ -7,7 +7,7 @@
 #  user_id    :integer
 #  server_id  :integer
 #  rank       :integer
-#  active     :boolean          default(TRUE), not null
+#  private    :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

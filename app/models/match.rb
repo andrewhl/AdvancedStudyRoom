@@ -2,34 +2,17 @@
 #
 # Table name: matches
 #
-#  id                :integer          not null, primary key
-#  match_type        :string(255)
-#  ot_type           :string(255)
-#  win_info          :string(255)
-#  digest            :string(255)
-#  url               :string(255)
-#  filename          :string(255)
-#  black_player_name :string(255)
-#  white_player_name :string(255)
-#  tags              :string(255)
-#  validation_errors :string(255)
-#  valid_match       :boolean
-#  tagged            :boolean
-#  has_points        :boolean          default(FALSE), not null
-#  ot_stones_periods :integer
-#  black_player_id   :integer
-#  white_player_id   :integer
-#  division_id       :integer
-#  winner_id         :integer
-#  loser_id          :integer
-#  board_size        :integer
-#  handicap          :integer
-#  komi              :float
-#  main_time_control :float
-#  ot_time_control   :float
-#  completed_at      :datetime
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
+#  id                    :integer          not null, primary key
+#  registration_group_id :integer
+#  digest                :string(255)
+#  url                   :string(255)
+#  validation_errors     :string(255)
+#  valid_match           :boolean
+#  tagged                :boolean
+#  has_points            :boolean          default(FALSE), not null
+#  completed_at          :datetime
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #
 
 #  filename          :string(255)

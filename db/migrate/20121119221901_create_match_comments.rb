@@ -12,7 +12,7 @@ class CreateMatchComments < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :comments, :match_id
+    add_index :match_comments, :match_id
   end
 
 end

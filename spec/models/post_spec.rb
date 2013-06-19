@@ -3,13 +3,13 @@
 # Table name: posts
 #
 #  id         :integer          not null, primary key
-#  html       :text
 #  user_id    :integer
+#  body       :text
 #  date       :datetime
 #  title      :string(255)
+#  permalink  :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  permalink  :string(255)
 #
 
 require 'spec_helper'

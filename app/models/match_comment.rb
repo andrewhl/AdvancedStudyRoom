@@ -1,12 +1,12 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: match_comments
 #
 #  id          :integer          not null, primary key
 #  match_id    :integer
 #  comment     :text
-#  handle      :string(255)
-#  rank        :string(255)
+#  handle      :string(100)
+#  rank        :string(5)
 #  date        :datetime
 #  node_number :integer
 #  line_number :integer
@@ -14,7 +14,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Comment < ActiveRecord::Base
+class MatchComment < ActiveRecord::Base
   attr_accessible :comment,
                   :match_id,
                   :node_number,

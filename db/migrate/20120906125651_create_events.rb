@@ -8,7 +8,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer   :server_id
       t.datetime  :starts_at
       t.datetime  :ends_at
-      t.datetune  :opens_at
+      t.datetime  :opens_at
       t.datetime  :closes_at
 
       t.timestamps

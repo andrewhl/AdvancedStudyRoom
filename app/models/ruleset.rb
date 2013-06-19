@@ -3,7 +3,7 @@
 # Table name: rulesets
 #
 #  id                     :integer          not null, primary key
-#  name                   :string(255)
+#  name                   :string(100)
 #  overtime_required      :boolean
 #  handicap_required      :boolean
 #  j_ot_allowed           :boolean
@@ -16,8 +16,8 @@
 #  c_ot_max_time          :float
 #  min_komi               :float
 #  max_komi               :float
-#  j_ot_max_periods       :integer
 #  j_ot_min_periods       :integer
+#  j_ot_max_periods       :integer
 #  c_ot_min_stones        :integer
 #  c_ot_max_stones        :integer
 #  min_handicap           :integer

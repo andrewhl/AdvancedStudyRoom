@@ -3,14 +3,15 @@
 # Table name: points
 #
 #  id              :integer          not null, primary key
-#  count           :float
 #  account_id      :integer
-#  registration_id :integer
-#  match_id        :integer
-#  event_desc      :string(255)
+#  count           :float
+#  description     :text
 #  disabled_reason :string(255)
 #  disabled        :boolean          default(FALSE), not null
+#  disabled_at     :datetime
 #  awarded_at      :datetime
+#  pointable_id    :integer
+#  pointable_type  :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

@@ -3,11 +3,11 @@
 # Table name: match_tags
 #
 #  id         :integer          not null, primary key
-#  node       :integer
 #  match_id   :integer
 #  comment_id :integer
-#  phrase     :string(255)
-#  handle     :string(255)
+#  node       :integer
+#  phrase     :string(100)
+#  handle     :string(100)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
