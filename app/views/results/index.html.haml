@@ -25,7 +25,7 @@
         %li{class: active_tab_for(div)}
           = link_to div.name, {division_id: div.id}
 
-  - cache [:results, @event, @division] do
+  - cache [:results, @event, @division, params[:sort], params[:direction]] do
     .total-games-progress
       .progress.progress-success.progress-striped
         .bar{style: "width: #{matches_percentage(@division).to_f}%"}
