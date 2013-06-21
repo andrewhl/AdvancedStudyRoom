@@ -8,6 +8,7 @@ gem 'redis-rails',              '~> 3.2.3'
 gem 'cancan',                   '~> 1.6.9'
 gem 'bcrypt-ruby',              '~> 3.0.0'
 gem 'devise',                   '~> 3.0.0.rc'
+gem 'strong_parameters',        '~> 0.2.1'
 
 gem 'jquery-rails',             '~> 2.2.1'
 gem 'less-rails',               '~> 2.3.2'
