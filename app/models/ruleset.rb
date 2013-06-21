@@ -32,6 +32,7 @@
 #
 
 class Ruleset < ActiveRecord::Base
+  # TODO: Check that all classes have attr protected by default
   attr_protected
 
   belongs_to :rulesetable, polymorphic: true

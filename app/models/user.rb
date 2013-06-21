@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
          :confirmable, :lockable, :token_authenticatable
 
   has_many :accounts, validate: true, autosave: true, dependent: :destroy
-  has_many :awards
   has_many :events, through: :registrations
+  has_many :points
   has_many :registrations, through: :accounts
   has_many :servers, through: :accounts
 
@@ -74,7 +74,6 @@ class User < ActiveRecord::Base
     else
       false
     end
-
   end
 
   def joined_event? event_id

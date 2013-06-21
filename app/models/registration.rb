@@ -16,8 +16,8 @@
 class Registration < ActiveRecord::Base
 
   belongs_to :account
-  belongs_to :registration_group
   belongs_to :event
+  belongs_to :registration_group
 
   has_one :server, through: :account
   has_one :user, through: :account
