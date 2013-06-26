@@ -11,17 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626003342) do
+ActiveRecord::Schema.define(:version => 20130626014613) do
 
   create_table "accounts", :force => true do |t|
     t.string   "handle"
     t.integer  "user_id"
     t.integer  "server_id"
     t.integer  "rank"
-    t.boolean  "active",       :default => true, :null => false
-    t.float    "total_points", :default => 0.0,  :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "active",     :default => true, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "accounts", ["active"], :name => "index_accounts_on_active"
@@ -122,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20130626003342) do
     t.datetime "completed_at"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.string   "won_by"
   end
 
   add_index "matches", ["black_player_id"], :name => "index_matches_on_black_player_id"
@@ -200,11 +200,10 @@ ActiveRecord::Schema.define(:version => 20130626003342) do
     t.integer  "account_id"
     t.integer  "event_id"
     t.integer  "division_id"
-    t.float    "points_this_month", :default => 0.0,  :null => false
-    t.float    "float",             :default => 0.0,  :null => false
     t.boolean  "active",            :default => true, :null => false
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.float    "points_this_month", :default => 0.0,  :null => false
   end
 
   add_index "registrations", ["account_id"], :name => "index_registrations_on_account_id"

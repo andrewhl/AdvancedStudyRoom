@@ -15,15 +15,22 @@ namespace :manager do
 
       server = Server.where(name: 'KGS').first
       importer = ASR::SGFImporter.new(server: server, ignore_case: true)
-      regs = Registration.
-                where('registrations.active = ? AND accounts.server_id = ?', true, server.id).
-                includes(:account)
-      regs.each do |reg|
-        logger.w "Processing #{reg.account.handle}..."
+      accounts = server.accounts
+
+
+      accounts.each do |account|
+        logger.w "Processing #{account.handle}..."
+
         started_at = Time.now.to_f
 
-        matches = importer.import_matches(handle: reg.account.handle)
-        matches.each(&:save)
+        matches = importer.import_matches(handle: account.handle)
+
+        # matches.each(&:save)
+        matches.each do |match|
+          next unless match_attrs = get_match_event_related_attributes(match)
+          match.attributes = match_attrs
+          match.save
+        end
 
         time = (Time.now.to_f - started_at).to_f.round(2)
         logger.wl "#{matches.size} matches in #{time} seconds"
@@ -51,7 +58,11 @@ namespace :manager do
       started_at = Time.now.to_f
 
       matches = importer.import_matches(handle: handle)
-      matches.each(&:save)
+      matches.each do |match|
+        next unless match_attrs = get_match_event_related_attributes(match)
+        match.attributes = match_attrs
+        match.save
+      end
 
       time = (Time.now.to_f - started_at).to_f.round(2)
       logger.wl "#{matches.size} matches in #{time} seconds"
@@ -237,6 +248,41 @@ namespace :manager do
     end
   end
 
+  task :rollover => :environment do
+    desc 'Rollover one league into a new month'
+
+    event = Event.first
+    new_event = Event.create(event.attributes.merge(id: nil, name: "ASR League July", starts_at: "2013-07-01", ends_at: "2013-07-31"), without_protection: true)
+    new_event.create_ruleset(event.ruleset.attributes.merge(id: nil, rulesetable_id: nil, rulesetable_type: nil), without_protection: true)
+    new_event.create_point_ruleset(event.point_ruleset.attributes.merge(id: nil, pointable_id: nil, pointable_type: nil), without_protection: true)
+
+    event_tags = event.tags
+    event_tags.each do |et|
+      et.update_attribute(:event_id, new_event.id)
+    end
+
+    event.tiers.each do |tier|
+      new_tier = new_event.tiers.create(tier.attributes.merge(id: nil, event_id: nil), without_protection: true)
+      new_tier.create_ruleset(tier.ruleset.attributes.merge(id: nil, rulesetable_id: nil, rulesetable_type: nil), without_protection: true)
+      # new_tier.create_point_ruleset(tier.point_ruleset.attributes.merge(id: nil, pointable_id: nil, pointable_type: nil), without_protection: true)
+
+      tier.divisions.each do |div|
+        new_division = new_tier.divisions.create(div.attributes.merge(id: nil, tier_id: nil), without_protection: true)
+        new_division.create_ruleset(div.ruleset.attributes.merge(id: nil, rulesetable_id: nil, rulesetable_type: nil), without_protection: true)
+        # new_division.create_point_ruleset(division.point_ruleset.attributes.merge(id: nil, pointable_id: nil, pointable_type: nil), without_protection: true)
+        div.registrations.each do |reg|
+          new_division.registrations.create(reg.attributes.merge(
+            id: nil,
+            event_id: new_event.id,
+            division_id: nil,
+            points_this_month: 0), without_protection: true)
+        end
+      end
+    end
+
+
+  end
+
   private
 
     def logger
@@ -247,6 +293,25 @@ namespace :manager do
     # once the rake tasks are per event
     def touch_events
       ActiveRecord::Base.connection.execute("UPDATE events SET updated_at = NOW()")
+    end
+
+    def get_match_event_related_attributes(match)
+      wp_name = match.white_player_name
+      bp_name = match.black_player_name
+      event = ASR::EventFinder.find(
+        tags: match.tags.collect(&:phrase),
+        handles: [bp_name, wp_name],
+        date: match.completed_at)
+      return nil unless event
+      w_reg = Registration.where(event_id: event.id, handle: wp_name)
+      b_reg = Registration.where(event_id: event.id, handle: bp_name)
+      {
+        white_player: w_reg,
+        black_player: b_reg,
+        winner: match.won_by =~ "W" ? w_reg : b_reg,
+        loser: match.won_by =~ "W" ? b_reg : w_reg,
+        division: w_reg.division
+      }
     end
 
 end

@@ -67,18 +67,6 @@ class Registration < ActiveRecord::Base
     self.points.map { |point| point.count }.inject(:+)
   end
 
-  def self.find_by_handle_and_server_id(handle, server_id, options = {})
-    opts = { ignore_case: false }.merge(options)
-    query = opts[:ignore_case] ?
-              'LOWER(accounts.handle) = LOWER(?) AND servers.id = ?' :
-              'accounts.handle = ? AND servers.id = ?'
-
-    Registration.
-      includes(account: [:server]).
-      where(query, handle, server_id).
-      first
-  end
-
   # def points_this_month
   #   return 0 if self.points.empty?
   #   points = self.points.select { |point| point.created_at.month == Time.now.month }
