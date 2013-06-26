@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def report_bug_alert
+    github_url = "https://github.com/andrewhl/AdvancedStudyRoom/issues?state=open"
+    content_tag :div, class: 'alert alert-info bug-report' do
+      content_tag(:p) { content_tag :strong, "Hi! We're in beta. Spot a bug? Help us out!" } +
+      link_to('Report Bug', github_url, class: 'btn btn-info')
+    end
+  end
+
   def pages
     pages = []
     Page.all.each do |page|
