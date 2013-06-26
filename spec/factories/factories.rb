@@ -83,16 +83,11 @@ FactoryGirl.define do
     end
   end
 
-  factory :division do
-    tier
+  factory :registration_group do
     ruleset
     minimum_players 2
     maximum_players 50
     index 1
-
-    factory :beta_division do
-      association :tier, factory: :beta_tier
-    end
   end
 
   factory :registration, :aliases => [:black_player, :white_player] do

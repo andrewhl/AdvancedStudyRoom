@@ -2,14 +2,10 @@ require 'spec_helper'
 
 describe ASR::MatchValidator do
 
-  let!(:division) { FactoryGirl.create(:division) }
-  let!(:division_ruleset) { division.ruleset }
-  let!(:tier_ruleset) { division.tier.ruleset }
-  let!(:event_ruleset) { division.tier.event.ruleset }
-  let!(:rule_merger) { ASR::RuleMerger.new(event_ruleset, tier_ruleset, division_ruleset) }
-
   subject(:rule_checker) do
-    ASR::MatchValidator.new(rule_merger.rules)
+    reg_group = FactoryGirl.create(:registration_group)
+    rules = reg_group.ruleset
+    ASR::MatchValidator.new(rules)
   end
 
   describe "general rule validations" do
