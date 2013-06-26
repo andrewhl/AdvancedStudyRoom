@@ -28,6 +28,13 @@
             %th Server
             %td= @event.server.try(:name)
           %tr
+            %th Date Range
+            %td
+
+              = @event.starts_at.try(:strftime, '%d %m %Y')
+              \-
+              = @event.ends_at.try(:strftime, '%d %m %Y')
+          %tr
             %th Description
             %td= truncate(@event.description, length: 800)
           %tr

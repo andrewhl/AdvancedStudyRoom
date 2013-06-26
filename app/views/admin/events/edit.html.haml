@@ -5,6 +5,10 @@
   = f.input :name
   = f.input :event_type, collection: ['League', 'Tournament'], default: 1, label: 'Event Type'
   = f.input :server_id, collection: Server.all, include_blank: false
+  / = f.input :opens_at, as: :date
+  / = f.input :closes_at, as: :date
+  = f.input :starts_at, as: :date
+  = f.input :ends_at, as: :date
   = f.input :description, input_html: { class: 'markItUp' }
   = f.input :prizes_description, input_html: { class: 'markItUp' }
 
