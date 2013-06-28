@@ -42,8 +42,8 @@ class Account < ActiveRecord::Base
   def self.find_by_handle_and_server_id(handle, server_id, options = {})
     opts = { ignore_case: false }.merge(options)
     query = opts[:ignore_case] ?
-              'LOWER(accounts.handle) = LOWER(?) AND servers.id = ?' :
-              'accounts.handle = ? AND servers.id = ?'
+              'LOWER(accounts.handle) = LOWER(?) AND server_id = ?' :
+              'accounts.handle = ? AND server_id = ?'
 
     Account.where(query, handle, server_id).first
   end
