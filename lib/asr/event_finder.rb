@@ -8,7 +8,7 @@ module ASR
       date = args[:date]
 
       # that has an eventtag in tags
-      event_tag = EventTag.where('LOWER(phrase) IN ?', tags).first
+      event_tag = EventTag.where('LOWER(phrase) IN (?)', tags).first
       return nil unless event_tag
 
       regs = Registration.joins(:account, :event).where(
