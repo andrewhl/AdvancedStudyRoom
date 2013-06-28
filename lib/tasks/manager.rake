@@ -298,19 +298,24 @@ namespace :manager do
     def get_match_event_related_attributes(match)
       wp_name = match.white_player_name
       bp_name = match.black_player_name
+
       event = ASR::EventFinder.find(
         tags: match.tags.collect(&:phrase),
         handles: [bp_name, wp_name],
         date: match.completed_at)
       return nil unless event
-      w_reg = Registration.where(event_id: event.id, handle: wp_name)
-      b_reg = Registration.where(event_id: event.id, handle: bp_name)
+
+      w_reg = Registration.joins(:account).where(
+        'event_id = ? AND accounts.handle = ?', event.id, wp_name).first
+      b_reg = Registration.joins(:account).where(
+        'event_id = ? AND accounts.handle = ?', event.id, bp_name).first
+
       {
         white_player: w_reg,
         black_player: b_reg,
-        winner: match.won_by =~ "W" ? w_reg : b_reg,
-        loser: match.won_by =~ "W" ? b_reg : w_reg,
-        division: w_reg.division
+        winner: match.won_by == "W" ? w_reg : b_reg,
+        loser: match.won_by == "B" ? w_reg : b_reg,
+        division_id: w_reg.division_id
       }
     end
 
