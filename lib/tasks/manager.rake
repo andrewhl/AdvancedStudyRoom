@@ -264,12 +264,10 @@ namespace :manager do
     event.tiers.each do |tier|
       new_tier = new_event.tiers.create(tier.attributes.merge(id: nil, event_id: nil), without_protection: true)
       new_tier.create_ruleset(tier.ruleset.attributes.merge(id: nil, rulesetable_id: nil, rulesetable_type: nil), without_protection: true)
-      # new_tier.create_point_ruleset(tier.point_ruleset.attributes.merge(id: nil, pointable_id: nil, pointable_type: nil), without_protection: true)
 
       tier.divisions.each do |div|
         new_division = new_tier.divisions.create(div.attributes.merge(id: nil, tier_id: nil), without_protection: true)
         new_division.create_ruleset(div.ruleset.attributes.merge(id: nil, rulesetable_id: nil, rulesetable_type: nil), without_protection: true)
-        # new_division.create_point_ruleset(division.point_ruleset.attributes.merge(id: nil, pointable_id: nil, pointable_type: nil), without_protection: true)
         div.registrations.each do |reg|
           new_division.registrations.create(reg.attributes.merge(
             id: nil,
@@ -280,6 +278,12 @@ namespace :manager do
       end
     end
 
+    # Copy unnassigned registrations
+    event.registrations.where(division_id: nil).each do |reg|
+      event.registrations.create(reg.attributes.merge(
+        id: nil,
+        points_this_month: 0), without_protection: true)
+    end
 
   end
 
