@@ -17,7 +17,7 @@
           = link_to 'Edit Event', edit_admin_event_path(@event), class: 'btn btn-primary'
         - elsif current_user.nil?
           = link_to 'Sign up to join this event!', signup_path, class: 'btn btn-primary'
-        - elsif current_user
+        - elsif current_user && @event.open?
           - reg = current_user.registrations.active.where(event_id: @event.id).first
           - if reg
             = link_to 'Quit', quit_event_path(@event), class: 'btn btn-danger',

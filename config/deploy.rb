@@ -1,6 +1,6 @@
 set :application,       'AdvancedStudyRoom'
 set :rails_env,         'staging'
-set :domain,            'web-app@test.advancedstudyroom.com'
+set :domain,            'web-app@asr.guzart.com'
 set :deploy_to,         '/home/web-app/apps/advanced_study_room'
 set :repository,        'https://github.com/andrewhl/AdvancedStudyRoom'
 set :revision,          'origin/develop'

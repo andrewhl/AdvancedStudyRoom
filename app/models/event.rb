@@ -46,8 +46,11 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :registrations, allow_destroy: true
   accepts_nested_attributes_for :tags
 
-  scope :leagues, where(event_type: 'League')
-  scope :tournaments, where(event_type: 'Tournament')
+  def open?
+    # TODO: Use the opens_at and closes_at dates once these are in use
+    return true if starts_at.nil? || ends_at.nil?
+    starts_at.to_date <= Time.zone.today && Time.zone.today <= ends_at.to_date
+  end
 
   def ruleset_id=(id)
     self.ruleset = Ruleset.find(id)

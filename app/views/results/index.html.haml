@@ -11,7 +11,7 @@
   .divisions_nav
     - if current_user.nil?
       = link_to 'Join The League', signup_path, class: 'btn btn-primary'
-    - elsif !current_user.registrations.where(event_id: @event.id).exists?
+    - elsif !current_user.registrations.where(event_id: @event.id, active: true).exists? && @event.open?
       = link_to 'Join The League', join_event_path(@event), class: 'btn btn-primary',
         method: :post
 

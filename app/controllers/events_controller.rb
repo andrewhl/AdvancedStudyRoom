@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def leagues
-    @leagues = Event.leagues
+    @leagues = Event.all
   end
 
   def join
