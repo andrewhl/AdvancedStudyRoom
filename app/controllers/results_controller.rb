@@ -13,7 +13,7 @@ class ResultsController < ApplicationController
 
   def main_event
     return redirect_to :no_events unless Event.any?
-    redirect_to action: :index, event_id: Event.first.id
+    redirect_to action: :index, event_id: Event.first(order: 'ends_at DESC').id
   end
 
   private

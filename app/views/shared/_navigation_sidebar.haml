@@ -12,7 +12,7 @@
 
       %li.nav-header
         Leagues
-      - Event.all.each do |event|
+      - Event.all(order: 'ends_at DESC').each do |event|
         %li
           = link_to event_path(event) do
             %i.icon-flag
