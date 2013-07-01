@@ -5,7 +5,7 @@ class ResultsController < ApplicationController
 
   def index
     match_finder = ASR::MatchFinder.new(event: @event)
-    @matches = match_finder.by_division(@division).accepted.with_points
+    @matches = @event.matches.accepted.with_points #match_finder.by_division(@division).accepted.with_points
   end
 
   def no_events
