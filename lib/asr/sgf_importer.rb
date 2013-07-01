@@ -9,6 +9,7 @@ module ASR
     DOC
 
     attr_reader :server
+    attr_accessor :ignore_case
 
     def initialize(args)
       @server  = args[:server]
@@ -44,7 +45,7 @@ module ASR
       end
 
       def collect_valid_sgf_data(sgf_files, handle)
-        validator = ASR::SGFValidator.new(handle: handle, ignore_case: @ignore_case)
+        validator = ASR::SGFValidator.new(handle: handle, ignore_case: ignore_case)
         sgf_files.collect do |entry|
           next unless File.exists?(entry)
           sgf_data = SGFData.new(file_path: entry)
@@ -55,8 +56,8 @@ module ASR
 
       def build_matches(sgf_data_list)
         sgf_data_list.collect do |sgf_data|
-          w_player = Account.find_by_handle_and_server_id(sgf_data.white_player, server.id, ignore_case: @ignore_case)
-          b_player = Account.find_by_handle_and_server_id(sgf_data.black_player, server.id, ignore_case: @ignore_case)
+          w_player = Account.find_by_handle_and_server_id(sgf_data.white_player, server.id, ignore_case: ignore_case)
+          b_player = Account.find_by_handle_and_server_id(sgf_data.black_player, server.id, ignore_case: ignore_case)
 
           next if w_player.nil? || b_player.nil? ||
                   Match.where(digest: match_digest(sgf_data)).exists?
