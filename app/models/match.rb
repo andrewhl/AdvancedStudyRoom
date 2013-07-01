@@ -78,7 +78,6 @@ class Match < ActiveRecord::Base
   scope :tagged_and_valid, where("valid_match = ? and tagged = ?", true, true).order("completed_at")
   scope :accepted, where("valid_match = true and tagged = true").order("completed_at")
   scope :by_event, lambda { |e| select('matches.*').joins(:black_player).where('registrations.event_id = ?', e.id) }
-  scope :with_points, where("has_points = true")
 
   CANADIAN = 'Canadian'
   BYO_YOMI = 'byo-yomi'

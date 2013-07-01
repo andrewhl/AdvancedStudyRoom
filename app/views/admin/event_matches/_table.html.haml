@@ -18,7 +18,10 @@
           %p.text-warning
             No matches
 
+
+
     - matches.each do |match|
+      - binding.pry
       %tr
         %td= match.completed_at.strftime('%Y-%m-%d')
         %td= match.division.display_name

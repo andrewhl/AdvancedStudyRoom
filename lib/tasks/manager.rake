@@ -59,6 +59,8 @@ namespace :manager do
       logger.w "Processing #{handle}..."
       started_at = Time.now.to_f
 
+
+
       matches = importer.import_matches(handle: handle, year: year, month: month)
       matches.each do |match|
         next unless match_attrs = get_match_event_related_attributes(match)
@@ -98,8 +100,10 @@ namespace :manager do
 
         matches = importer.import_matches(handle: account.handle, year: year, month: month)
 
+        # binding.pry if account.handle == "Backpack1"
+
         matches.each do |match|
-          next unless match_attrs = get_match_event_related_attributes(match)
+          next unless match_attrs = get_match_event_related_attributes(match, true) # will ignore case
           match.attributes = match_attrs
           match.save
         end
@@ -339,7 +343,8 @@ namespace :manager do
       ActiveRecord::Base.connection.execute("UPDATE events SET updated_at = NOW()")
     end
 
-    def get_match_event_related_attributes(match)
+    def get_match_event_related_attributes(match, options={})
+      opts = { ignore_case: false }.merge(options)
       wp_name = match.white_player_name
       bp_name = match.black_player_name
 
@@ -349,10 +354,18 @@ namespace :manager do
         date: match.completed_at)
       return nil unless event
 
+      if opts[:ignore_case]
+        wp_name = wp_name.downcase
+        bp_name = bp_name.downcase
+        query = 'event_id = ? AND LOWER(accounts.handle) = ?'
+      else
+        query = 'event_id = ? AND accounts.handle = ?'
+      end
+
       w_reg = Registration.joins(:account).where(
-        'event_id = ? AND accounts.handle = ?', event.id, wp_name).first
+        query, event.id, wp_name).first
       b_reg = Registration.joins(:account).where(
-        'event_id = ? AND accounts.handle = ?', event.id, bp_name).first
+        query, event.id, bp_name).first
 
       {
         white_player: w_reg,
