@@ -22,7 +22,7 @@ module ASR
 
       regs = Registration.joins(:account, :event).where(
         "#{handle_query} IN (?) AND registrations.event_id = ?
-         AND events.starts_at <= ? AND events.ends_at >= ?",
+         AND DATE(events.starts_at) <= DATE(?) AND DATE(events.ends_at) >= DATE(?)",
         handles, event_tag.event_id, date, date)
 
       # TODO: this prevents using the same tag for multiple league months

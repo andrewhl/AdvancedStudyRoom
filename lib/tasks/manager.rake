@@ -99,11 +99,9 @@ namespace :manager do
         month = args[:month]
 
         matches = importer.import_matches(handle: account.handle, year: year, month: month)
-
-        # binding.pry if account.handle == "Backpack1"
-
         matches.each do |match|
-          next unless match_attrs = get_match_event_related_attributes(match, true) # will ignore case
+          match_attrs = get_match_event_related_attributes(match, ignore_case: importer.ignore_case)
+          next unless match_attrs
           match.attributes = match_attrs
           match.save
         end
