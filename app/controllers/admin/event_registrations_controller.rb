@@ -16,7 +16,9 @@ class Admin::EventRegistrationsController < ApplicationController
       next unless div_id.present?
       count += 1
       reg = @registrations.find(reg_id)
-      reg.update_attribute(:division_id, div_id.to_i > 0 ? div_id : nil)
+      division_id = div_id.to_i
+      reg.update_attribute(:division_id, division_id > 0 ? division_id : nil)
+      reg.update_attribute(:active, false) if division_id == -2
     end
 
     if count == 0
