@@ -15,21 +15,22 @@ namespace :manager do
 
       server = Server.where(name: 'KGS').first
       importer = ASR::SGFImporter.new(server: server, ignore_case: true)
-      accounts = server.accounts
 
+      accounts = server.accounts
+      handles = (ENV['handle'] || ENV['handles']).split(',')
+      accounts = server.accounts.where('handle IN (?)', handles) if handles.any?
 
       accounts.each do |account|
         logger.w "Processing #{account.handle}..."
 
         started_at = Time.now.to_f
-
         year = ENV['year'] || Time.now.year
         month = ENV['month'] || Time.now.month
         matches = importer.import_matches(handle: account.handle, year: year, month: month)
 
-        # matches.each(&:save)
         matches.each do |match|
-          next unless match_attrs = get_match_event_related_attributes(match)
+          match_attrs = get_match_event_related_attributes(match, ignore_case: importer.ignore_case)
+          next unless match_attrs
           match.attributes = match_attrs
           match.save
         end
@@ -37,44 +38,6 @@ namespace :manager do
         time = (Time.now.to_f - started_at).to_f.round(2)
         logger.wl "#{matches.size} matches in #{time} seconds"
       end
-    rescue Exception => exc
-      logger.error exc
-    ensure
-      touch_events
-      logger.ended
-    end
-  end
-
-  desc "Import matches for a single registration"
-  task :import_for => :environment do |t, args|
-
-    begin
-      logger.started('IMPORT')
-
-      server = Server.where(name: 'KGS').first
-      importer = ASR::SGFImporter.new(server: server, ignore_case: true)
-
-      handle = args[:registration]
-      year = args[:year]
-      month = args[:month]
-
-      logger.w "Processing #{handle}..."
-      started_at = Time.now.to_f
-
-      handle = ENV['handle']
-      year = ENV['year'] || Time.now.year
-      month = ENV['month'] || Time.now.month
-
-      matches = importer.import_matches(handle: handle, year: year, month: month)
-      matches.each do |match|
-        next unless match_attrs = get_match_event_related_attributes(match)
-        match.attributes = match_attrs
-        match.save
-      end
-
-      time = (Time.now.to_f - started_at).to_f.round(2)
-      logger.wl "#{matches.size} matches in #{time} seconds"
-
     rescue Exception => exc
       logger.error exc
     ensure
