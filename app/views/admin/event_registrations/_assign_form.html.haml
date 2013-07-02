@@ -21,6 +21,7 @@
 
   - unless registrations.blank?
     .clearfix
-      = submit_tag "Save #{division.try(:display_name)} Changes",
+      - submit_label = division.try(:display_name).presence || 'Unassigned'
+      = submit_tag "Save #{submit_label} Changes",
         {confirm: 'Are you sure you want to change the assignment of these players?',
          class: 'btn btn-primary pull-right'}
