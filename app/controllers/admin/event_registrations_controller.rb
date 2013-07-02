@@ -22,6 +22,7 @@ class Admin::EventRegistrationsController < ApplicationController
     if count == 0
       flash[:warning] = 'No players were assigned'
     else
+      @event.touch
       flash[:success] = "#{count} players #{count == 1 ? 'was' : 'were'} assigned to a different division"
     end
 
@@ -29,6 +30,7 @@ class Admin::EventRegistrationsController < ApplicationController
   end
 
   def deactivate
+    @event.touch
     @registration.update_attribute(active: false)
     redirect_to @registration.account.user, flash: {success: "The registration has been deactivated."}
   end
