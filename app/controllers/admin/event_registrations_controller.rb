@@ -33,7 +33,9 @@ class Admin::EventRegistrationsController < ApplicationController
 
   def deactivate
     @event.touch
-    @registration.update_attribute(active: false)
+    @registration.active = false
+    @registration.division_id = nil
+    @registration.save
     redirect_to @registration.account.user, flash: {success: "The registration has been deactivated."}
   end
 
