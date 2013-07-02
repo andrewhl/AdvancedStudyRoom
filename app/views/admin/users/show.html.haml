@@ -30,7 +30,7 @@
       %th Server
       %th Actions
   %tbody
-    - @user.registrations.active.each do |reg|
+    - @user.registrations.each do |reg|
       %tr
         %td= link_to_results(reg.event.name, reg)
         %td= link_to_results(reg.division.try(:name) || 'Pending...', reg)
@@ -54,7 +54,7 @@
         %td= account.server.name
         %td= account.rank ? Utilities.format_rank(account.rank) : "Pending..."
         %td= link_to "#{account.handle}", admin_account_path(account)
-        %td= account.registrations.active.count
+        %td= account.registrations.count
         %td
           = link_to 'Edit', edit_admin_account_path(account), class: 'btn btn-mini'
           = link_to 'Delete', admin_account_path(account), method: :delete, class: 'btn btn-mini btn-danger',
