@@ -31,7 +31,6 @@ class Event < ActiveRecord::Base
   has_many :matches, through: :divisions
   has_many :tags, class_name: 'EventTag', dependent: :destroy, order: 'phrase ASC'
   has_many :tiers, dependent: :destroy, order: '"tiers"."index" ASC'
-  has_many :event_tags
 
   attr_accessible :ruleset_id,
                   :name,
