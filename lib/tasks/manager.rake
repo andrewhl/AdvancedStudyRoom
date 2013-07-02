@@ -17,7 +17,7 @@ namespace :manager do
       importer = ASR::SGFImporter.new(server: server, ignore_case: true)
 
       accounts = server.accounts
-      handles = (ENV['handle'] || ENV['handles']).split(',')
+      handles = (ENV['handle'] || ENV['handles']).to_s.split(',')
       accounts = server.accounts.where('handle IN (?)', handles) if handles.any?
 
       accounts.each do |account|
