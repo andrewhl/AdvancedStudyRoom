@@ -135,8 +135,9 @@ namespace :manager do
 
         finder = ASR::MatchFinder.new(
           event: event,
-          from: Time.now.beginning_of_month,
-          to: Time.now.end_of_month)
+          from: event.starts_at,
+          to: event.ends_at)
+
         point_manager = ASR::PointManager.new(finder: finder)
         event.registrations.each do |reg|
           logger.w "Calculating #{reg.handle}..."
