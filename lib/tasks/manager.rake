@@ -46,7 +46,7 @@ namespace :manager do
   end
 
   desc "Import matches for a single registration"
-  task :import_for, [:registration, :year, :month] => :environment do |t, args|
+  task :import_for => :environment do |t, args|
 
     begin
       logger.started('IMPORT')
@@ -61,7 +61,9 @@ namespace :manager do
       logger.w "Processing #{handle}..."
       started_at = Time.now.to_f
 
-
+      handle = ENV['handle']
+      year = ENV['year'] || Time.now.year
+      month = ENV['month'] || Time.now.month
 
       matches = importer.import_matches(handle: handle, year: year, month: month)
       matches.each do |match|
