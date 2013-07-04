@@ -10,16 +10,16 @@ module ASR
       @filepath = args[:file_path]
     end
 
-    def method_missing(method_name)
-      data[method_name.to_sym]
-    end
-
     def game
       @game ||= parse_game
     end
 
     def data
       @data ||= prepare_data
+    end
+
+    def method_missing(method_name, args, &block)
+      data.send(method_name.to_sym, *args, &block)
     end
 
     private

@@ -8,31 +8,20 @@ module ASR
       an ActiveRecord Match object.
     DOC
 
-    attr_reader :server
+    attr_accessor :url, :scraper, :validator, :ignore_case
 
     def initialize(args)
-      @server  = args[:server]
-      @scraper = args[:scraper]
-      @ignore_case = args[:ignore_case] || false
+      self.url          = args[:url]
+      self.scraper      = args[:scraper]
+      self.validator    = args[:validator]
+      self.ignore_case  = args[:ignore_case] || false
     end
 
     def import_matches(args)
-      now = Time.now
-      args = {
-        handles: [],
-        handle: nil,
-        year: now.year,
-        month: now.month }.merge(args)
-      args[:handles] << args[:handle]
-
+      opts = normalize_import_matches_args(args)
       import_month_matches(args[:handles], args[:month], args[:year])
-    end
-
-    private
-
-      def import_month_matches(handles, month, year)
-        imported_matches = handles.collect do |handle|
-          sgf_files = scraper.scrape_games(handle: handle, month: month, year: year)
+      imported_matches = opts[:handles].collect do |handle|
+          sgf_files = scraper.scrape_games(handle: handle, month: opts[:month], year: opts[:year])
           return [] unless sgf_files
 
           valid_sgf_data = collect_valid_sgf_data(sgf_files, handle)
@@ -41,6 +30,18 @@ module ASR
 
         FileUtils.remove_dir(scraper.target_path) rescue nil
         imported_matches.flatten
+    end
+
+    private
+
+      def normalize_import_matches_args(args)
+        now = Time.now
+        args = {
+          handles: [],
+          handle: nil,
+          year: now.year,
+          month: now.month }.merge(args)
+        args[:handles] << args[:handle]
       end
 
       def collect_valid_sgf_data(sgf_files, handle)

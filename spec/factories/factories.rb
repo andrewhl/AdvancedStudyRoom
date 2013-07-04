@@ -87,6 +87,10 @@ FactoryGirl.define do
     url "http://www.example.com"
   end
 
+  factory :sgf_data, class: ASR::SGFData do
+    initialize_with { new('./support/DrGoPlayer-kabradarf.sgf') }
+  end
+
   factory :user do
     username { Faker::Internet.user_name }
     first_name "John"
