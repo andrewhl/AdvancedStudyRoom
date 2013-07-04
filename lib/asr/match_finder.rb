@@ -27,7 +27,7 @@ module ASR
         select('matches.*').
         joins(:black_player).
         where(
-          "registrations.event_id = ? AND completed_at >= ? AND completed_at <= ?",
+          "registrations.event_id = ? AND DATE(completed_at) >= ? AND DATE(completed_at) <= ?",
           event.id, @from.strftime("%Y-%m-%d"), @to.strftime("%Y-%m-%d")).
         order(:completed_at, :created_at)
     end
