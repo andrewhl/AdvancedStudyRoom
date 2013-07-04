@@ -24,8 +24,9 @@ AdvancedStudyRoom::Application.routes.draw do
   # Results
   #
 
-  get 'results',        to: 'results#main_event'
-  get 'no_events',      to: 'results#no_events'
+  get 'results',            to: 'results#main_event'
+  get 'no_events',          to: 'results#no_events'
+  get 'events/:id/results', to: 'results#show', as: 'event_results'
 
   #
   # Events

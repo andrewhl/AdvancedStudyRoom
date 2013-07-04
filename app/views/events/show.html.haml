@@ -1,6 +1,9 @@
 - @body_id = 'event-show'
 - @title << "#{@event.name}"
 
+.alert.alert-success
+  = link_to "Results", event_results_path(@event), class: 'btn btn-success'
+
 .tabbable
   %ul.nav.nav-tabs
     %li.active

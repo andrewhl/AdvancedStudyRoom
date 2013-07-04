@@ -1,11 +1,14 @@
 class ResultsController < ApplicationController
 
   before_filter :initialize_params
-  before_filter :load_event, :load_division, only: [:index]
+  before_filter :load_event, :load_division, only: [:index, :show]
 
   def index
-    match_finder = ASR::MatchFinder.new(event: @event)
-    @matches = @event.matches.accepted.with_points #match_finder.by_division(@division).accepted.with_points
+    @matches = load_matches(@event)
+  end
+
+  def show
+    @matches = load_matches(@event)
   end
 
   def no_events
@@ -24,7 +27,7 @@ class ResultsController < ApplicationController
     end
 
     def load_event
-      @event = Event.find(params[:event_id])
+      @event = Event.find(params[:id]) || Event.find(params[:event_id])
     end
 
     def load_division
@@ -32,6 +35,10 @@ class ResultsController < ApplicationController
       @division = div_id.blank? ?
                     @event.divisions.first :
                     Division.find(div_id)
+    end
+
+    def load_matches(event)
+      event.matches.accepted.with_points
     end
 
 end
