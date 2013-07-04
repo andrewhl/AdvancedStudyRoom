@@ -56,7 +56,7 @@ group :test, :development do
   gem 'rb-fchange',             '~> 0.0.6', :require => false
   gem 'growl',                  '>= 1.0.3'
   gem 'guard-rspec',            '~> 2.5.2'
-  gem 'mocha',                  '~> 0.13.3', :require => false
+  gem 'mocha',                  '~> 0.14.0', :require => false
   gem 'timecop',                '~> 0.6.1'
   gem 'fakeweb',                '~> 1.3.0'
   gem 'ffaker',                 '~> 1.16.0'
