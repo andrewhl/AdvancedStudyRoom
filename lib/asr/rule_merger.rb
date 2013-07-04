@@ -14,11 +14,10 @@ module ASR
     private
       def get_ruleset_attrs(rulesets)
         ruleset_attributes = {}
-
         rulesets.each do |ruleset|
-          ruleset_attributes.merge!(ruleset.rules.reject { |k, v| v.nil? })
+          valid_rules = ruleset.rules.reject { |k, v| v.nil? }
+          ruleset_attributes.merge!(valid_rules)
         end
-
         ruleset_attributes
       end
   end
