@@ -5,13 +5,12 @@
 unless User.exists?(admin: true)
   puts 'Creating admin user...'
   User.create(
-    { first_name: 'admin',
-      username: 'admin',
-      email: 'admin@test.com',
-      password: 'admin1',
-      password_confirmation: 'admin1',
-      admin: true },
-    without_protection: true)
+    first_name: 'admin',
+    username: 'admin',
+    email: 'admin@test.com',
+    password: 'admin1',
+    password_confirmation: 'admin1',
+    admin: true)
 end
 
 #
@@ -21,10 +20,9 @@ end
 unless kgs_server = Server.find_by_name('KGS')
   puts 'Creating KGS server...'
   kgs_server = Server.create(
-    { name: 'KGS',
-      url: 'www.gokgs.com',
-      scraper_class_name: 'KgsScraper::Scraper'},
-    without_protection: true)
+    name: 'KGS',
+    url: 'www.gokgs.com',
+    scraper_class_name: 'KgsScraper::Scraper')
 end
 
 #
