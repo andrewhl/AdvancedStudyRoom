@@ -3,10 +3,6 @@ class ResultsController < ApplicationController
   before_filter :initialize_params
   before_filter :load_event, :load_division, only: [:index, :show]
 
-  def index
-    @matches = load_matches(@event)
-  end
-
   def show
     @matches = load_matches(@event)
   end
@@ -16,7 +12,7 @@ class ResultsController < ApplicationController
 
   def main_event
     return redirect_to :no_events unless Event.any?
-    redirect_to action: :index, event_id: Event.first(order: 'ends_at DESC').id
+    redirect_to action: :show, id: Event.first(order: 'ends_at DESC').id
   end
 
   private
@@ -27,7 +23,7 @@ class ResultsController < ApplicationController
     end
 
     def load_event
-      @event = Event.find(params[:id]) || Event.find(params[:event_id])
+      @event = Event.find(params[:id])
     end
 
     def load_division
