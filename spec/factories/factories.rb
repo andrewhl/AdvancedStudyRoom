@@ -1,18 +1,63 @@
 FactoryGirl.define do
 
-  factory :user do
-    username { Faker::Internet.user_name }
-    first_name "John"
-    last_name "Doe"
-    email { Faker::Internet.email }
-    password "foobar"
-    password_confirmation "foobar"
-  end
-
   factory :account do
     server
     handle { Faker::Internet.user_name }
     rank { Random.rand(-30..9) }
+  end
+
+  factory :event do
+    ruleset
+    name "ASR League"
+  end
+
+  factory :event_tag do
+    phrase { '#' + Faker::HipsterIpsum.word }
+    event
+  end
+
+  factory :match do
+    digest { Time.now.to_s }
+    completed_at {"#{Time.now.strftime("%Y-%m-%d %T")}"}
+
+    after(:build) do |m, ev|
+      m.match_detail = FactoryGirl.build(:match_detail)
+    end
+
+    # factory :match_with_tags do
+    #   ignore do
+    #     tags_count 1
+    #   end
+
+    #   after(:build) do |m, ev|
+    #     FactoryGirl.build_list(:match_tag, ev.tags_count, match: m)
+    #   end
+    # end
+  end
+
+  factory :match_detail do
+    komi 6.5
+    win_info "Resign"
+    main_time_control 2400.0
+    handicap 0
+  end
+
+  factory :match_tag do
+    node 5
+    phrase { '#' + Faker::HipsterIpsum.word }
+  end
+
+  factory :registration, :aliases => [:black_player, :white_player] do
+    ignore do
+      handle { Faker::Internet.user_name }
+      server
+    end
+
+    division
+
+    after_build do |reg, ev|
+      reg.account = FactoryGirl.build(:account, handle: ev.handle, server: ev.server || FactoryGirl.build(:server))
+    end
   end
 
   factory :ruleset do
@@ -37,80 +82,18 @@ FactoryGirl.define do
     handicap_required false
   end
 
-
-  factory :match do
-    completed_at {"#{Time.now.strftime("%Y-%m-%d %T")}"}
-    komi 6.5
-    win_info "Resign"
-    main_time_control 2400.0
-    black_player
-    white_player
-    handicap 0
-    digest { Time.now.to_s }
-
-    factory :match_with_tags do
-      ignore do
-        tags_count 1
-      end
-
-      after(:build) do |m, ev|
-        FactoryGirl.build_list(:match_tag, ev.tags_count, match: m)
-      end
-    end
-  end
-
-  factory :match_tag do
-    node 5
-    phrase { '#' + Faker::HipsterIpsum.word }
-  end
-
-  factory :event do
-    ruleset
-    name "ASR League"
-  end
-
-  factory :event_tag do
-    phrase { '#' + Faker::HipsterIpsum.word }
-    event
-  end
-
-  factory :tier do
-    event
-    ruleset
-    name "Alpha"
-    factory :beta_tier do
-      name "Beta"
-    end
-  end
-
-  factory :division do
-    tier
-    ruleset
-    minimum_players 2
-    maximum_players 50
-    index 1
-
-    factory :beta_division do
-      association :tier, factory: :beta_tier
-    end
-  end
-
-  factory :registration, :aliases => [:black_player, :white_player] do
-    ignore do
-      handle { Faker::Internet.user_name }
-      server
-    end
-
-    division
-
-    after_build do |reg, ev|
-      reg.account = FactoryGirl.build(:account, handle: ev.handle, server: ev.server || FactoryGirl.build(:server))
-    end
-  end
-
   factory :server do
     name "KGS"
     url "http://www.example.com"
+  end
+
+  factory :user do
+    username { Faker::Internet.user_name }
+    first_name "John"
+    last_name "Doe"
+    email { Faker::Internet.email }
+    password "foobar"
+    password_confirmation "foobar"
   end
 
 end
