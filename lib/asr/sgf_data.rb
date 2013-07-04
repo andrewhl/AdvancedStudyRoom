@@ -8,19 +8,18 @@ module ASR
 
     def initialize(args)
       @filepath = args[:file_path]
-      @game_info = {}
-      @comments = {}
-
-      @game = parse_game
-      clean_data
     end
 
-    def self.valid?
-      return @valid
+    def game
+      @game ||= parse_game
     end
 
-    def method_missing(method_name)
-      data[method_name.to_sym]
+    def data
+      @data ||= prepare_data
+    end
+
+    def method_missing(method_name, args, &block)
+      data.send(method_name.to_sym, *args, &block)
     end
 
     private
@@ -28,12 +27,12 @@ module ASR
       def parse_game
         parser = SGF::Parser.new
         tree = parser.parse(@filepath)
-        game = tree.games.first
+        tree.games.first
       end
 
-      def clean_data
-        preparer = ASR::SGFPreparer.new @game
-        @data = preparer.data
+      def prepare_data
+        preparer = ASR::SGFPreparer.new game
+        preparer.data
       end
 
   end

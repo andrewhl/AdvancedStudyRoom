@@ -29,3 +29,5 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_examples = true
 end
+
+Mocha::Configuration.prevent(:stubbing_non_existent_method)
