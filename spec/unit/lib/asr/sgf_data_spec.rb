@@ -8,9 +8,12 @@ describe ASR::SGFData do
 
   it { should be_true }
 
-  it "should prepare its data using SGFPreparer" do
-    ASR::SGFPreparer.any_instance.expects(:data).returns({})
-    ASR::SGFData.new(file_path: "./spec/support/DrGoPlayer-kabradarf.sgf")
+  context "#data" do
+    it "should prepare its data using SGFPreparer" do
+      ASR::SGFPreparer.any_instance.expects(:data).returns({})
+      sgf_data = ASR::SGFData.new(file_path: "./spec/support/DrGoPlayer-kabradarf.sgf")
+      sgf_data.data
+    end
   end
 
 end
