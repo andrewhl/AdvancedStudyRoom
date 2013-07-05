@@ -22,6 +22,13 @@ describe ASR::SGFValidator do
     end
   end
 
+  context '#validate' do
+    it "should return true if sgf_data is valid" do
+      sgf_data = FactoryGirl.build(:sgf_data)
+      sgf_validator.validate(sgf_data).should be_true
+    end
+  end
+
   # context '#validate' do
 
   #   before(:each) do
