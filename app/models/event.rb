@@ -65,4 +65,23 @@ class Event < ActiveRecord::Base
     registrations.count
   end
 
+  def self.check_registration_parity(args)
+    ignore_case = args[:ignore_case] || true
+    date = args[:date]
+    query = "accounts.handle = ?"
+    if ignore_case
+      query = "LOWER(accounts.handle) = ?"
+    end
+    query += " AND DATE(event_periods.starts_at) <= ? AND DATE(event_periods.ends_at) >= ?"
+
+    handles = args[:handles]
+
+    registrations = handles.collect do |handle|
+      Registration.joins(:account, :event_period).where(query, handle, date, date)
+    end
+
+    test_id = registrations[0].event_period_id
+    registrations.any? { |reg| reg.event_period_id != test_id } ? false : true
+  end
+
 end

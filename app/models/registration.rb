@@ -4,7 +4,7 @@
 #
 #  id                    :integer          not null, primary key
 #  account_id            :integer
-#  event_id              :integer
+#  event_period_id       :integer
 #  registration_group_id :integer
 #  total_points          :float            default(0.0), not null
 #  float                 :float            default(0.0), not null
@@ -16,9 +16,10 @@
 class Registration < ActiveRecord::Base
 
   belongs_to :account
-  belongs_to :event
+  belongs_to :event_period
   belongs_to :registration_group
 
+  has_one :event, through: :event_period
   has_one :server, through: :account
   has_one :user, through: :account
 

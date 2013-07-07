@@ -1,7 +1,7 @@
 class CreateRegistrationGroups < ActiveRecord::Migration
   def change
     create_table :registration_groups do |t|
-      t.integer :event_id
+      t.integer :event_period_id
       t.integer :parent_id
       t.integer :registration_group_type_id
       t.string  :name, limit: 100
@@ -12,7 +12,7 @@ class CreateRegistrationGroups < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :registration_groups, :event_id
+    add_index :registration_groups, :event_period_id
     add_index :registration_groups, :parent_id
   end
 end

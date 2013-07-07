@@ -3,23 +3,24 @@
 # Table name: registration_groups
 #
 #  id                         :integer          not null, primary key
-#  event_id                   :integer
+#  event_period_id            :integer
 #  parent_id                  :integer
 #  registration_group_type_id :integer
 #  name                       :string(100)
 #  min_registrations          :integer
 #  max_registrations          :integer
+#  position                   :integer          default(1), not null
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
-#  position                   :integer          default(1), not null
 #
 
 class RegistrationGroup < ActiveRecord::Base
 
-  belongs_to :event
+  belongs_to :event_period
   belongs_to :parent, primary_key: :parent_id, class_name: 'RegistrationGroup'
   belongs_to :registration_group_type
 
+  has_one :event, through: :event_period
   has_one :point_ruleset, as: :point_rulesetable
   has_one :ruleset, as: :rulesetable
 
