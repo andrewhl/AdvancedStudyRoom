@@ -4,7 +4,7 @@
 #
 #  id                    :integer          not null, primary key
 #  account_id            :integer
-#  event_period_id       :integer
+#  event_id              :integer
 #  registration_group_id :integer
 #  total_points          :float            default(0.0), not null
 #  float                 :float            default(0.0), not null

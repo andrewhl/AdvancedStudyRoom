@@ -3,7 +3,7 @@
 # Table name: registration_groups
 #
 #  id                         :integer          not null, primary key
-#  event_period_id            :integer
+#  event_id                   :integer
 #  parent_id                  :integer
 #  registration_group_type_id :integer
 #  name                       :string(100)
