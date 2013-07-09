@@ -209,7 +209,7 @@ ActiveRecord::Schema.define(:version => 20130707001119) do
   end
 
   create_table "registration_groups", :force => true do |t|
-    t.integer  "event_id"
+    t.integer  "event_period_id"
     t.integer  "parent_id"
     t.integer  "registration_group_type_id"
     t.string   "name",                       :limit => 100
@@ -220,12 +220,12 @@ ActiveRecord::Schema.define(:version => 20130707001119) do
     t.datetime "updated_at",                                               :null => false
   end
 
-  add_index "registration_groups", ["event_id"], :name => "index_registration_groups_on_event_id"
+  add_index "registration_groups", ["event_period_id"], :name => "index_registration_groups_on_event_period_id"
   add_index "registration_groups", ["parent_id"], :name => "index_registration_groups_on_parent_id"
 
   create_table "registrations", :force => true do |t|
     t.integer  "account_id"
-    t.integer  "event_id"
+    t.integer  "event_period_id"
     t.integer  "registration_group_id"
     t.float    "total_points",          :default => 0.0,  :null => false
     t.float    "float",                 :default => 0.0,  :null => false
@@ -236,7 +236,7 @@ ActiveRecord::Schema.define(:version => 20130707001119) do
 
   add_index "registrations", ["account_id"], :name => "index_registrations_on_account_id"
   add_index "registrations", ["active"], :name => "index_registrations_on_active"
-  add_index "registrations", ["event_id"], :name => "index_registrations_on_event_id"
+  add_index "registrations", ["event_period_id"], :name => "index_registrations_on_event_period_id"
   add_index "registrations", ["registration_group_id"], :name => "index_registrations_on_registration_group_id"
 
   create_table "rulesets", :force => true do |t|
