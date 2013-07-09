@@ -29,12 +29,6 @@ class Registration < ActiveRecord::Base
 
   scope :active, where(active: true)
 
-  attr_accessible :account_id,
-                  :registration_group_id,
-                  :event_id,
-                  :registration
-
-
   def get_rank
     return "?" unless last_match = own_matches.last
     last_match.comments.select { |c| c.handle == handle }.first.try(:rank) || "?"
