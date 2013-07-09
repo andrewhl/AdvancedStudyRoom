@@ -65,43 +65,33 @@ class Event < ActiveRecord::Base
     registrations.count
   end
 
+  # Test that the following conditions on the registrations for the given handles are true:
+  #     * Both registrations exist
+  #     * Both registrations exist in the same event period for the given date
+  #     * Both registrations belong to the same registration group
   def self.check_registration_parity(args)
-    handles = args[:handles]
-    raise "Invalid number of handles" if handles.size < 2
+    ignore_case = args[:ignore_case] && true
     date = args[:date]
-    ignore_case = args[:ignore_case] || true
+    handles = args[:handles]
+    raise ArgumentError.new('Invalid number of handles') unless handles.size == 2
 
-    query = ignore_case ? "LOWER(accounts.handle) = LOWER(?)" :
-                          "accounts.handle = ?"
-    query << " AND DATE(event_periods.starts_at) <= ? AND DATE(event_periods.ends_at) >= ?"
-
-"
-  SELECT registrations.*
-    FROM registrations
-    INNER JOIN accounts ON accounts.id = registrations.account_id
-    INNER JOIN registrations AS other_regs ON other_regs.event_period_id = registrations.event_period_id
-    INNER JOIN accounts AS other_accounts ON other_accounts.id = other_regs.account_id
-    INNER JOIN event_periods ON event_periods.id = registrations.event_period_id
-    WHERE accounts.handle = #{first_handle} AND other_accounts.handle = #{second_handle}
-      AND DATE(event_periods.starts_at) <= ? AND DATE(event_periods.ends_at) >= ?
-"
-    registrations = handles.collect do |handle|
-      Registration.joins(:account, :event_period).where(query, handle, date, date)
-    end.flatten
-
-    first_handle = handles.first
-    # TODO: Case Sensitive
-    handle_regs = registrations.reject { |reg| reg.handle != first_handle }
-    other_regs = registrations - handle_regs
-    event_ids = handle_regs.collect do |reg|
-      other_regs_in_same_period = other_regs.select { |o_reg| o_reg.event_period_id == reg.event_period_id }
-      other_regs_in_same_period.size == (handles.size - 1) ?
-        reg.event_period_id : nil
-    end.compact
-
-    event_ids.any?
-    # test_id = registrations[0].event_period_id
-    # registrations.any? { |reg| reg.event_period_id != test_id } ? false : true
+    query = "
+      SELECT COUNT(*)
+        FROM registrations
+        INNER JOIN accounts ON accounts.id = registrations.account_id
+        INNER JOIN registrations AS other_regs ON other_regs.event_period_id = registrations.event_period_id
+        INNER JOIN accounts AS other_accounts ON other_accounts.id = other_regs.account_id
+        INNER JOIN event_periods ON event_periods.id = registrations.event_period_id
+        WHERE
+          accounts.handle = '%s'
+          AND other_accounts.handle = '%s'
+          AND '%s' >= DATE(event_periods.starts_at)
+          AND '%s' <= DATE(event_periods.ends_at)
+          AND registrations.registration_group_id > 0
+          AND registrations.registration_group_id = other_regs.registration_group_id"
+    query.gsub!(/(\w+\.handle)[^']+'%s'/, 'LOWER(\1) = LOWER(\'%s\')') if ignore_case
+    query = ActiveRecord::Base.send(:sanitize_sql_array, [query, handles[0], handles[1], date, date])
+    Registration.count_by_sql(query) > 0
   end
 
 end

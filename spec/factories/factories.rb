@@ -8,7 +8,14 @@ FactoryGirl.define do
 
   factory :event do
     ruleset
-    name "ASR League"
+    name 'ASR League'
+  end
+
+  factory :event_period do
+    starts_at '2013-07-06 20:11:19'
+    ends_at   '2013-07-06 20:11:19'
+    opens_at  '2013-07-06 20:11:19'
+    closes_at '2013-07-06 20:11:19'
   end
 
   factory :event_tag do
@@ -18,7 +25,7 @@ FactoryGirl.define do
 
   factory :match do
     digest { Time.now.to_s }
-    completed_at {"#{Time.now.strftime("%Y-%m-%d %T")}"}
+    completed_at { "#{Time.now.strftime("%Y-%m-%d %T")}" }
 
     after(:build) do |m, ev|
       m.match_detail = FactoryGirl.build(:match_detail)
@@ -53,11 +60,13 @@ FactoryGirl.define do
       server
     end
 
-    division
-
     after_build do |reg, ev|
-      reg.account = FactoryGirl.build(:account, handle: ev.handle, server: ev.server || FactoryGirl.build(:server))
+      reg.account = FactoryGirl.build(:account, handle: ev.handle) if ev.handle
+      reg.server = ev.server if ev.server
     end
+  end
+
+  factory :registration_group do
   end
 
   factory :ruleset do
