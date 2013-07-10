@@ -31,3 +31,4 @@ RSpec.configure do |config|
 end
 
 Mocha::Configuration.prevent(:stubbing_non_existent_method)
+FactoryGirl.duplicate_attribute_assignment_from_initialize_with = false

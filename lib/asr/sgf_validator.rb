@@ -2,7 +2,7 @@ module ASR
 
   class SGFValidator
 
-    attr_accessor :handle, :ignore_case, :sgf_data
+    attr_accessor :handle, :ignore_case, :sgf_data, :errors
 
     def initialize(args)
       @handle       = args[:handle]
@@ -16,10 +16,15 @@ module ASR
 
     def validate(sgf_data)
       self.sgf_data = sgf_data
+      self.errors = []
 
       valid = true
-      checks = %W(player_presence result is_player_in_game registrations)
-      checks.each { |check| valid &&= self.send("check_" + check) }
+      %w(player_presence result is_player_in_game registrations_parity).each do |check|
+        check_value = self.send("check_" + check)
+        valid &&= check_value
+        self.errors << check unless check_value
+      end
+
       valid
     end
 
@@ -63,24 +68,11 @@ module ASR
         white_player? || black_player?
       end
 
-      def handle_query_condition
-        ignore_case ? 'LOWER(accounts.handle) = LOWER(?)' : 'accounts.handle = ?'
-      end
-
-      def registrations
-        Registration.where(handle_query_condition, handle).includes(:account)
-      end
-
-      def check_registrations
-        valid = false
-        registrations_in_a_group = registrations.reject { |r| r.registration_group_id.nil? }
-        registrations_in_a_group.each do |reg|
-          opp_handle = white_player? ? black_player_handle : white_player_handle
-          valid ||= Registration.joins(:account).where(
-                      "#{handle_query_condition} AND registration_group_id = ?",
-                      opp_handle, reg.registration_group_id).any?
-        end
-        valid
+      def check_registrations_parity
+        Event.check_registration_parity(
+          ignore_case: ignore_case,
+          handles: [white_player_handle, black_player_handle],
+          date: data[:date_of_game])
       end
   end
 end

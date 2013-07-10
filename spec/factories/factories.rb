@@ -97,7 +97,11 @@ FactoryGirl.define do
   end
 
   factory :sgf_data, class: ASR::SGFData do
-    initialize_with { new(file_path: './spec/support/DrGoPlayer-kabradarf.sgf') }
+    ignore do
+      filepath './spec/support/DrGoPlayer-kabradarf.sgf'
+    end
+
+    initialize_with { new({ :file_path => filepath }) }
   end
 
   factory :user do

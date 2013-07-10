@@ -19,7 +19,13 @@ module ASR
     end
 
     def method_missing(method_name, args, &block)
-      data.send(method_name.to_sym, *args, &block)
+      name = method_name.to_s
+      if name.end_with?('=')
+        name.gsub!('=', '')
+        data[name.to_sym] = args
+      else
+        data.send(method_name.to_sym, *args, &block)
+      end
     end
 
     private
