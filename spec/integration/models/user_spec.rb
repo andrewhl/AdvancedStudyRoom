@@ -34,31 +34,9 @@ require 'spec_helper'
 
 describe User do
 
-  before(:each) do
-    @user = FactoryGirl.build(:user, :email => "test@test.com")
-  end
-
-  describe "authentication" do
-    it "should create a new instance given a valid attribute" do
-      # user = FactoryGirl.create(:user)
-      @user.should be_valid
-    end
-
-    it "should not create a new instance given an invalid attribute" do
-      user = FactoryGirl.build(:user, :email => "foo@")
-      user.should_not be_valid
-    end
-
-    it "should not allow multiple users with the same email" do
-      @user.save
-      user2 = FactoryGirl.build(:user, :email => "test@test.com").should_not be_valid
-    end
-
-  end
-
-  describe "admin users" do
-    subject(:admin) { FactoryGirl.create(:user, admin: true) }
-    it { should be_valid }
+  it "should not allow multiple users with the same email" do
+    user = FactoryGirl.create(:user, :email => "test@test.com")
+    FactoryGirl.build(:user, :email => "test@test.com").should_not be_valid
   end
 
 end
