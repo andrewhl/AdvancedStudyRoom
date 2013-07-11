@@ -48,6 +48,20 @@ group :development do
   gem 'vlad',                   '~> 2.5.0', :require => false
   gem 'vlad-extras',            '~> 0.7.2', :require => false
   gem 'vlad-git',               '~> 2.2.0', :require => false
+  gem 'annotate',               '>= 2.5.0'
+end
+
+group :test do
+  gem 'guard-rspec',            '~> 2.5.2'
+  gem 'mocha',                  '~> 0.14.0', :require => false
+  gem 'turnip',                 '~> 1.1.0'
+  gem 'capybara',               '~> 2.1.0'
+  gem 'poltergeist',            '~> 1.3.0'
+  gem 'timecop',                '~> 0.6.1'
+  gem 'fakeweb',                '~> 1.3.0'
+  gem 'ffaker',                 '~> 1.16.0'
+  gem 'rspec-rails',            '~> 2.0'
+  gem 'factory_girl_rails',     '~> 3.0'
 end
 
 group :test, :development do
@@ -55,19 +69,10 @@ group :test, :development do
   gem 'rb-fsevent',             '~> 0.9.3', :require => false
   gem 'rb-fchange',             '~> 0.0.6', :require => false
   gem 'growl',                  '>= 1.0.3'
-  gem 'guard-rspec',            '~> 2.5.2'
-  gem 'mocha',                  '~> 0.14.0', :require => false
-  gem 'timecop',                '~> 0.6.1'
-  gem 'fakeweb',                '~> 1.3.0'
-  gem 'ffaker',                 '~> 1.16.0'
-  gem 'rspec-rails',            '~> 2.0'
   gem 'binding_of_caller',      '~> 0.7.1'
   gem 'better_errors',          '~> 0.8.0'
-  gem 'sqlite3',                '>= 1.3.7'
   gem 'pry',                    '~> 0.9.12'
   gem 'pry-stack_explorer',     '~> 0.4.9'
   gem 'pry-debugger',           '~> 0.2.2'
-  gem 'annotate',               '>= 2.5.0'
-  gem 'factory_girl_rails',     '~> 3.0'
   gem 'zeus',                   '>= 0.13.3'
 end
