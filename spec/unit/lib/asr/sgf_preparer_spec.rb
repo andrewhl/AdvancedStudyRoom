@@ -24,8 +24,8 @@ describe ASR::SGFPreparer do
 
   describe "when preparing SGFData" do
 
-    let!(:sgf_data_object) { ASR::SGFData.new file_path: "./spec/support/DrGoPlayer-kabradarf.sgf" }
-    subject(:prepared_sgf) { ASR::SGFPreparer.new sgf_data_object.game }
+    let(:sgf_data) { FactoryGirl.build(:sgf_data) }
+    subject(:prepared_sgf) { ASR::SGFPreparer.new sgf_data.game }
 
     it "should convert board size to integer" do
       prepared_sgf.game_info["SZ"] = "19"

@@ -9,12 +9,6 @@ describe ASR::SGFExtractor do
       handle:       "kabradarf")
   }
 
-  context "initialization" do
-    it { should be_true }
-    it { should be_an_instance_of(ASR::SGFExtractor) }
-    it { should respond_to :extract_games }
-  end
-
   describe "extraction" do
     it "should extract the games" do
       extractor.extract_games
