@@ -8,13 +8,16 @@ require 'mocha/setup'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'turnip/capybara'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+spec_steps = Dir[Rails.root.join("spec/steps/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.mock_with :mocha
-  config.include Devise::TestHelpers, type: :controller
   config.use_transactional_examples = true
+  config.include Devise::TestHelpers, type: :controller
+  spec_steps.each { |f| config.include File.basename(f, '.rb').classify.pluralize.constantize }
 end
 
 Mocha::Configuration.prevent(:stubbing_non_existent_method)
