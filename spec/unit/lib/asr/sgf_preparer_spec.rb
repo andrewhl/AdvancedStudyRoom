@@ -24,8 +24,12 @@ describe ASR::SGFPreparer do
 
   describe "when preparing SGFData" do
 
-    let(:sgf_data) { FactoryGirl.build(:sgf_data) }
-    subject(:prepared_sgf) { ASR::SGFPreparer.new sgf_data.game }
+    before :all do 
+      sgf_data = FactoryGirl.build(:sgf_data, use_file: true)
+      @sgf_game = sgf_data.game
+    end
+
+    subject(:prepared_sgf) { ASR::SGFPreparer.new @sgf_game.dup }
 
     it "should convert board size to integer" do
       prepared_sgf.game_info["SZ"] = "19"

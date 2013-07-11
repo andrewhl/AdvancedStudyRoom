@@ -98,10 +98,37 @@ FactoryGirl.define do
 
   factory :sgf_data, class: ASR::SGFData do
     ignore do
-      filepath './spec/support/DrGoPlayer-kabradarf.sgf'
+      use_file false
+      data(
+        date_of_game: '2012-09-01',
+        filename: 'DrGoPlayer-kabradarf.sgf',
+        white_player: 'DrGoPlayer',
+        white_rank: -2,
+        black_player: 'kabradarf',
+        black_rank: -31,
+        handicap: 0,
+        board_size: 19,
+        komi: 6.5,
+        rules: 'Japanese',
+        time_limit: 1500,
+        match_type: nil,
+        overtime: { main: '5', stones_periods: '30', type: 'byo-yomi' },
+        result: { win_info: 'Resign', win_type: :resignation, winner: 'B' },
+        tags: '#asr',
+        comments: [
+          { comment: 'hi', date: '2012-09-01', handle: 'DrGoPlayer',
+            line_number: 1, node_number: 0, rank: '3k' },
+          { comment: '#asr league', date: '2012-09-01', handle: 'kabradarf',
+            line_number: 5, node_number: 0, rank: '-' } ])
     end
 
-    initialize_with { new({ :file_path => filepath }) }
+    initialize_with do
+      if use_file
+        new(file_path: './spec/support/DrGoPlayer-kabradarf.sgf')
+      else
+        new(data: data)
+      end
+    end
   end
 
   factory :user do
