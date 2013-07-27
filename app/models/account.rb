@@ -20,10 +20,10 @@ class Account < ActiveRecord::Base
   has_many :events, through: :registrations
   has_many :registrations, dependent: :destroy
 
-  attr_accessible :handle,
-                  :rank,
-                  :server_id,
-                  :user_id
+  # attr_accessible :handle,
+  #                 :rank,
+  #                 :server_id,
+  #                 :user_id
 
   validates :handle, presence: true, uniqueness: {scope: :server_id}
   validates :server_id, presence: true

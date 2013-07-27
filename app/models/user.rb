@@ -46,15 +46,6 @@ class User < ActiveRecord::Base
   scope :normal, where(admin: false)
 
   attr_accessor   :login
-  attr_accessible :login,
-                  :username,
-                  :email,
-                  :password,
-                  :password_confirmation,
-                  :remember_me,
-                  :first_name,
-                  :last_name,
-                  :accounts_attributes
 
   accepts_nested_attributes_for :accounts, allow_destroy: true
 

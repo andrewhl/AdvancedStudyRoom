@@ -24,7 +24,6 @@ class Event < ActiveRecord::Base
 
   has_one :ruleset, as: :rulesetable, dependent: :destroy, autosave: true
   has_one :point_ruleset, as: :point_rulesetable, dependent: :destroy, autosave: true
-  has_one :event_type
 
   has_many :accounts, through: :registrations
   has_many :registration_groups, order: '"registration_groups"."index" ASC'
@@ -32,15 +31,6 @@ class Event < ActiveRecord::Base
   has_many :matches, through: :registration_groups
   has_many :registration_groups
   has_many :tags, class_name: 'EventTag', dependent: :destroy, order: 'phrase ASC'
-
-  attr_accessible :ruleset_id,
-                  :name,
-                  :start_time
-                  :end_time
-                  :event_type
-                  :server
-                  :locked
-                  :ruleset_attributes
 
   accepts_nested_attributes_for :registration_groups, allow_destroy: true
   accepts_nested_attributes_for :ruleset, allow_destroy: true

@@ -24,13 +24,14 @@ class RegistrationGroup < ActiveRecord::Base
   has_one :point_ruleset, as: :point_rulesetable
   has_one :ruleset, as: :rulesetable
 
+  has_many :children, foreign_key: :parent_id, class_name: 'RegistrationGroup'
   has_many :matches
   has_many :registrations
 
   # OPTIMIZE: No model should have accept_nested_attributes_for, we should use a form model
   accepts_nested_attributes_for :ruleset, allow_destroy: true
   # OPTIMIZE: No model should have attr_accessible, we should use strong parameters
-  attr_accessible :event_id, :integer, :max_registrations, :min_registrations, :name, :parent_id, :registration_group_type_id
+  # attr_accessible :event_id, :integer, :max_registrations, :min_registrations, :name, :parent_id, :registration_group_type_id
 
   validate :players_within_range
 

@@ -16,8 +16,8 @@ class EventTag < ActiveRecord::Base
 
   belongs_to :event
 
-  attr_accessible :phrase,
-                  :node_limit
+  # attr_accessible :phrase,
+  #                 :node_limit
 
   validates :event_id,
     presence: true

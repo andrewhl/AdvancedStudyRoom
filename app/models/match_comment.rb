@@ -15,13 +15,13 @@
 #
 
 class MatchComment < ActiveRecord::Base
-  attr_accessible :comment,
-                  :match_id,
-                  :node_number,
-                  :line_number,
-                  :handle,
-                  :rank,
-                  :date
+  # attr_accessible :comment,
+  #                 :match_id,
+  #                 :node_number,
+  #                 :line_number,
+  #                 :handle,
+  #                 :rank,
+  #                 :date
 
   belongs_to :match
 end

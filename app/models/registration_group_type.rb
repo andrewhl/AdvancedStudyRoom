@@ -12,5 +12,5 @@
 class RegistrationGroupType < ActiveRecord::Base
   has_many :registration_groups
 
-  attr_accessible :description, :name
+  # attr_accessible :description, :name
 end

@@ -57,7 +57,8 @@ module AdvancedStudyRoom
     # This will create an empty whitelist of attributes available for mass-assignment for all models
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
-    config.active_record.whitelist_attributes = true
+    # TODO: refactor security to .... I DON'T KNOW. STOP ASKING ME. GOD.
+    config.active_record.whitelist_attributes = false
 
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_url_options = { host: ENV['ASR_SMTP_DOMAIN'] }

@@ -13,7 +13,6 @@
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :date, :body, :title, :user_id, :permalink
 
   belongs_to :user
 

@@ -16,14 +16,14 @@
 #
 
 class PointRuleset < ActiveRecord::Base
-  attr_accessible :points_per_win,
-                  :points_per_loss,
-                  :win_decay,
-                  :loss_decay,
-                  :pointable_type,
-                  :pointable_id,
-                  :max_matches_per_opponent,
-                  :min_points_per_match
+  # attr_accessible :points_per_win,
+  #                 :points_per_loss,
+  #                 :win_decay,
+  #                 :loss_decay,
+  #                 :pointable_type,
+  #                 :pointable_id,
+  #                 :max_matches_per_opponent,
+  #                 :min_points_per_match
 
   belongs_to :point_rulesetable, :polymorphic => true
 

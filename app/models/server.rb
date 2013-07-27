@@ -11,7 +11,6 @@
 #
 
 class Server < ActiveRecord::Base
-  attr_accessible :name, :url
 
   has_many :accounts
   has_many :events

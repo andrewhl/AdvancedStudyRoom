@@ -16,7 +16,7 @@
 class Page < ActiveRecord::Base
   before_validation :format_permalink
 
-  attr_accessible :date, :body, :title, :user_id, :sort_order
+  # attr_accessible :date, :body, :title, :user_id, :sort_order
 
   validates_presence_of :permalink, :title, :body
   validates_uniqueness_of :title

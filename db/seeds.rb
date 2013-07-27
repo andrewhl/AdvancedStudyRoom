@@ -1,3 +1,5 @@
+Rails.config.active_record.whitelist_attributes = false
+
 #
 # ADMIN
 #
@@ -55,10 +57,9 @@ ruleset_attrs = {
 unless asr_league_event = Event.find_by_name('ASR League')
   puts 'Creating ASR League event...'
   asr_league_event = Event.create(
-    { name: 'ASR League',
-      event_type: 'League',
-      server: kgs_server },
-    without_protection: true)
+    name: 'ASR League',
+    server: kgs_server)
+  asr_league_event.create_event_type(name: 'League')
   asr_league_event.create_ruleset!(ruleset_attrs.merge(name: "ASR League", rulesetable_type: 'Event'))
 end
 
@@ -83,8 +84,8 @@ asr_leage_tags = ['#asr', '#asrleague']
 asr_leage_tags.each do |phrase|
   next if EventTag.find_by_phrase(phrase)
   puts 'Creating ASR League tag...'
-  EventTag.create({phrase: phrase, event: asr_league_event, node_limit: 100}, without_protection: true)
-  EventTag.create({phrase: phrase, event: asr_league_event, node_limit: 100}, without_protection: true)
+  EventTag.create(phrase: phrase, event: asr_league_event, node_limit: 100)
+  EventTag.create(phrase: phrase, event: asr_league_event, node_limit: 100)
 end
 
 #
@@ -92,10 +93,10 @@ end
 #
 
 %w{Alpha Beta Gamma Delta}.each_with_index do |name, index|
-  next if asr_league_event.tiers.find_by_name(name).present?
+  next if asr_league_event.registration_groups.find_by_name(name).present?
   puts "Creating ASR League #{name} tier..."
-  tier = asr_league_event.tiers.create(name: name, index: index + 1)
-  tier.create_ruleset(name: "ASR League #{name}", rulesetable_type: 'Tier')
+  tier = asr_league_event.registration_groups.create(name: name, index: index + 1)
+  tier.create_ruleset(name: "ASR League #{name}", rulesetable_type: 'RegistrationGroup')
 end
 
 #
@@ -106,20 +107,19 @@ def create_divisions(tier, count)
   count.times do |n|
     div_index = n + 1
     div_name = "#{tier.name} #{div_index}"
-    next if tier.divisions.find_by_name(div_name).present?
+    next if tier.children.find_by_name(div_name).present?
     puts "Creating #{div_name} division..."
     division = tier.divisions.create!(
-      { name: div_name,
-        index: div_index,
-        minimum_players: 2,
-        maximum_players: 200},
-      without_protection: true)
+      name: div_name,
+      index: div_index,
+      minimum_players: 2,
+      maximum_players: 200)
     division.create_ruleset!(name: "ASR League #{div_name}", rulesetable_type: 'Division')
   end
 end
 
 
-asr_league_event.tiers.each do |tier|
+asr_league_event.registration_groups.each do |tier|
   count = case tier.name
     when 'Alpha' then 1
     when 'Beta'  then 2
