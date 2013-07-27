@@ -22,4 +22,10 @@ end
 
 Mocha::Configuration.prevent(:stubbing_non_existent_method)
 FactoryGirl.duplicate_attribute_assignment_from_initialize_with = false
+
+Capybara.register_driver :poltergeist do |app|
+  options = { js_errors: true }
+  Capybara::Poltergeist::Driver.new(app, options)
+end
+Capybara.default_driver = :poltergeist
 Capybara.javascript_driver = :poltergeist

@@ -1,4 +1,4 @@
-Rails.config.active_record.whitelist_attributes = false
+Rails.configuration.active_record.whitelist_attributes = false
 
 #
 # ADMIN
