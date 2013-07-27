@@ -23,10 +23,17 @@
         %tbody
           %tr
             %th Event Type
-            %td= @event.event_type.name.titleize
+            %td= @event.event_type.to_s.titleize
           %tr
             %th Server
             %td= @event.server.try(:name)
+          %tr
+            %th Date Range
+            %td
+
+              = @event.starts_at.try(:strftime, '%d %m %Y')
+              \-
+              = @event.ends_at.try(:strftime, '%d %m %Y')
           %tr
             %th Description
             %td= truncate(@event.description, length: 800)

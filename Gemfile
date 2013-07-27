@@ -43,7 +43,6 @@ end
 
 group :development do
   gem 'thin',                   '~> 1.5.1'
-  gem 'awesome_print',          '>= 1.1.0'
   gem 'quiet_assets',           '>= 1.0.2'
   gem 'vlad',                   '~> 2.5.0', :require => false
   gem 'vlad-extras',            '~> 0.7.2', :require => false
@@ -51,6 +50,7 @@ group :development do
 end
 
 group :test, :development do
+  gem 'awesome_print',          '>= 1.1.0'
   gem 'rb-inotify',             '~> 0.8.8', :require => false
   gem 'rb-fsevent',             '~> 0.9.3', :require => false
   gem 'rb-fchange',             '~> 0.0.6', :require => false
