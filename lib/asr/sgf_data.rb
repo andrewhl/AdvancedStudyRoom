@@ -8,6 +8,7 @@ module ASR
 
     def initialize(args)
       @filepath = args[:file_path]
+      @data     = args[:data]
     end
 
     def game

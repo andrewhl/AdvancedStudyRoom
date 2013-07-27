@@ -5,6 +5,9 @@
 			"path": "app"
 		},
 		{
+			"path": "spec"
+		},
+		{
 			"file_exclude_patterns":
 			[
 				".swp"
@@ -13,6 +16,7 @@
 			[
 				"app",
 				"script",
+				"spec",
 				"tmp",
 				".zeus.sock"
 			],

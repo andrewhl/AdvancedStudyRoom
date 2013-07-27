@@ -36,9 +36,12 @@ describe ASR::SGFValidator do
       sgf_validator.validate(sgf_data).should be_false
     end
 
-    it "should return false if there is not result or win_info" do
+    it "should return false if there is no result" do
       sgf_data.result = nil
       sgf_validator.validate(sgf_data).should be_false
+    end
+
+    it "should return false if there is no win_info" do
       sgf_data.result = { win_info: '' }
       sgf_validator.validate(sgf_data).should be_false
     end
