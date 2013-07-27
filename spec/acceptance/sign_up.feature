@@ -5,5 +5,5 @@ Feature: A user can signup
 
   Scenario: Visitor signs up with valid data
     When I go to the sign up page
-    And I sign up with "email@example.com" and "password"
+    And I sign up with "john", "email@example.com", "password" and "johndoe"
     Then I should be signed in
