@@ -1,5 +1,6 @@
 module SignUpSteps
   step 'I go to the sign up page' do
+    FactoryGirl.create(:server, :name => 'KGS')
     visit signup_path
     find('#new_user').should be_true
   end

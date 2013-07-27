@@ -35,6 +35,8 @@ require 'spec_helper'
 describe User do
 
   it "should not allow multiple users with the same email" do
+    # TODO: Use database cleaner
+    User.destroy_all
     user = FactoryGirl.create(:user, :email => "test@test.com")
     FactoryGirl.build(:user, :email => "test@test.com").should_not be_valid
   end

@@ -60,7 +60,6 @@ group :test do
   gem 'timecop',                '~> 0.6.1'
   gem 'fakeweb',                '~> 1.3.0'
   gem 'ffaker',                 '~> 1.16.0'
-  gem 'rspec-rails',            '~> 2.0'
   gem 'factory_girl_rails',     '~> 3.0'
 end
 
@@ -75,4 +74,5 @@ group :test, :development do
   gem 'pry-stack_explorer',     '~> 0.4.9'
   gem 'pry-debugger',           '~> 0.2.2'
   gem 'zeus',                   '>= 0.13.3'
+  gem 'rspec-rails',            '~> 2.0'
 end

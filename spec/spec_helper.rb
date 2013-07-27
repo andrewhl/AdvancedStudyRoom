@@ -15,16 +15,21 @@ spec_steps = Dir[Rails.root.join("spec/steps/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.mock_with :mocha
-  config.use_transactional_examples = true
+  config.use_transactional_examples = false
   config.include Devise::TestHelpers, type: :controller
   spec_steps.each { |f| config.include File.basename(f, '.rb').classify.pluralize.constantize }
+  # config.around(:each, type: :feature, javascript: true) do |example|
+  #    DatabaseCleaner.strategy = :truncation
+  #    example.run
+  #    DatabaseCleaner.strategy = :transaction
+  #  end
 end
 
 Mocha::Configuration.prevent(:stubbing_non_existent_method)
 FactoryGirl.duplicate_attribute_assignment_from_initialize_with = false
 
 Capybara.register_driver :poltergeist do |app|
-  options = { js_errors: true }
+  options = { js_errors: false }
   Capybara::Poltergeist::Driver.new(app, options)
 end
 Capybara.default_driver = :poltergeist

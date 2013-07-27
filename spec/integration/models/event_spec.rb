@@ -6,6 +6,9 @@ describe Event do
     let(:args) { { date: '2012-09-01', handles: ['kabradarf', 'DrGoPlayer'], ignore_case: true } }
 
     before :each do
+      # TODO: Use database cleaner
+      EventPeriod.destroy_all;RegistrationGroup.destroy_all;Registration.destroy_all;
+
       event_period = FactoryGirl.create(:event_period, starts_at: '2012-09-01', ends_at: '2012-09-30')
       reg_group = FactoryGirl.create(:registration_group, event_period: event_period)
       @registration = FactoryGirl.create(:registration, handle: 'kabradarf',
