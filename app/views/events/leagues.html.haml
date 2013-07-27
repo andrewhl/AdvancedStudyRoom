@@ -17,13 +17,13 @@
       - @leagues.each do |event|
         %tr
           %td= link_to "#{event.name}", event_path(event)
-          %td= event.registrations.active.count
+          %td= event.registrations.count
           %td= event.server.name
           %td= link_to "View Results", event_results_path(event)
           %td
             - if event.open?
               - if current_user
-                - reg = current_user.registrations.active.where(event_id: event.id).first
+                - reg = current_user.registrations.where(event_id: event.id).first
                 - if reg
                   = link_to 'Quit', quit_event_path(event), class: 'btn btn-danger btn-mini',
                     method: :delete, confirm: 'Are you sure you want to quit the league?'
