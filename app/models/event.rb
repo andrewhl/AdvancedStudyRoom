@@ -49,12 +49,12 @@ class Event < ActiveRecord::Base
   def open?
     # TODO: Use the opens_at and closes_at dates once these are in use
     return true if opens_at.nil? || closes_at.nil?
-    opens_at.to_date <= Time.zone.today && Time.zone.today <= closes_at.to_date
+    opens_at.to_date <= Time.zone.today && Time.zone.today <= closes_at.to_date && closes_at.to_date >= Time.zone.today
   end
 
   def live?
     return true if starts_at.nil? || ends_at.nil?
-    starts_at.to_date <= Time.zone.today && Time.zone.today <= ends_at.to_date
+    starts_at.to_date <= Time.zone.today && Time.zone.today <= ends_at.to_date && ends_at.to_date >= Time.zone.today
   end
 
   def ruleset_id=(id)
