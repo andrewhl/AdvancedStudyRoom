@@ -5,12 +5,12 @@ class Admin::EventRegistrationsController < ApplicationController
   before_filter :add_breadcrumbs
 
   def index
-    @registrations = @event.registrations.order("division_id ASC")
+    @registrations = @event.registrations.active.order("division_id ASC")
     @unassigned_players = @registrations.where(division_id: nil)
   end
 
   def assign
-    @registrations = @event.registrations
+    @registrations = @event.registrations.active
     count = 0
     params[:registrations].each do |reg_id, div_id|
       next unless div_id.present?

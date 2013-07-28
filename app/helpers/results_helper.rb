@@ -7,7 +7,7 @@ module ResultsHelper
   def matches_percentage(division)
     # OPTIMIZE: Cache this value instead
     return @matches_percentage if @matches_percentage
-    x = division.registrations.count.to_f
+    x = division.registrations.active.count.to_f
     y = division.point_rules[:max_matches_per_opponent].to_f
     max_possible_matches = ((x ** 2 - x) / 2) * y
 

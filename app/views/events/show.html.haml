@@ -22,7 +22,7 @@
         - elsif current_user.nil? && @event.open?
           = link_to 'Sign up to join this event!', signup_path, class: 'btn btn-primary'
         - elsif current_user && @event.open?
-          - reg = current_user.registrations.where(event_id: @event.id).first
+          - reg = current_user.registrations.active.where(event_id: @event.id).first
           - if reg
             = link_to 'Quit', quit_event_path(@event), class: 'btn btn-danger',
               method: :delete, confirm: 'Are you sure you want to quit the league?'

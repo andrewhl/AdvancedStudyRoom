@@ -21,13 +21,13 @@
       %th Server
       %th Actions
   %tbody
-    - if @user.registrations.empty?
+    - if @user.registrations.active.empty?
       %tr
         %td{colspan: 5}
           %p.text-warning
             You haven't joined any events. Please
             = link_to 'join one', leagues_path
-    - @user.registrations.each do |reg|
+    - @user.registrations.active.each do |reg|
       %tr
         %td= link_to_results(reg.event.name, reg)
         %td= link_to_results(reg.division.try(:name) || 'Pending...', reg)

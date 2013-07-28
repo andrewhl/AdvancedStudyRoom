@@ -12,7 +12,7 @@
     %td= @account.handle
     %td= @account.server.name
     %td= @account.rank ? Utilities.format_rank(account.rank) : "Pending..."
-    %td= @account.registrations.count
+    %td= @account.registrations.active.count
     %td
       = link_to 'Edit', edit_admin_account_path(@account), class: 'btn btn-mini'
       = link_to 'Delete', admin_account_path(@account), method: :delete, class: 'btn btn-mini btn-danger',
