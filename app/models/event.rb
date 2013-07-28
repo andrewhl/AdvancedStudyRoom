@@ -32,6 +32,10 @@ class Event < ActiveRecord::Base
   has_many :tags, class_name: 'EventTag', dependent: :destroy, order: 'phrase ASC'
   has_many :tiers, dependent: :destroy, order: '"tiers"."index" ASC'
 
+  scope :live, where('starts_at IS NOT NULL AND DATE(starts_at) <= CURRENT_DATE AND
+                      ends_at IS NOT NULL AND CURRENT_DATE <= DATE(ends_at)').
+               order('ends_at DESC')
+
   attr_accessible :ruleset_id,
                   :name,
                   :start_time
