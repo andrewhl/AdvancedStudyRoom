@@ -14,8 +14,4 @@ module SignUpSteps
     fill_in 'user_accounts_attributes_0_handle', with: password
     click_button('Sign Up')
   end
-
-  step 'I should be signed in' do
-    page.has_content?('My Profile')
-  end
 end
