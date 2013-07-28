@@ -4,10 +4,10 @@
   %dd= match.division.name
 
   %dt= Match.human_attribute_name(:white_player)
-  %dd= style_handle(Registration.unscoped.find(match.white_player_id), match.winner_id)
+  %dd= style_handle(match.white_player, match.winner_id)
 
   %dt= Match.human_attribute_name(:black_player)
-  %dd= style_handle(Registration.unscoped.find(match.black_player_id), match.winner_id)
+  %dd= style_handle(match.black_player, match.winner_id)
 
   %dt= Match.human_attribute_name(:valid_match)
   %dd= yes_no(match.valid_match)

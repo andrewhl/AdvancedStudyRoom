@@ -18,13 +18,14 @@
           %p.text-warning
             No matches
 
+
+
     - matches.each do |match|
       %tr
         %td= match.completed_at.strftime('%Y-%m-%d')
         %td= match.division.display_name
-        / - binding.pry if (match.white_player.nil? || match.black_player.nil?)
-        %td= style_handle(Registration.unscoped.find(match.white_player_id), match.winner_id)
-        %td= style_handle(Registration.unscoped.find(match.black_player_id), match.winner_id)
+        %td= style_handle(match.white_player, match.winner_id)
+        %td= style_handle(match.black_player, match.winner_id)
         %td= match.win_info
         %td= match.tags.collect { |m| m.phrase }.compact.join(', ')
         - if can? :manage, :matches
