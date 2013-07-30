@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails',                    '3.2.13'
+gem 'rails',                    '3.2.14'
 gem 'haml',                     '~> 4.0.2'
 gem 'pg',                       '~> 0.15.0'
 gem 'redis-rails',              '~> 3.2.3'
