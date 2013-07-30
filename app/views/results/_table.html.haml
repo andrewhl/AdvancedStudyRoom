@@ -16,7 +16,7 @@
         %td= row_i + 1
         %td.not-centered
           = row_player.handle
-        %td.not-centered= row_player.points_this_month
+        %td.not-centered= number_with_precision row_player.points_this_month, :precision => 2
         - division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |col_player, col_i|
           - if col_player == row_player
             %td.cross.result{class: "column-#{col_i} row-#{row_i}"}
