@@ -6,7 +6,6 @@
 #  admin                  :boolean          default(FALSE), not null
 #  email                  :string(255)      default(""), not null
 #  username               :string(255)
-#  password_digest        :string(255)
 #  first_name             :string(255)
 #  last_name              :string(255)
 #  created_at             :datetime         not null

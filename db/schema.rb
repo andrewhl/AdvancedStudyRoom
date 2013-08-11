@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626014613) do
+ActiveRecord::Schema.define(:version => 20130811165316) do
 
   create_table "accounts", :force => true do |t|
     t.string   "handle"
@@ -263,7 +263,6 @@ ActiveRecord::Schema.define(:version => 20130626014613) do
     t.boolean  "admin",                  :default => false, :null => false
     t.string   "email",                  :default => "",    :null => false
     t.string   "username"
-    t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at",                                :null => false

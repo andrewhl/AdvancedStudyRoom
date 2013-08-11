@@ -6,7 +6,6 @@
 #  admin                  :boolean          default(FALSE), not null
 #  email                  :string(255)      default(""), not null
 #  username               :string(255)
-#  password_digest        :string(255)
 #  first_name             :string(255)
 #  last_name              :string(255)
 #  created_at             :datetime         not null
@@ -79,14 +78,6 @@ class User < ActiveRecord::Base
 
   def joined_event? event_id
     events.exists?(id: event_id)
-  end
-
-  alias_method :'dev_valid_password?', :'valid_password?'
-  def valid_password?(password)
-    if self[:password_digest].present?
-      return BCrypt::Password.new(self[:password_digest]) == password
-    end
-    dev_valid_password?(password)
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)
