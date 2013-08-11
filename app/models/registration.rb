@@ -6,11 +6,10 @@
 #  account_id        :integer
 #  event_id          :integer
 #  division_id       :integer
-#  points_this_month :float            default(0.0), not null
-#  float             :float            default(0.0), not null
 #  active            :boolean          default(TRUE), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  points_this_month :float            default(0.0), not null
 #
 
 class Registration < ActiveRecord::Base

@@ -30,6 +30,7 @@
 #  completed_at      :datetime
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  won_by            :string(255)
 #
 
 #  filename          :string(255)
