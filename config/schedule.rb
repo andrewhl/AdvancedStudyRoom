@@ -1,9 +1,10 @@
 # Learn more: http://github.com/javan/whenever
+# http://en.wikipedia.org/wiki/Cron
 
-every 6.hours do
-    rake 'db:backup', output: 'log/db-backup.log'
+every '40 0,6,12,18 * * *' do
+  rake 'db:backup', output: 'log/db-backup.log'
 end
 
 every :hour do
-    rake 'manager:all'
+  rake 'manager:all'
 end
