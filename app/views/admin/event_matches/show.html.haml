@@ -21,5 +21,6 @@
   Tags
   .clearfix.pull-right
     = link_to 'Add Tag', new_admin_match_tag_path(@match), class: 'btn'
+    = link_to 'Fast Tag', auto_tag_admin_match_path(@match), method: :post, class: 'btn'
 
 = render 'admin/match_tags/table', match: @match

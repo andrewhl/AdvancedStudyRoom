@@ -134,6 +134,15 @@ class Match < ActiveRecord::Base
     errors
   end
 
+  def validate_and_tag
+    validator = ASR::MatchValidator.new(division.rules)
+    update_attribute(:valid_match, validator.valid?(self))
+    update_attribute(:validation_errors, validator.errors.join(","))
+
+    tag_checker = ASR::TagChecker.new(event.tags)
+    update_attribute(:tagged, tag_checker.tagged?(tags, event.ruleset.node_limit))
+  end
+
   def self.build_digest(args)
     keys = [:white_handle, :black_handle, :completed_at, :win_info]
     args.assert_valid_keys(*keys)

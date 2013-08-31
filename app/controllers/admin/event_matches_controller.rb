@@ -1,7 +1,7 @@
 class Admin::EventMatchesController < ApplicationController
 
   before_filter :load_event, only: [:index, :new, :create]
-  before_filter :load_match, only: [:show, :edit, :update]
+  before_filter :load_match, only: [:show, :edit, :update, :auto_tag]
 
   before_filter :set_pagination, only: [:index]
   before_filter :add_breadcrumbs, except: [:validate_and_tag, :create]
@@ -40,15 +40,9 @@ class Admin::EventMatchesController < ApplicationController
 
   def validate_and_tag
     match = Match.find(params[:id], include: {division: nil, tags: nil, event: [:tags, :ruleset]})
-    event = match.event
     authorize! :validate_and_tag, match
 
-    validator = ASR::MatchValidator.new(match.division.rules)
-    match.update_attribute(:valid_match, validator.valid?(match))
-    match.update_attribute(:validation_errors, validator.errors.join(","))
-
-    tag_checker = ASR::TagChecker.new(event.tags)
-    match.update_attribute(:tagged, tag_checker.tagged?(match.tags, event.ruleset.node_limit))
+    match.validate_and_tag
 
     msg = ['Match is']
     msg << 'NOT' unless match.valid_match
@@ -60,6 +54,17 @@ class Admin::EventMatchesController < ApplicationController
     redirect_url = admin_event_matches_path(event)
     redirect_url = :back if params[:redirect] == 'back'
     redirect_to redirect_url, flash: {success: msg.join(' ')}
+  end
+
+  def auto_tag
+    phrase = @match.try(:event).try(:tags).try(:first).try(:phrase)
+    if phrase
+      @match.tags.create(phrase: phrase, node: 1, handle: @match.black_player_name)
+      @match.validate_and_tag
+    else
+      flash[:error] = "Event has no tags."
+    end
+    redirect_to admin_match_path(@match)
   end
 
   private
