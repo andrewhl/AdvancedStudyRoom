@@ -20,6 +20,10 @@ class MatchTag < ActiveRecord::Base
 
   attr_accessible :handle, :match_id, :node, :phrase
 
+  validates :node,
+    presence: true,
+    numericality: {only_integer: true, greater_than: 0}
+
   private
 
     def format_phrase

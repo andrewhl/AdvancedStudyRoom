@@ -1,0 +1,9 @@
+- @title << 'Add match'
+
+= simple_form_for @match, url: admin_event_matches_path(@event), validate: true, html: {class: 'form-horizontal'} do |f|
+
+  = f.input :filename, as: :file
+
+  .form-actions
+    = f.submit 'Upload', class: 'btn btn-primary'
+    = link_to 'Back', :back, class: 'btn'

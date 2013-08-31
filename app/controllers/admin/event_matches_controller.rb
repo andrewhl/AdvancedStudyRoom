@@ -1,10 +1,10 @@
 class Admin::EventMatchesController < ApplicationController
 
-  before_filter :load_event, only: [:index]
+  before_filter :load_event, only: [:index, :new, :create]
   before_filter :load_match, only: [:show, :edit, :update]
 
   before_filter :set_pagination, only: [:index]
-  before_filter :add_breadcrumbs, except: [:validate_and_tag]
+  before_filter :add_breadcrumbs, except: [:validate_and_tag, :create]
 
   def index
     query = params[:query]
@@ -16,6 +16,26 @@ class Admin::EventMatchesController < ApplicationController
   end
 
   def show
+  end
+
+  def new
+    @match = Match.new
+  end
+
+  def create
+    file = params[:match][:filename]
+
+    sgf_data = ASR::SGFData.new(file_path: file.path)
+    match_builder = ASR::SGFMatchBuilder.new(server_id: @event.server_id, event_id: @event.id)
+
+    begin
+      match = match_builder.build_match(sgf_data)
+      raise "Match could not be saved" unless match && match.save
+      return redirect_to admin_match_path(match)
+    rescue => e
+      redirect_to admin_event_matches_path, flash: {error: e.message}
+    end
+
   end
 
   def validate_and_tag

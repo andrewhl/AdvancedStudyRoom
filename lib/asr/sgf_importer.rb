@@ -29,6 +29,8 @@ module ASR
       import_month_matches(args[:handles], args[:month], args[:year])
     end
 
+    # TODO: optimize to use ASR::SGFMatchBuilder
+
     private
 
       def import_month_matches(handles, month, year)

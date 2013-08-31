@@ -3,7 +3,7 @@
 = simple_form_for @match_tag, url: admin_match_tags_path(@match), validate: true, html: {class: 'form-horizontal'} do |f|
 
   = f.input :phrase, autofocus: true
-  = f.input :handle, label: 'Player handle'
+  = f.input :handle, label: 'Player handle', collection: [@match.black_player_name, @match.white_player_name]
   = f.input :node, label: 'At Move'
 
   .form-actions
