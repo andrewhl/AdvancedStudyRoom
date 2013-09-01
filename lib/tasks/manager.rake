@@ -214,9 +214,8 @@ namespace :manager do
 
     # Copy unnassigned registrations
     event.registrations.where(division_id: nil).each do |reg|
-      new_event.registrations.create(reg.attributes.merge(
-        id: nil,
-        points_this_month: 0), without_protection: true)
+      new_event.registrations.create(reg.attributes.symbolize_keys.merge(
+        id: nil, points_this_month: 0, updated_at: nil, created_at: nil), without_protection: true)
     end
 
   end
