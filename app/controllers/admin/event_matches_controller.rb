@@ -30,6 +30,8 @@ class Admin::EventMatchesController < ApplicationController
 
     begin
       match = match_builder.build_match(sgf_data)
+      # puts "Match details: " + match.inspect
+      # binding.pry
       raise "Match could not be saved" unless match && match.save
       return redirect_to admin_match_path(match)
     rescue => e
@@ -51,7 +53,7 @@ class Admin::EventMatchesController < ApplicationController
     msg << 'NOT' unless match.tagged
     msg << 'properly tagged'
 
-    redirect_url = admin_event_matches_path(event)
+    redirect_url = admin_event_matches_path(match.event)
     redirect_url = :back if params[:redirect] == 'back'
     redirect_to redirect_url, flash: {success: msg.join(' ')}
   end
