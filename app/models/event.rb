@@ -51,7 +51,6 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :tags
 
   def open?
-    # TODO: Use the opens_at and closes_at dates once these are in use
     return true if opens_at.nil? || closes_at.nil?
     opens_at.to_date <= Time.zone.today && Time.zone.today <= closes_at.to_date
   end

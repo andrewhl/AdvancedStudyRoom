@@ -15,6 +15,9 @@
   %dt= Match.human_attribute_name(:tagged)
   %dd= yes_no(match.tagged)
 
+  %dt= Match.human_attribute_name(:completed_at)
+  %dd= match.completed_at
+
 %dl.dl-horizontal.dl-small.pull-left
   %dt= Match.human_attribute_name(:main_time_control)
   %dd= match.main_time_control

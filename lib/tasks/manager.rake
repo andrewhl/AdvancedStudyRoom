@@ -181,15 +181,19 @@ namespace :manager do
   desc 'Rollover one league into a new month'
   task :rollover => :environment do
 
-    event = Event.find_by_name('ASR League July')
-    new_event = Event.create(event.attributes.merge(id: nil, name: "ASR League September", starts_at: "2013-09-01", ends_at: "2013-09-30"), without_protection: true)
+    event = Event.find_by_name('ASR League August')
+    new_event_attrs = event.attributes.merge(
+      id: nil, name: "ASR League September",
+      starts_at: "2013-09-01", ends_at: "2013-09-30",
+      opens_at: "2013-09-01", closes_at: "2013-09-30")
+    new_event = Event.create(new_event_attrs, without_protection: true)
     new_event.create_ruleset(event.ruleset.attributes.merge(id: nil, rulesetable_id: nil, rulesetable_type: nil), without_protection: true)
     new_event.create_point_ruleset(event.point_ruleset.attributes.merge(id: nil, pointable_id: nil, pointable_type: nil), without_protection: true)
 
-    event_tags = event.tags
-    event_tags.each do |et|
-      et.update_attribute(:event_id, new_event.id)
-    end
+    # event_tags = event.tags
+    # event_tags.each do |et|
+    #   et.update_attribute(:event_id, new_event.id)
+    # end
 
     event.tiers.each do |tier|
       new_tier = new_event.tiers.create(tier.attributes.merge(id: nil, event_id: nil), without_protection: true)
@@ -210,9 +214,8 @@ namespace :manager do
 
     # Copy unnassigned registrations
     event.registrations.where(division_id: nil).each do |reg|
-      event.registrations.create(reg.attributes.merge(
-        id: nil,
-        points_this_month: 0), without_protection: true)
+      new_event.registrations.create(reg.attributes.symbolize_keys.merge(
+        id: nil, points_this_month: 0, updated_at: nil, created_at: nil), without_protection: true)
     end
 
   end
