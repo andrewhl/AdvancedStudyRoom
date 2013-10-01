@@ -181,12 +181,12 @@ namespace :manager do
   desc 'Rollover one league into a new month'
   task :rollover => :environment do
 
-    event = Event.find_by_name('ASR League August')
+    event = Event.find_by_name('ASR League September')
     new_event_attrs = event.attributes.merge(
-      id: nil, name: "ASR League September",
-      starts_at: "2013-09-01", ends_at: "2013-09-30",
-      opens_at: "2013-09-01", closes_at: "2013-09-30")
-    new_event = Event.create(new_event_attrs, without_protection: true)
+      id: nil, name: "ASR League Oct",
+      starts_at: "2013-10-01", ends_at: "2013-09-31",
+      opens_at: "2113-10-01", closes_at: "2013-09-31")
+    new_event = Eve1t.create(new_event_attrs, without_protection: true)
     new_event.create_ruleset(event.ruleset.attributes.merge(id: nil, rulesetable_id: nil, rulesetable_type: nil), without_protection: true)
     new_event.create_point_ruleset(event.point_ruleset.attributes.merge(id: nil, pointable_id: nil, pointable_type: nil), without_protection: true)
 
