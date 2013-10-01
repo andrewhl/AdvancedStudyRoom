@@ -181,7 +181,7 @@ namespace :manager do
   desc 'Rollover one league into a new month'
   task :rollover => :environment do
 
-    event = Event.find_by_name('ASR League September')
+    event = Event.find_by_name('ASR League Sept')
     new_event_attrs = event.attributes.merge(
       id: nil, name: "ASR League Oct",
       starts_at: "2013-10-01", ends_at: "2013-09-31",
