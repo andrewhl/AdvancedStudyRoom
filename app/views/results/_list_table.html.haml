@@ -7,11 +7,15 @@
       %th Wins/Losses
 
   %tbody
-    - division.registrations.joins(:account).order(sort_column + ' ' + sort_direction).each_with_index do |reg, index|
-      %tr
+    - registrations = division.registrations.joins(:account).order(sort_column + ' ' + sort_direction).to_a
+    - registrations.sort! { |a, b| [b.active ? 1 : 0, b.points_this_month.to_i] <=> [a.active ? 1 : 0, a.points_this_month.to_i] }
+    - registrations.each_with_index do |reg, index|
+      %tr{class: ('emphasis' unless reg.active)}
         %td.centered= index + 1
         %td.not-centered
           = reg.handle
+          - unless reg.active
+            %small (Quit)
         %td= number_with_precision reg.points_this_month, :precision => 2
         %td
           - get_matches_for_reg(matches, reg).each do |match|

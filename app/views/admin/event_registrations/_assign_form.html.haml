@@ -13,7 +13,10 @@
 
       - registrations.each do |reg|
         %tr
-          %td.middle= reg.handle
+          %td.middle
+            = reg.handle
+            - unless reg.active
+              %span.label Quit
           %td.middle= rank_display(reg.account.rank)
           %td
             = select_tag "registrations[#{reg.id}]", division_options(division),

@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 
   def quit
     reg = current_user.registrations.where(event_id: params[:id]).first
-    if reg && !reg.update_attributes({ active: false, division_id: nil }, without_protection: true)
+    if reg && !reg.update_attributes({ active: false }, without_protection: true)
       flash[:error] = 'There was an error while deleting your registration'
     end
 
