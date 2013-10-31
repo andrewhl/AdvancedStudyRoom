@@ -292,6 +292,7 @@ namespace :manager do
       else
         query = 'event_id = ? AND accounts.handle = ?'
       end
+      query << ' AND registrations.active IS TRUE'
 
       w_reg = Registration.joins(:account).where(
         query, event.id, wp_name).first
