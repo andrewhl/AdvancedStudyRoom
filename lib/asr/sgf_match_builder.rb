@@ -84,7 +84,7 @@ module ASR
     end
 
     def get_match_event_related_attributes(match, options={})
-      opts = { ignore_case: false }.merge(options)
+      opts = { ignore_case: @ignore_case }.merge(options)
       wp_name = match.white_player_name
       bp_name = match.black_player_name
 
