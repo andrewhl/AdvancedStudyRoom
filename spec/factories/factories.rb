@@ -110,6 +110,7 @@ FactoryGirl.define do
 
   factory :server do
     name "KGS"
+    url "http://example.com/"
   end
 
 end

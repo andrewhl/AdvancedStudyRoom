@@ -12,7 +12,7 @@ describe ASR::SGFImporter do
 
     now = Time.now
     scraper = KgsScraper.new(target_path: target_path, drgoplayermain: 'example.com')
-    scraper.stubs(:scrape).with(handle: 'kabradarf', month: now.month, year: now.year).returns([f_path])
+    scraper.stubs(:scrape_games).with(handle: 'kabradarf', month: now.month, year: now.year).returns([f_path])
 
     @importer = ASR::SGFImporter.new(scraper: scraper, server: wp.account.server)
   end
@@ -22,12 +22,6 @@ describe ASR::SGFImporter do
     it "should return the valid Matches" do
       matches = @importer.import_matches(handle: 'kabradarf')
       matches.size.should == 1
-    end
-
-    it "should save the winner and the loser" do
-      matches = @importer.import_matches(handle: 'kabradarf')
-      matches.first.winner.should_not be_nil
-      matches.first.loser.should_not be_nil
     end
 
     it "should create the match Comments" do
