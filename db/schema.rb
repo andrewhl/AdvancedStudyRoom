@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(:version => 20130811165316) do
   add_index "divisions", ["index"], :name => "index_divisions_on_index"
   add_index "divisions", ["tier_id"], :name => "index_divisions_on_tier_id"
 
+  create_table "event_periods", :force => true do |t|
+    t.integer  "event_id"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "opens_at"
+    t.datetime "closes_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "event_periods", ["event_id"], :name => "index_event_periods_on_event_id"
+
   create_table "event_tags", :force => true do |t|
     t.string   "phrase"
     t.integer  "event_id"
@@ -63,6 +75,13 @@ ActiveRecord::Schema.define(:version => 20130811165316) do
 
   add_index "event_tags", ["event_id"], :name => "index_event_tags_on_event_id"
   add_index "event_tags", ["phrase"], :name => "index_event_tags_on_phrase"
+
+  create_table "event_types", :force => true do |t|
+    t.string   "name",        :limit => 100
+    t.string   "description"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -79,6 +98,55 @@ ActiveRecord::Schema.define(:version => 20130811165316) do
   end
 
   add_index "events", ["server_id"], :name => "index_events_on_server_id"
+
+  create_table "match_comments", :force => true do |t|
+    t.integer  "match_id"
+    t.text     "comment"
+    t.string   "handle",      :limit => 100
+    t.string   "rank",        :limit => 5
+    t.datetime "date"
+    t.integer  "node_number"
+    t.integer  "line_number"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "match_comments", ["match_id"], :name => "index_match_comments_on_match_id"
+
+  create_table "match_details", :force => true do |t|
+    t.integer  "match_id"
+    t.integer  "ot_stones_periods"
+    t.integer  "board_size"
+    t.integer  "handicap"
+    t.string   "type",              :limit => 100
+    t.string   "ot_type",           :limit => 100
+    t.string   "win_info",          :limit => 100
+    t.string   "filename"
+    t.string   "black_player_name", :limit => 100
+    t.string   "white_player_name", :limit => 100
+    t.float    "komi"
+    t.float    "main_time_control"
+    t.float    "ot_time_control"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "match_details", ["match_id"], :name => "index_match_details_on_match_id"
+
+  create_table "match_registrations", :force => true do |t|
+    t.integer  "match_id"
+    t.integer  "registration_id"
+    t.boolean  "white"
+    t.boolean  "black"
+    t.boolean  "winner"
+    t.boolean  "loser"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "match_registrations", ["loser"], :name => "index_match_registrations_on_loser"
+  add_index "match_registrations", ["match_id"], :name => "index_match_registrations_on_match_id"
+  add_index "match_registrations", ["winner"], :name => "index_match_registrations_on_winner"
 
   create_table "match_tags", :force => true do |t|
     t.integer  "node"
@@ -195,6 +263,28 @@ ActiveRecord::Schema.define(:version => 20130811165316) do
     t.datetime "updated_at", :null => false
     t.string   "permalink"
   end
+
+  create_table "registration_group_types", :force => true do |t|
+    t.string   "name",        :limit => 100
+    t.string   "description"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "registration_groups", :force => true do |t|
+    t.integer  "event_period_id"
+    t.integer  "parent_id"
+    t.integer  "registration_group_type_id"
+    t.string   "name",                       :limit => 100
+    t.integer  "min_registrations"
+    t.integer  "max_registrations"
+    t.integer  "position",                                  :default => 1, :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
+  end
+
+  add_index "registration_groups", ["event_period_id"], :name => "index_registration_groups_on_event_period_id"
+  add_index "registration_groups", ["parent_id"], :name => "index_registration_groups_on_parent_id"
 
   create_table "registrations", :force => true do |t|
     t.integer  "account_id"
