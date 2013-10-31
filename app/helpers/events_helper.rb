@@ -1,7 +1,13 @@
 module EventsHelper
 
   def sort_column
-    Registration.column_names.include?(params[:sort]) ? params[:sort] : "points_this_month"
+    if params[:sort] == "handle"
+      "LOWER(accounts.handle)"
+    elsif Registration.column_names.include?(params[:sort])
+       params[:sort]
+    else
+      "points_this_month"
+    end
   end
 
   def sort_direction

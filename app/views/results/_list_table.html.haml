@@ -7,7 +7,7 @@
       %th Wins/Losses
 
   %tbody
-    - registrations = division.registrations.order(sort_column + ' ' + sort_direction).to_a
+    - registrations = division.registrations.joins(:account).order(sort_column + ' ' + sort_direction).to_a
     - registrations.sort! { |a, b| [b.active ? 1 : 0, b.points_this_month.to_i] <=> [a.active ? 1 : 0, a.points_this_month.to_i] }
     - registrations.each_with_index do |reg, index|
       %tr{class: ('emphasis' unless reg.active)}
