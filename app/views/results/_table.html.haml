@@ -11,8 +11,7 @@
               %span= col_player.handle
 
   %tbody
-    - registrations = division.registrations.order(sort_column + ' ' + sort_direction).to_a
-    - registrations.sort! { |a, b| [b.active ? 1 : 0, b.points_this_month.to_i] <=> [a.active ? 1 : 0, a.points_this_month.to_i] }
+    - registrations = division.registrations.joins(:account).order(sort_column + ' ' + sort_direction).to_a
     - registrations.each_with_index do |row_player, row_i|
       %tr{class: ('emphasis' unless row_player.active)}
         %td= row_i + 1
@@ -21,7 +20,7 @@
           - unless row_player.active
             %small (Quit)
         %td.not-centered= number_with_precision row_player.points_this_month, :precision => 2
-        - division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |col_player, col_i|
+        - registrations.each_with_index do |col_player, col_i|
           - if col_player == row_player
             %td.cross.result{class: "column-#{col_i} row-#{row_i}"}
               %i.icon-remove

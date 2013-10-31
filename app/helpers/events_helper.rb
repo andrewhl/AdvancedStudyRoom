@@ -6,7 +6,7 @@ module EventsHelper
     elsif Registration.column_names.include?(params[:sort])
        params[:sort]
     else
-      "points_this_month"
+      "active DESC, points_this_month"
     end
   end
 
