@@ -7,7 +7,7 @@
       %th Wins/Losses
 
   %tbody
-    - division.registrations.order(sort_column + ' ' + sort_direction).each_with_index do |reg, index|
+    - division.registrations.joins(:account).order(sort_column + ' ' + sort_direction).each_with_index do |reg, index|
       %tr
         %td.centered= index + 1
         %td.not-centered
