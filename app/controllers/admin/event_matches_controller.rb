@@ -24,14 +24,12 @@ class Admin::EventMatchesController < ApplicationController
 
   def create
     file = params[:match][:filename]
-
     sgf_data = ASR::SGFData.new(file_path: file.path)
-    match_builder = ASR::SGFMatchBuilder.new(server_id: @event.server_id, event_id: @event.id)
+    match_builder = ASR::SGFMatchBuilder.new(
+      server_id: @event.server_id, event_id: @event.id, ignore_case: true)
 
     begin
       match = match_builder.build_match(sgf_data)
-      # puts "Match details: " + match.inspect
-      # binding.pry
       raise "Match could not be saved" unless match && match.save
       return redirect_to admin_match_path(match)
     rescue => e
