@@ -181,19 +181,21 @@ namespace :manager do
   desc 'Rollover one league into a new month'
   task :rollover => :environment do
 
-    event = Event.find_by_name('ASR League Sept')
+    months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Oct', 'Nov', 'Dec']
+    cur_month_num = Time.current.month
+
+    current_month = months[cur_month_num - 1]
+    next_month = cur_month_num == 12 ? months[0] : months[cur_month_num]
+
+    event = Event.find_by_name("ASR League #{current_month}")
+
     new_event_attrs = event.attributes.merge(
-      id: nil, name: "ASR League Oct",
-      starts_at: "2013-10-01", ends_at: "2013-10-31",
-      opens_at: "2013-10-01", closes_at: "2013-10-31")
+      id: nil, name: "ASR League #{next_month}", created_at: nil, updated_at: nil,
+      starts_at: start_of_next_month + 2.hours, ends_at: end_of_next_month - 1.hour,
+      opens_at: event.closes_at, closes_at: end_of_next_month - 1.week)
     new_event = Event.create(new_event_attrs, without_protection: true)
     new_event.create_ruleset(event.ruleset.attributes.merge(id: nil, rulesetable_id: nil, rulesetable_type: nil), without_protection: true)
     new_event.create_point_ruleset(event.point_ruleset.attributes.merge(id: nil, pointable_id: nil, pointable_type: nil), without_protection: true)
-
-    # event_tags = event.tags
-    # event_tags.each do |et|
-    #   et.update_attribute(:event_id, new_event.id)
-    # end
 
     event.tiers.each do |tier|
       new_tier = new_event.tiers.create(tier.attributes.merge(id: nil, event_id: nil), without_protection: true)
@@ -217,7 +219,15 @@ namespace :manager do
       new_event.registrations.create(reg.attributes.symbolize_keys.merge(
         id: nil, points_this_month: 0, updated_at: nil, created_at: nil), without_protection: true)
     end
+  end
 
+  desc 'Rollover event tags for new month'
+  task :rollover_tags => :environment do
+    cur_event, next_event = Event.order(:ends_at).last(2)
+    event_tags = cur_event.tags
+    event_tags.each do |et|
+      et.update_attribute(:event_id, next_event.id)
+    end
   end
 
   namespace :points do
@@ -308,4 +318,11 @@ namespace :manager do
       }
     end
 
+    def start_of_next_month
+      start_of_next_month = Time.current.utc.next_month.beginning_of_month
+    end
+
+    def end_of_next_month
+      end_of_next_month = Time.current.utc.next_month.end_of_month
+    end
 end
