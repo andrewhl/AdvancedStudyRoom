@@ -1,0 +1,15 @@
+%h2 Create an Account (for KGS)
+
+- kgs_id = Server.find_by_name("KGS").id
+
+- if current_user.accounts.any? { |account| account.server_id == kgs_id }
+  %h3 You already have an account for KGS.
+
+- else
+  = simple_form_for @account, url: new_user_account_path(current_user), validate: true do |f|
+    = f.error_notification
+
+    = f.input :server_id, as: :hidden, input_html: {value: kgs_id}
+    = f.input :handle
+
+    = f.submit "Submit", class: 'btn btn-primary'

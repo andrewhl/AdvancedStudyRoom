@@ -57,7 +57,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :accounts, allow_destroy: true
 
-
   validates :email,
               presence: true,
               uniqueness: {case_sensitive: false},

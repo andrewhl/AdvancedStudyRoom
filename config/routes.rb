@@ -18,7 +18,9 @@ AdvancedStudyRoom::Application.routes.draw do
   # Users
   #
 
-  get 'profile',        to: 'users#show'
+  get 'profile',                   to: 'users#show'
+  get 'users/:id/accounts/new',    to: 'user_accounts#new',        as: 'new_user_account'
+  post 'users/:id/accounts/new',   to: 'user_accounts#create'
 
   #
   # Results
@@ -83,7 +85,6 @@ AdvancedStudyRoom::Application.routes.draw do
       resources :accounts, shallow: true, controller: 'user_accounts', except: [:index]
     end
   end
-
 
   mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
   resources :pages
