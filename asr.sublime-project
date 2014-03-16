@@ -2,22 +2,17 @@
 	"folders":
 	[
 		{
-			"path": "app"
-		},
-		{
+			"path": ".",
 			"file_exclude_patterns":
 			[
 				".swp"
 			],
 			"folder_exclude_patterns":
 			[
-				"app",
-				"script",
+				".sass-cache",
 				"tmp",
 				".zeus.sock"
-			],
-			"name": "ASR",
-			"path": "."
+			]
 		}
 	]
 }
