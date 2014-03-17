@@ -25,7 +25,7 @@ module ResultsHelper
 
   def match_url(match)
     dc = match.completed_at
-    "http://files.gokgs.com/games/#{dc.year}/#{dc.month}/#{dc.day}/#{match.filename}"
+    "http://eidogo.com/#url:http://files.gokgs.com/games/#{dc.year}/#{dc.month}/#{dc.day}/#{match.filename}"
   end
 
   def get_matches_for_reg(matches, reg)

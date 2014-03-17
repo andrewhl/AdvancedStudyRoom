@@ -82,8 +82,11 @@ module ApplicationHelper
     ranks
   end
 
-  def icon_link_to(url, icon)
-    link_to url do
+  def icon_link_to(*args)
+    url   = args.at(0)
+    icon  = args.at(1)
+    opts  = args.at(2) || {}
+    link_to(url, opts) do
       content_tag :i, "", class: "icon-#{icon}"
     end
   end
