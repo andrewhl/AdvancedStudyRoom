@@ -75,7 +75,7 @@ class Event < ActiveRecord::Base
   end
 
   def player_count
-    registrations.count
+    registrations.active.count
   end
 
 end
