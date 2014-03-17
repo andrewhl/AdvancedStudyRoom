@@ -81,7 +81,7 @@ AdvancedStudyRoom::Application.routes.draw do
       resource :ruleset, controller: 'division_rulesets', only: [:edit, :update]
     end
 
-    resources :users, only: [:index, :show, :edit, :update] do
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
       resources :accounts, shallow: true, controller: 'user_accounts', except: [:index]
     end
   end
