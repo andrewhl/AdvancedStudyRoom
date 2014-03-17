@@ -12,7 +12,7 @@
 
       %li.nav-header
         Leagues
-      - Event.all(order: 'ends_at DESC').each do |event|
+      - Event.after(Time.zone.now - 6.months).each do |event|
         %li
           = link_to event_path(event) do
             %i.icon-flag

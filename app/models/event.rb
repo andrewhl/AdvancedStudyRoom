@@ -36,6 +36,8 @@ class Event < ActiveRecord::Base
                       ends_at IS NOT NULL AND CURRENT_DATE <= DATE(ends_at)').
                order('ends_at DESC')
 
+  scope :after, ->(time) { where("starts_at > ?", time) }
+  
   attr_accessible :ruleset_id,
                   :name,
                   :start_time
