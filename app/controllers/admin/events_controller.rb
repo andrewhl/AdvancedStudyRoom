@@ -1,18 +1,22 @@
 class Admin::EventsController < ApplicationController
 
-  load_and_authorize_resource :event
+  authorize_resource :event
   before_filter :add_breadcrumbs
 
   def index
+    @events = Event.order('starts_at DESC')
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def edit
+    @event = Event.find(params[:id])
   end
 
   def update
+    @event = Event.find(params[:id])
     if @event.update_attributes(params[:event], without_protection: true)
       redirect_to admin_event_path(@event), flash: {success: 'Event updated' }
     else
@@ -30,30 +34,6 @@ class Admin::EventsController < ApplicationController
     end
     redirect_to matches_event_path(event), flash: {success: 'Event matches were downloaded'}
   end
-
-  # def new
-  # end
-
-  # def create
-  #   # TODO: Add a form model to this baby!
-  #   event_params = params[:event].dup
-  #   event_params.delete("event_ruleset")
-  #   tag_params = event_params.delete("tag")
-  #   if params[:event][:tag][:phrase].empty?
-  #     redirect_to :new_event, :flash => { :error => "Tag phrase can not be blank." }
-  #   else
-  #     @event = Event.create(event_params)
-  #     params[:event][:ruleset][:parent_id] = params[:event][:ruleset_id]
-  #     @event_ruleset = @event.build_event_ruleset(params[:event][:event_ruleset])
-  #     @event_ruleset.ruleset_id = @event.ruleset.id
-  #     @event_ruleset.save
-  #     @tag = @event.tags.create(tag_params)
-  #     redirect_to :new_event, :flash => {:success => "Your event has been successfully created."}
-  #   end
-  # end
-
-  # def destroy
-  # end
 
   private
 
