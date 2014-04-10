@@ -47,7 +47,7 @@ class Admin::EventMatchesController < ApplicationController
     msg = ['Match is']
     msg << 'NOT' unless match.valid_match
     msg << 'valid'
-    msg << (match.tagged == match.valid_match ? 'and' : 'but is')
+    msg << 'and is'
     msg << 'NOT' unless match.tagged
     msg << 'properly tagged'
 
