@@ -89,8 +89,8 @@ AdvancedStudyRoom::Application.routes.draw do
   mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
   resources :pages
   resources :posts
-  get '/',          to: 'pages#home'
+  get '/',          to: 'results#main_event'
   get ':permalink', to: 'pages#show'
-  root to: "pages#home"
+  root to: "results#main_event"
 
 end

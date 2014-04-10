@@ -5,13 +5,9 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "Advanced Study Room", :root, :class => "brand"
+      = link_to "Advanced Study Room", "http://www.advancedstudyroom.com", :class => "brand"
 
       .nav-collapse
-        %ul.nav
-          - pages.each do |page|
-            %li
-              = link_to "#{page[:title]}", page[:path]
         - if current_user
           .btn-group.pull-right
             %a.btn.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
