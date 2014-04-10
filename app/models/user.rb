@@ -66,6 +66,13 @@ class User < ActiveRecord::Base
                         uniqueness: {case_sensitive: false}
   validates :password, confirmation: true, unless: Proc.new { |u| u.password.blank? }
 
+  before_save :strip_whitespaces
+
+  def strip_whitespaces
+    self.username.strip!
+    self.email.strip!
+  end
+
   def registered_for_anything?
     if registrations.any?
       registrations.any? { |r| r.active? }

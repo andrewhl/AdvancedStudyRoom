@@ -16,7 +16,6 @@ describe ASR::RuleMerger do
 
   it "should overwrite parent values with child values" do
     division_ruleset.j_ot_min_periods = 1
-    # binding.pry
 
     rule_merger = ASR::RuleMerger.new(event_ruleset, tier_ruleset, division_ruleset)
     rule_merger.rules[:j_ot_min_periods].should == 1
