@@ -9,6 +9,7 @@ namespace :manager do
 
   desc "Import matches from the servers"
   task :import => :environment do
+    handles   = (ENV['handle'] || ENV['handles']).to_s.split(',')
 
     begin
       logger.started('IMPORT')
@@ -16,9 +17,9 @@ namespace :manager do
       server = Server.where(name: 'KGS').first
       importer = ASR::SGFImporter.new(server: server, ignore_case: true)
 
-      accounts = server.accounts
-      handles = (ENV['handle'] || ENV['handles']).to_s.split(',')
-      accounts = server.accounts.where('handle IN (?)', handles) if handles.any?
+      event_ids = server.events.live.map { |e| e.id }
+      accounts  = Account.joins(:events).where('registrations.active = TRUE AND events.id IN (?)', event_ids)
+      accounts  = accounts.where('handle IN (?)', handles) if handles.any?
 
       accounts.each do |account|
         logger.w "Processing #{account.handle}..."
