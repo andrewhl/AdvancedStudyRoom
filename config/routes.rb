@@ -49,7 +49,7 @@ AdvancedStudyRoom::Application.routes.draw do
     resources :events, only: [:index, :show, :edit, :update] do
       resources :tags, controller: 'event_tags', only: [:new, :create]
 
-      resources :matches, controller: 'event_matches', only: [:index, :new, :create]
+      resources :matches, controller: 'event_matches', only: [:index, :new, :create, :destroy]
       # Note the singular on 'resource', this generates routes a different
       # set of routes, use rake routes for more info.
       resource :ruleset, controller: 'event_rulesets', only: [:edit, :update]

@@ -15,18 +15,18 @@
         = link_to results_path do
           %i.icon-star
           Current Results
-      -# %li
-      -#   = link_to leagues_path do
-      -#     %i.icon-flag
-      -#     All Leagues
 
       %li.nav-header
         Leagues
-      - Event.after(Time.zone.now - 6.months).each do |event|
+      - Event.order('ends_at DESC').after(Time.zone.now - 6.months).each do |event|
         %li
           = link_to event_path(event) do
             %i.icon-flag
             = event.name
+      %li
+        = link_to leagues_path do
+          %i.icon-archive
+          Archives
 
       - if can? :manage, :all
         %li.nav-header

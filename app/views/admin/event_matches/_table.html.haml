@@ -34,3 +34,6 @@
             %ul.inline
               %li= link_to 'Details', admin_match_path(match)
               %li= link_to 'Process', validate_and_tag_admin_match_path(match), method: :post
+              - if Rails.env.development?
+                %li= link_to 'Delete', admin_match_path(match), method: :delete,
+                      confirm: 'Are you sure?'
