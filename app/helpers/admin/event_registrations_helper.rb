@@ -11,6 +11,7 @@ module Admin::EventRegistrationsHelper
     disabled = div_id == 0 ? 'disabled="disabled"' : ''
     options << "<option #{disabled} value='-1'>-- Unassign --</option>"
     options << "<option value='-2'>-- Quit Event --</option>"
+    options << "<option value='-3'>-- Delete Registration --</option>"
     options.html_safe
   end
 

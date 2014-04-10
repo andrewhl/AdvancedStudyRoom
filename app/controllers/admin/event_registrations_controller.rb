@@ -5,12 +5,13 @@ class Admin::EventRegistrationsController < ApplicationController
   before_filter :add_breadcrumbs
 
   def index
-    @registrations = @event.registrations.active.order("division_id ASC")
+    @registrations = @event.registrations.order('division_id ASC')
     @unassigned_players = @registrations.where(division_id: nil)
   end
 
   def assign
-    @registrations = @event.registrations.active
+    @registrations = @event.registrations
+
     count = 0
     params[:registrations].each do |reg_id, div_id|
       next unless div_id.present?
@@ -19,13 +20,23 @@ class Admin::EventRegistrationsController < ApplicationController
       division_id = div_id.to_i
       reg.update_attribute(:division_id, division_id > 0 ? division_id : nil)
       reg.update_attribute(:active, false) if division_id == -2
+
+      if division_id == -3
+        count -= 1
+        if reg.matches.empty?
+          count += 1
+          reg.destroy
+        else
+          flash[:error] = 'Some registrations have games and cannot be deleted'
+        end
+      end
     end
 
     if count == 0
       flash[:warning] = 'No players were assigned'
     else
       @event.touch
-      flash[:success] = "#{count} players #{count == 1 ? 'was' : 'were'} assigned to a different division"
+      flash[:success] = "#{count} registrations #{count == 1 ? 'was' : 'were'} modified"
     end
 
     redirect_to admin_event_registrations_path(@event)
