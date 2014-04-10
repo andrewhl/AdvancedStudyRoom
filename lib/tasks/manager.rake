@@ -53,7 +53,7 @@ namespace :manager do
     begin
       logger.started('VALIDATE')
 
-      Event.all.each do |event|
+      Event.live.all.each do |event|
         div_matches = Match.unvalidated.by_event(event).group_by(&:division_id)
         div_matches.each do |div_id, matches|
           div = Division.where(id: div_id).includes(:ruleset).first
@@ -95,7 +95,7 @@ namespace :manager do
     begin
       logger.started('TAGS')
 
-      Event.all.each do |event|
+      Event.live.all.each do |event|
         tag_checker = ASR::TagChecker.new(event.tags)
         Match.unchecked.by_event(event).each do |match|
           logger.w "Checking...#{match.digest}"
@@ -131,7 +131,7 @@ namespace :manager do
     begin
       logger.started 'POINTS'
 
-      Event.all.each do |event|
+      Event.live.all.each do |event|
         logger.wl "EVENT #{event.name}..."
 
         finder = ASR::MatchFinder.new(
@@ -249,7 +249,7 @@ namespace :manager do
       begin
         logger.started 'TOTALLING POINTS'
 
-        Event.all.each do |event|
+        Event.live.all.each do |event|
           logger.wl "EVENT #{event.name}..."
 
           event.registrations.each do |reg|
