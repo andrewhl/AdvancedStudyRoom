@@ -21,7 +21,10 @@ class Registration < ActiveRecord::Base
   has_one :server, through: :account
 
   has_many :points
-  has_many :matches, through: :points, dependent: :destroy
+  has_many :won_matches,  class_name: 'Match', foreign_key: 'winner_id',
+                          dependent: :destroy
+  has_many :lost_matches, class_name: 'Match', foreign_key: 'loser_id',
+                          dependent: :destroy
 
   scope :active, where(active: true)
 
@@ -30,6 +33,10 @@ class Registration < ActiveRecord::Base
                   :event_id,
                   :registration
 
+
+  def matches
+    won_matches + lost_matches
+  end
 
   def get_rank
     return "?" unless last_match = own_matches.last
