@@ -1,10 +1,10 @@
 class Admin::EventMatchesController < ApplicationController
 
   before_filter :load_event, only: [:index, :new, :create]
-  before_filter :load_match, only: [:show, :edit, :update, :auto_tag]
+  before_filter :load_match, only: [:show, :edit, :update, :auto_tag, :destroy]
 
   before_filter :set_pagination, only: [:index]
-  before_filter :add_breadcrumbs, except: [:validate_and_tag, :create]
+  before_filter :add_breadcrumbs, except: [:validate_and_tag, :create, :destroy]
 
   def index
     query = params[:query]
@@ -65,6 +65,11 @@ class Admin::EventMatchesController < ApplicationController
       flash[:error] = "Event has no tags."
     end
     redirect_to admin_match_path(@match)
+  end
+
+  def destroy
+    @match.destroy if Rails.env.development?
+    redirect_to :back
   end
 
   private
