@@ -21,6 +21,7 @@ class Registration < ActiveRecord::Base
   has_one :server, through: :account
 
   has_many :points
+  has_many :matches, through: :points, dependent: :destroy
 
   scope :active, where(active: true)
 

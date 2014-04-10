@@ -54,7 +54,7 @@ class Match < ActiveRecord::Base
 
   has_one :event, through: :black_player
   has_many :comments, :autosave => true, :dependent => :destroy
-  has_many :points
+  has_many :points, dependent: :destroy
   has_many :tags, class_name: "MatchTag", :autosave => true, :dependent => :destroy
 
   scope :unvalidated, where('valid_match IS NULL')
