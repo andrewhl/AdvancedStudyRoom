@@ -54,6 +54,6 @@
               %td= v
     #tab4.tab-pane
       %ul
-        - @event.registrations.each do |reg|
+        - @event.registrations.active.each do |reg|
           %li= reg.handle
 
