@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def leagues
-    @leagues = Event.all
+    @leagues = Event.order('ends_at DESC').all
   end
 
   def join
