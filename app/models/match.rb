@@ -33,14 +33,6 @@
 #  won_by            :string(255)
 #
 
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#
-#  black_player_id   :integer
-#  white_player_id   :integer
-#  winner_id         :integer
-#  loser_id          :integer
-
 class Match < ActiveRecord::Base
   attr_protected
 
