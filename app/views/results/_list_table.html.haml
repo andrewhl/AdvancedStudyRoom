@@ -18,4 +18,4 @@
         %td= number_with_precision reg.points_this_month, :precision => 2
         %td
           - get_matches_for_reg(matches, reg).each do |match|
-            = icon_link_to match_url(match), (match.winner_id == reg.id) ? :circle : :'circle-blank'
+            = icon_link_to match_url(match), (match.winner_id == reg.id) ? :'circle-blank' : :circle
