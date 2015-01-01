@@ -188,7 +188,7 @@ namespace :manager do
     current_month = months[cur_month_num - 1]
     next_month = cur_month_num == 12 ? months[0] : months[cur_month_num]
 
-    event = Event.find_by_name("ASR League #{current_month}")
+    event = Event.order('ends_at desc').find_by_name("ASR League #{current_month}")
 
     new_event_attrs = event.attributes.merge(
       id: nil, name: "ASR League #{next_month}", created_at: nil, updated_at: nil,
