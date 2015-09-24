@@ -1,6 +1,6 @@
 development: &defaults
   adapter: postgresql
-  host: localhost
+  host: db
   database: asr_dev
   encoding: utf8
   pool: 5

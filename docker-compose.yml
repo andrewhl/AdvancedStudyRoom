@@ -1,0 +1,20 @@
+---
+
+db:
+  image: postgres:9.4.4
+  environment:
+    - "POSTGRES_USER=asr_dev"
+    - "POSTGRES_PASSWORD=*********************"
+
+web:
+  container_name: asr-web
+  build: .
+  command: "rails server -b 0.0.0.0 -p 3000"
+  environment:
+    - "RAILS_ENV=development"
+  ports:
+    - "3000:3000"
+  volumes:
+    - .:/app
+  links:
+    - db
