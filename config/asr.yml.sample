@@ -6,11 +6,11 @@ development: &defaults
   # javascript
   errbit:
     host:           errbit.advancedstudyroom.com
-    app:            42dea4ac8920b8a4cf6d9061bb6902da
-    js:             2d95aa543b493d3ea87334d043992458
+    app:            "*******************************"
+    js:             "*******************************"
 
   # ==> Google Analytics Configuration
-  analytics:        UA-12345678-5
+  analytics:        UA-*********-**
 
   # ==> DB Backup Configuration
   # Configuration used by the rake db:backup task
@@ -18,9 +18,9 @@ development: &defaults
     enabled:        false
     path:           /dev
     keep:           7
-    key:            400ccebbce97b25
-    secret:         5b402e2327c958c
- 
+    key:            "*******************************"
+    secret:         "*******************************"
+
   # ==> Notifications Configuration
   # Sender's email for the app notifications.
   # Notifications are sent to the site users.
@@ -45,7 +45,7 @@ development: &defaults
     address:        mail.advancedstudyroom.com
     port:           25
     username:       alerts@advancedstudyroom.com
-    password:       abcdefg123456
+    password:       "***************************"
     auth:           plain
     starttls_auto:  true
 
