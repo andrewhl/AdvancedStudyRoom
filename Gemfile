@@ -23,8 +23,8 @@ gem 'client_side_validations-simple_form', '~> 2.1.0'
 
 gem 'SgfParser',                '~> 2.0.0'
 gem 'rubyzip',                  '~> 0.9.9', :require => 'zip/zip'
-gem 'kgs_scraper',              '~> 0.2.0', :git => 'git@bitbucket.org:ahlavats/kgs_scraper.git',
-                                            :ref => 'e22ac383aedf5e'
+gem 'kgs_scraper',              '~> 0.2.0', :path => 'vendor/kgs_scraper',
+                                            :branch => 'master'
 
 gem 'whenever',                 '~> 0.8.2', :require => false
 gem 'backup',                   '~> 3.4.0'
@@ -62,9 +62,9 @@ group :test, :development do
   gem 'rspec-rails',            '~> 2.0'
   gem 'binding_of_caller',      '~> 0.7.1'
   gem 'better_errors',          '~> 0.8.0'
-  gem 'pry',                    '~> 0.9.12'
+  gem 'pry',                    '~> 0.10.1'
   gem 'pry-stack_explorer',     '~> 0.4.9'
-  gem 'pry-debugger',           '~> 0.2.2'
+  gem 'pry-debugger',           '~> 0.2.3'
   gem 'annotate',               '>= 2.5.0'
   gem 'factory_girl_rails',     '~> 3.0'
   gem 'zeus',                   '>= 0.13.3'

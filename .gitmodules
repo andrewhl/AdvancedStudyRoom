@@ -1,0 +1,4 @@
+[submodule "vendor/kgs_scraper"]
+	path = vendor/kgs_scraper
+	url = git@bitbucket.org:ahlavats/kgs_scraper.git
+	branch = master
