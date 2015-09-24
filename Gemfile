@@ -62,7 +62,6 @@ group :test, :development do
   gem 'rspec-rails',            '~> 2.0'
   gem 'binding_of_caller',      '~> 0.7.1'
   gem 'better_errors',          '~> 0.8.0'
-  gem 'sqlite3',                '>= 1.3.7'
   gem 'pry',                    '~> 0.9.12'
   gem 'pry-stack_explorer',     '~> 0.4.9'
   gem 'pry-debugger',           '~> 0.2.2'
