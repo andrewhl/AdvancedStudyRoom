@@ -27,4 +27,4 @@
           - else
             %td.result{class: "column-#{col_i} row-#{row_i}"}
               - display_column_matches(matches, row_player, col_player).each do |match|
-                = icon_link_to match_url(match), (match.winner_id == row_player.id) ? :circle : :'circle-blank', target: '_blank'
+                = icon_link_to match_url(match), (match.winner_id == row_player.id) ? :'circle-blank' : :circle, target: '_blank'
